@@ -13,17 +13,17 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import dynamicrecycleview.easysoft.com.lib.R;
 
-import com.core.imge.ImageUtils;
+
+//import com.core.imge.ImageUtils;
+import com.core.recycleview.EdittextLayoutView;
 import com.core.recycleview.MessageCountView;
 import com.core.recycleview.button.IOSSwitchButton;
 import com.core.recycleview.item.bean.AddressRightSecondImgSettings;
 import com.core.recycleview.sectionview.MutiTypeSelectUtils;
 import com.core.utils.DensityUtil;
 import com.core.utils.StringUtils;
+import com.easysoft.dynamicrecycleview.R;
 
 /**
  * 创建者：林党宏
@@ -33,50 +33,32 @@ import com.core.utils.StringUtils;
  */
 
 public class ContentItemView extends LinearLayout implements IItemView {
-    @Bind(R.id.rootlayout)
     LinearLayout mRootlayout;
     /** 右侧chcekbox */
-    @Bind(R.id.switchButton)
     IOSSwitchButton mSwitchButton;
     /** 左侧选中图标 */
-    @Bind(R.id.chkItem)
     CheckBox mLeftCheckBox;
     Context mContext;
-    @Bind(R.id.titleTextView)
     TextView mTitleTextView;
-    @Bind(R.id.hintTextView)
     TextView mHintTextView;
-    @Bind(R.id.noticeTextView)
     TextView mNoticeTextView;
-    @Bind(R.id.noticeImgView)
     ImageView mNoticeImageView;
-    @Bind(R.id.rightFirstTextView)
     TextView mRightFirstTextView;
-    @Bind(R.id.headImgeView)
     ImageView mImageView;
-    @Bind(R.id.rightSecondImgeView)
     ImageView mRightSecondImgeView;
-    @Bind(R.id.rightFirstImgeView)
     ImageView mRightFirstImageView;
     /** 右侧按钮 */
-    @Bind(R.id.rightFirstButton)
     Button mRightFirstButton;
     /** 右侧布局 */
-    @Bind(R.id.rightLayout)
     LinearLayout mRightLayout;
     /** 右侧点击图片 */
-    @Bind(R.id.rightCenterScaleImgeView)
     ImageView mRightCenterScaleImgeView;
-    @Bind(R.id.rightCenterScaleImgeLayout)
     LinearLayout mRightCenterScaleImgeLayout;
     /** 输入框 */
-    @Bind(R.id.edtLayout)
     EdittextLayoutView mContentEditLayout;
     /** 内容布局可设置magin布局 */
-    @Bind(R.id.rootContentLayout)
     LinearLayout mContenLayout;
     /** 内容布局可设置magin布局 */
-    @Bind(R.id.messageCountView)
     MessageCountView mMessageCountView;
     /** 绑定数据 */
     AddressItemBean mBindItemBean = new AddressItemBean();
@@ -100,7 +82,34 @@ public class ContentItemView extends LinearLayout implements IItemView {
     private void initUI(Context context) {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_item, this, true);
-        ButterKnife.bind(this);
+
+        mRootlayout=rootView.findViewById(R.id.rootlayout);
+
+        mSwitchButton=rootView.findViewById(R.id.switchButton);
+        /** 左侧选中图标 */
+        mLeftCheckBox=rootView.findViewById(R.id.chkItem);
+        mTitleTextView=rootView.findViewById(R.id.titleTextView);
+        mHintTextView=rootView.findViewById(R.id.hintTextView);
+        mNoticeTextView=rootView.findViewById(R.id.noticeTextView);
+        mNoticeImageView=rootView.findViewById(R.id.noticeImgView);
+        mRightFirstTextView=rootView.findViewById(R.id.rightFirstTextView);
+        mImageView=rootView.findViewById(R.id.headImgeView);
+        mRightSecondImgeView=rootView.findViewById(R.id.rightSecondImgeView);
+        mRightFirstImageView=rootView.findViewById(R.id.rightFirstImgeView);
+        /** 右侧按钮 */
+        mRightFirstButton=rootView.findViewById(R.id.rightFirstButton);
+        /** 右侧布局 */
+        mRightLayout=rootView.findViewById(R.id.rightLayout);
+        /** 右侧点击图片 */
+        mRightCenterScaleImgeView=rootView.findViewById(R.id.rightCenterScaleImgeView);
+        mRightCenterScaleImgeLayout=rootView.findViewById(R.id.rightCenterScaleImgeLayout);
+        /** 输入框 */
+        mContentEditLayout=rootView.findViewById(R.id.edtLayout);
+        /** 内容布局可设置magin布局 */
+        mContenLayout=rootView.findViewById(R.id.rootContentLayout);
+        /** 内容布局可设置magin布局 */
+        mMessageCountView=rootView.findViewById(R.id.messageCountView);
+
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
@@ -155,12 +164,12 @@ public class ContentItemView extends LinearLayout implements IItemView {
         if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
 //            ImageManager.get().loadDefaultHeadImg(mImageView, dataItemBean.getHeadImgeSettings().getHeadImgDrawableId());
 
-        } 
+        }
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
 //            ImageManager.get().loadDefaultHeadImg(mImageView, dataItemBean.getHeadImgeSettings().getHeadImgDrawableId());
-   		 ImageUtils.getInStance().load( dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
+//   		 ImageUtils.getInStance().load( dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
 
-        } 
+        }
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUserId())) {
 //            String name = dataItemBean.getHeadImgeSettings().getHeadImgUserName();
 //            String enumType = dataItemBean.getHeadImgeSettings().getHeadImgType();
@@ -252,18 +261,18 @@ public class ContentItemView extends LinearLayout implements IItemView {
             mHeadParams.rightMargin = contentMargin;
             mRightSecondImgeView.setLayoutParams(mHeadParams);
             if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())) {
-            	mRightSecondImgeView.setVisibility(View.VISIBLE);
-            	ImageUtils.getInStance().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
+                mRightSecondImgeView.setVisibility(View.VISIBLE);
+//            	ImageUtils.getInStance().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
             }
             else if (StringUtils.isNotEmpty(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath())) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
-                ImageUtils.getInStance().loadPath(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
+//                ImageUtils.getInStance().loadPath(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
             }
             else if (dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId() != 0) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
-                ImageUtils.getInStance().loadResourceId( dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
+//                ImageUtils.getInStance().loadResourceId( dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
             }
-          
+
         } else {
             boolean isShowEmptyImge = dataItemBean.getAddressRightSecondImgSettings().isShowEmptyImg();
             if (isShowEmptyImge) {

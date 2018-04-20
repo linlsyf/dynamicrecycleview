@@ -9,9 +9,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import dynamicrecycleview.easysoft.com.lib.R;
 
 import com.core.recycleview.item.AddressItemBean;
 import com.core.recycleview.item.ContentItemView;
@@ -20,6 +17,7 @@ import com.core.recycleview.item.SectionView;
 import com.core.recycleview.item.SpliteView;
 import com.core.recycleview.sectionview.Section;
 import com.core.recycleview.sectionview.SectionAdapterHelper;
+import com.easysoft.dynamicrecycleview.R;
 
 /**
  *创建者：林党宏
@@ -30,9 +28,7 @@ import com.core.recycleview.sectionview.SectionAdapterHelper;
  */
 
 public class AddressRecycleView extends LinearLayout implements SectionAdapterHelper.IAddItemView {
-    @Bind(R.id.emptyView)
     View mEmptyView;
-    @Bind(R.id.refreshRecycleView)
     RecyclerView mRefreshRecyclerView;
 
     /** 分组工具类*/
@@ -50,8 +46,10 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     }
 
     private void initUI(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
-        ButterKnife.bind(this);
+        View  rootView= LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
+        mEmptyView=rootView.findViewById(R.id.emptyView);
+        mRefreshRecyclerView=(RecyclerView)rootView.findViewById(R.id.refreshRecycleView);
+
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
         mSectionAdapterHelper.setEmptyView(mEmptyView);
@@ -64,9 +62,9 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     }
     public List<AddressItemBean> getSelectList(String sectionId){
         List<AddressItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
-       if (selectList==null){
-           selectList=new ArrayList<AddressItemBean>();
-       }
+        if (selectList==null){
+            selectList=new ArrayList<AddressItemBean>();
+        }
         return selectList;
     }
 
