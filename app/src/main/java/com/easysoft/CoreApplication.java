@@ -2,7 +2,7 @@ package com.easysoft;
 
 import android.app.Application;
 
-import com.core.recycleview.RecycleViewManage;
+import com.easy.recycleview.recycleview.RecycleViewManage;
 import com.easysoft.dyview.ImageUtils;
 
 /**

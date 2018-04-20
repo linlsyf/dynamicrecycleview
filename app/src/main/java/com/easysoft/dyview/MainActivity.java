@@ -2,14 +2,12 @@ package com.easysoft.dyview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import com.core.recycleview.AddressRecycleView;
+import com.easy.recycleview.recycleview.AddressRecycleView;
 
-import com.core.recycleview.RecycleViewManage;
-import com.core.recycleview.item.AddressItemBean;
-import com.core.recycleview.item.IItemView;
-import com.core.recycleview.item.bean.AddressHeadImgeSettings;
-import com.core.recycleview.sectionview.Section;
-import com.easysoft.dyview.R;
+import com.easy.recycleview.recycleview.item.AddressItemBean;
+import com.easy.recycleview.recycleview.item.IItemView;
+import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.recycleview.sectionview.Section;
 
 import java.util.ArrayList;
 import java.util.List;
