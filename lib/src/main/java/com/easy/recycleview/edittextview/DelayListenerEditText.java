@@ -1,4 +1,4 @@
-package com.view.edittextview;
+package com.easy.recycleview.edittextview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
