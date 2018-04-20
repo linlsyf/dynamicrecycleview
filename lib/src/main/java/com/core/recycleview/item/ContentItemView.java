@@ -13,8 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 
 //import com.core.imge.ImageUtils;
 import com.core.recycleview.EdittextLayoutView;
@@ -34,50 +33,32 @@ import com.easysoft.dynamicrecycleview.R;
  */
 
 public class ContentItemView extends LinearLayout implements IItemView {
-    @Bind(R.id.rootlayout)
     LinearLayout mRootlayout;
     /** 右侧chcekbox */
-    @Bind(R.id.switchButton)
     IOSSwitchButton mSwitchButton;
     /** 左侧选中图标 */
-    @Bind(R.id.chkItem)
     CheckBox mLeftCheckBox;
     Context mContext;
-    @Bind(R.id.titleTextView)
     TextView mTitleTextView;
-    @Bind(R.id.hintTextView)
     TextView mHintTextView;
-    @Bind(R.id.noticeTextView)
     TextView mNoticeTextView;
-    @Bind(R.id.noticeImgView)
     ImageView mNoticeImageView;
-    @Bind(R.id.rightFirstTextView)
     TextView mRightFirstTextView;
-    @Bind(R.id.headImgeView)
     ImageView mImageView;
-    @Bind(R.id.rightSecondImgeView)
     ImageView mRightSecondImgeView;
-    @Bind(R.id.rightFirstImgeView)
     ImageView mRightFirstImageView;
     /** 右侧按钮 */
-    @Bind(R.id.rightFirstButton)
     Button mRightFirstButton;
     /** 右侧布局 */
-    @Bind(R.id.rightLayout)
     LinearLayout mRightLayout;
     /** 右侧点击图片 */
-    @Bind(R.id.rightCenterScaleImgeView)
     ImageView mRightCenterScaleImgeView;
-    @Bind(R.id.rightCenterScaleImgeLayout)
     LinearLayout mRightCenterScaleImgeLayout;
     /** 输入框 */
-    @Bind(R.id.edtLayout)
     EdittextLayoutView mContentEditLayout;
     /** 内容布局可设置magin布局 */
-    @Bind(R.id.rootContentLayout)
     LinearLayout mContenLayout;
     /** 内容布局可设置magin布局 */
-    @Bind(R.id.messageCountView)
     MessageCountView mMessageCountView;
     /** 绑定数据 */
     AddressItemBean mBindItemBean = new AddressItemBean();
@@ -101,7 +82,34 @@ public class ContentItemView extends LinearLayout implements IItemView {
     private void initUI(Context context) {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_item, this, true);
-        ButterKnife.bind(this);
+
+         mRootlayout=rootView.findViewById(R.id.rootlayout);
+
+         mSwitchButton=rootView.findViewById(R.id.switchButton);
+        /** 左侧选中图标 */
+         mLeftCheckBox=rootView.findViewById(R.id.chkItem);
+         mTitleTextView=rootView.findViewById(R.id.titleTextView);
+         mHintTextView=rootView.findViewById(R.id.hintTextView);
+         mNoticeTextView=rootView.findViewById(R.id.noticeTextView);
+         mNoticeImageView=rootView.findViewById(R.id.noticeImgView);
+         mRightFirstTextView=rootView.findViewById(R.id.rightFirstTextView);
+         mImageView=rootView.findViewById(R.id.headImgeView);
+         mRightSecondImgeView=rootView.findViewById(R.id.rightSecondImgeView);
+         mRightFirstImageView=rootView.findViewById(R.id.rightFirstImgeView);
+        /** 右侧按钮 */
+         mRightFirstButton=rootView.findViewById(R.id.rightFirstButton);
+        /** 右侧布局 */
+         mRightLayout=rootView.findViewById(R.id.rightLayout);
+        /** 右侧点击图片 */
+         mRightCenterScaleImgeView=rootView.findViewById(R.id.rightCenterScaleImgeView);
+         mRightCenterScaleImgeLayout=rootView.findViewById(R.id.rightCenterScaleImgeLayout);
+        /** 输入框 */
+         mContentEditLayout=rootView.findViewById(R.id.edtLayout);
+        /** 内容布局可设置magin布局 */
+         mContenLayout=rootView.findViewById(R.id.rootContentLayout);
+        /** 内容布局可设置magin布局 */
+         mMessageCountView=rootView.findViewById(R.id.messageCountView);
+
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
