@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "dynamicrecycleview.easysoft.com.dynamicrecycleview"
+        applicationId "com.easysoft.dyview"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

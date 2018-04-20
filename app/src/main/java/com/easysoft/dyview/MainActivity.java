@@ -1,4 +1,4 @@
-package com.easysoft.dynamicrecycleview;
+package com.easysoft.dyview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import com.core.recycleview.AddressRecycleView;
 import com.core.recycleview.item.AddressItemBean;
 import com.core.recycleview.item.IItemView;
 import com.core.recycleview.sectionview.Section;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 import java.util.ArrayList;
 import java.util.List;
