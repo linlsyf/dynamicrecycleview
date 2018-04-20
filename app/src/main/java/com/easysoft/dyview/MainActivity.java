@@ -7,6 +7,7 @@ import com.easy.recycleview.recycleview.AddressRecycleView;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 
 import java.util.ArrayList;
@@ -37,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         headImgeSettings.setHeadImgRadius(100);
         headImgeSettings.setHeadImgUrl(url);
         newItemBean.setHeadImgeSettings(headImgeSettings);
+
+
+        RightSecondImgSettings addressRightSecondImgSettings =new RightSecondImgSettings();
+        addressRightSecondImgSettings.setRightSecondImgRadius(50);
+        addressRightSecondImgSettings.setRightSecondImgURL(url);
+        newItemBean.setRightSecondImgSettings(addressRightSecondImgSettings);
         newSectionList.add(newItemBean);
         Section  newSection=new Section(SECTION_NEW);
         newSection.setPosition(0);

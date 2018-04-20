@@ -10,7 +10,7 @@ import com.easy.recycleview.recycleview.item.AddressItemImgEnum;
  *注释：右侧第二个图片的数据封装对象
  */
 
-public class AddressRightSecondImgSettings implements Serializable {
+public class RightSecondImgSettings implements Serializable {
     /**用于区分不同业务如群还是人 实现不同头像加载*/
     private  String headLoadType = AddressItemImgEnum.USER.toString();
     /**右侧第二个图片*/

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.easy.recycleview.recycleview.EdittextLayoutView;
 import com.easy.recycleview.recycleview.MessageCountView;
 import com.easy.recycleview.recycleview.button.IOSSwitchButton;
-import com.easy.recycleview.recycleview.item.bean.AddressRightSecondImgSettings;
+import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 import com.easy.recycleview.utils.DensityUtil;
 import com.easy.recycleview.utils.StringUtils;
@@ -240,13 +240,13 @@ public class ContentItemView extends LinearLayout implements IItemView {
             mContentEditLayout.setVisibility(View.GONE);
         }
 //        //添加右侧图片显示如头像
-        AddressRightSecondImgSettings secondImgSetting=dataItemBean.getAddressRightSecondImgSettings();
+        RightSecondImgSettings secondImgSetting=dataItemBean.getRightSecondImgSettings();
         if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())||StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgStorePath()) ||secondImgSetting.getRightSecondImgResId() != 0) {
             LayoutParams mHeadParams = (LayoutParams) mRightSecondImgeView.getLayoutParams();
             mHeadParams.gravity = Gravity.CENTER_VERTICAL;
-            if (dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgRadius() != 0) {
-                mHeadParams.width = dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgRadius();
-                mHeadParams.height = dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgRadius();
+            if (dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius() != 0) {
+                mHeadParams.width = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
+                mHeadParams.height = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
             }
             int contentMargin = DensityUtil.dip2px(mContext,5);
             mHeadParams.rightMargin = contentMargin;
@@ -257,21 +257,21 @@ public class ContentItemView extends LinearLayout implements IItemView {
                     dataItemBean.getIloadImage().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
                 }
             }
-            else if (StringUtils.isNotEmpty(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath())) {
+            else if (StringUtils.isNotEmpty(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath())) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
                 if (dataItemBean.getIloadImage()!=null){
-                    dataItemBean.getIloadImage().loadPath(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
+                    dataItemBean.getIloadImage().loadPath(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
                 }
             }
-            else if (dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId() != 0) {
+            else if (dataItemBean.getRightSecondImgSettings().getRightSecondImgResId() != 0) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
                 if (dataItemBean.getIloadImage() != null) {
-                    dataItemBean.getIloadImage().loadResourceId(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
+                    dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
                 }
             }
           
         } else {
-            boolean isShowEmptyImge = dataItemBean.getAddressRightSecondImgSettings().isShowEmptyImg();
+            boolean isShowEmptyImge = dataItemBean.getRightSecondImgSettings().isShowEmptyImg();
             if (isShowEmptyImge) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
                 if (dataItemBean.getIloadImage()!=null){

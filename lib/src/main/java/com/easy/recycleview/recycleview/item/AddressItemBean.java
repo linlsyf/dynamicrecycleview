@@ -6,7 +6,7 @@ import com.easy.recycleview.recycleview.button.IOSSwitchButton;
 import com.easy.recycleview.recycleview.item.bean.AddressEditSettings;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.item.bean.AddressRightFistImgeSettings;
-import com.easy.recycleview.recycleview.item.bean.AddressRightSecondImgSettings;
+import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easysoft.dynamicrecycleview.R;
 
 /**
@@ -87,7 +87,7 @@ public class AddressItemBean implements Serializable,Cloneable{
      /**右侧切换按钮监听 */
     IOSSwitchButton.OnStateChangeListener  onRightCheckBoxListener;
     /**右侧第二个图片设置 */
-    AddressRightSecondImgSettings addressRightSecondImgSettings =new AddressRightSecondImgSettings();
+    RightSecondImgSettings rightSecondImgSettings =new RightSecondImgSettings();
     /**输入框内容配置*/
     AddressEditSettings eidtSettings =new AddressEditSettings();
     /**右侧头部图片设置 */
@@ -372,12 +372,12 @@ public class AddressItemBean implements Serializable,Cloneable{
         this.itemCanEdit = itemCanEdit;
     }
 
-    public AddressRightSecondImgSettings getAddressRightSecondImgSettings() {
-        return addressRightSecondImgSettings;
+    public RightSecondImgSettings getRightSecondImgSettings() {
+        return rightSecondImgSettings;
     }
 
-    public void setAddressRightSecondImgSettings(AddressRightSecondImgSettings addressRightSecondImgSettings) {
-        this.addressRightSecondImgSettings = addressRightSecondImgSettings;
+    public void setRightSecondImgSettings(RightSecondImgSettings rightSecondImgSettings) {
+        this.rightSecondImgSettings = rightSecondImgSettings;
     }
 
     public AddressEditSettings getEidtSettings() {
