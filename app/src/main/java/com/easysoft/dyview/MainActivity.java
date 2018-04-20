@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         recycleView=(AddressRecycleView)  findViewById(R.id.recycleView);
 
-//        recycleView.setIloadImage(ImageUtils.getInStance());
-
         List<AddressItemBean> newSectionList=new ArrayList<AddressItemBean>();
 
         AddressItemBean newItemBean=new AddressItemBean();

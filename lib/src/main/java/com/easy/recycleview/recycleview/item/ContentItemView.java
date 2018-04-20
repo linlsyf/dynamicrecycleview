@@ -162,26 +162,16 @@ public class ContentItemView extends LinearLayout implements IItemView {
             mImageView.setVisibility(View.GONE);
         }
         if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
-//            ImageManager.get().loadDefaultHeadImg(mImageView, dataItemBean.getHeadImgeSettings().getHeadImgDrawableId());
-
+            if (dataItemBean.getIloadImage()!=null){
+                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
+            }
         } 
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
-//            ImageManager.get().loadDefaultHeadImg(mImageView, dataItemBean.getHeadImgeSettings().getHeadImgDrawableId());
             if (dataItemBean.getIloadImage()!=null) {
                 dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
             }
         } 
-        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUserId())) {
-//            String name = dataItemBean.getHeadImgeSettings().getHeadImgUserName();
-//            String enumType = dataItemBean.getHeadImgeSettings().getHeadImgType();
-//            String headLoadType = ChatType.USER.getCode();
-//            if (enumType.equals(AddressItemImgEnum.GROUP.toString())) {
-//                headLoadType = ChatType.GROUP.getCode();
-//            }
-//            ImageManager.get().loadHeadImg(mImageView,
-//                    dataItemBean.getHeadImgeSettings().getHeadImgUserId(),
-//                    name, headLoadType);
-        }
+
         mTitleTextView.setText(dataItemBean.getTitle());
         if (dataItemBean.isHintShow()) {
             mHintTextView.setVisibility(View.VISIBLE);
@@ -284,7 +274,9 @@ public class ContentItemView extends LinearLayout implements IItemView {
             boolean isShowEmptyImge = dataItemBean.getAddressRightSecondImgSettings().isShowEmptyImg();
             if (isShowEmptyImge) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
-//                ImageManager.get().loadDefaultHeadImg(mRightSecondImgeView, R.drawable.common_empty_photo);
+                if (dataItemBean.getIloadImage()!=null){
+                    dataItemBean.getIloadImage().loadResourceId(R.drawable.empty_photo,mRightSecondImgeView);
+                }
             } else {
                 mRightSecondImgeView.setVisibility(View.GONE);
             }
@@ -308,7 +300,9 @@ public class ContentItemView extends LinearLayout implements IItemView {
         }
         if (dataItemBean.getRightCenterScaleImgResId() != 0) {
             mRightCenterScaleImgeLayout.setVisibility(View.VISIBLE);
-//            ImageManager.get().loadDefaultHeadImg(mRightCenterScaleImgeView, dataItemBean.getRightCenterScaleImgResId());
+            if (dataItemBean.getIloadImage()!=null){
+                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightCenterScaleImgResId(),mRightCenterScaleImgeView);
+            }
         } else {
             mRightCenterScaleImgeLayout.setVisibility(View.GONE);
         }
@@ -335,7 +329,9 @@ public class ContentItemView extends LinearLayout implements IItemView {
                 mRightFirstImageView.setVisibility(View.VISIBLE);
             }
             mRightFirstImageView.setLayoutParams(mRightFirstParams);
-//            ImageManager.get().loadDefaultHeadImg(mRightFirstImageView, dataItemBean.getRightFistImgeSettings().getRightFirstImgResId());
+            if (dataItemBean.getIloadImage()!=null){
+                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),mRightFirstImageView);
+            }
         } else {
             mRightFirstImageView.setVisibility(View.GONE);
         }
