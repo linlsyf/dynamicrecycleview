@@ -167,8 +167,9 @@ public class ContentItemView extends LinearLayout implements IItemView {
         } 
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
 //            ImageManager.get().loadDefaultHeadImg(mImageView, dataItemBean.getHeadImgeSettings().getHeadImgDrawableId());
-//   		 ImageUtils.getInStance().load( dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
-
+            if (dataItemBean.getIloadImage()!=null) {
+                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
+            }
         } 
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUserId())) {
 //            String name = dataItemBean.getHeadImgeSettings().getHeadImgUserName();
@@ -261,16 +262,22 @@ public class ContentItemView extends LinearLayout implements IItemView {
             mHeadParams.rightMargin = contentMargin;
             mRightSecondImgeView.setLayoutParams(mHeadParams);
             if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())) {
-            	mRightSecondImgeView.setVisibility(View.VISIBLE);
-//            	ImageUtils.getInStance().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
+                mRightSecondImgeView.setVisibility(View.VISIBLE);
+                if (dataItemBean.getIloadImage() != null) {
+                    dataItemBean.getIloadImage().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
+                }
             }
             else if (StringUtils.isNotEmpty(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath())) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
-//                ImageUtils.getInStance().loadPath(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
+                if (dataItemBean.getIloadImage()!=null){
+                    dataItemBean.getIloadImage().loadPath(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
+                }
             }
             else if (dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId() != 0) {
                 mRightSecondImgeView.setVisibility(View.VISIBLE);
-//                ImageUtils.getInStance().loadResourceId( dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
+                if (dataItemBean.getIloadImage() != null) {
+                    dataItemBean.getIloadImage().loadResourceId(dataItemBean.getAddressRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
+                }
             }
           
         } else {

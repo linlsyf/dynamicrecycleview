@@ -8,6 +8,7 @@ import com.core.recycleview.item.bean.AddressHeadImgeSettings;
 import com.core.recycleview.item.bean.AddressRightFistImgeSettings;
 import com.core.recycleview.item.bean.AddressRightSecondImgSettings;
 import com.easysoft.dynamicrecycleview.R;
+import com.core.recycleview.item.IloadImage;
 
 /**
  *创建者：林党宏
@@ -15,6 +16,9 @@ import com.easysoft.dynamicrecycleview.R;
  *注释：通用通讯录界面item数据源
  */
 public class AddressItemBean implements Serializable,Cloneable{
+    /** 图片加载接口*/
+    IloadImage iloadImage;
+
     /**id*/
     private  String id="";
     private  String parentId="";
@@ -399,6 +403,14 @@ public class AddressItemBean implements Serializable,Cloneable{
 
     public void setRightSecondText(String rightSecondText) {
         this.rightSecondText = rightSecondText;
+    }
+
+    public IloadImage getIloadImage() {
+        return iloadImage;
+    }
+
+    public void setIloadImage(IloadImage iloadImage) {
+        this.iloadImage = iloadImage;
     }
 
     @Override

@@ -26,6 +26,7 @@ import com.core.recycleview.ResourcesUtil;
 import com.core.recycleview.item.AddressItemBean;
 import com.core.recycleview.item.ContentItemView;
 import com.core.recycleview.item.IItemView;
+import com.core.recycleview.item.IloadImage;
 import com.core.recycleview.item.SectionView;
 import com.core.recycleview.item.SpliteView;
 import com.core.recycleview.item.bean.SelectBean;
@@ -59,6 +60,9 @@ public class SectionAdapterHelper {
      Context mContext;
     /** 控件可实现 从写item*/
     private IAddItemView mIAddItemView;
+    /** 图片加载接口*/
+    IloadImage iloadImage;
+
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
@@ -572,6 +576,10 @@ public class SectionAdapterHelper {
         mRecyclerView.addItemDecoration(decoration);
     }
 
+    public void setIloadImage(IloadImage iloadImage) {
+        this.iloadImage = iloadImage;
+    }
+
     private static class SectinComparator implements Comparator<Section> {
         @SuppressLint("DefaultLocale")
         @Override
@@ -655,6 +663,7 @@ public class SectionAdapterHelper {
         public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
             final AddressItemBean map=mDataArrayList.get(position);
             map.setPosition(position);
+            map.setIloadImage(iloadImage);
             IItemView itemView=(IItemView) holder.getItemView();
             itemView.initSelectUtils(mSelectUtils);
             itemView.initData(map);

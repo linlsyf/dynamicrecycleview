@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.core.recycleview.item.AddressItemBean;
 import com.core.recycleview.item.ContentItemView;
 import com.core.recycleview.item.IItemView;
+import com.core.recycleview.item.IloadImage;
 import com.core.recycleview.item.SectionView;
 import com.core.recycleview.item.SpliteView;
 import com.core.recycleview.sectionview.Section;
@@ -30,7 +31,6 @@ import com.easysoft.dynamicrecycleview.R;
 public class AddressRecycleView extends LinearLayout implements SectionAdapterHelper.IAddItemView {
     View mEmptyView;
     RecyclerView mRefreshRecyclerView;
-
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
     public AddressRecycleView(Context context) {
@@ -49,12 +49,12 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
        View  rootView= LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
          mEmptyView=rootView.findViewById(R.id.emptyView);
          mRefreshRecyclerView=(RecyclerView)rootView.findViewById(R.id.refreshRecycleView);
-
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
         mSectionAdapterHelper.setEmptyView(mEmptyView);
 //        mRefreshRecyclerView.setMode(RecyclerMode.NONE);
         mSectionAdapterHelper.setIAddItemView(this);
+        setIloadImage(RecycleViewManage.getInStance().getIloadImage());
     }
 
     public RecyclerView getRefreshRecyclerView() {
@@ -117,4 +117,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
         mRefreshRecyclerView.scrollToPosition(mSectionAdapterHelper.getCount());
     }
 
+    public void setIloadImage(IloadImage iloadImage) {
+        mSectionAdapterHelper.setIloadImage( iloadImage);
+    }
 }
