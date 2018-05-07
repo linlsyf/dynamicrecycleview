@@ -121,7 +121,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
         if (dataItemBean.getContentLayoutMagin() != 0) {
             mContentMagin = dataItemBean.getContentLayoutMagin();
         } else {
-            mContentMagin = DensityUtil.dip2px(mContext,2);
+            mContentMagin = DensityUtil.dip2px(mContext,10);
         }
         LayoutParams rootParams = (LayoutParams) mRootlayout.getLayoutParams();
         if (mBindItemBean.getItemHight() != 0) {
@@ -212,9 +212,20 @@ public class ContentItemView extends LinearLayout implements IItemView {
             mRightFirstTextView.setTextColor(getResources().getColor(dataItemBean.getRightFirstTvColor()));
         }
         if (StringUtils.isNotEmpty(dataItemBean.getRightFirstText())) {
-            mRightFirstTextView.setText(dataItemBean.getRightFirstText());
-            mRightFirstTextView.setVisibility(View.VISIBLE);
-        } else {
+               if (dataItemBean.getRightFirstText().contains("广")){
+                   mRightFirstTextView.setGravity(Gravity.RIGHT);
+                mRightFirstTextView.setSingleLine(false);
+                mRightFirstTextView.setText(dataItemBean.getRightFirstText());
+                mRightFirstTextView.setVisibility(View.VISIBLE);
+
+            }else{
+                   mRightFirstTextView.setText(dataItemBean.getRightFirstText());
+                   mRightFirstTextView.setVisibility(View.VISIBLE);
+               }
+
+        }
+
+        else {
             mRightFirstTextView.setVisibility(View.GONE);
         }
         if (dataItemBean.getEidtSettings().isShowEdittext()) {//输入框

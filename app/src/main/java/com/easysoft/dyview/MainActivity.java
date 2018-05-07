@@ -40,11 +40,17 @@ public class MainActivity extends AppCompatActivity {
         newItemBean.setHeadImgeSettings(headImgeSettings);
 
 
-        RightSecondImgSettings addressRightSecondImgSettings =new RightSecondImgSettings();
-        addressRightSecondImgSettings.setRightSecondImgRadius(50);
-        addressRightSecondImgSettings.setRightSecondImgURL(url);
-        newItemBean.setRightSecondImgSettings(addressRightSecondImgSettings);
+//        RightSecondImgSettings addressRightSecondImgSettings =new RightSecondImgSettings();
+//        addressRightSecondImgSettings.setRightSecondImgRadius(50);
+//        addressRightSecondImgSettings.setRightSecondImgURL(url);
+//        newItemBean.setRightSecondImgSettings(addressRightSecondImgSettings);
+        String msg="广州，简称穗，别称羊城、花城，是广东省省会、副省级市、国家中心城市、超大城市、国际大都市、国际商贸中心、国际综合交通枢纽、国家综合性门户城市，首批沿海开放城市，也是南部战区司令部驻地。广州地处广东省中南部，珠江三角洲北缘，濒临南海，邻近香港、澳门，是中国通往世界的南大门，是粤港澳";
+        newItemBean.setRightFirstText(msg);
         newSectionList.add(newItemBean);
+
+
+
+
         Section  newSection=new Section(SECTION_NEW);
         newSection.setPosition(0);
 
