@@ -68,18 +68,10 @@ public class SectionAdapterHelper {
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
-//        mRecycleViewManger =  new LinearLayoutManager();
-//        mRecycleViewManger.setOrientation(VERTICAL);
-//        mRecyclerView.setLayoutManager(mRecycleViewManger);
+
         mRecycleViewManger = new VirtualLayoutManager(context);
 
         recyclerView.setLayoutManager(mRecycleViewManger);
-//        final List<LayoutHelper> helpers = new LinkedList<>();
-//        helpers.add(DefaultLayoutHelper.newHelper(2));
-//        layoutManager.setLayoutHelpers(helpers);
-
-
-
         mSectionedExpandableGridAdapter = new SectionedListViewAdapter(mRecycleViewManger,context, mDataArrayList);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
         mSelectUtils=new MutiTypeSelectUtils(context);
@@ -87,17 +79,17 @@ public class SectionAdapterHelper {
     }
 
 
-    public void initManger( VirtualLayoutManager recycleViewManger){
-        this.mRecycleViewManger=recycleViewManger;
-
-    }
+//    public void initManger( VirtualLayoutManager recycleViewManger){
+//        this.mRecycleViewManger=recycleViewManger;
+//
+//    }
 
     public void setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
     }
-    public LinearLayoutManager getRecycleViewManger() {
-        return mRecycleViewManger;
-    }
+//    public LinearLayoutManager getRecycleViewManger() {
+//        return mRecycleViewManger;
+//    }
 
     public SectionedListViewAdapter getAdapter() {
         return mSectionedExpandableGridAdapter;
@@ -366,12 +358,16 @@ public class SectionAdapterHelper {
         mSectionList=new ArrayList<Section>();
         notifyDataSetChanged();
     }
-    /**
-     *创建者：林党宏
-     *时间：2017/1/20
-     *注释：更新或者添加
-     */
     public void updateSection(Section section){
+        updateSection(section,false);
+    }
+
+        /**
+         *创建者：林党宏
+         *时间：2017/1/20
+         *注释：更新或者添加
+         */
+    public void updateSection(Section section,boolean isRefresh){
         List<Section> mNewSectionList=new ArrayList<Section>();
         int index=-1;
         for (int i=0;i<mSectionList.size();i++){
@@ -389,8 +385,9 @@ public class SectionAdapterHelper {
         if (index==-1){
             addSection(section);
         }
-        notifyDataSetChanged();
-
+        if (isRefresh){
+            notifyDataSetChanged();
+        }
     }
     /**
      *创建者：林党宏
@@ -652,11 +649,8 @@ public class SectionAdapterHelper {
     }
 
     class SectionedListViewAdapter extends VirtualLayoutAdapter<BaseRecyclerViewHolder>  {
-//    class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
         private ArrayList<AddressItemBean> mDataArrayList;
-        /**context */
-//        private final Context mContext;
         IItemView.onItemClick mOnItemListener;
         MutiTypeSelectUtils mSelectUtils;
 
@@ -664,9 +658,7 @@ public class SectionAdapterHelper {
             super(layoutManager);
         }
 
-        //        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
-//            this.mLayoutManager = layoutManager;
-//        }
+
         public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager,Context context, ArrayList<AddressItemBean> dataArrayList) {
             super(layoutManager);
 
@@ -682,7 +674,6 @@ public class SectionAdapterHelper {
             BaseRecyclerViewHolder itemHolder=null;
             itemView=addItemView(viewType);
             itemHolder=new BaseRecyclerViewHolder(itemView);
-//            parent.addView(itemView);
             return itemHolder;
         }
         @Override

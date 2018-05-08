@@ -78,22 +78,23 @@ public class MainActivity extends AppCompatActivity {
 
         List<AddressItemBean> gridectionList=new ArrayList<AddressItemBean>();
 
-        for (int i=0;i<3;i++){
+        for (int i=0;i<2;i++){
             AddressItemBean gridItemBean=new AddressItemBean();
             gridItemBean.setViewType(IItemView.ViewTypeEnum.INFO_CARD_VIEW.value());
+            gridItemBean.setTitle("name"+i);
             gridectionList.add(gridItemBean);
         }
 
         gridViewSection.setDataMaps(gridectionList);
+        recycleView.updateSection(gridViewSection,true);
 
         final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-        gridLayoutHelper.setItemCount(3);
+        gridLayoutHelper.setItemCount(gridectionList.size()-1);
         final List<LayoutHelper> helpers = new LinkedList<>();
-        helpers.add(DefaultLayoutHelper.newHelper(3));
+        helpers.add(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
         helpers.add(gridLayoutHelper);
         recycleView.setLayoutHelpers(helpers);
 
-        recycleView.updateSection(gridViewSection);
 
 
 
