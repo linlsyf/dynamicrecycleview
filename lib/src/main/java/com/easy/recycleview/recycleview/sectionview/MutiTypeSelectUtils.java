@@ -149,10 +149,7 @@ public void setHasSelectNoticeText(String text){
         this.intentSelectedCanEdit = intentSelectedCanEdit;
     }
     public boolean getItemCanSelectEdit(String id){
-        if (!intentSelectedCanEdit&intentSelectedMap.containsKey(id)){
-            return false;
-        }
-        return true;
+        return !(!intentSelectedCanEdit & intentSelectedMap.containsKey(id));
     }
 
      public boolean  isCheckSelectedById(String sectionId,String id){

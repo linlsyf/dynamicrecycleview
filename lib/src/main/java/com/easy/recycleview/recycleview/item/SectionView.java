@@ -38,8 +38,8 @@ public class SectionView extends LinearLayout implements IItemView{
     private void initUI(Context context) {
         mContext=context;
      View rootView=   LayoutInflater.from(mContext).inflate( R.layout.view_section, this, true);
-        mTitleView=(TextView)rootView.findViewById(R.id.tvSection);
-        mRightDeletLayout=(RelativeLayout) rootView.findViewById(R.id.rightDeletLayout);
+        mTitleView= rootView.findViewById(R.id.tvSection);
+        mRightDeletLayout= rootView.findViewById(R.id.rightDeletLayout);
 
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }

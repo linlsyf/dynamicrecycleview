@@ -128,10 +128,7 @@ public class DensityUtil {
         // 屏幕尺寸  
         double screenInches = Math.sqrt(x + y);  
         // 大于6尺寸则为Pad  
-        if (screenInches >= 6.0) {  
-            return true;  
-        }  
-        return false;  
+        return screenInches >= 6.0;
     }
 
     

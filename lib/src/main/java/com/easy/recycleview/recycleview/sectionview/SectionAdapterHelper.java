@@ -524,16 +524,16 @@ public class SectionAdapterHelper {
 
     public void showEmpty() {
         setEmptyViewVisibility(true, true);
-        ImageView ivEmpty = (ImageView) mEmptyView.findViewById(R.id.iv_empty);
-        TextView tvEmpty = (TextView) mEmptyView.findViewById(R.id.tv_empty);
+        ImageView ivEmpty = mEmptyView.findViewById(R.id.iv_empty);
+        TextView tvEmpty = mEmptyView.findViewById(R.id.tv_empty);
         ivEmpty.setImageResource(R.drawable.address_book_list_empty);
         tvEmpty.setText(R.string.no_data_show);
     }
 
     public void showError(String error) {
         setEmptyViewVisibility(true, true);
-        ImageView ivEmpty = (ImageView) mEmptyView.findViewById(R.id.iv_empty);
-        TextView tvEmpty = (TextView) mEmptyView.findViewById(R.id.tv_empty);
+        ImageView ivEmpty = mEmptyView.findViewById(R.id.iv_empty);
+        TextView tvEmpty = mEmptyView.findViewById(R.id.tv_empty);
         ivEmpty.setImageDrawable(null);
         String errorTips = ResourcesUtil.getResourcesString(mContext, R.string.data_loading_error);
         if (error != null) {
@@ -562,7 +562,7 @@ public class SectionAdapterHelper {
     }
 
     private void cancelEmptyViewAnimation() {
-        ImageView ivEmpty = (ImageView) mEmptyView.findViewById(R.id.iv_empty);
+        ImageView ivEmpty = mEmptyView.findViewById(R.id.iv_empty);
         ivEmpty.clearAnimation();
     }
 
@@ -662,7 +662,7 @@ public class SectionAdapterHelper {
             final AddressItemBean map=mDataArrayList.get(position);
             map.setPosition(position);
             map.setIloadImage(iloadImage);
-            IItemView itemView=(IItemView) holder.getItemView();
+            IItemView itemView= holder.getItemView();
             itemView.initSelectUtils(mSelectUtils);
             itemView.initData(map);
         }

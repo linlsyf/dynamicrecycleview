@@ -64,8 +64,6 @@ public class AppInfo {
         return applicationName;
     }
 
-    ;
-
     /**
      * 获取APP唯一标识码
      *

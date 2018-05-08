@@ -9,9 +9,9 @@ import android.widget.ImageView;
 public interface IloadImage {
 
 
-    public void load(final String url, final ImageView myImageView);
+    void load(final String url, final ImageView myImageView);
 
-    public void loadPath(final String path, final ImageView myImageView);
+    void loadPath(final String path, final ImageView myImageView);
 
-    public void loadResourceId(int id, ImageView myImageView);
+    void loadResourceId(int id, ImageView myImageView);
 }

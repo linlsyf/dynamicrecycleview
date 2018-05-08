@@ -1,5 +1,6 @@
 package com.easysoft.dyview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.easy.recycleview.recycleview.AddressRecycleView;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recycleView=(AddressRecycleView)  findViewById(R.id.recycleView);
+        recycleView= findViewById(R.id.recycleView);
 
         List<AddressItemBean> newSectionList=new ArrayList<AddressItemBean>();
 
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         newSection.setName("其他");
         newSection.setDataMaps(newSectionList);
         recycleView.updateSection(newSection);
+
+        Intent  testIntent=new Intent(MainActivity.this,VlayoutActivity.class);
+        startActivity(testIntent);
 
     }
 }

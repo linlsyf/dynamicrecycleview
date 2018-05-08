@@ -23,7 +23,7 @@ public interface IItemView {
         INFO_CARD_VIEW(8),//中间内容itemview
         TOP_VIEW(9);//头部itemview
         private int value=0;
-        private ViewTypeEnum(int value) {    //    必须是private的，否则编译错误
+        ViewTypeEnum(int value) {    //    必须是private的，否则编译错误
             this.value = value;
         }
         public int value() {
@@ -40,7 +40,7 @@ public interface IItemView {
         SECTION_DELETE(5),
         RIGHT_SECOND_IMG(6);
         private int value=0;
-        private ClickTypeEnum(int value) {    //    必须是private的，否则编译错误
+        ClickTypeEnum(int value) {    //    必须是private的，否则编译错误
             this.value = value;
         }
         public int value() {

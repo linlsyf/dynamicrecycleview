@@ -49,7 +49,7 @@ public class IOSSwitchButton extends RelativeLayout {
 		// 头部控件
 		mRootView = LayoutInflater.from(context).inflate(R.layout.view_iosswitchbutton, this, true);
 
-		imageView = (ImageView) mRootView.findViewById(R.id.iv);
+		imageView = mRootView.findViewById(R.id.iv);
 //		imageView.setImageResource(R.drawable.btn_switch_closed);
 
 	}
@@ -70,12 +70,8 @@ public class IOSSwitchButton extends RelativeLayout {
 			}else if (mDelayChangeImage == true) {
 				delayChange();
 			}else {
-				
-				if (isOn) {
-					isOn = false;
-				}else {
-					isOn = true;
-				}
+
+                isOn = !isOn;
 				switchState(isOn,true);
 			}
 			break;
@@ -93,11 +89,7 @@ public class IOSSwitchButton extends RelativeLayout {
 	 */
 	private void delayChange(){
 		boolean delatyIsSelected=isOn;
-		if (delatyIsSelected) {
-			delatyIsSelected = false;
-		}else {
-			delatyIsSelected = true;
-		}
+        delatyIsSelected = !delatyIsSelected;
 		if (mListener != null)
 			mListener.onStateChanged(delatyIsSelected);
 		
@@ -192,7 +184,7 @@ public class IOSSwitchButton extends RelativeLayout {
 		this.mListener = listener;
 	}
 	public interface OnStateChangeListener {
-		public void onStateChanged(boolean isOn);
+		void onStateChanged(boolean isOn);
 	}
 	
 	/**

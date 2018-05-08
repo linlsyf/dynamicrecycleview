@@ -3,17 +3,11 @@
     <drawable name="transparent">#00000000</drawable>
 
     <!-- 用户头像颜色值 -->
-    <color name="colorTransparent">#00000000</color>
-    <color name="colorLightTranslucentBlack">#30000000</color>
-    <color name="colorLightGray">#cecece</color>
-    <color name="colorNaviSvCurrent">#494949</color>
     <color name="white">#FFF</color>
     <color name="context_bg_grey">#F2F2F2</color>
 
     <!--主色调-->
     <color name="blue_theme">#1cccdd</color>
-    <color name="deep_blue_theme">#1cb3dd</color>
-    <color name="deepest_blue_theme">#ff159cea</color>
 
     <!--TabBar-->
 
@@ -44,11 +38,7 @@
     <!--断网提示背景颜色-->
 
     <!--登录界面-->
-    <color name="login_edittext_txt">#979797</color>
-    <color name="common_bt_unable_text_color">#f3f3f3</color>
     <color name="transparent">#00000000</color>
-    <color name="context_bg_blue">#30d0df</color>
-    <color name="common_bt_enable_press_color">#7ab0b8</color>
 
     <!--应用中心-->
 
@@ -56,7 +46,6 @@
 
     <color name="common_title_color">#4F5158</color>
     <!-- 分割线颜色  灰色-->
-    <color name="spacing_line_color">#cecfda</color>
     <!-- 分割线颜色  灰色-->
     <!-- 搜索基于灰色背景下仍可见的灰色颜色，全局用到的地方也多 -->
 
@@ -66,10 +55,7 @@
     <!--文件管理器-->
 
     <!--我的界面-->
-    <color name="my_info_hint">#979797</color>
- <color name="black">#000</color>
 
-    <color name="gray_color">#fff0f0f0</color>
     <!-- 透明玻璃黑 -->
 
     <!-- 子Fragment内部背景颜色值 -->
@@ -80,8 +66,5 @@
     <!--MessageItemLayout-->
    <color name="common_hint_gray">#ff777777</color>
     <!-- 注册界面颜色 -->
-    <color name="common_text_green_color">#7ab0b8</color>
 
-    <color name="common_bt_enable_normel_color">#10bdcc</color>
-    <color name="common_blue">#288BDD</color>
 </resources>

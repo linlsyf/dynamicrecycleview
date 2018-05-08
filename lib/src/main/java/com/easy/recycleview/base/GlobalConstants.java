@@ -307,10 +307,8 @@ public class GlobalConstants {
 	 */
 	public boolean isDevWithHighResolution() {
 		DisplayMetrics dm = this.AppWindowDisplayMetrics;
-		if ((dm.widthPixels > 1000) || (dm.heightPixels > 1000))
-			return true;
-		return false;
-	}
+        return (dm.widthPixels > 1000) || (dm.heightPixels > 1000);
+    }
 
 	/**
 	 * 

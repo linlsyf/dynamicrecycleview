@@ -42,8 +42,8 @@ public class EdittextLayoutView extends LinearLayout{
     private void initUI(Context context) {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_edittextlayout, this, true);
-         mCleanLayout =(RelativeLayout) rootView.findViewById(R.id.cleanLayout);
-        mContentEditText =(EditText) rootView.findViewById(R.id.edit);
+         mCleanLayout = rootView.findViewById(R.id.cleanLayout);
+        mContentEditText = rootView.findViewById(R.id.edit);
         mContentEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -156,6 +156,6 @@ public class EdittextLayoutView extends LinearLayout{
     }
     public interface CallbackListener {
 
-        public void onCallback(String text);
+        void onCallback(String text);
     }
 }

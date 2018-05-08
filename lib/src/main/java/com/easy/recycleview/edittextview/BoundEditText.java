@@ -178,7 +178,7 @@ public class BoundEditText extends EditText {
 		/**
 		 * 点击了清除按钮
 		 */
-		public void onClickClean();
+        void onClickClean();
 	}
 
 	public void setcleanCallback(cleanCallback callback) {

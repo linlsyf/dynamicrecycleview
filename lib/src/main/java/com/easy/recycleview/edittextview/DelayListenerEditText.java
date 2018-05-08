@@ -38,7 +38,7 @@ public class DelayListenerEditText extends EditText {
     }  
   
     public interface onTextChangerListener {  
-        public void onTextChanger(String text);  
+        void onTextChanger(String text);
     }  
   
     private class mTextWatcher implements TextWatcher {  

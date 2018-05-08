@@ -102,8 +102,7 @@ public class LogUtils {
 					while (((numread = is.read(buf)) != -1)) {
 						fos.write(buf, 0, numread);
 					}
-					;
-					fos.flush();
+                    fos.flush();
 					fos.close();
 					is.close();
 				} catch (FileNotFoundException e) {
