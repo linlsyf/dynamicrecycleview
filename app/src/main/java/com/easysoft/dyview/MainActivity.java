@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<AddressItemBean> gridectionList=new ArrayList<AddressItemBean>();
 
-        for (int i=0;i<1;i++){
+        for (int i=0;i<3;i++){
             AddressItemBean gridItemBean=new AddressItemBean();
             gridItemBean.setViewType(IItemView.ViewTypeEnum.INFO_CARD_VIEW.value());
             gridectionList.add(gridItemBean);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         gridViewSection.setDataMaps(gridectionList);
 
         final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-        gridLayoutHelper.setItemCount(1);
+        gridLayoutHelper.setItemCount(3);
         final List<LayoutHelper> helpers = new LinkedList<>();
         helpers.add(DefaultLayoutHelper.newHelper(3));
         helpers.add(gridLayoutHelper);

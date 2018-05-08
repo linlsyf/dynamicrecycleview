@@ -702,7 +702,7 @@ public class SectionAdapterHelper {
         @Override
         public int getItemCount() {
             List<LayoutHelper> helpers = getLayoutHelpers();
-            if (helpers == null) {
+            if (helpers == null||helpers.size()==0) {
                 return mDataArrayList.size();
             }
             int count = 0;

@@ -16,6 +16,7 @@ import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 
 public class InfoCardView extends  android.support.v7.widget.AppCompatTextView implements IItemView {
 
+    static int index=0;
     public InfoCardView(Context context) {
         super(context);
         initUI(context);
@@ -29,8 +30,19 @@ public class InfoCardView extends  android.support.v7.widget.AppCompatTextView i
     private void initUI(Context context) {
        View textView= new TextView(context);
 
-        setBackgroundColor(0xaa00ff00);
-        setLayoutParams(new ViewGroup.LayoutParams(200, 200));
+
+       if (index==0){
+           setBackgroundColor(0xccff00ff);
+
+       }else if (index==1){
+           setBackgroundColor(0xaa00ff00);
+
+       }else{
+         setBackgroundColor(0x66cc0000 );
+
+       }
+        index=index+1;
+        setLayoutParams(new ViewGroup.LayoutParams(0, 200));
 
     }
 
