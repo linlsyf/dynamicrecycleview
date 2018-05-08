@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.vlayout.LayoutHelper;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.ContentItemView;
 import com.easy.recycleview.recycleview.item.IItemView;
@@ -71,7 +72,10 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     public void updateSection(Section nextSection) {
         mSectionAdapterHelper.updateSection(nextSection);
     }
-
+    public void setLayoutHelpers(List<LayoutHelper> helpers) {
+//        this.mRecycleViewManger.setLayoutHelpers(helpers);
+        mSectionAdapterHelper.setLayoutHelpers(helpers);
+    }
     public void clean() {
         mSectionAdapterHelper.clean();
     }

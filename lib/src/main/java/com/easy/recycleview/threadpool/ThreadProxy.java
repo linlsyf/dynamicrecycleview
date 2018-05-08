@@ -1,7 +1,7 @@
 package com.easy.recycleview.threadpool;
 
 /**
- * Created by lxw
+ * =
  * 需要保证单例，不然多个对象就会产生多个线程池，不是我们想要的结果。
  */
 public abstract class ThreadProxy {

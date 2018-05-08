@@ -1,8 +1,17 @@
 package com.easysoft.dyview;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import com.alibaba.android.vlayout.LayoutHelper;
+import com.alibaba.android.vlayout.layout.DefaultLayoutHelper;
+import com.alibaba.android.vlayout.layout.FixLayoutHelper;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.easy.recycleview.recycleview.AddressRecycleView;
 
 import com.easy.recycleview.recycleview.item.AddressItemBean;
@@ -12,10 +21,12 @@ import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final java.lang.String SECTION_NEW = "new";
+    private static final java.lang.String SECTION_GRID = "grid";
     AddressRecycleView recycleView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +70,40 @@ public class MainActivity extends AppCompatActivity {
         newSection.setDataMaps(newSectionList);
         recycleView.updateSection(newSection);
 
-        Intent  testIntent=new Intent(MainActivity.this,VlayoutActivity.class);
-        startActivity(testIntent);
+        Section  gridViewSection=new Section(SECTION_GRID);
+        gridViewSection.setPosition(1);
+
+        gridViewSection.setName("网格布局");
+
+
+        List<AddressItemBean> gridectionList=new ArrayList<AddressItemBean>();
+
+        for (int i=0;i<1;i++){
+            AddressItemBean gridItemBean=new AddressItemBean();
+            gridItemBean.setViewType(IItemView.ViewTypeEnum.INFO_CARD_VIEW.value());
+            gridectionList.add(gridItemBean);
+        }
+
+        gridViewSection.setDataMaps(gridectionList);
+
+        final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+        gridLayoutHelper.setItemCount(1);
+        final List<LayoutHelper> helpers = new LinkedList<>();
+        helpers.add(DefaultLayoutHelper.newHelper(3));
+        helpers.add(gridLayoutHelper);
+        recycleView.setLayoutHelpers(helpers);
+
+        recycleView.updateSection(gridViewSection);
+
+
+
+//        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+//                outRect.set(1, 1, 1, 1);
+//            }
+//        });
+////        Intent  testIntent=new Intent(MainActivity.this,VlayoutActivity.class);
+//        startActivity(testIntent);
 
     }
 }

@@ -7,11 +7,13 @@ import static android.widget.LinearLayout.VERTICAL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,6 +21,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.vlayout.LayoutHelper;
+import com.alibaba.android.vlayout.VirtualLayoutAdapter;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.DefaultLayoutHelper;
 import com.easy.recycleview.recycleview.BaseRecyclerViewHolder;
 import com.easy.recycleview.recycleview.ResourcesUtil;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
@@ -44,9 +50,7 @@ public class SectionAdapterHelper {
     /**adapter */
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
-    LinearLayoutManager mRecycleViewManger;
-
-
+    VirtualLayoutManager mRecycleViewManger;
     /**多选辅助工具 */
     MutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
@@ -64,17 +68,26 @@ public class SectionAdapterHelper {
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
-        mRecycleViewManger =  new LinearLayoutManager(context);
-        mRecycleViewManger.setOrientation(VERTICAL);
-        mRecyclerView.setLayoutManager(mRecycleViewManger);
-        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context, mDataArrayList);
+//        mRecycleViewManger =  new LinearLayoutManager();
+//        mRecycleViewManger.setOrientation(VERTICAL);
+//        mRecyclerView.setLayoutManager(mRecycleViewManger);
+        mRecycleViewManger = new VirtualLayoutManager(context);
+
+        recyclerView.setLayoutManager(mRecycleViewManger);
+//        final List<LayoutHelper> helpers = new LinkedList<>();
+//        helpers.add(DefaultLayoutHelper.newHelper(2));
+//        layoutManager.setLayoutHelpers(helpers);
+
+
+
+        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(mRecycleViewManger,context, mDataArrayList);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
         mSelectUtils=new MutiTypeSelectUtils(context);
         mSectionedExpandableGridAdapter.initSelectUtils(mSelectUtils);
     }
 
 
-    public void initManger( LinearLayoutManager recycleViewManger){
+    public void initManger( VirtualLayoutManager recycleViewManger){
         this.mRecycleViewManger=recycleViewManger;
 
     }
@@ -603,6 +616,10 @@ public class SectionAdapterHelper {
     public void setUpdateListener(updateListener updateListener){
         this.mUpdateListener=updateListener;
     }
+    public void setLayoutHelpers(List<LayoutHelper> helpers) {
+//        this.mRecycleViewManger.setLayoutHelpers(helpers);
+        mSectionedExpandableGridAdapter.setLayoutHelpers(helpers);
+    }
    /**
     *创建者：林党宏
     *时间：2017/4/6
@@ -634,14 +651,25 @@ public class SectionAdapterHelper {
         this.mIAddItemView=iAddItemView;
     }
 
-    class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
+    class SectionedListViewAdapter extends VirtualLayoutAdapter<BaseRecyclerViewHolder>  {
+//    class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
         private ArrayList<AddressItemBean> mDataArrayList;
         /**context */
-        private final Context mContext;
+//        private final Context mContext;
         IItemView.onItemClick mOnItemListener;
         MutiTypeSelectUtils mSelectUtils;
-        public SectionedListViewAdapter(Context context, ArrayList<AddressItemBean> dataArrayList) {
+
+        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
+            super(layoutManager);
+        }
+
+        //        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
+//            this.mLayoutManager = layoutManager;
+//        }
+        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager,Context context, ArrayList<AddressItemBean> dataArrayList) {
+            super(layoutManager);
+
             mContext = context;
             mDataArrayList = dataArrayList;
         }
@@ -673,7 +701,16 @@ public class SectionAdapterHelper {
         }
         @Override
         public int getItemCount() {
-            return mDataArrayList.size();
+            List<LayoutHelper> helpers = getLayoutHelpers();
+            if (helpers == null) {
+                return mDataArrayList.size();
+            }
+            int count = 0;
+            for (int i = 0, size = helpers.size(); i < size; i++) {
+                count += helpers.get(i).getItemCount();
+            }
+            return count;
+            //            return mDataArrayList.size();
         }
         @Override
         public int getItemViewType(int position) {
