@@ -366,6 +366,7 @@ public class SectionAdapterHelper {
          *创建者：林党宏
          *时间：2017/1/20
          *注释：更新或者添加
+         * @param isRefresh  默认只刷新数据不刷新界面
          */
     public void updateSection(Section section,boolean isRefresh){
         List<Section> mNewSectionList=new ArrayList<Section>();
@@ -387,6 +388,9 @@ public class SectionAdapterHelper {
         }
         if (isRefresh){
             notifyDataSetChanged();
+        }else{
+            notifyData();
+
         }
     }
     /**
@@ -505,18 +509,26 @@ public class SectionAdapterHelper {
      *注释：更新adapter数据源并刷新界面
      */
     public void notifyDataSetChanged() {
+        notifyData();
+        notifyAdapter();
+    }
+
+    private void notifyAdapter() {
+        mSectionedExpandableGridAdapter.notifyDataSetChanged();
+        if (mEmptyView != null && getAdapter() != null) {
+            final boolean emptyViewVisible = mDataArrayList.size() == 0;
+            setEmptyViewVisibility(emptyViewVisible, true);
+            if (emptyViewVisible) { /*列表为空*/
+                showEmpty();
+            }
+         }
+    }
+
+    private void notifyData() {
         mDataArrayList.clear();
         Collections.sort(mSectionList, new SectinComparator());
         for (int i=0;i<mSectionList.size();i++){
             mDataArrayList.addAll(mSectionList.get(i).getDataMaps());
-        }
-        mSectionedExpandableGridAdapter.notifyDataSetChanged();
-       if (mEmptyView != null && getAdapter() != null) {
-           final boolean emptyViewVisible = mDataArrayList.size() == 0;
-           setEmptyViewVisibility(emptyViewVisible, true);
-           if (emptyViewVisible) { /*列表为空*/
-               showEmpty();
-           }
         }
     }
 

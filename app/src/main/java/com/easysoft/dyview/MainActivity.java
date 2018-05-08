@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         gridViewSection.setDataMaps(gridectionList);
-        recycleView.updateSection(gridViewSection,true);
+        recycleView.updateSection(gridViewSection);
 
         final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
         gridLayoutHelper.setItemCount(gridectionList.size()-1);
