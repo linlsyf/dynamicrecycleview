@@ -509,12 +509,11 @@ public class SectionAdapterHelper {
      *注释：更新adapter数据源并刷新界面
      */
     public void notifyDataSetChanged() {
-        notifyData();
-        notifyAdapter();
+        mSectionedExpandableGridAdapter.notifyDataSetChanged();
+        checkIsShowEmpty();
     }
 
-    private void notifyAdapter() {
-        mSectionedExpandableGridAdapter.notifyDataSetChanged();
+    private void checkIsShowEmpty() {
         if (mEmptyView != null && getAdapter() != null) {
             final boolean emptyViewVisible = mDataArrayList.size() == 0;
             setEmptyViewVisibility(emptyViewVisible, true);
@@ -530,6 +529,7 @@ public class SectionAdapterHelper {
         for (int i=0;i<mSectionList.size();i++){
             mDataArrayList.addAll(mSectionList.get(i).getDataMaps());
         }
+        checkIsShowEmpty();
     }
 
     public boolean isSectionEmpty() {
