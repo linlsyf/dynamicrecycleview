@@ -83,32 +83,32 @@ public class ContentItemView extends LinearLayout implements IItemView {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_item, this, true);
 
-         mRootlayout=rootView.findViewById(R.id.rootlayout);
+         mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
 
-         mSwitchButton=rootView.findViewById(R.id.switchButton);
+         mSwitchButton=(IOSSwitchButton) rootView.findViewById(R.id.switchButton);
         /** 左侧选中图标 */
-         mLeftCheckBox=rootView.findViewById(R.id.chkItem);
-         mTitleTextView=rootView.findViewById(R.id.titleTextView);
-         mHintTextView=rootView.findViewById(R.id.hintTextView);
-         mNoticeTextView=rootView.findViewById(R.id.noticeTextView);
-         mNoticeImageView=rootView.findViewById(R.id.noticeImgView);
-         mRightFirstTextView=rootView.findViewById(R.id.rightFirstTextView);
-         mImageView=rootView.findViewById(R.id.headImgeView);
-         mRightSecondImgeView=rootView.findViewById(R.id.rightSecondImgeView);
-         mRightFirstImageView=rootView.findViewById(R.id.rightFirstImgeView);
+         mLeftCheckBox=(CheckBox) rootView.findViewById(R.id.chkItem);
+         mTitleTextView=(TextView)rootView.findViewById(R.id.titleTextView);
+         mHintTextView=(TextView)rootView.findViewById(R.id.hintTextView);
+         mNoticeTextView=(TextView)rootView.findViewById(R.id.noticeTextView);
+         mNoticeImageView=(ImageView) rootView.findViewById(R.id.noticeImgView);
+         mRightFirstTextView=(TextView)rootView.findViewById(R.id.rightFirstTextView);
+         mImageView=(ImageView) rootView.findViewById(R.id.headImgeView);
+         mRightSecondImgeView=(ImageView) rootView.findViewById(R.id.rightSecondImgeView);
+         mRightFirstImageView=(ImageView) rootView.findViewById(R.id.rightFirstImgeView);
         /** 右侧按钮 */
-         mRightFirstButton=rootView.findViewById(R.id.rightFirstButton);
+         mRightFirstButton=(Button) rootView.findViewById(R.id.rightFirstButton);
         /** 右侧布局 */
-         mRightLayout=rootView.findViewById(R.id.rightLayout);
+         mRightLayout=(LinearLayout) rootView.findViewById(R.id.rightLayout);
         /** 右侧点击图片 */
-         mRightCenterScaleImgeView=rootView.findViewById(R.id.rightCenterScaleImgeView);
-         mRightCenterScaleImgeLayout=rootView.findViewById(R.id.rightCenterScaleImgeLayout);
+         mRightCenterScaleImgeView=(ImageView) rootView.findViewById(R.id.rightCenterScaleImgeView);
+         mRightCenterScaleImgeLayout=(LinearLayout) rootView.findViewById(R.id.rightCenterScaleImgeLayout);
         /** 输入框 */
-         mContentEditLayout=rootView.findViewById(R.id.edtLayout);
+         mContentEditLayout=(EdittextLayoutView) rootView.findViewById(R.id.edtLayout);
         /** 内容布局可设置magin布局 */
-         mContenLayout=rootView.findViewById(R.id.rootContentLayout);
+         mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
         /** 内容布局可设置magin布局 */
-         mMessageCountView=rootView.findViewById(R.id.messageCountView);
+         mMessageCountView=(MessageCountView) rootView.findViewById(R.id.messageCountView);
 
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 

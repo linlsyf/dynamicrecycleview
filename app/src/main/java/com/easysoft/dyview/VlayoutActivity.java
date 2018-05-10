@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.vlayout.LayoutHelper;
@@ -35,7 +36,7 @@ public class VlayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        recyclerView= findViewById(R.id.recycleView);
+        recyclerView= (RecyclerView) findViewById(R.id.recycleView);
 
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(this);
 

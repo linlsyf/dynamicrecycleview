@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easysoft.dynamicrecycleview.R;
@@ -49,7 +50,7 @@ public class IOSSwitchButton extends RelativeLayout {
 		// 头部控件
 		mRootView = LayoutInflater.from(context).inflate(R.layout.view_iosswitchbutton, this, true);
 
-		imageView = mRootView.findViewById(R.id.iv);
+		imageView =(ImageView) mRootView.findViewById(R.id.iv);
 //		imageView.setImageResource(R.drawable.btn_switch_closed);
 
 	}

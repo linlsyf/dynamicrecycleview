@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.easysoft.dynamicrecycleview.R;
 
@@ -42,8 +43,8 @@ public class EdittextLayoutView extends LinearLayout{
     private void initUI(Context context) {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_edittextlayout, this, true);
-         mCleanLayout = rootView.findViewById(R.id.cleanLayout);
-        mContentEditText = rootView.findViewById(R.id.edit);
+         mCleanLayout =(RelativeLayout) rootView.findViewById(R.id.cleanLayout);
+        mContentEditText =(EditText) rootView.findViewById(R.id.edit);
         mContentEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -49,7 +49,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     private void initUI(Context context) {
        View  rootView= LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
          mEmptyView=rootView.findViewById(R.id.emptyView);
-         mRefreshRecyclerView= rootView.findViewById(R.id.refreshRecycleView);
+         mRefreshRecyclerView=(RecyclerView) rootView.findViewById(R.id.refreshRecycleView);
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
         mSectionAdapterHelper.setEmptyView(mEmptyView);

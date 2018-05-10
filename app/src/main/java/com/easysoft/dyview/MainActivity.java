@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.DefaultLayoutHelper;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recycleView= findViewById(R.id.recycleView);
+        recycleView= (AddressRecycleView) findViewById(R.id.recycleView);
 
         List<AddressItemBean> newSectionList=new ArrayList<AddressItemBean>();
 
