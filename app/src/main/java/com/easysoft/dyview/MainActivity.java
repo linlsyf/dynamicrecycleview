@@ -21,6 +21,7 @@ import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -97,7 +98,21 @@ public class MainActivity extends AppCompatActivity {
         recycleView.setLayoutHelpers(helpers);
 
 
-
+//        int num1 =5;
+//
+//        int num2 = 7728;
+//
+//        // 创建一个数值格式化对象
+//
+//        NumberFormat numberFormat = NumberFormat.getInstance();
+//
+//        // 设置精确到小数点后2位
+//
+//        numberFormat.setMaximumFractionDigits(2);
+//
+//        float result =Float.parseFloat() ;
+//
+//        System.out.println("num1和num2的百分比为:" + result + "%");
 
 //        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
 //            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

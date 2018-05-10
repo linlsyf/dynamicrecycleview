@@ -79,6 +79,10 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
 //        this.mRecycleViewManger.setLayoutHelpers(helpers);
         mSectionAdapterHelper.setLayoutHelpers(helpers);
     }
+    public void addLayoutHelper(LayoutHelper layoutHelper){
+        mSectionAdapterHelper.addLayoutHelper(layoutHelper);
+
+    }
     public void clean() {
         mSectionAdapterHelper.clean();
     }

@@ -629,6 +629,15 @@ public class SectionAdapterHelper {
 //        this.mRecycleViewManger.setLayoutHelpers(helpers);
         mSectionedExpandableGridAdapter.setLayoutHelpers(helpers);
     }
+    public void addLayoutHelper(LayoutHelper layoutHelper){
+//        this.mRecycleViewManger.setLayoutHelpers(helpers);
+        List<LayoutHelper>  layoutHelpers= mRecycleViewManger.getLayoutHelpers();
+        if (layoutHelper==null){
+            layoutHelpers=new ArrayList<LayoutHelper>();
+        }
+        layoutHelpers.add(layoutHelper);
+        mSectionedExpandableGridAdapter.setLayoutHelpers(layoutHelpers);
+    }
    /**
     *创建者：林党宏
     *时间：2017/4/6
