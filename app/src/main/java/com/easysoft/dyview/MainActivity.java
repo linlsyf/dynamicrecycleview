@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         newSection.setName("其他");
         newSection.setDataMaps(newSectionList);
-        recycleView.updateSection(newSection);
+        recycleView.addSection(newSection);
 
         Section  gridViewSection=new Section(SECTION_GRID);
         gridViewSection.setPosition(1);
@@ -90,12 +90,21 @@ public class MainActivity extends AppCompatActivity {
         gridViewSection.setDataMaps(gridectionList);
         recycleView.updateSection(gridViewSection);
 
-        final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-        gridLayoutHelper.setItemCount(gridectionList.size()-1);
-        final List<LayoutHelper> helpers = new LinkedList<>();
-        helpers.add(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
-        helpers.add(gridLayoutHelper);
-        recycleView.setLayoutHelpers(helpers);
+//        final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
+//        final List<LayoutHelper> helpers = new LinkedList<>();
+//        helpers.add(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
+//        helpers.add(gridLayoutHelper);
+//        recycleView.setLayoutHelpers(helpers);
+
+//                final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
+////        final List<LayoutHelper> helpers = new LinkedList<>();
+//        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
+//        recycleView.addLayoutHelper(gridLayoutHelper);
+////        recycleView.setLayoutHelpers(helpers);
+//
+//        recycleView.show();
 
 
 //        int num1 =5;

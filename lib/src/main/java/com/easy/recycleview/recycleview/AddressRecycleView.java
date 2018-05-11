@@ -79,10 +79,10 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
 //        this.mRecycleViewManger.setLayoutHelpers(helpers);
         mSectionAdapterHelper.setLayoutHelpers(helpers);
     }
-    public void addLayoutHelper(LayoutHelper layoutHelper){
-        mSectionAdapterHelper.addLayoutHelper(layoutHelper);
-
-    }
+//    public void addLayoutHelper(LayoutHelper layoutHelper){
+//        mSectionAdapterHelper.addLayoutHelper(layoutHelper);
+//
+//    }
     public void clean() {
         mSectionAdapterHelper.clean();
     }
@@ -131,4 +131,11 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     public void setIloadImage(IloadImage iloadImage) {
         mSectionAdapterHelper.setIloadImage( iloadImage);
     }
+//    public void show(){
+//        mSectionAdapterHelper.show();
+//    }
+   public void addSection(Section section) {
+       mSectionAdapterHelper.addSection(section);
+   }
+
 }

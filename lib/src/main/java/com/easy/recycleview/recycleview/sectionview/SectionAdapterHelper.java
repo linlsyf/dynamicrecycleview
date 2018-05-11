@@ -64,6 +64,7 @@ public class SectionAdapterHelper {
     private IAddItemView mIAddItemView;
     /** 图片加载接口*/
     IloadImage iloadImage;
+    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
 
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
@@ -100,9 +101,17 @@ public class SectionAdapterHelper {
      *时间：2017/1/20
      *注释：添加一个分组
      */
-    public void addSection(Section section) {
+    public void addNewSection(Section section) {
         checkIsShowSection(section);
         mSectionList.add(section);
+    }
+    public void addSection(Section section) {
+        boolean index = checkIsExitSection(section);
+        if (!index){
+            checkIsShowSection(section);
+            mSectionList.add(section);
+        }
+
     }
 
 
@@ -369,12 +378,25 @@ public class SectionAdapterHelper {
          * @param isRefresh  默认只刷新数据不刷新界面
          */
     public void updateSection(Section section,boolean isRefresh){
+        boolean index = checkIsExitSection(section);
+        if (!index){
+            addNewSection(section);
+        }
+//        if (isRefresh){
+            notifyDataSetChanged();
+//        }else{
+//            notifyData();
+//
+//        }
+    }
+
+    private boolean checkIsExitSection(Section section) {
         List<Section> mNewSectionList=new ArrayList<Section>();
-        int index=-1;
+        boolean index=false;
         for (int i=0;i<mSectionList.size();i++){
             Section itemSection=mSectionList.get(i);
             if (itemSection.getId().equals(section.getId())){
-                index=i;
+                index=true;
                 checkIsShowSection(section);
                 mNewSectionList.add(section);
             }else{
@@ -383,16 +405,9 @@ public class SectionAdapterHelper {
             }
         }
         this.mSectionList=mNewSectionList;
-        if (index==-1){
-            addSection(section);
-        }
-        if (isRefresh){
-            notifyDataSetChanged();
-        }else{
-            notifyData();
-
-        }
+        return index;
     }
+
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -509,6 +524,7 @@ public class SectionAdapterHelper {
      *注释：更新adapter数据源并刷新界面
      */
     public void notifyDataSetChanged() {
+            notifyData();
         mSectionedExpandableGridAdapter.notifyDataSetChanged();
         checkIsShowEmpty();
     }
@@ -629,15 +645,21 @@ public class SectionAdapterHelper {
 //        this.mRecycleViewManger.setLayoutHelpers(helpers);
         mSectionedExpandableGridAdapter.setLayoutHelpers(helpers);
     }
-    public void addLayoutHelper(LayoutHelper layoutHelper){
-//        this.mRecycleViewManger.setLayoutHelpers(helpers);
-        List<LayoutHelper>  layoutHelpers= mRecycleViewManger.getLayoutHelpers();
-        if (layoutHelper==null){
-            layoutHelpers=new ArrayList<LayoutHelper>();
-        }
-        layoutHelpers.add(layoutHelper);
-        mSectionedExpandableGridAdapter.setLayoutHelpers(layoutHelpers);
-    }
+//    public void addLayoutHelper(LayoutHelper layoutHelper){
+////        this.mRecycleViewManger.setLayoutHelpers(helpers);
+//         layoutHelpers= mSectionedExpandableGridAdapter.getLayoutHelpers();
+//        if (layoutHelper==null){
+//            layoutHelpers=new ArrayList<LayoutHelper>();
+//        }
+//        layoutHelpers.add(layoutHelper);
+//    }
+//    public void show(){
+//        if (layoutHelpers.size()>0){
+//            mSectionedExpandableGridAdapter.setLayoutHelpers(layoutHelpers);
+//
+//        }
+//        notifyDataSetChanged();
+//    }
    /**
     *创建者：林党宏
     *时间：2017/4/6
