@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i=0;i<2;i++){
             AddressItemBean gridItemBean=new AddressItemBean();
-            gridItemBean.setViewType(IItemView.ViewTypeEnum.INFO_CARD_VIEW.value());
+            gridItemBean.setViewType(3);
             gridItemBean.setTitle("name"+i);
             gridectionList.add(gridItemBean);
         }
@@ -97,14 +97,10 @@ public class MainActivity extends AppCompatActivity {
 //        helpers.add(gridLayoutHelper);
 //        recycleView.setLayoutHelpers(helpers);
 
-//                final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
-////        final List<LayoutHelper> helpers = new LinkedList<>();
-//        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
-//        recycleView.addLayoutHelper(gridLayoutHelper);
-////        recycleView.setLayoutHelpers(helpers);
-//
-//        recycleView.show();
+          final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+        gridLayoutHelper.setItemCount(gridectionList.size()-1);
+        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
+        recycleView.addLayoutHelper(gridLayoutHelper,true);
 
 
 //        int num1 =5;

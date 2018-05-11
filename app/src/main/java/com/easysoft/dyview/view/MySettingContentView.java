@@ -25,7 +25,7 @@ public class MySettingContentView extends AddressRecycleView {
     @Override
     public View addItemView(int viewType) {
         View  itemView;
-        if (viewType== IItemView.ViewTypeEnum.INFO_CARD_VIEW.value()){
+        if (viewType==3){
             itemView=new InfoCardView(getContext());
             return itemView;
         }

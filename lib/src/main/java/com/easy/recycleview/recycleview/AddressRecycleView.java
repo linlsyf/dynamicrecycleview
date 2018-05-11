@@ -34,6 +34,8 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     RecyclerView mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
+    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
+
     public AddressRecycleView(Context context) {
         super(context);
         initUI(context);
@@ -79,10 +81,18 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
 //        this.mRecycleViewManger.setLayoutHelpers(helpers);
         mSectionAdapterHelper.setLayoutHelpers(helpers);
     }
-//    public void addLayoutHelper(LayoutHelper layoutHelper){
-//        mSectionAdapterHelper.addLayoutHelper(layoutHelper);
-//
-//    }
+    public void addLayoutHelper(LayoutHelper layoutHelper){
+       layoutHelpers.add(layoutHelper);
+    }
+    public void addLayoutHelper(LayoutHelper layoutHelper,boolean refresh){
+       layoutHelpers.add(layoutHelper);
+       if (refresh){
+           mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
+       }
+    }
+    public void refreshLayoutHelpers(){
+        mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
+    }
     public void clean() {
         mSectionAdapterHelper.clean();
     }
