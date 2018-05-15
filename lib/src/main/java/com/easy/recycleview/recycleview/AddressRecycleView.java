@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.alibaba.android.vlayout.LayoutHelper;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.ContentItemView;
 import com.easy.recycleview.recycleview.item.IItemView;
@@ -34,7 +33,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     RecyclerView mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
-    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
+//    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
 
     public AddressRecycleView(Context context) {
         super(context);
@@ -70,29 +69,31 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
        }
         return selectList;
     }
-
+    public void initLayoutManager(RecyclerView.LayoutManager layout) {
+        mSectionAdapterHelper.initLayoutManager(layout);
+    }
     public void updateSection(Section nextSection) {
         mSectionAdapterHelper.updateSection(nextSection);
     }
     public void updateSection(Section nextSection,boolean isRefresh) {
         mSectionAdapterHelper.updateSection(nextSection,isRefresh);
     }
-    public void setLayoutHelpers(List<LayoutHelper> helpers) {
-//        this.mRecycleViewManger.setLayoutHelpers(helpers);
-        mSectionAdapterHelper.setLayoutHelpers(helpers);
-    }
-    public void addLayoutHelper(LayoutHelper layoutHelper){
-       layoutHelpers.add(layoutHelper);
-    }
-    public void addLayoutHelper(LayoutHelper layoutHelper,boolean refresh){
-       layoutHelpers.add(layoutHelper);
-       if (refresh){
-           mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
-       }
-    }
-    public void refreshLayoutHelpers(){
-        mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
-    }
+//    public void setLayoutHelpers(List<LayoutHelper> helpers) {
+////        this.mRecycleViewManger.setLayoutHelpers(helpers);
+//        mSectionAdapterHelper.setLayoutHelpers(helpers);
+//    }
+//    public void addLayoutHelper(LayoutHelper layoutHelper){
+//       layoutHelpers.add(layoutHelper);
+//    }
+//    public void addLayoutHelper(LayoutHelper layoutHelper,boolean refresh){
+//       layoutHelpers.add(layoutHelper);
+//       if (refresh){
+//           mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
+//       }
+//    }
+//    public void refreshLayoutHelpers(){
+//        mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
+//    }
     public void clean() {
         mSectionAdapterHelper.clean();
     }

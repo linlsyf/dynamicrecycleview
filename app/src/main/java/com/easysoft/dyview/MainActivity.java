@@ -1,29 +1,15 @@
 package com.easysoft.dyview;
 
-import android.content.Intent;
-import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 
-import com.alibaba.android.vlayout.LayoutHelper;
-import com.alibaba.android.vlayout.layout.DefaultLayoutHelper;
-import com.alibaba.android.vlayout.layout.FixLayoutHelper;
-import com.alibaba.android.vlayout.layout.GridLayoutHelper;
-import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.easy.recycleview.recycleview.AddressRecycleView;
-
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -97,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
 //        helpers.add(gridLayoutHelper);
 //        recycleView.setLayoutHelpers(helpers);
 
-          final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-        gridLayoutHelper.setItemCount(gridectionList.size()-1);
-        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
-        recycleView.addLayoutHelper(gridLayoutHelper,true);
+//          final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
+//        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
+//        recycleView.addLayoutHelper(gridLayoutHelper,true);
 
 
 //        int num1 =5;

@@ -1,19 +1,7 @@
 package com.easy.recycleview.recycleview.sectionview;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static android.widget.LinearLayout.VERTICAL;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,12 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.vlayout.LayoutHelper;
-import com.alibaba.android.vlayout.VirtualLayoutAdapter;
-import com.alibaba.android.vlayout.VirtualLayoutManager;
-import com.alibaba.android.vlayout.layout.DefaultLayoutHelper;
 import com.easy.recycleview.recycleview.BaseRecyclerViewHolder;
 import com.easy.recycleview.recycleview.ResourcesUtil;
+import com.easy.recycleview.recycleview.SpacesItemDecoration;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.ContentItemView;
 import com.easy.recycleview.recycleview.item.IItemView;
@@ -34,8 +19,16 @@ import com.easy.recycleview.recycleview.item.IloadImage;
 import com.easy.recycleview.recycleview.item.SectionView;
 import com.easy.recycleview.recycleview.item.SpliteView;
 import com.easy.recycleview.recycleview.item.bean.SelectBean;
-import com.easy.recycleview.recycleview.SpacesItemDecoration;
 import com.easysoft.dynamicrecycleview.R;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  *创建者：林党宏
@@ -50,7 +43,7 @@ public class SectionAdapterHelper {
     /**adapter */
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
-    VirtualLayoutManager mRecycleViewManger;
+    LinearLayoutManager mRecycleViewManger;
     /**多选辅助工具 */
     MutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
@@ -64,16 +57,16 @@ public class SectionAdapterHelper {
     private IAddItemView mIAddItemView;
     /** 图片加载接口*/
     IloadImage iloadImage;
-    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
+//    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
 
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
 
-        mRecycleViewManger = new VirtualLayoutManager(context);
+        mRecycleViewManger = new LinearLayoutManager(context);
 
         recyclerView.setLayoutManager(mRecycleViewManger);
-        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(mRecycleViewManger,context, mDataArrayList);
+        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context, mDataArrayList);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
         mSelectUtils=new MutiTypeSelectUtils(context);
         mSectionedExpandableGridAdapter.initSelectUtils(mSelectUtils);
@@ -641,10 +634,10 @@ public class SectionAdapterHelper {
     public void setUpdateListener(updateListener updateListener){
         this.mUpdateListener=updateListener;
     }
-    public void setLayoutHelpers(List<LayoutHelper> helpers) {
-//        this.mRecycleViewManger.setLayoutHelpers(helpers);
-        mSectionedExpandableGridAdapter.setLayoutHelpers(helpers);
-    }
+//    public void setLayoutHelpers(List<LayoutHelper> helpers) {
+////        this.mRecycleViewManger.setLayoutHelpers(helpers);
+//        mSectionedExpandableGridAdapter.setLayoutHelpers(helpers);
+//    }
 //    public void addLayoutHelper(LayoutHelper layoutHelper){
 ////        this.mRecycleViewManger.setLayoutHelpers(helpers);
 //         layoutHelpers= mSectionedExpandableGridAdapter.getLayoutHelpers();
@@ -691,19 +684,18 @@ public class SectionAdapterHelper {
         this.mIAddItemView=iAddItemView;
     }
 
-    class SectionedListViewAdapter extends VirtualLayoutAdapter<BaseRecyclerViewHolder>  {
+    class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
         private ArrayList<AddressItemBean> mDataArrayList;
         IItemView.onItemClick mOnItemListener;
         MutiTypeSelectUtils mSelectUtils;
 
-        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
-            super(layoutManager);
-        }
-
-
-        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager,Context context, ArrayList<AddressItemBean> dataArrayList) {
-            super(layoutManager);
+//        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
+//            super(layoutManager);
+//        }
+//
+//
+        public SectionedListViewAdapter(Context context, ArrayList<AddressItemBean> dataArrayList) {
 
             mContext = context;
             mDataArrayList = dataArrayList;
@@ -735,15 +727,16 @@ public class SectionAdapterHelper {
         }
         @Override
         public int getItemCount() {
-            List<LayoutHelper> helpers = getLayoutHelpers();
-            if (helpers == null||helpers.size()==0) {
-                return mDataArrayList.size();
-            }
-            int count = 0;
-            for (int i = 0, size = helpers.size(); i < size; i++) {
-                count += helpers.get(i).getItemCount();
-            }
-            return count;
+            return mDataArrayList.size();
+//            List<LayoutHelper> helpers = getLayoutHelpers();
+//            if (helpers == null||helpers.size()==0) {
+//                return mDataArrayList.size();
+//            }
+//            int count = 0;
+//            for (int i = 0, size = helpers.size(); i < size; i++) {
+//                count += helpers.get(i).getItemCount();
+//            }
+//            return count;
             //            return mDataArrayList.size();
         }
         @Override
