@@ -29,6 +29,10 @@ public class MySettingContentView extends AddressRecycleView {
             itemView=new InfoCardView(getContext());
             return itemView;
         }
+        if (viewType==4){
+            itemView=new dyCardView(getContext());
+            return itemView;
+        }
 
         return super.addItemView(viewType);
     }

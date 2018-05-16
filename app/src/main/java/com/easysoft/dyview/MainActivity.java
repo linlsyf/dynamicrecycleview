@@ -15,6 +15,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final java.lang.String SECTION_NEW = "new";
     private static final java.lang.String SECTION_GRID = "grid";
+    private static final java.lang.String SECTION_DY = "dy";
     AddressRecycleView recycleView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         gridViewSection.setDataMaps(gridectionList);
-        recycleView.updateSection(gridViewSection);
+        recycleView.addSection(gridViewSection);
+
+
+        Section  dyViewSection=new Section(SECTION_DY);
+        dyViewSection.setPosition(1);
+
+        dyViewSection.setName("动态布局");
+
+
+        List<AddressItemBean> dysectionList=new ArrayList<AddressItemBean>();
+
+        for (int i=0;i<2;i++){
+            AddressItemBean gridItemBean=new AddressItemBean();
+            gridItemBean.setViewType(4);
+            gridItemBean.setSpanSize(3);
+            gridItemBean.setTitle("name"+i);
+            dysectionList.add(gridItemBean);
+        }
+
+        dyViewSection.setDataMaps(dysectionList);
+        recycleView.updateSection(dyViewSection);
+
 
 //        final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
 //        gridLayoutHelper.setItemCount(gridectionList.size()-1);
