@@ -10,5 +10,5 @@
 3 实现效果如https://github.com/linlsyf/EaysSoftAndroid 界面类型
 
 
-4 引入 阿里 巴巴  vlayout
+4 数据控制多少列，实现list和GridView
  
