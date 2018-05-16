@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -94,6 +95,9 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
 //    public void refreshLayoutHelpers(){
 //        mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
 //    }
+public void  setSpanCount(int  spanCount){
+    mSectionAdapterHelper.setSpanCount(spanCount);
+}
     public void clean() {
         mSectionAdapterHelper.clean();
     }

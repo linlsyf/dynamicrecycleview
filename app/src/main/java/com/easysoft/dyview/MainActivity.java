@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0;i<2;i++){
             AddressItemBean gridItemBean=new AddressItemBean();
             gridItemBean.setViewType(3);
+            gridItemBean.setSpanSize(3);
             gridItemBean.setTitle("name"+i);
             gridectionList.add(gridItemBean);
         }

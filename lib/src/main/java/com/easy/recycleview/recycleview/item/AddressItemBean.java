@@ -94,6 +94,17 @@ public class AddressItemBean implements Serializable,Cloneable{
     AddressHeadImgeSettings headImgeSettings =new AddressHeadImgeSettings();
     /**右侧第一个图片配置*/
     AddressRightFistImgeSettings rightFistImgeSettings =new AddressRightFistImgeSettings();
+    /**默认为6 一行显示*/
+    int  spanSize=6;
+
+    public int getSpanSize() {
+        return spanSize;
+    }
+
+    public void setSpanSize(int spanSize) {
+        this.spanSize = spanSize;
+    }
+
     public String getId() {
         return id;
     }

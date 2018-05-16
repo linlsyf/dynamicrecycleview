@@ -2,6 +2,7 @@ package com.easy.recycleview.recycleview.sectionview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -43,7 +44,7 @@ public class SectionAdapterHelper {
     /**adapter */
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
-    LinearLayoutManager mRecycleViewManger;
+    RecyclerView.LayoutManager  mRecycleViewManger;
     /**多选辅助工具 */
     MutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
@@ -63,8 +64,8 @@ public class SectionAdapterHelper {
         mContext=context;
         mRecyclerView=recyclerView;
 
-        mRecycleViewManger = new LinearLayoutManager(context);
-
+//        mRecycleViewManger = new LinearLayoutManager(context);
+        mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mRecycleViewManger);
         mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context, mDataArrayList);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
@@ -77,7 +78,10 @@ public class SectionAdapterHelper {
 //        this.mRecycleViewManger=recycleViewManger;
 //
 //    }
-
+     public void  setSpanCount(int  spanCount){
+        mRecycleViewManger= new GridLayoutManager(mRecyclerView.getContext(), spanCount, GridLayoutManager.VERTICAL, false);
+         mRecyclerView.setLayoutManager(mRecycleViewManger);
+    }
     public void setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
     }
@@ -477,7 +481,10 @@ public class SectionAdapterHelper {
      *注释：滑动到指定位置
      */
     public void scrollToPositionWithOffset(int postion) {
-        mRecycleViewManger.scrollToPositionWithOffset(postion , 0);
+//        if (mRecycleViewManger extends LinearLayoutManager){
+//
+//            ( (LinearLayoutManager) mRecycleViewManger).scrollToPositionWithOffset(postion , 0);
+//        }
     }
 
     /**
@@ -728,16 +735,7 @@ public class SectionAdapterHelper {
         @Override
         public int getItemCount() {
             return mDataArrayList.size();
-//            List<LayoutHelper> helpers = getLayoutHelpers();
-//            if (helpers == null||helpers.size()==0) {
-//                return mDataArrayList.size();
-//            }
-//            int count = 0;
-//            for (int i = 0, size = helpers.size(); i < size; i++) {
-//                count += helpers.get(i).getItemCount();
-//            }
-//            return count;
-            //            return mDataArrayList.size();
+
         }
         @Override
         public int getItemViewType(int position) {
@@ -747,5 +745,21 @@ public class SectionAdapterHelper {
         public void setOnItemClick(IItemView.onItemClick listener ){
             this.mOnItemListener=listener;
         }
+
+        @Override
+        public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+            super.onAttachedToRecyclerView(recyclerView);
+            RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+            if(manager instanceof GridLayoutManager) {
+                final GridLayoutManager gridManager = ((GridLayoutManager) manager);
+                gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        return   mDataArrayList.get(position).getSpanSize();
+                    }
+
+            });
+        }
+    }
     }
 }

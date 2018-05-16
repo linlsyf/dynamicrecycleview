@@ -42,7 +42,7 @@ public class InfoCardView extends  android.support.v7.widget.AppCompatTextView i
 
        }
         index=index+1;
-        setLayoutParams(new ViewGroup.LayoutParams(200, 200));
+        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
 
     }
 
