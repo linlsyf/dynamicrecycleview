@@ -1,4 +1,4 @@
-﻿# dynamicrecycleview
+﻿# 主界面加载不同类型的recycleview
 
 基于recycleview 实现可扩展易使用的界面
 1  可以自定义界面，
