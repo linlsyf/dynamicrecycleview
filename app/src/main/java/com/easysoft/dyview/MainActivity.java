@@ -87,9 +87,17 @@ public class MainActivity extends AppCompatActivity {
 
         List<AddressItemBean> dysectionList=new ArrayList<AddressItemBean>();
 
-        for (int i=0;i<2;i++){
+        for (int i=0;i<10;i++){
             AddressItemBean gridItemBean=new AddressItemBean();
-            gridItemBean.setViewType(4);
+            int type=3;
+             if (i==1){
+                 type=4;
+             }
+             if (i%3==0){
+                type=4;
+             }
+            gridItemBean.setViewType(type);
+
             gridItemBean.setSpanSize(3);
             gridItemBean.setTitle("name"+i);
             dysectionList.add(gridItemBean);

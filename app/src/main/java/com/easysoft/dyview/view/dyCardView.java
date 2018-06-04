@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class dyCardView extends  android.support.v7.widget.AppCompatTextView implements IItemView {
 
-    static int index=0;
+    static boolean index=false;
     public dyCardView(Context context) {
         super(context);
         initUI(context);
@@ -31,20 +31,15 @@ public class dyCardView extends  android.support.v7.widget.AppCompatTextView imp
 
     private void initUI(Context context) {
         Random random1 = new Random();
-       int radom= random1.nextInt(Math.abs(300))+200;
-        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, radom));
-       requestLayout();
-        if (index==0){
-            setBackgroundColor(0xccff00ff);
-
-        }else if (index==1){
+//       int radom= random1.nextInt(Math.abs(500))+400;
+        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
+//        if (index){
+//            setBackgroundColor(0xccff00ff);
+//
+//        }else{
             setBackgroundColor(0xaa00ff00);
-
-        }else{
-            setBackgroundColor(0x66cc0000 );
-
-        }
-        index=index+1;
+//        }
+        index=!index;
     }
 
     @Override

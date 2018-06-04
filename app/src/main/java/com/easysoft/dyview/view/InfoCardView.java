@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
+import com.easysoft.dyview.R;
 
 /**
  * Created by ldh on 2017/5/11.
@@ -16,7 +17,7 @@ import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 
 public class InfoCardView extends  android.support.v7.widget.AppCompatTextView implements IItemView {
 
-    static int index=0;
+    static boolean index=false;
     public InfoCardView(Context context) {
         super(context);
         initUI(context);
@@ -31,17 +32,21 @@ public class InfoCardView extends  android.support.v7.widget.AppCompatTextView i
        View textView= new TextView(context);
 
 
-       if (index==0){
-           setBackgroundColor(0xccff00ff);
+//       if (index==0){
+//           setBackgroundColor(0xccff00ff);
+//
+//       }else if (index==1){
+//           setBackgroundColor(0xaa00ff00);
+//
+//       }else{
+//         if (index){
+             setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//         }else{
+//             setBackgroundColor(0x66cc0000 );
+//         }
 
-       }else if (index==1){
-           setBackgroundColor(0xaa00ff00);
-
-       }else{
-         setBackgroundColor(0x66cc0000 );
-
-       }
-        index=index+1;
+//       }
+        index=!index;
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
 
     }

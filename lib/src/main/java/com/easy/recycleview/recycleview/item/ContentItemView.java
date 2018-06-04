@@ -166,11 +166,16 @@ public class ContentItemView extends LinearLayout implements IItemView {
                 dataItemBean.getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
             }
         } 
+        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgPath())) {
+            if (dataItemBean.getIloadImage()!=null) {
+                dataItemBean.getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
+            }
+        } 
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
             if (dataItemBean.getIloadImage()!=null) {
                 dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
             }
-        } 
+        }
 
         mTitleTextView.setText(dataItemBean.getTitle());
         if (dataItemBean.isHintShow()) {

@@ -12,6 +12,8 @@ public class AddressHeadImgeSettings implements Serializable {
     private int headImgDrawableId =0;
     /**头像资源文件*/
     private String headImgUrl ="";
+    /**头像资源文件 本地路径*/
+    private String headImgPath ="";
     /**头像半径大小*/
     private int headImgRadius =0;
 
@@ -24,13 +26,6 @@ public class AddressHeadImgeSettings implements Serializable {
     /**头像用户name*/
     private  String headImgUserName ="";
 
-//    public String getHeadImgType() {
-//        return headImgType;
-//    }
-//
-//    public void setHeadImgType(String headImgType) {
-//        this.headImgType = headImgType;
-//    }
 
     public int getHeadImgDrawableId() {
         return headImgDrawableId;
@@ -87,6 +82,12 @@ public class AddressHeadImgeSettings implements Serializable {
 	public void setHeadImgUrl(String headImgUrl) {
 		this.headImgUrl = headImgUrl;
 	}
-    
-    
+
+    public String getHeadImgPath() {
+        return headImgPath;
+    }
+
+    public void setHeadImgPath(String headImgPath) {
+        this.headImgPath = headImgPath;
+    }
 }
