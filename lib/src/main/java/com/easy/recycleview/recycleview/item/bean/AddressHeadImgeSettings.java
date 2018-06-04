@@ -1,5 +1,7 @@
 package com.easy.recycleview.recycleview.item.bean;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 /**
@@ -25,6 +27,7 @@ public class AddressHeadImgeSettings implements Serializable {
     private  String headImgUserId ="";
     /**头像用户name*/
     private  String headImgUserName ="";
+    private Bitmap bitmap;
 
 
     public int getHeadImgDrawableId() {
@@ -89,5 +92,13 @@ public class AddressHeadImgeSettings implements Serializable {
 
     public void setHeadImgPath(String headImgPath) {
         this.headImgPath = headImgPath;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 }

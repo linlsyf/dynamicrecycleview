@@ -3,6 +3,7 @@ package com.easy.recycleview.recycleview.item;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -161,21 +162,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
         } else {
             mImageView.setVisibility(View.GONE);
         }
-        if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
-            if (dataItemBean.getIloadImage()!=null){
-                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
-            }
-        } 
-        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgPath())) {
-            if (dataItemBean.getIloadImage()!=null) {
-                dataItemBean.getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
-            }
-        } 
-        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
-            if (dataItemBean.getIloadImage()!=null) {
-                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
-            }
-        }
+        HeadImageViewConfig.load(dataItemBean,mImageView);
 
         mTitleTextView.setText(dataItemBean.getTitle());
         if (dataItemBean.isHintShow()) {
@@ -353,6 +340,29 @@ public class ContentItemView extends LinearLayout implements IItemView {
         }
         initListener();
     }
+
+//    private void loadImage(AddressItemBean dataItemBean) {
+//        if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
+//            if (dataItemBean.getIloadImage()!=null){
+//                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
+//            }
+//        }
+//        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgPath())) {
+//            if (dataItemBean.getIloadImage()!=null) {
+//                dataItemBean.getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
+//            }
+//        }
+//        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
+//            if (dataItemBean.getIloadImage()!=null) {
+//                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
+//            }
+//        }
+//        else if (null!=dataItemBean.getHeadImgeSettings().getBitmap()) {
+//            if (dataItemBean.getIloadImage()!=null) {
+//                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getBitmap(), mImageView);
+//            }
+//        }
+//    }
 
     @Override
     public void initSelectUtils(MutiTypeSelectUtils selectUtils) {

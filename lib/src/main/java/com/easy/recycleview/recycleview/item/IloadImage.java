@@ -1,5 +1,6 @@
 package com.easy.recycleview.recycleview.item;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 /**
@@ -10,6 +11,7 @@ public interface IloadImage {
 
 
     void load(final String url, final ImageView myImageView);
+    void load(final Bitmap bitmap, final ImageView myImageView);
 
     void loadPath(final String path, final ImageView myImageView);
 
