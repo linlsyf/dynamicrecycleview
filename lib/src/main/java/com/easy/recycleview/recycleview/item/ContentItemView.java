@@ -82,7 +82,8 @@ public class ContentItemView extends LinearLayout implements IItemView {
 
     private void initUI(Context context) {
         mContext = context;
-        View rootView = LayoutInflater.from(context).inflate(R.layout.view_item, this, true);
+        View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, null);
+        addView(rootView);
 
          mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
 
@@ -146,22 +147,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
         } else {
             mLeftCheckBox.setVisibility(View.GONE);
         }
-//        if (null!=dataItemBean.getHeadImgeSettings()) {//添加头像资源id
-//            mImageView.setVisibility(View.VISIBLE);
-//            LayoutParams mHeadParams = (LayoutParams) mImageView.getLayoutParams();
-//            mHeadParams.gravity = Gravity.CENTER_VERTICAL;
-//
-//            if (dataItemBean.getHeadImgeSettings().getHeadImgWidth() != 0&&dataItemBean.getHeadImgeSettings().getHeadImgHeight() !=0){
-//                mHeadParams.width = dataItemBean.getHeadImgeSettings().getHeadImgWidth();
-//                mHeadParams.height = dataItemBean.getHeadImgeSettings().getHeadImgHeight();
-//            }else  if (dataItemBean.getHeadImgeSettings().getHeadImgRadius() != 0) {
-//                mHeadParams.width = dataItemBean.getHeadImgeSettings().getHeadImgRadius();
-//                mHeadParams.height = dataItemBean.getHeadImgeSettings().getHeadImgRadius();
-//            }
-//            mImageView.setLayoutParams(mHeadParams);
-//        } else {
-//            mImageView.setVisibility(View.GONE);
-//        }
+
         HeadImageViewConfig.load(dataItemBean,mImageView);
 
         mTitleTextView.setText(dataItemBean.getTitle());

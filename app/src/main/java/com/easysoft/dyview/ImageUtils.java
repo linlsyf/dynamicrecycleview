@@ -62,6 +62,18 @@ public class ImageUtils  implements IloadImage {
 
 
 	}
+
+	@Override
+	public void load(Bitmap bitmap, ImageView myImageView) {
+//		Glide.with(CoreApplication.getAppContext())
+//
+//
+//				.load(bitmap.get)
+//				.dontAnimate()
+//				.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
+//				.into(myImageView);
+	}
+
 	public void loadPath(final String path, final ImageView myImageView){
 				Glide.with(CoreApplication.getAppContext())
 
