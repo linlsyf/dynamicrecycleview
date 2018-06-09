@@ -82,8 +82,8 @@ public class ContentItemView extends LinearLayout implements IItemView {
 
     private void initUI(Context context) {
         mContext = context;
-        View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, null);
-        addView(rootView);
+        View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, this,true);
+//        addView(rootView);
 
          mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
 
