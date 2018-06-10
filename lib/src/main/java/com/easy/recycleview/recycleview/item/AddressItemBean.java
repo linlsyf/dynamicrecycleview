@@ -41,6 +41,9 @@ public class AddressItemBean implements Serializable,Cloneable{
     private  int hintLeftMagin =0;
     /**是否显示左侧checkbox*/
     private  boolean isShowLeftCheckBox =false;
+    /**是否点击事件是否执行*/
+    private  boolean isOnItemClickAble =true;
+
     /**左侧checkbox选中状态*/
     private  boolean leftCheckBoxIsChecked =false;
     /**左侧第二个文字*/
@@ -413,6 +416,14 @@ public class AddressItemBean implements Serializable,Cloneable{
 
     public void setRightSecondText(String rightSecondText) {
         this.rightSecondText = rightSecondText;
+    }
+
+    public boolean isOnItemClickAble() {
+        return isOnItemClickAble;
+    }
+
+    public void setOnItemClickAble(boolean onItemClickAble) {
+        isOnItemClickAble = onItemClickAble;
     }
 
     public IloadImage getIloadImage() {
