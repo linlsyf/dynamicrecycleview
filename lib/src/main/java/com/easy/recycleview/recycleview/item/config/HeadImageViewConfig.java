@@ -1,10 +1,11 @@
-package com.easy.recycleview.recycleview.item;
+package com.easy.recycleview.recycleview.item.config;
 
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.utils.StringUtils;
 
 /**
@@ -12,7 +13,7 @@ import com.easy.recycleview.utils.StringUtils;
  */
 
 public class HeadImageViewConfig {
-    public static void load(AddressItemBean dataItemBean,ImageView mImageView){
+    public static void load(AddressItemBean dataItemBean, ImageView mImageView){
         if (null!=dataItemBean.getHeadImgeSettings()) {//添加头像资源id
             mImageView.setVisibility(View.VISIBLE);
             LinearLayout.LayoutParams mHeadParams = (LinearLayout.LayoutParams) mImageView.getLayoutParams();

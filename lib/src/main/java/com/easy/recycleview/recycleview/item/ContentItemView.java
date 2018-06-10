@@ -3,7 +3,6 @@ package com.easy.recycleview.recycleview.item;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,6 +20,8 @@ import com.easy.recycleview.recycleview.EdittextLayoutView;
 import com.easy.recycleview.recycleview.MessageCountView;
 import com.easy.recycleview.recycleview.button.IOSSwitchButton;
 import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
+import com.easy.recycleview.recycleview.item.config.HeadImageViewConfig;
+import com.easy.recycleview.recycleview.item.config.LeftCheckBoxConfig;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 import com.easy.recycleview.utils.DensityUtil;
 import com.easy.recycleview.utils.StringUtils;
@@ -38,7 +39,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
     /** 右侧chcekbox */
     IOSSwitchButton mSwitchButton;
     /** 左侧选中图标 */
-    CheckBox mLeftCheckBox;
+    public CheckBox mLeftCheckBox;
     Context mContext;
     TextView mTitleTextView;
     TextView mHintTextView;
@@ -64,11 +65,11 @@ public class ContentItemView extends LinearLayout implements IItemView {
     /** 绑定数据 */
     AddressItemBean mBindItemBean = new AddressItemBean();
     /** 多选控制工具 */
-    MutiTypeSelectUtils mSelectUtils;
+    public MutiTypeSelectUtils mSelectUtils;
     /** magin */
     private int mContentMagin = 0;
 
-    private boolean mChangeSelectRefresh = false;
+    public boolean mChangeSelectRefresh = false;
 
     public ContentItemView(Context context) {
         super(context);
@@ -135,18 +136,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
         params.bottomMargin = mContentMagin;
         mContenLayout.setLayoutParams(params);
         mRootlayout.setLayoutParams(rootParams);
-        if (dataItemBean.isShowLeftCheckBox()) {
-            mLeftCheckBox.setVisibility(View.VISIBLE);
-            boolean isChecked = dataItemBean.isLeftCheckBoxIsChecked();
-            if (mSelectUtils != null && !mChangeSelectRefresh) {
-                isChecked = checkContain(dataItemBean);
-                dataItemBean.setLeftCheckBoxIsChecked(isChecked);
-            }
-            mChangeSelectRefresh = false;
-            mLeftCheckBox.setChecked(isChecked);
-        } else {
-            mLeftCheckBox.setVisibility(View.GONE);
-        }
+        LeftCheckBoxConfig.load(this,dataItemBean);
 
         HeadImageViewConfig.load(dataItemBean,mImageView);
 
@@ -327,28 +317,21 @@ public class ContentItemView extends LinearLayout implements IItemView {
         initListener();
     }
 
-//    private void loadImage(AddressItemBean dataItemBean) {
-//        if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
-//            if (dataItemBean.getIloadImage()!=null){
-//                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
+//    private void load(AddressItemBean dataItemBean) {
+//        if (dataItemBean.isShowLeftCheckBox()) {
+//            mLeftCheckBox.setVisibility(View.VISIBLE);
+//            boolean isChecked = dataItemBean.isLeftCheckBoxIsChecked();
+//            if (mSelectUtils != null && !mChangeSelectRefresh) {
+//                isChecked = checkContain(dataItemBean);
+//                dataItemBean.setLeftCheckBoxIsChecked(isChecked);
 //            }
-//        }
-//        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgPath())) {
-//            if (dataItemBean.getIloadImage()!=null) {
-//                dataItemBean.getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
-//            }
-//        }
-//        else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
-//            if (dataItemBean.getIloadImage()!=null) {
-//                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
-//            }
-//        }
-//        else if (null!=dataItemBean.getHeadImgeSettings().getBitmap()) {
-//            if (dataItemBean.getIloadImage()!=null) {
-//                dataItemBean.getIloadImage().load(dataItemBean.getHeadImgeSettings().getBitmap(), mImageView);
-//            }
+//            mChangeSelectRefresh = false;
+//            mLeftCheckBox.setChecked(isChecked);
+//        } else {
+//            mLeftCheckBox.setVisibility(View.GONE);
 //        }
 //    }
+
 
     @Override
     public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
@@ -427,14 +410,17 @@ public class ContentItemView extends LinearLayout implements IItemView {
         mRootlayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick(onItemListener);
+                if (mBindItemBean.isOnItemClickAble()){
+                    onItemClick(onItemListener);
+
+                }
             }
         });
 
         mRootlayout.setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (onItemListener != null) {
+                if (onItemListener != null&&mBindItemBean.isOnItemClickAble()) {
                     onItemListener.onItemClick(ClickTypeEnum.ITEM_LONG, mBindItemBean);
                 }
                 return true;
@@ -460,7 +446,7 @@ public class ContentItemView extends LinearLayout implements IItemView {
                 initData(mBindItemBean);
             }
         }
-        if (onItemListener != null) {
+         if (onItemListener != null) {
             onItemListener.onItemClick(ClickTypeEnum.ITEM, mBindItemBean);
         }
     }
