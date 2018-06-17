@@ -8,6 +8,7 @@ import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
+import com.easy.recycleview.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,17 @@ public class MainActivity extends AppCompatActivity {
 
         AddressItemBean newItemBean=new AddressItemBean();
         newItemBean.setTitle("助手小Q");
+        newItemBean.setHint("this is hint");
+        newItemBean.setHintShow(true);
         newItemBean.setShowLeftCheckBox(true);
+        newItemBean.setContentBgResid(R.drawable.corners_bg);
+//        newItemBean.setOnItemAllClickAble(false);
+        newItemBean.setOnItemClickAble(false);
         newItemBean.setOnItemListener(new IItemView.onItemClick() {
             @Override
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, AddressItemBean bean) {
+                ToastUtils.show(getApplication(),"点击事件触发了");
+
 
             }
         });

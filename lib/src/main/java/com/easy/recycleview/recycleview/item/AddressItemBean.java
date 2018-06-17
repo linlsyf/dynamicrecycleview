@@ -29,6 +29,8 @@ public class AddressItemBean implements Serializable,Cloneable{
     private  String selectType ="";
     /**界面类型*/
     private  int viewType =IItemView.ViewTypeEnum.ITEM.value();
+    /**根目录背景图片*/
+    private  int contentBgResid=0;
     /**标题*/
     private  String title="";
     /**副标题*/
@@ -43,6 +45,8 @@ public class AddressItemBean implements Serializable,Cloneable{
     private  boolean isShowLeftCheckBox =false;
     /**是否点击事件是否执行*/
     private  boolean isOnItemClickAble =true;
+    /**是否全部点击事件是否执行*/
+    private  boolean isOnItemAllClickAble =true;
 
     /**左侧checkbox选中状态*/
     private  boolean leftCheckBoxIsChecked =false;
@@ -437,5 +441,21 @@ public class AddressItemBean implements Serializable,Cloneable{
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    public int getContentBgResid() {
+        return contentBgResid;
+    }
+
+    public void setContentBgResid(int contentBgResid) {
+        this.contentBgResid = contentBgResid;
+    }
+
+    public boolean isOnItemAllClickAble() {
+        return isOnItemAllClickAble;
+    }
+
+    public void setOnItemAllClickAble(boolean onItemAllClickAble) {
+        isOnItemAllClickAble = onItemAllClickAble;
     }
 }

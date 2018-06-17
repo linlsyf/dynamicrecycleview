@@ -20,8 +20,22 @@ import com.easy.recycleview.recycleview.EdittextLayoutView;
 import com.easy.recycleview.recycleview.MessageCountView;
 import com.easy.recycleview.recycleview.button.IOSSwitchButton;
 import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
+import com.easy.recycleview.recycleview.item.config.ContentLayoutConfig;
+import com.easy.recycleview.recycleview.item.config.EditLayoutConfig;
 import com.easy.recycleview.recycleview.item.config.HeadImageViewConfig;
+import com.easy.recycleview.recycleview.item.config.HintTextViewConfig;
 import com.easy.recycleview.recycleview.item.config.LeftCheckBoxConfig;
+import com.easy.recycleview.recycleview.item.config.ListenerConfig;
+import com.easy.recycleview.recycleview.item.config.NoticeConfig;
+import com.easy.recycleview.recycleview.item.config.RightCenterScaleImgConfig;
+import com.easy.recycleview.recycleview.item.config.RightFirstButtonConfig;
+import com.easy.recycleview.recycleview.item.config.RightFirstImageViewConfig;
+import com.easy.recycleview.recycleview.item.config.RightFirstTextViewConfig;
+import com.easy.recycleview.recycleview.item.config.RightSecondImgeViewConfig;
+import com.easy.recycleview.recycleview.item.config.RightUnreadCountConfig;
+import com.easy.recycleview.recycleview.item.config.RootlayoutConfig;
+import com.easy.recycleview.recycleview.item.config.SwitchButtonConfig;
+import com.easy.recycleview.recycleview.item.config.TitleTextViewConfig;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 import com.easy.recycleview.utils.DensityUtil;
 import com.easy.recycleview.utils.StringUtils;
@@ -35,39 +49,39 @@ import com.easysoft.dynamicrecycleview.R;
  */
 
 public class ContentItemView extends LinearLayout implements IItemView {
-    LinearLayout mRootlayout;
+    public LinearLayout mRootlayout;
     /** 右侧chcekbox */
-    IOSSwitchButton mSwitchButton;
+    public IOSSwitchButton mSwitchButton;
     /** 左侧选中图标 */
     public CheckBox mLeftCheckBox;
     Context mContext;
-    TextView mTitleTextView;
-    TextView mHintTextView;
-    TextView mNoticeTextView;
-    ImageView mNoticeImageView;
-    TextView mRightFirstTextView;
+    public TextView mTitleTextView;
+    public TextView mHintTextView;
+    public TextView mNoticeTextView;
+    public  ImageView mNoticeImageView;
+    public TextView mRightFirstTextView;
     ImageView mImageView;
-    ImageView mRightSecondImgeView;
-    ImageView mRightFirstImageView;
+    public ImageView mRightSecondImgeView;
+    public ImageView mRightFirstImageView;
     /** 右侧按钮 */
-    Button mRightFirstButton;
+    public Button mRightFirstButton;
     /** 右侧布局 */
     LinearLayout mRightLayout;
     /** 右侧点击图片 */
-    ImageView mRightCenterScaleImgeView;
-    LinearLayout mRightCenterScaleImgeLayout;
+    public ImageView mRightCenterScaleImgeView;
+    public LinearLayout mRightCenterScaleImgeLayout;
     /** 输入框 */
-    EdittextLayoutView mContentEditLayout;
+    public  EdittextLayoutView mContentEditLayout;
     /** 内容布局可设置magin布局 */
-    LinearLayout mContenLayout;
+      public  LinearLayout mContenLayout;
     /** 内容布局可设置magin布局 */
     MessageCountView mMessageCountView;
     /** 绑定数据 */
-    AddressItemBean mBindItemBean = new AddressItemBean();
+    public AddressItemBean mBindItemBean = new AddressItemBean();
     /** 多选控制工具 */
     public MutiTypeSelectUtils mSelectUtils;
-    /** magin */
-    private int mContentMagin = 0;
+//    /** magin */
+//    private int mContentMagin = 0;
 
     public boolean mChangeSelectRefresh = false;
 
@@ -120,217 +134,26 @@ public class ContentItemView extends LinearLayout implements IItemView {
     public void initData(final AddressItemBean dataItemBean) {
         //添加头部 //添加左侧侧布局
         mBindItemBean = dataItemBean;
-        LayoutParams params = (LayoutParams) mContenLayout.getLayoutParams();
-        if (dataItemBean.getContentLayoutMagin() != 0) {
-            mContentMagin = dataItemBean.getContentLayoutMagin();
-        } else {
-            mContentMagin = DensityUtil.dip2px(mContext,10);
-        }
-        LayoutParams rootParams = (LayoutParams) mRootlayout.getLayoutParams();
-        if (mBindItemBean.getItemHight() != 0) {
-            rootParams.height = mBindItemBean.getItemHight();
-        } else {
-            rootParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        }
-        params.topMargin = mContentMagin;
-        params.bottomMargin = mContentMagin;
-        mContenLayout.setLayoutParams(params);
-        mRootlayout.setLayoutParams(rootParams);
+
+        ContentLayoutConfig.load(this,dataItemBean);
+        RootlayoutConfig.load(this,dataItemBean);
         LeftCheckBoxConfig.load(this,dataItemBean);
-
         HeadImageViewConfig.load(dataItemBean,mImageView);
+        TitleTextViewConfig.load(this,dataItemBean);
+        HintTextViewConfig.load(this,dataItemBean);
+        NoticeConfig.load(this,dataItemBean);
+        RightFirstTextViewConfig.load(this,dataItemBean);
+        EditLayoutConfig.load(this,dataItemBean);
+        RightSecondImgeViewConfig.load(this,dataItemBean);
+        SwitchButtonConfig.load(this,dataItemBean);
+        RightFirstButtonConfig.load(this,dataItemBean);
+        RightCenterScaleImgConfig.load(this,dataItemBean);
+        RightUnreadCountConfig.load(this,dataItemBean);
+        RightFirstImageViewConfig.load(this,dataItemBean);
+        ListenerConfig.load(this);
 
-        mTitleTextView.setText(dataItemBean.getTitle());
-        if (dataItemBean.isHintShow()) {
-            mHintTextView.setVisibility(View.VISIBLE);
-            mHintTextView.setText(dataItemBean.getHint());
-            if (dataItemBean.getHintLeftMagin() != 0) {
-                LayoutParams mHintParams =
-                        new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                mHintParams.leftMargin = dataItemBean.getHintLeftMagin();
-                mHintTextView.setLayoutParams(mHintParams);
-            }
-        } else {
-            mHintTextView.setVisibility(View.GONE);
-        }
-        if (StringUtils.isNotEmpty(dataItemBean.getLeftSecondText())) {
-            mNoticeTextView.setText(dataItemBean.getLeftSecondText());
-            mNoticeTextView.setVisibility(View.VISIBLE);
-            if (dataItemBean.getLeftSecondTextColor() != 0) {
-                mNoticeTextView.setTextColor(dataItemBean.getLeftSecondTextColor());
-            }
-            if (dataItemBean.getLeftSecondTextbg() != 0) {
-                mNoticeTextView.setBackgroundResource(dataItemBean.getLeftSecondTextbg());
-            } else {
-                mNoticeTextView.setBackgroundResource(R.drawable.transparent);
-            }
-        } else {
-            mNoticeTextView.setVisibility(View.GONE);
-        }
-        if (dataItemBean.getLeftSecondImgResId() != 0) {
-            mNoticeImageView.setVisibility(View.VISIBLE);
-            mNoticeImageView.setImageResource(dataItemBean.getLeftSecondImgResId());
-        } else {
-            mNoticeImageView.setVisibility(View.GONE);
-        }
-        //设置右侧是否显示
-        if (dataItemBean.getRightFirstTvColor() == 0) {
-            mRightFirstTextView.setTextColor(getResources().getColor(R.color.transparent));
-        } else { //必须由资源文件里面的定义颜色
-            mRightFirstTextView.setTextColor(getResources().getColor(dataItemBean.getRightFirstTvColor()));
-        }
-        if (StringUtils.isNotEmpty(dataItemBean.getRightFirstText())) {
-               if (dataItemBean.getRightFirstText().contains("广")){
-                   mRightFirstTextView.setGravity(Gravity.RIGHT);
-                mRightFirstTextView.setSingleLine(false);
-                mRightFirstTextView.setText(dataItemBean.getRightFirstText());
-                mRightFirstTextView.setVisibility(View.VISIBLE);
-
-            }else{
-                   mRightFirstTextView.setText(dataItemBean.getRightFirstText());
-                   mRightFirstTextView.setVisibility(View.VISIBLE);
-               }
-
-        }
-
-        else {
-            mRightFirstTextView.setVisibility(View.GONE);
-        }
-        if (dataItemBean.getEidtSettings().isShowEdittext()) {//输入框
-            mContentEditLayout.setCallback(new EdittextLayoutView.CallbackListener() {
-                @Override
-                public void onCallback(String text) {
-                    dataItemBean.getEidtSettings().setEditContent(text);
-                }
-            });
-            mContentEditLayout.setVisibility(View.VISIBLE);
-            if (!dataItemBean.getEidtSettings().isEdittextCanEdit()) {
-                mContentEditLayout.setCanUserInput(false);
-            } else {
-                mContentEditLayout.setCanUserInput(true);
-            }
-            mContentEditLayout.setShowCleanImg(dataItemBean.isShowCleanImg());
-            mContentEditLayout.setHint(dataItemBean.getEidtSettings().getEditHint());
-            mContentEditLayout.setText(dataItemBean.getEidtSettings().getEditContent());
-            mContentEditLayout.setOpenKeybord(dataItemBean.getEidtSettings().isOpenKeybord());
-            dataItemBean.getEidtSettings().setOpenKeybord(false);
-            mContentEditLayout.setInputType(dataItemBean.getEidtSettings().getInputType());
-        } else {
-            mContentEditLayout.setVisibility(View.GONE);
-        }
-//        //添加右侧图片显示如头像
-        RightSecondImgSettings secondImgSetting=dataItemBean.getRightSecondImgSettings();
-        if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())||StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgStorePath()) ||secondImgSetting.getRightSecondImgResId() != 0) {
-            LayoutParams mHeadParams = (LayoutParams) mRightSecondImgeView.getLayoutParams();
-            mHeadParams.gravity = Gravity.CENTER_VERTICAL;
-            if (dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius() != 0) {
-                mHeadParams.width = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
-                mHeadParams.height = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
-            }
-            int contentMargin = DensityUtil.dip2px(mContext,5);
-            mHeadParams.rightMargin = contentMargin;
-            mRightSecondImgeView.setLayoutParams(mHeadParams);
-            if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())) {
-                mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage() != null) {
-                    dataItemBean.getIloadImage().load(secondImgSetting.getRightSecondImgURL(), mRightSecondImgeView);
-                }
-            }
-            else if (StringUtils.isNotEmpty(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath())) {
-                mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage()!=null){
-                    dataItemBean.getIloadImage().loadPath(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath(), mRightSecondImgeView);
-                }
-            }
-            else if (dataItemBean.getRightSecondImgSettings().getRightSecondImgResId() != 0) {
-                mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage() != null) {
-                    dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightSecondImgSettings().getRightSecondImgResId(), mRightSecondImgeView);
-                }
-            }
-          
-        } else {
-            boolean isShowEmptyImge = dataItemBean.getRightSecondImgSettings().isShowEmptyImg();
-            if (isShowEmptyImge) {
-                mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage()!=null){
-                    dataItemBean.getIloadImage().loadResourceId(R.drawable.empty_photo,mRightSecondImgeView);
-                }
-            } else {
-                mRightSecondImgeView.setVisibility(View.GONE);
-            }
-        }
-//        //添加选中按钮显示
-        if (dataItemBean.isShowRightCheckbox()) {
-            mSwitchButton.setCheckState(dataItemBean.isRightCheckBoxSelect());
-            mSwitchButton.setVisibility(View.VISIBLE);
-        } else {
-            mSwitchButton.setVisibility(View.GONE);
-        }
-        if (StringUtils.isNotEmpty(dataItemBean.getRightFirstButtonText())) {
-            mRightFirstButton.setVisibility(View.VISIBLE);
-            mRightFirstButton.setText(dataItemBean.getRightFirstButtonText());
-            if (dataItemBean.getRightFirstButtonBgResId() != 0) {
-                mRightFirstButton.setVisibility(View.VISIBLE);
-                mRightFirstButton.setBackgroundResource(dataItemBean.getRightFirstButtonBgResId());
-            }
-        } else {
-            mRightFirstButton.setVisibility(View.GONE);
-        }
-        if (dataItemBean.getRightCenterScaleImgResId() != 0) {
-            mRightCenterScaleImgeLayout.setVisibility(View.VISIBLE);
-            if (dataItemBean.getIloadImage()!=null){
-                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightCenterScaleImgResId(),mRightCenterScaleImgeView);
-            }
-        } else {
-            mRightCenterScaleImgeLayout.setVisibility(View.GONE);
-        }
-        if (dataItemBean.getRightUnreadCount() != 0) {
-//            mMessageCountView.setVisibility(View.VISIBLE);
-//            float textSize = ResourcesUtil.getResourcesFloat(mContext, R.string.recentcontactsitemview_textsize);
-//            mMessageCountView.setTextSize(textSize);
-//            mMessageCountView.setImage(R.drawable.item_recentcontacts_donotbother);
-//            mMessageCountView.setMessageCount(dataItemBean.getRightUnreadCount());
-        } else {
-//            mMessageCountView.reset();
-        }
-        //添加右侧第一个图片如指向图片
-        if (dataItemBean.getRightFistImgeSettings().getRightFirstImgResId() != 0) {
-            LayoutParams mRightFirstParams = (LayoutParams) mRightFirstImageView.getLayoutParams();
-            if (dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius() != 0) {
-                mRightFirstParams.width = dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius();
-                mRightFirstParams.height = dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius();
-            }
-            boolean isInvisiable = dataItemBean.getRightFistImgeSettings().isInvisiable();
-            if (isInvisiable) {
-                mRightFirstImageView.setVisibility(View.INVISIBLE);
-            } else {
-                mRightFirstImageView.setVisibility(View.VISIBLE);
-            }
-            mRightFirstImageView.setLayoutParams(mRightFirstParams);
-            if (dataItemBean.getIloadImage()!=null){
-                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),mRightFirstImageView);
-            }
-        } else {
-            mRightFirstImageView.setVisibility(View.GONE);
-        }
-        initListener();
+//        initListener();
     }
-
-//    private void load(AddressItemBean dataItemBean) {
-//        if (dataItemBean.isShowLeftCheckBox()) {
-//            mLeftCheckBox.setVisibility(View.VISIBLE);
-//            boolean isChecked = dataItemBean.isLeftCheckBoxIsChecked();
-//            if (mSelectUtils != null && !mChangeSelectRefresh) {
-//                isChecked = checkContain(dataItemBean);
-//                dataItemBean.setLeftCheckBoxIsChecked(isChecked);
-//            }
-//            mChangeSelectRefresh = false;
-//            mLeftCheckBox.setChecked(isChecked);
-//        } else {
-//            mLeftCheckBox.setVisibility(View.GONE);
-//        }
-//    }
 
 
     @Override
@@ -358,98 +181,98 @@ public class ContentItemView extends LinearLayout implements IItemView {
         return isChecked;
     }
 
-    public void initListener() {
-        if (mBindItemBean != null && mBindItemBean.getOnRightCheckBoxListener() != null) {
-            mSwitchButton.setOnStateChangeListener(new IOSSwitchButton.OnStateChangeListener() {
-                @Override
-                public void onStateChanged(boolean isOn) {
-                    mBindItemBean.setRightCheckBoxSelect(isOn);
-                    if (mBindItemBean.getOnRightCheckBoxListener() != null) {
-                        mBindItemBean.getOnRightCheckBoxListener().onStateChanged(isOn);
-                    }
-                }
-            });
-        }
-
-        if (mBindItemBean == null || mBindItemBean.getOnItemListener() == null) {
-            mRightFirstButton.setOnClickListener(null);
-            mRightCenterScaleImgeLayout.setOnClickListener(null);
-            mRightSecondImgeView.setOnClickListener(null);
-            mRightFirstImageView.setOnClickListener(null);
-            mRootlayout.setOnClickListener(null);
-            mRootlayout.setOnLongClickListener(null);
-            mRightFirstTextView.setOnClickListener(null);
-            return;
-        }
-        final onItemClick onItemListener = mBindItemBean.getOnItemListener();
-        mRightFirstButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemListener.onItemClick(ClickTypeEnum.RIGHTBUTTION, mBindItemBean);
-            }
-        });
-        mRightCenterScaleImgeLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SCALE_CENTER_IMG, mBindItemBean);
-            }
-        });
-        mRightSecondImgeView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SECOND_IMG, mBindItemBean);
-            }
-        });
-        mRightFirstImageView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemListener.onItemClick(ClickTypeEnum.RIGHT_FIRST_IMG, mBindItemBean);
-            }
-        });
-
-        mRootlayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mBindItemBean.isOnItemClickAble()){
-                    onItemClick(onItemListener);
-
-                }
-            }
-        });
-
-        mRootlayout.setOnLongClickListener(new OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (onItemListener != null&&mBindItemBean.isOnItemClickAble()) {
-                    onItemListener.onItemClick(ClickTypeEnum.ITEM_LONG, mBindItemBean);
-                }
-                return true;
-            }
-        });
-
-        mRightFirstTextView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClick(onItemListener);
-            }
-        });
-    }
-
-    private void onItemClick(onItemClick onItemListener) {
-        if (mBindItemBean.isShowLeftCheckBox()) {
-            mLeftCheckBox.setVisibility(View.VISIBLE);
-            boolean isChecked = mBindItemBean.isLeftCheckBoxIsChecked();
-            if (mSelectUtils != null) {
-                boolean selectReuslt = mSelectUtils.select(!isChecked, mBindItemBean);
-                mBindItemBean.setLeftCheckBoxIsChecked(selectReuslt);
-                mChangeSelectRefresh = true;
-                initData(mBindItemBean);
-            }
-        }
-         if (onItemListener != null) {
-            onItemListener.onItemClick(ClickTypeEnum.ITEM, mBindItemBean);
-        }
-    }
+//    public void initListener() {
+//        if (mBindItemBean != null && mBindItemBean.getOnRightCheckBoxListener() != null) {
+//            mSwitchButton.setOnStateChangeListener(new IOSSwitchButton.OnStateChangeListener() {
+//                @Override
+//                public void onStateChanged(boolean isOn) {
+//                    mBindItemBean.setRightCheckBoxSelect(isOn);
+//                    if (mBindItemBean.getOnRightCheckBoxListener() != null) {
+//                        mBindItemBean.getOnRightCheckBoxListener().onStateChanged(isOn);
+//                    }
+//                }
+//            });
+//        }
+//
+//        if (mBindItemBean == null || mBindItemBean.getOnItemListener() == null) {
+//            mRightFirstButton.setOnClickListener(null);
+//            mRightCenterScaleImgeLayout.setOnClickListener(null);
+//            mRightSecondImgeView.setOnClickListener(null);
+//            mRightFirstImageView.setOnClickListener(null);
+//            mRootlayout.setOnClickListener(null);
+//            mRootlayout.setOnLongClickListener(null);
+//            mRightFirstTextView.setOnClickListener(null);
+//            return;
+//        }
+//        final onItemClick onItemListener = mBindItemBean.getOnItemListener();
+//        mRightFirstButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemListener.onItemClick(ClickTypeEnum.RIGHTBUTTION, mBindItemBean);
+//            }
+//        });
+//        mRightCenterScaleImgeLayout.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SCALE_CENTER_IMG, mBindItemBean);
+//            }
+//        });
+//        mRightSecondImgeView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SECOND_IMG, mBindItemBean);
+//            }
+//        });
+//        mRightFirstImageView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_FIRST_IMG, mBindItemBean);
+//            }
+//        });
+//
+//        mRootlayout.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mBindItemBean.isOnItemAllClickAble()){
+//                    onItemClick(onItemListener);
+//
+//                }
+//            }
+//        });
+//
+//        mRootlayout.setOnLongClickListener(new OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                if (onItemListener != null&&mBindItemBean.isOnItemClickAble()) {
+//                    onItemListener.onItemClick(ClickTypeEnum.ITEM_LONG, mBindItemBean);
+//                }
+//                return true;
+//            }
+//        });
+//
+//        mRightFirstTextView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onItemClick(onItemListener);
+//            }
+//        });
+//    }
+//
+//    private void onItemClick(onItemClick onItemListener) {
+//        if (mBindItemBean.isShowLeftCheckBox()) {
+//            mLeftCheckBox.setVisibility(View.VISIBLE);
+//            boolean isChecked = mBindItemBean.isLeftCheckBoxIsChecked();
+//            if (mSelectUtils != null) {
+//                boolean selectReuslt = mSelectUtils.select(!isChecked, mBindItemBean);
+//                mBindItemBean.setLeftCheckBoxIsChecked(selectReuslt);
+//                mChangeSelectRefresh = true;
+//                initData(mBindItemBean);
+//            }
+//        }
+//         if (onItemListener != null&&  mBindItemBean.isOnItemClickAble()) {
+//            onItemListener.onItemClick(ClickTypeEnum.ITEM, mBindItemBean);
+//        }
+//    }
 
     public void setRightFirstText(String rightFirstText) {
         mRightFirstTextView.setText(rightFirstText);
