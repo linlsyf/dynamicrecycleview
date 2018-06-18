@@ -2,6 +2,7 @@ package com.easy.recycleview.recycleview;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,6 +18,7 @@ import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.item.IloadImage;
 import com.easy.recycleview.recycleview.item.SectionView;
 import com.easy.recycleview.recycleview.item.SpliteView;
+import com.easy.recycleview.recycleview.item.bean.ItemViewBean;
 import com.easy.recycleview.recycleview.sectionview.Section;
 import com.easy.recycleview.recycleview.sectionview.SectionAdapterHelper;
 import com.easysoft.dynamicrecycleview.R;
@@ -34,7 +36,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     RecyclerView mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
-//    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
+    private CustomViewCallBack customViewCallBack;
 
     public AddressRecycleView(Context context) {
         super(context);
@@ -124,8 +126,18 @@ public void  setSpanCount(int  spanCount){
         else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
             itemView=new SpliteView(getContext());
         }
+        else  if (null!=customViewCallBack){
+            itemView=customViewCallBack.getCustomView(getContext(),viewType);
+         }
         return itemView;
     }
+      public  interface  CustomViewCallBack{
+          View getCustomView(Context context,int type);
+      }
+      public  void  initCustomViewCallBack(CustomViewCallBack  callback){
+           this.customViewCallBack=callback;
+      }
+
 
 
     public SectionAdapterHelper getSectionAdapterHelper() {

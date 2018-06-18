@@ -1,7 +1,9 @@
 package com.easysoft.dyview;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.easy.recycleview.recycleview.AddressRecycleView;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
@@ -9,6 +11,8 @@ import com.easy.recycleview.recycleview.item.IItemView;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 import com.easy.recycleview.utils.ToastUtils;
+import com.easysoft.dyview.view.InfoCardView;
+import com.easysoft.dyview.view.dyCardView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +29,29 @@ public class MainActivity extends AppCompatActivity {
 
         recycleView= (AddressRecycleView) findViewById(R.id.recycleView);
 
+        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
+            @Override
+            public View getCustomView(Context context, int viewType) {
+                View  itemView;
+                if (viewType==3){
+                    itemView=new InfoCardView(context);
+                    return itemView;
+                }
+                if (viewType==4){
+                    itemView=new dyCardView(context);
+                    return itemView;
+                }
+                return null;
+            }
+        });
+
+
+
+
         List<AddressItemBean> newSectionList=new ArrayList<AddressItemBean>();
 
         AddressItemBean newItemBean=new AddressItemBean();
+//          newItemBean.setViewType(4);
         newItemBean.setTitle("助手小Q");
         newItemBean.setHint("this is hint");
         newItemBean.setHintShow(true);
@@ -50,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         newItemBean.setHeadImgeSettings(headImgeSettings);
 
 
+
 //        RightSecondImgSettings addressRightSecondImgSettings =new RightSecondImgSettings();
 //        addressRightSecondImgSettings.setRightSecondImgRadius(50);
 //        addressRightSecondImgSettings.setRightSecondImgURL(url);
@@ -67,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
         newSection.setName("其他");
         newSection.setDataMaps(newSectionList);
         recycleView.updateSection(newSection);
+
+
+
+
+
 
         Section  gridViewSection=new Section(SECTION_GRID);
         gridViewSection.setPosition(1);

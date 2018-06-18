@@ -29,7 +29,7 @@ public class dyCardView extends  android.support.v7.widget.AppCompatTextView imp
         initUI(context);
     }
 
-    private void initUI(Context context) {
+    public void initUI(Context context) {
         Random random1 = new Random();
 //       int radom= random1.nextInt(Math.abs(500))+400;
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));

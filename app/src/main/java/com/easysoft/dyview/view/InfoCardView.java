@@ -28,7 +28,7 @@ public class InfoCardView extends  android.support.v7.widget.AppCompatTextView i
         initUI(context);
     }
 
-    private void initUI(Context context) {
+    public void initUI(Context context) {
        View textView= new TextView(context);
 
 

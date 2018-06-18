@@ -1,5 +1,7 @@
 package com.easy.recycleview.recycleview.item;
 
+import android.content.Context;
+
 import java.io.Serializable;
 
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
@@ -44,7 +46,6 @@ public interface IItemView {
 
      void initSelectUtils(MutiTypeSelectUtils selectUtils);
     void initData(AddressItemBean map);
-
     interface onItemClick extends Serializable{
 
         void onItemClick(ClickTypeEnum typeEnum, AddressItemBean bean);

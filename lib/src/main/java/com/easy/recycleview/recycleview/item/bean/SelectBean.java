@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class SelectBean implements Serializable {
 
     private  String id="";
+    private  Object  linkObject;
     /**标题*/
     private  String title="";
 
@@ -44,5 +45,13 @@ public class SelectBean implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Object getLinkObject() {
+        return linkObject;
+    }
+
+    public void setLinkObject(Object linkObject) {
+        this.linkObject = linkObject;
     }
 }
