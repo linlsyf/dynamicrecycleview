@@ -81,22 +81,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
     public void updateSection(Section nextSection,boolean isRefresh) {
         mSectionAdapterHelper.updateSection(nextSection,isRefresh);
     }
-//    public void setLayoutHelpers(List<LayoutHelper> helpers) {
-////        this.mRecycleViewManger.setLayoutHelpers(helpers);
-//        mSectionAdapterHelper.setLayoutHelpers(helpers);
-//    }
-//    public void addLayoutHelper(LayoutHelper layoutHelper){
-//       layoutHelpers.add(layoutHelper);
-//    }
-//    public void addLayoutHelper(LayoutHelper layoutHelper,boolean refresh){
-//       layoutHelpers.add(layoutHelper);
-//       if (refresh){
-//           mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
-//       }
-//    }
-//    public void refreshLayoutHelpers(){
-//        mSectionAdapterHelper.setLayoutHelpers(layoutHelpers);
-//    }
+
 public void  setSpanCount(int  spanCount){
     mSectionAdapterHelper.setSpanCount(spanCount);
 }
