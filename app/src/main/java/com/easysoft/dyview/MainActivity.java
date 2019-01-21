@@ -1,8 +1,8 @@
 package com.easysoft.dyview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.easy.recycleview.recycleview.AddressRecycleView;
@@ -17,7 +17,7 @@ import com.easysoft.dyview.view.dyCardView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private static final java.lang.String SECTION_NEW = "new";
     private static final java.lang.String SECTION_GRID = "grid";
     private static final java.lang.String SECTION_DY = "dy";

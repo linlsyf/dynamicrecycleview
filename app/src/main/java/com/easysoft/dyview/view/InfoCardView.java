@@ -15,7 +15,7 @@ import com.easysoft.dyview.R;
  * Created by ldh on 2017/5/11.
  */
 
-public class InfoCardView extends  android.support.v7.widget.AppCompatTextView implements IItemView {
+public class InfoCardView extends  TextView implements IItemView {
 
     static boolean index=false;
     public InfoCardView(Context context) {

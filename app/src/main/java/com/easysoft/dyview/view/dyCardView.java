@@ -16,7 +16,7 @@ import java.util.Random;
  * Created by ldh on 2017/5/11.
  */
 
-public class dyCardView extends  android.support.v7.widget.AppCompatTextView implements IItemView {
+public class dyCardView extends  TextView implements IItemView {
 
     static boolean index=false;
     public dyCardView(Context context) {

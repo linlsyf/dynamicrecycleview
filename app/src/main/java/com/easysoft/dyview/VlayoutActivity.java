@@ -1,10 +1,10 @@
 package com.easysoft.dyview;
 
+import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class VlayoutActivity extends AppCompatActivity {
+public class VlayoutActivity extends Activity {
     private static final String SECTION_NEW = "new";
     RecyclerView recyclerView;
     @Override
