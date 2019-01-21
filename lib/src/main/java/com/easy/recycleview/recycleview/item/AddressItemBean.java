@@ -20,6 +20,8 @@ public class AddressItemBean implements Serializable,Cloneable{
 
     /**id*/
     private  String id="";
+    /**绑定数据*/
+    private  Object bindObject;
     private  String parentId="";
     /**分组*/
     private  String section ="";
@@ -62,6 +64,7 @@ public class AddressItemBean implements Serializable,Cloneable{
     /**右侧文字*/
     private  String rightFirstText="";
     /**右侧文字 必须由资源文件里面的定义颜色*/
+//    private  int rightFirstTvColor = 0;
     private  int rightFirstTvColor = R.color.common_title_color;
 
     /**右侧按钮文字*/
@@ -457,5 +460,13 @@ public class AddressItemBean implements Serializable,Cloneable{
 
     public void setOnItemAllClickAble(boolean onItemAllClickAble) {
         isOnItemAllClickAble = onItemAllClickAble;
+    }
+
+    public Object getBindObject() {
+        return bindObject;
+    }
+
+    public void setBindObject(Object bindObject) {
+        this.bindObject = bindObject;
     }
 }
