@@ -14,10 +14,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.easy.recycleview.recycleview.item.IloadImage;
 import com.easysoft.CoreApplication;
 
@@ -40,23 +36,23 @@ public class ImageUtils  implements IloadImage {
 //		ThreadPoolUtils.execute(new Runnable() {
 //			@Override
 //			public void run() {
-				Glide.with(CoreApplication.getAppContext())
-						.load(url)
-						.dontAnimate()
-						.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
-						.listener(new RequestListener<String, GlideDrawable>() {
-							@Override
-							public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
-
-								return false;
-							}
-
-							@Override
-							public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
-								return false;
-							}
-						})
-						.into(myImageView);
+//				Glide.with(CoreApplication.getAppContext())
+//						.load(url)
+//						.dontAnimate()
+//						.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
+//						.listener(new RequestListener<String, GlideDrawable>() {
+//							@Override
+//							public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
+//
+//								return false;
+//							}
+//
+//							@Override
+//							public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
+//								return false;
+//							}
+//						})
+//						.into(myImageView);
 //			}
 //		});
 
@@ -75,20 +71,20 @@ public class ImageUtils  implements IloadImage {
 	}
 
 	public void loadPath(final String path, final ImageView myImageView){
-				Glide.with(CoreApplication.getAppContext())
-
-
-						.load(new File(path))
-						.dontAnimate()
-						.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
-						.into(myImageView);
+//				Glide.with(CoreApplication.getAppContext())
+//
+//
+//						.load(new File(path))
+//						.dontAnimate()
+//						.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
+//						.into(myImageView);
 	}
 	public void loadResourceId(int id,ImageView myImageView){
-		Glide.with(CoreApplication.getAppContext())
-		.load(id)
-				.dontAnimate()
-				.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
-		.into(myImageView);
+//		Glide.with(CoreApplication.getAppContext())
+//		.load(id)
+//				.dontAnimate()
+//				.placeholder(R.drawable.empty_photo)//图片加载出来前，显示的图片
+//		.into(myImageView);
 		
 	}
 	  public static class BitmapUtil {
