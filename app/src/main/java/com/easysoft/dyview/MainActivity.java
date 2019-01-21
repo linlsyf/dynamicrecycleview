@@ -26,9 +26,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         recycleView= (AddressRecycleView) findViewById(R.id.recycleView);
-
         recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
             @Override
             public View getCustomView(Context context, int viewType) {

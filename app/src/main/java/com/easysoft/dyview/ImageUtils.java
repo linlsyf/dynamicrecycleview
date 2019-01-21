@@ -31,8 +31,6 @@ public class ImageUtils  implements IloadImage {
 	 }
 	
 	public void load(final String url, final ImageView myImageView){
-
-
 //		ThreadPoolUtils.execute(new Runnable() {
 //			@Override
 //			public void run() {

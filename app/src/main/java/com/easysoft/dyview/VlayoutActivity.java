@@ -35,9 +35,7 @@ public class VlayoutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
         recyclerView= (RecyclerView) findViewById(R.id.recycleView);
-
 //        VirtualLayoutManager layoutManager = new VirtualLayoutManager(this);
 //
 //        recyclerView.setLayoutManager(layoutManager);
