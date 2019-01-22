@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.linlsyf'
 apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 23
@@ -37,7 +36,7 @@ android {
 
 publish {
     userOrg = 'linlsyf'      // bintray注册的用户名
-    groupId = 'com.easysoft.dynamicrecycleview'   包名
+    groupId = 'com.easysoft.dynamicrecycleview'  // 包名
     artifactId = 'dynamicrecycleview'// bintray创建的package
     publishVersion = '1.0.0'
 }
