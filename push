@@ -1,0 +1,1 @@
+./gradlew clean build bintrayUpload -PbintrayUser={linlsyf} -PbintrayKey={bintray api key} -PdryRun=false
