@@ -1,4 +1,5 @@
-./gradlew clean build bintrayUpload -PbintrayUser={linlsyf} -PbintrayKey={} -PdryRun=false
 
-clean build generatePomFileForReleasePublication releaseAndroidJavadocs releaseAndroidJavadocsJar releaseAndroidSourcesJar publishReleasePublicationToMavenLocal
- bintrayUpload -PbintrayUser={linlsyf} -PbintrayKey={bintray api key} -PdryRun=false
+
+gradlew aR bintrayUpload -PbintrayUser=linlsyf -PbintrayKey=linlsyf -PdryRun=false -x releaseAndroidJavadocs
+
+

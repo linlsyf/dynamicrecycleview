@@ -1,0 +1,45 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 251 ciObject found
+ciMethod java/lang/Object <init> ()V 4097 1 1117737 0 0
+ciMethod java/lang/Object getClass ()Ljava/lang/Class; 3073 1 384 0 -1
+ciMethod java/lang/Comparable compareTo (Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/lang/String length ()I 4097 1 49832 0 64
+ciMethod java/lang/String charAt (I)C 4097 1 208310 0 -1
+ciMethod java/lang/String compareTo (Ljava/lang/String;)I 1073 28057 1221 0 -1
+ciMethod java/lang/Class getName ()Ljava/lang/String; 177 1 36 0 -1
+ciMethod java/util/Map get (Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/Map put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/Comparator compare (Ljava/lang/Object;Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/util/AbstractList <init> ()V 3129 1 159775 0 32
+ciMethod java/util/AbstractCollection <init> ()V 265 1 203369 0 32
+ciMethod java/lang/Math max (II)I 225 1 107154 0 -1
+ciMethod java/util/ArrayList <init> ()V 2185 1 117888 0 64
+ciMethod java/util/ArrayList ensureCapacityInternal (I)V 641 1 247382 0 0
+ciMethod java/util/ArrayList ensureExplicitCapacity (I)V 641 1 225990 0 576
+ciMethod java/util/ArrayList grow (I)V 89 1 9461 0 544
+ciMethod java/util/ArrayList hugeCapacity (I)I 0 0 1 0 0
+ciMethod java/util/ArrayList add (Ljava/lang/Object;)Z 641 1 239388 0 736
+ciMethod java/util/Arrays copyOf ([Ljava/lang/Object;I)[Ljava/lang/Object; 2529 1 23158 0 0
+ciMethod java/util/Arrays copyOf ([Ljava/lang/Object;ILjava/lang/Class;)[Ljava/lang/Object; 2329 1 14011 0 -1
+ciMethod java/util/TreeMap get (Ljava/lang/Object;)Ljava/lang/Object; 4097 1 15047 0 0
+ciMethod java/util/TreeMap getEntry (Ljava/lang/Object;)Ljava/util/TreeMap$Entry; 4097 1 16437 0 1376
+ciMethod java/util/TreeMap getEntryUsingComparator (Ljava/lang/Object;)Ljava/util/TreeMap$Entry; 3529 24577 790 0 0
+ciMethod java/util/TreeMap put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 3929 24577 11669 0 0
+ciMethod java/util/TreeMap compare (Ljava/lang/Object;Ljava/lang/Object;)I 425 1 4007 0 0
+ciMethod java/util/TreeMap colorOf (Ljava/util/TreeMap$Entry;)Z 4097 1 6898 0 0
+ciMethod java/util/TreeMap parentOf (Ljava/util/TreeMap$Entry;)Ljava/util/TreeMap$Entry; 4097 1 72369 0 64
+ciMethod java/util/TreeMap setColor (Ljava/util/TreeMap$Entry;Z)V 4097 1 17214 0 0
+ciMethod java/util/TreeMap leftOf (Ljava/util/TreeMap$Entry;)Ljava/util/TreeMap$Entry; 4097 1 12591 0 0
+ciMethod java/util/TreeMap rightOf (Ljava/util/TreeMap$Entry;)Ljava/util/TreeMap$Entry; 4097 1 4682 0 0
+ciMethod java/util/TreeMap rotateLeft (Ljava/util/TreeMap$Entry;)V 19329 1 2830 0 0
+ciMethod java/util/TreeMap rotateRight (Ljava/util/TreeMap$Entry;)V 15585 1 2202 0 0
+ciMethod java/util/TreeMap fixAfterInsertion (Ljava/util/TreeMap$Entry;)V 4097 4817 7658 0 0
+ciMethod sun/misc/ASCIICaseInsensitiveComparator compare (Ljava/lang/String;Ljava/lang/String;)I 4097 6513 12791 0 0
+ciMethod sun/misc/ASCIICaseInsensitiveComparator toLower (I)I 4097 1 27437 0 -1
+ciMethod sun/misc/ASCIICaseInsensitiveComparator compare (Ljava/lang/Object;Ljava/lang/Object;)I 4097 1 12791 0 0
+ciMethod java/util/TreeMap$Entry <init> (Ljava/lang/Object;Ljava/lang/Object;Ljava/util/TreeMap$Entry;)V 4097 1 11669 0 0
+ciMethod java/util/TreeMap$Entry setValue (Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 0
+ciMethodData java/lang/String length ()I 2 49832 orig 144 104 11 42 110 0 0 0 0 232 59 75 27 0 0 0 0 168 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 65 5 6 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 1 0 0 0 0 0 255 255 255 255 0 0 0 0 0 0 0 0 0 0 0 0 data 0 oops 0
+ciMethodData java/util/TreeMap parentOf (Ljava/util/TreeMap$Entry;)Ljava/util/TreeMap$Entry; 2 72369 orig 144 104 11 42 110 0 0 0 0 32 73 92 27 0 0 0 0 224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
