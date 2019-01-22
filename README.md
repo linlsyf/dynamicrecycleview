@@ -1,3 +1,4 @@
+[ ![Download](https://api.bintray.com/packages/linlsyf/maven/dynamicrecycleview/images/download.svg) ](https://bintray.com/linlsyf/maven/dynamicrecycleview/_latestVersion)
 # 主界面加载不同类型item  recycleview
 
 基于recycleview 实现可扩展易使用的界面
