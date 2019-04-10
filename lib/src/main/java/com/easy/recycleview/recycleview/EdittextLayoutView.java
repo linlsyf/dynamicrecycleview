@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.easy.recycleview.base.BaseLinearLayout;
 import com.easysoft.dynamicrecycleview.R;
 
 
@@ -22,7 +23,7 @@ import com.easysoft.dynamicrecycleview.R;
  *注释：输入框 显示删除按钮
  */
 
-public class EdittextLayoutView extends LinearLayout{
+public class EdittextLayoutView extends BaseLinearLayout {
     Context mContext;
     RelativeLayout mCleanLayout;
     EditText mContentEditText;
@@ -40,7 +41,7 @@ public class EdittextLayoutView extends LinearLayout{
         initUI(context);
     }
 
-    private void initUI(Context context) {
+    protected void initUI(Context context) {
         mContext = context;
         View rootView = LayoutInflater.from(context).inflate(R.layout.view_edittextlayout, this, true);
          mCleanLayout =(RelativeLayout) rootView.findViewById(R.id.cleanLayout);

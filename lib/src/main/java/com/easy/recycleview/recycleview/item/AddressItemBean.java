@@ -7,6 +7,9 @@ import com.easy.recycleview.recycleview.item.bean.AddressEditSettings;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.item.bean.AddressRightFistImgeSettings;
 import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IloadImage;
+import com.easy.recycleview.recycleview.sectionview.EditCallBack;
 import com.easysoft.dynamicrecycleview.R;
 
 /**
@@ -17,6 +20,8 @@ import com.easysoft.dynamicrecycleview.R;
 public class AddressItemBean implements Serializable,Cloneable{
     /** 图片加载接口*/
     IloadImage iloadImage;
+    /** 执行回调*/
+    EditCallBack mEditCallBack;
 
     /**id*/
     private  String id="";
@@ -30,7 +35,7 @@ public class AddressItemBean implements Serializable,Cloneable{
     /**隶属的选择类型 如部门或者人员*/
     private  String selectType ="";
     /**界面类型*/
-    private  int viewType =IItemView.ViewTypeEnum.ITEM.value();
+    private  int viewType = IItemView.ViewTypeEnum.ITEM.value();
     /**根目录背景图片*/
     private  int contentBgResid=0;
     /**标题*/

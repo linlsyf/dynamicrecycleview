@@ -1,4 +1,7 @@
-package com.easy.recycleview.DebugUtlis;
+package com.easysoft.DebugUtlis;
+
+import android.os.Environment;
+import android.util.Log;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -10,11 +13,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-
-import android.os.Environment;
-import android.util.Log;
-
-import com.easy.recycleview.utils.TimeUtils;
 
 /**
  * 

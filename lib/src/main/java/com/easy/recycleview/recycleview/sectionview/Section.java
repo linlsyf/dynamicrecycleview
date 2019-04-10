@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 
 /**
  *创建者：林党宏

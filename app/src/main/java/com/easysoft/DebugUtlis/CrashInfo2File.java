@@ -1,4 +1,6 @@
-package com.easy.recycleview.DebugUtlis;
+package com.easysoft.DebugUtlis;
+
+import android.os.Environment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,10 +10,6 @@ import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.os.Environment;
-
-import com.easy.recycleview.utils.FileUtils;
-import com.easy.recycleview.utils.TimeUtils;
 /**
  * 
  * 写错误信息

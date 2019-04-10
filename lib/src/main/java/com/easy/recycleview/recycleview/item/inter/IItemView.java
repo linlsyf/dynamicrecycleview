@@ -1,9 +1,10 @@
-package com.easy.recycleview.recycleview.item;
+package com.easy.recycleview.recycleview.item.inter;
 
 import android.content.Context;
 
 import java.io.Serializable;
 
+import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 
 /**
@@ -34,7 +35,8 @@ public interface IItemView {
         RIGHT_SCALE_CENTER_IMG(3),
         ITEM_LONG(4),
         SECTION_DELETE(5),
-        RIGHT_SECOND_IMG(6);
+        RIGHT_SECOND_IMG(6),
+        CUSTOM(100);
         private int value=0;
         ClickTypeEnum(int value) {    //    必须是private的，否则编译错误
             this.value = value;

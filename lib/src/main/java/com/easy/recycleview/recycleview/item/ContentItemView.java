@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,10 @@ import android.widget.TextView;
 
 
 //import com.core.imge.ImageUtils;
+import com.easy.recycleview.base.BaseLinearLayout;
 import com.easy.recycleview.recycleview.EdittextLayoutView;
 import com.easy.recycleview.recycleview.MessageCountView;
 import com.easy.recycleview.recycleview.button.IOSSwitchButton;
-import com.easy.recycleview.recycleview.item.bean.RightSecondImgSettings;
 import com.easy.recycleview.recycleview.item.config.ContentLayoutConfig;
 import com.easy.recycleview.recycleview.item.config.EditLayoutConfig;
 import com.easy.recycleview.recycleview.item.config.HeadImageViewConfig;
@@ -36,9 +35,8 @@ import com.easy.recycleview.recycleview.item.config.RightUnreadCountConfig;
 import com.easy.recycleview.recycleview.item.config.RootlayoutConfig;
 import com.easy.recycleview.recycleview.item.config.SwitchButtonConfig;
 import com.easy.recycleview.recycleview.item.config.TitleTextViewConfig;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
-import com.easy.recycleview.utils.DensityUtil;
-import com.easy.recycleview.utils.StringUtils;
 import com.easysoft.dynamicrecycleview.R;
 
 /**
@@ -48,7 +46,7 @@ import com.easysoft.dynamicrecycleview.R;
  * 由数据控制是否显示界面
  */
 
-public class ContentItemView extends LinearLayout implements IItemView {
+public class ContentItemView extends BaseLinearLayout implements IItemView {
     public LinearLayout mRootlayout;
     /** 右侧chcekbox */
     public IOSSwitchButton mSwitchButton;
@@ -80,11 +78,8 @@ public class ContentItemView extends LinearLayout implements IItemView {
     public AddressItemBean mBindItemBean = new AddressItemBean();
     /** 多选控制工具 */
     public MutiTypeSelectUtils mSelectUtils;
-//    /** magin */
-//    private int mContentMagin = 0;
 
     public boolean mChangeSelectRefresh = false;
-
     public ContentItemView(Context context) {
         super(context);
         initUI(context);
@@ -95,13 +90,10 @@ public class ContentItemView extends LinearLayout implements IItemView {
         initUI(context);
     }
 
-    private void initUI(Context context) {
+    protected void initUI(Context context) {
         mContext = context;
         View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, this,true);
-//        addView(rootView);
-
          mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
-
          mSwitchButton=(IOSSwitchButton) rootView.findViewById(R.id.switchButton);
         /** 左侧选中图标 */
          mLeftCheckBox=(CheckBox) rootView.findViewById(R.id.chkItem);
@@ -126,15 +118,12 @@ public class ContentItemView extends LinearLayout implements IItemView {
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
         /** 内容布局可设置magin布局 */
          mMessageCountView=(MessageCountView) rootView.findViewById(R.id.messageCountView);
-
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
 
     public void initData(final AddressItemBean dataItemBean) {
-        //添加头部 //添加左侧侧布局
-        mBindItemBean = dataItemBean;
-
+        mBindItemBean = dataItemBean;//添加头部 //添加左侧侧布局
         ContentLayoutConfig.load(this,dataItemBean);
         RootlayoutConfig.load(this,dataItemBean);
         LeftCheckBoxConfig.load(this,dataItemBean);
@@ -152,7 +141,6 @@ public class ContentItemView extends LinearLayout implements IItemView {
         RightFirstImageViewConfig.load(this,dataItemBean);
         ListenerConfig.load(this);
 
-//        initListener();
     }
 
 
@@ -180,99 +168,6 @@ public class ContentItemView extends LinearLayout implements IItemView {
         }
         return isChecked;
     }
-
-//    public void initListener() {
-//        if (mBindItemBean != null && mBindItemBean.getOnRightCheckBoxListener() != null) {
-//            mSwitchButton.setOnStateChangeListener(new IOSSwitchButton.OnStateChangeListener() {
-//                @Override
-//                public void onStateChanged(boolean isOn) {
-//                    mBindItemBean.setRightCheckBoxSelect(isOn);
-//                    if (mBindItemBean.getOnRightCheckBoxListener() != null) {
-//                        mBindItemBean.getOnRightCheckBoxListener().onStateChanged(isOn);
-//                    }
-//                }
-//            });
-//        }
-//
-//        if (mBindItemBean == null || mBindItemBean.getOnItemListener() == null) {
-//            mRightFirstButton.setOnClickListener(null);
-//            mRightCenterScaleImgeLayout.setOnClickListener(null);
-//            mRightSecondImgeView.setOnClickListener(null);
-//            mRightFirstImageView.setOnClickListener(null);
-//            mRootlayout.setOnClickListener(null);
-//            mRootlayout.setOnLongClickListener(null);
-//            mRightFirstTextView.setOnClickListener(null);
-//            return;
-//        }
-//        final onItemClick onItemListener = mBindItemBean.getOnItemListener();
-//        mRightFirstButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemListener.onItemClick(ClickTypeEnum.RIGHTBUTTION, mBindItemBean);
-//            }
-//        });
-//        mRightCenterScaleImgeLayout.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SCALE_CENTER_IMG, mBindItemBean);
-//            }
-//        });
-//        mRightSecondImgeView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_SECOND_IMG, mBindItemBean);
-//            }
-//        });
-//        mRightFirstImageView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemListener.onItemClick(ClickTypeEnum.RIGHT_FIRST_IMG, mBindItemBean);
-//            }
-//        });
-//
-//        mRootlayout.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mBindItemBean.isOnItemAllClickAble()){
-//                    onItemClick(onItemListener);
-//
-//                }
-//            }
-//        });
-//
-//        mRootlayout.setOnLongClickListener(new OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                if (onItemListener != null&&mBindItemBean.isOnItemClickAble()) {
-//                    onItemListener.onItemClick(ClickTypeEnum.ITEM_LONG, mBindItemBean);
-//                }
-//                return true;
-//            }
-//        });
-//
-//        mRightFirstTextView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemClick(onItemListener);
-//            }
-//        });
-//    }
-//
-//    private void onItemClick(onItemClick onItemListener) {
-//        if (mBindItemBean.isShowLeftCheckBox()) {
-//            mLeftCheckBox.setVisibility(View.VISIBLE);
-//            boolean isChecked = mBindItemBean.isLeftCheckBoxIsChecked();
-//            if (mSelectUtils != null) {
-//                boolean selectReuslt = mSelectUtils.select(!isChecked, mBindItemBean);
-//                mBindItemBean.setLeftCheckBoxIsChecked(selectReuslt);
-//                mChangeSelectRefresh = true;
-//                initData(mBindItemBean);
-//            }
-//        }
-//         if (onItemListener != null&&  mBindItemBean.isOnItemClickAble()) {
-//            onItemListener.onItemClick(ClickTypeEnum.ITEM, mBindItemBean);
-//        }
-//    }
 
     public void setRightFirstText(String rightFirstText) {
         mRightFirstTextView.setText(rightFirstText);

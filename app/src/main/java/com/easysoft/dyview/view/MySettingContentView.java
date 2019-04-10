@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.easy.recycleview.recycleview.AddressRecycleView;
-import com.easy.recycleview.recycleview.item.IItemView;
 
 
 /**

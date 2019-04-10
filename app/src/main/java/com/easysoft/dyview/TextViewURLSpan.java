@@ -1,7 +1,10 @@
-package com.easy.recycleview.utils;
+package com.easysoft.dyview;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -58,7 +61,29 @@ public class TextViewURLSpan extends ClickableSpan{
 			((TextView) view).setHighlightColor(context.getResources().getColor(android.R.color.transparent));
 		}
 	}
-	 
+	/**
+	 *
+	 *<br> 创建者：林党宏
+	 *<br>时间：2016年6月2日 下午4:01:49
+	 *<br>注释：拼接有文字的点击 textview
+	 *@param contentTextView 用来显示的textview
+	 *@param firstString 开头的文字
+	 *@param clickString 点击的 带颜色的文字
+	 *@param cliclkColor 点击的 带颜色的文字
+	 */
+	public static void setLinkText(Context mContext, TextView contentTextView, String firstString, String clickString, int  cliclkColor, View.OnClickListener mOnClickListener){
+		contentTextView.setMovementMethod(LinkMovementMethod.getInstance());
+		SpannableString spanStr = new SpannableString(firstString);// 注册账号即表示您同意遵守?账号的
+		SpannableStringBuilder ssb = new SpannableStringBuilder(spanStr);
+		ssb.append(clickString);
+		// 计算第一个点击文字的位置
+		final int start = spanStr.length();
+		TextViewURLSpan clickItem1 = new TextViewURLSpan(mContext, mOnClickListener);
+		clickItem1.setcliclkColorColor(cliclkColor);
+		ssb.setSpan(clickItem1, start, start + clickString.length(), 0);
+		// 设置文字到textview
+		contentTextView.setText(ssb, TextView.BufferType.SPANNABLE);
+	}
 	 /**
 	  * 
 	  *<br> 创建者：ldh

@@ -11,21 +11,20 @@ import android.widget.LinearLayout;
  * <br>修改时间：2015年5月26日 下午6:20:33 
  * <br>注释：tab_my的自定义view的父类
  */
-public class BaseCustomView extends LinearLayout{
+public class BaseLinearLayout extends LinearLayout{
 	protected Context mContext;
-/**父控件*/
-	protected View  rootView;
-	
-	public BaseCustomView(Context context) {
+	protected View  rootView;/**父控件*/
+
+
+	public BaseLinearLayout(Context context) {
 		super(context,null);
-//		this.BaseCustomView(context,null);
 	}
 	
 
-	public BaseCustomView(Context context, AttributeSet attrs) {
+	public BaseLinearLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.mContext = context;
-		this.setOrientation(VERTICAL);
+		//this.setOrientation(VERTICAL);
 		initUI(context);
 	}
 
@@ -44,14 +43,14 @@ public class BaseCustomView extends LinearLayout{
 	 * 注释：初始化界面
 	 * @param context
 	 */
-	public void initUI(Context context) {
+	protected void initUI(Context context) {
 
 	}
-	public void initData() {
+	protected void initData() {
 
 	}
 
-	public void initListener(OnClickListener listener) {
+	protected void initListener(OnClickListener listener) {
 		
 	}
 }

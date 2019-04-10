@@ -14,10 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import com.easy.recycleview.recycleview.item.IloadImage;
-import com.easysoft.CoreApplication;
-
-import java.io.File;
+import com.easy.recycleview.recycleview.item.inter.IloadImage;
 
 public class ImageUtils  implements IloadImage {
 	

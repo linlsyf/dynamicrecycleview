@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 import com.easysoft.dyview.R;
 

@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.easy.recycleview.recycleview.AddressRecycleView;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.recycleview.sectionview.Section;
 import com.easy.recycleview.utils.ToastUtils;

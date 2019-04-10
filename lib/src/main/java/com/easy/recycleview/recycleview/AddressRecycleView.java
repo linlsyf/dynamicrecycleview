@@ -2,23 +2,21 @@ package com.easy.recycleview.recycleview;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.easy.recycleview.base.BaseLinearLayout;
 import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.ContentItemView;
-import com.easy.recycleview.recycleview.item.IItemView;
-import com.easy.recycleview.recycleview.item.IloadImage;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IloadImage;
 import com.easy.recycleview.recycleview.item.SectionView;
 import com.easy.recycleview.recycleview.item.SpliteView;
-import com.easy.recycleview.recycleview.item.bean.ItemViewBean;
 import com.easy.recycleview.recycleview.sectionview.Section;
 import com.easy.recycleview.recycleview.sectionview.SectionAdapterHelper;
 import com.easysoft.dynamicrecycleview.R;
@@ -31,17 +29,15 @@ import com.easysoft.dynamicrecycleview.R;
  *
  */
 
-public class AddressRecycleView extends LinearLayout implements SectionAdapterHelper.IAddItemView {
+public class AddressRecycleView extends BaseLinearLayout implements SectionAdapterHelper.IAddItemView {
     View mEmptyView;
     RecyclerView mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
-
     public AddressRecycleView(Context context) {
         super(context);
         initUI(context);
-
     }
 
     public AddressRecycleView(Context context, AttributeSet attrs) {
@@ -50,7 +46,7 @@ public class AddressRecycleView extends LinearLayout implements SectionAdapterHe
 
     }
 
-    private void initUI(Context context) {
+    protected void initUI(Context context) {
        View  rootView= LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
          mEmptyView=rootView.findViewById(R.id.emptyView);
          mRefreshRecyclerView=(RecyclerView) rootView.findViewById(R.id.refreshRecycleView);

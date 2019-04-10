@@ -1,8 +1,9 @@
-package com.easy.recycleview.DebugUtlis;
+package com.easysoft.DebugUtlis;
+
+import android.content.Context;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
-import android.content.Context;
 /**
  * 
  * 

@@ -1,4 +1,4 @@
-package com.easy.recycleview.utils;
+package com.easysoft.DebugUtlis;
 
 import java.text.DateFormat;
 import java.text.ParseException;

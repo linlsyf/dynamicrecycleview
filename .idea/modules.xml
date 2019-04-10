@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://G:\dynamicrecycleview\app\app.iml" filepath="G:\dynamicrecycleview\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dynamicrecycleview.iml" filepath="$PROJECT_DIR$/dynamicrecycleview.iml" />
+      <module fileurl="file://G:\dynamicrecycleview\dynamicrecycleview.iml" filepath="G:\dynamicrecycleview\dynamicrecycleview.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://G:\dynamicrecycleview\lib\lib.iml" filepath="G:\dynamicrecycleview\lib\lib.iml" />
     </modules>
   </component>
 </project>

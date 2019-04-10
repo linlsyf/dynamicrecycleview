@@ -1,6 +1,6 @@
 package com.easy.recycleview.recycleview;
 
-import com.easy.recycleview.recycleview.item.IloadImage;
+import com.easy.recycleview.recycleview.item.inter.IloadImage;
 
 /**
  * Created by lindanghong on 2018/4/20.

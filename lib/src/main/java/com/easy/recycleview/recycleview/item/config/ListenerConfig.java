@@ -3,9 +3,8 @@ package com.easy.recycleview.recycleview.item.config;
 import android.view.View;
 
 import com.easy.recycleview.recycleview.button.IOSSwitchButton;
-import com.easy.recycleview.recycleview.item.AddressItemBean;
 import com.easy.recycleview.recycleview.item.ContentItemView;
-import com.easy.recycleview.recycleview.item.IItemView;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 
 /**
  * Created by Chant on 2018/6/17.

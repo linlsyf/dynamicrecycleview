@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.easy.recycleview.base.BaseLinearLayout;
+import com.easy.recycleview.recycleview.item.inter.IItemView;
 import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
 import com.easy.recycleview.recycleview.sectionview.Section;
 import com.easysoft.dynamicrecycleview.R;
@@ -19,7 +21,7 @@ import com.easysoft.dynamicrecycleview.R;
  *注释：分组界面
  */
 
-public class SectionView extends LinearLayout implements IItemView{
+public class SectionView extends BaseLinearLayout implements IItemView {
     /** 分组名字*/
     TextView mTitleView;
     Context mContext;
@@ -35,7 +37,7 @@ public class SectionView extends LinearLayout implements IItemView{
 
     }
 
-    private void initUI(Context context) {
+    protected void initUI(Context context) {
         mContext=context;
      View rootView=   LayoutInflater.from(mContext).inflate( R.layout.view_section, this, true);
         mTitleView= (TextView)rootView.findViewById(R.id.tvSection);
