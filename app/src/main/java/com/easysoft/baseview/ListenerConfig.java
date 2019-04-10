@@ -1,4 +1,4 @@
-package com.easysoft.baseview.config;
+package com.easysoft.baseview;
 
 import android.view.View;
 

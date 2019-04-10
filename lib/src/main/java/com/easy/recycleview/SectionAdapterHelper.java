@@ -653,7 +653,6 @@ public class SectionAdapterHelper {
             final IAddressItemBean item=mDataArrayList.get(position);
             item.setPosition(position);
             IItemView itemView= holder.getItemView();
-//            itemView.initSelectUtils(mSelectUtils);
             itemView.initData(item);
         }
 //        public void setIsMutiSelect(String type, boolean isMutiSelect) {

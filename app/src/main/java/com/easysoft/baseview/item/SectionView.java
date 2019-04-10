@@ -69,10 +69,7 @@ public class SectionView extends BaseLinearLayout implements IItemView {
     }
 
 
-    @Override
-    public void initSelectUtils(IMutiTypeSelectUtils selectUtils) {
 
-    }
 
     @Override
     public void initData(IAddressItemBean map) {

@@ -38,8 +38,4 @@ public class MarginSpliteView extends BaseLinearLayout implements IItemView {
 
     }
 
-    @Override
-    public void initSelectUtils(IMutiTypeSelectUtils selectUtils) {
-
-    }
 }

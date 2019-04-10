@@ -46,9 +46,5 @@ public class dyCardView extends  TextView implements IItemView {
 
     }
 
-    @Override
-    public void initSelectUtils(IMutiTypeSelectUtils selectUtils) {
-
-    }
 }
 

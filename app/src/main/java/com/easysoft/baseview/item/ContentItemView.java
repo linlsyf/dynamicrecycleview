@@ -22,7 +22,7 @@ import com.easysoft.baseview.config.EditLayoutConfig;
 import com.easysoft.baseview.config.HeadImageViewConfig;
 import com.easysoft.baseview.config.HintTextViewConfig;
 import com.easysoft.baseview.config.LeftCheckBoxConfig;
-import com.easysoft.baseview.config.ListenerConfig;
+import com.easysoft.baseview.ListenerConfig;
 import com.easysoft.baseview.config.NoticeConfig;
 import com.easysoft.baseview.config.RightCenterScaleImgConfig;
 import com.easysoft.baseview.config.RightFirstButtonConfig;
@@ -33,7 +33,6 @@ import com.easysoft.baseview.config.RightUnreadCountConfig;
 import com.easysoft.baseview.config.RootlayoutConfig;
 import com.easysoft.baseview.config.SwitchButtonConfig;
 import com.easysoft.baseview.config.TitleTextViewConfig;
-import com.easysoft.baseview.inter.IMutiTypeSelectUtils;
 import com.easysoft.bean.AddressItemBean;
 import com.easysoft.dyview.R;
 
@@ -147,7 +146,6 @@ public class ContentItemView extends BaseLinearLayout implements IItemView {
     }
 
 
-    @Override
     public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
         this.mSelectUtils = selectUtils;
     }

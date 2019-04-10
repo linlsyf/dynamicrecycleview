@@ -51,6 +51,10 @@ public class MutiTypeSelectUtils  {
           }
       }
       selectType=mItemMap.getSelectType();
+      if (selectType==""){
+          selectType=mItemMap.getSection();
+          mItemMap.setSelectType(selectType);
+      }
       List<AddressItemBean> typeListMap=null;
       boolean mIsMutiUserSelect=true;
      //从多类型中获取数据源
