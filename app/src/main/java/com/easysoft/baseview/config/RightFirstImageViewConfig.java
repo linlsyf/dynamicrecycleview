@@ -26,8 +26,8 @@ public class RightFirstImageViewConfig {
                 itemView.mRightFirstImageView.setVisibility(View.VISIBLE);
             }
             itemView.mRightFirstImageView.setLayoutParams(mRightFirstParams);
-            if (dataItemBean.getIloadImage()!=null){
-                dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),itemView.mRightFirstImageView);
+            if ( ImgloadConfig.getInstance().getIloadImage()!=null){
+                 ImgloadConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),itemView.mRightFirstImageView);
             }
         } else {
             itemView.mRightFirstImageView.setVisibility(View.GONE);

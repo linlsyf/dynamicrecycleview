@@ -1,4 +1,4 @@
-package com.easy.recycleview.inter;
+package com.easysoft.baseview.inter;
 
 import java.util.List;
 import java.util.Map;

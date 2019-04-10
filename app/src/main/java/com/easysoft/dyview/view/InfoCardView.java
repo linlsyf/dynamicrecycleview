@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.inter.IMutiTypeSelectUtils;
 
 /**
  * Created by ldh on 2017/5/11.

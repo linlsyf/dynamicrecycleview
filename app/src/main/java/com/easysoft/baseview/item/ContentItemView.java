@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.inter.IMutiTypeSelectUtils;
 import com.easysoft.baseview.EdittextLayoutView;
 import com.easysoft.baseview.base.BaseLinearLayout;
+import com.easysoft.baseview.base.select.MutiTypeSelectUtils;
 import com.easysoft.baseview.button.IOSSwitchButton;
 import com.easysoft.baseview.config.ContentLayoutConfig;
 import com.easysoft.baseview.config.EditLayoutConfig;
@@ -33,6 +33,7 @@ import com.easysoft.baseview.config.RightUnreadCountConfig;
 import com.easysoft.baseview.config.RootlayoutConfig;
 import com.easysoft.baseview.config.SwitchButtonConfig;
 import com.easysoft.baseview.config.TitleTextViewConfig;
+import com.easysoft.baseview.inter.IMutiTypeSelectUtils;
 import com.easysoft.bean.AddressItemBean;
 import com.easysoft.dyview.R;
 
@@ -78,7 +79,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView {
     /** 绑定数据 */
     public AddressItemBean mBindItemBean = new AddressItemBean();
     /** 多选控制工具 */
-    public IMutiTypeSelectUtils mSelectUtils;
+    public MutiTypeSelectUtils mSelectUtils;
 
     public boolean mChangeSelectRefresh = false;
     public ContentItemView(Context context) {
@@ -147,14 +148,14 @@ public class ContentItemView extends BaseLinearLayout implements IItemView {
 
 
     @Override
-    public void initSelectUtils(IMutiTypeSelectUtils  selectUtils) {
+    public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
         this.mSelectUtils = selectUtils;
     }
 
     public boolean checkContain(AddressItemBean mItemMap) {
         boolean isChecked = false;
         boolean isContainType = mSelectUtils.getSelectedMap().containsKey(mItemMap.getSelectType());
-        List<IAddressItemBean> typeListMap = null;
+        List<AddressItemBean> typeListMap = null;
         if (isContainType) {//从多类型中获取数据源
             typeListMap = mSelectUtils.getSelectedMap().get(mItemMap.getSelectType());
             if (typeListMap != null) {

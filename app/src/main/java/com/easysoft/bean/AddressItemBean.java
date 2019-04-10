@@ -2,7 +2,6 @@ package com.easysoft.bean;
 
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.inter.IloadImage;
 import com.easysoft.baseview.button.IOSSwitchButton;
 import com.easysoft.dyview.R;
 
@@ -14,8 +13,7 @@ import java.io.Serializable;
  *注释：通用通讯录界面item数据源
  */
 public class AddressItemBean implements IAddressItemBean, Serializable,Cloneable{
-    /** 图片加载接口*/
-    IloadImage iloadImage;
+
     /** 执行回调*/
     /** 状态切换监听*/
     private OnStateChangeListener mListener;
@@ -447,13 +445,6 @@ public class AddressItemBean implements IAddressItemBean, Serializable,Cloneable
         isOnItemClickAble = onItemClickAble;
     }
 
-    public IloadImage getIloadImage() {
-        return iloadImage;
-    }
-
-    public void setIloadImage(IloadImage iloadImage) {
-        this.iloadImage = iloadImage;
-    }
 
     @Override
     public Object clone() throws CloneNotSupportedException {

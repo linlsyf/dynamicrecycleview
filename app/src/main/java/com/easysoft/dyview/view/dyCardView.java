@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.inter.IMutiTypeSelectUtils;
 
 import java.util.Random;
 

@@ -2,8 +2,8 @@ package com.easysoft;
 
 import android.app.Application;
 
-import com.easy.recycleview.RecycleViewManage;
 import com.easysoft.DebugUtlis.CrashHandler;
+import com.easysoft.baseview.config.ImgloadConfig;
 import com.easysoft.dyview.ImageUtils;
 
 /**
@@ -16,7 +16,7 @@ public class CoreApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        RecycleViewManage.getInStance().setIloadImage(ImageUtils.getInStance());
+        ImgloadConfig.getInstance().setIloadImage(ImageUtils.getInStance());
         CrashHandler.getInstance().init(this);
 
     }

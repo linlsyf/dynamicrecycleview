@@ -10,13 +10,8 @@ import android.widget.RelativeLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IEmptyView;
-import com.easy.recycleview.inter.IMutiTypeSelectUtils;
-import com.easy.recycleview.inter.IloadImage;
 import com.easy.recycleview.view.EmptyView;
 import com.easysoft.dynamicrecycleview.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *创建者：林党宏
@@ -58,7 +53,6 @@ public class AddressRecycleView extends RelativeLayout implements SectionAdapter
         mSectionAdapterHelper.setEmptyView(mIEmptyView);
 
         mSectionAdapterHelper.setIAddItemView(this);
-        setIloadImage(RecycleViewManage.getInStance().getIloadImage());
     }
     public void  setEmptyView(View iEmptyView){
 //        mIEmptyView.setVisibility(View.GONE);
@@ -69,19 +63,19 @@ public class AddressRecycleView extends RelativeLayout implements SectionAdapter
     }
 
 
-    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
-        mSectionAdapterHelper.initIMutiTypeSelectUtils(mSelectUtils);
-    }
+//    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
+//        mSectionAdapterHelper.initIMutiTypeSelectUtils(mSelectUtils);
+//    }
     public RecyclerView getRefreshRecyclerView() {
         return mRefreshRecyclerView;
     }
-    public List<IAddressItemBean> getSelectList(String sectionId){
-        List<IAddressItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
-       if (selectList==null){
-           selectList=new ArrayList<IAddressItemBean>();
-       }
-        return selectList;
-    }
+//    public List<IAddressItemBean> getSelectList(String sectionId){
+//        List<IAddressItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
+//       if (selectList==null){
+//           selectList=new ArrayList<IAddressItemBean>();
+//       }
+//        return selectList;
+//    }
     public void initLayoutManager(RecyclerView.LayoutManager layout) {
         mSectionAdapterHelper.initLayoutManager(layout);
     }
@@ -98,10 +92,7 @@ public void  setSpanCount(int  spanCount){
     public void clean() {
         mSectionAdapterHelper.clean();
     }
-    public void cleanSelected(){
-        mSectionAdapterHelper.getSelectMap().clear();
 
-    }
 
     /**
      *创建者：林党宏
@@ -138,9 +129,7 @@ public void  setSpanCount(int  spanCount){
         mRefreshRecyclerView.scrollToPosition(mSectionAdapterHelper.getCount());
     }
 
-    public void setIloadImage(IloadImage iloadImage) {
-        mSectionAdapterHelper.setIloadImage( iloadImage);
-    }
+
 //    public void show(){
 //        mSectionAdapterHelper.show();
 //    }

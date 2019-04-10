@@ -1,4 +1,4 @@
-package com.easy.recycleview.inter;
+package com.easysoft.baseview.inter;
 
 /**
  * Created by Administrator on 2019/4/10 0010.
@@ -27,4 +27,5 @@ public interface IAddressItemBean {
 
     void setPosition(int position);
 
+    void setIloadImage(IloadImage iloadImage);
 }

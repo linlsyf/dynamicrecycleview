@@ -8,18 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IEmptyView;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.inter.IMutiTypeSelectUtils;
-import com.easy.recycleview.inter.IloadImage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -38,8 +34,8 @@ public class SectionAdapterHelper {
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
     RecyclerView.LayoutManager  mRecycleViewManger;
-    /**多选辅助工具 */
-    IMutiTypeSelectUtils mSelectUtils;
+//    /**多选辅助工具 */
+//    IMutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
     RecyclerView mRecyclerView;
     private updateListener mUpdateListener;
@@ -49,8 +45,7 @@ public class SectionAdapterHelper {
      Context mContext;
     /** 控件可实现 从写item*/
     private IAddItemView mIAddItemView;
-    /** 图片加载接口*/
-    IloadImage iloadImage;
+
 //    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
 
     public void init(Context context,RecyclerView recyclerView){
@@ -65,9 +60,9 @@ public class SectionAdapterHelper {
 
     }
 
-    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
-        mSectionedExpandableGridAdapter.initSelectUtils(mSelectUtils);
-    }
+//    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
+//        mSectionedExpandableGridAdapter.initSelectUtils(mSelectUtils);
+//    }
 
 //    public void initManger( VirtualLayoutManager recycleViewManger){
 //        this.mRecycleViewManger=recycleViewManger;
@@ -277,49 +272,38 @@ public class SectionAdapterHelper {
     }
 
 
-    public void changeSelectSelectItem(String sectionId,IAddressItemBean newDataMap){
-        int updateSectionIndex=-1;
-        String id=newDataMap.getId();
-        for (int i=0;i<mSectionList.size();i++){
-            Section itemSection=mSectionList.get(i);
-            if (itemSection.getId().equals(sectionId)){
-                updateSectionIndex=i;
-            }
-        }
-        if (updateSectionIndex>-1){
-            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
-            int updateItemIndex=-1;
-            for(int i=0;i<removeSectionMap.size();i++){
-                IAddressItemBean itemMap=removeSectionMap.get(i);
-                if (id.equals(itemMap.getId())){
-                    if (itemMap.isShowLeftCheckBox()){
-                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
-                        mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
-                    }
-                    break;
-                }
-            }
-            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
-                mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-            }
-        }else{
-            mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-        }
-        notifyDataSetChanged();
-    }
+//    public void changeSelectSelectItem(String sectionId,IAddressItemBean newDataMap){
+//        int updateSectionIndex=-1;
+//        String id=newDataMap.getId();
+//        for (int i=0;i<mSectionList.size();i++){
+//            Section itemSection=mSectionList.get(i);
+//            if (itemSection.getId().equals(sectionId)){
+//                updateSectionIndex=i;
+//            }
+//        }
+//        if (updateSectionIndex>-1){
+//            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+//            int updateItemIndex=-1;
+//            for(int i=0;i<removeSectionMap.size();i++){
+//                IAddressItemBean itemMap=removeSectionMap.get(i);
+//                if (id.equals(itemMap.getId())){
+//                    if (itemMap.isShowLeftCheckBox()){
+//                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
+//                        mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
+//                    }
+//                    break;
+//                }
+//            }
+//            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
+//                mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//            }
+//        }else{
+//            mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//        }
+//        notifyDataSetChanged();
+//    }
 
-    public boolean  isCheckSelectedById(String sectionId,String id){
-        return mSelectUtils.isCheckSelectedById(sectionId,id);
-    }
 
-    public void initSelectDatas(String type, List<IAddressItemBean> datas) {
-        mSelectUtils.initSelectDatas( type, datas);
-
-    }
-    public void setIntentSelectedCanEdit(boolean isCanEdit){
-        mSelectUtils.setIntentSelectedCanEdit(isCanEdit);
-
-    }
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -398,39 +382,19 @@ public class SectionAdapterHelper {
         }
         return getSection;
     }
-    /**
-     *创建者：林党宏
-     *时间：2017/2/8
-     *注释：所有分组已选数据
-     */
-    public Map<String, List<IAddressItemBean>> getSelectMap(){
-      return   mSelectUtils.getSelectedMap();
-    }
+//    /**
+//     *创建者：林党宏
+//     *时间：2017/2/8
+//     *注释：所有分组已选数据
+//     */
+//    public Map<String, List<IAddressItemBean>> getSelectMap(){
+//      return   mSelectUtils.getSelectedMap();
+//    }
 
-    public List<SelectBean> getSelect(String selectType){
-        Map<String, List<IAddressItemBean>>  selectMap=getSelectMap();
 
-        List<IAddressItemBean> departmentList=new ArrayList<IAddressItemBean>();
-        int departmentSize=0;
-        if (selectMap.containsKey(selectType)){
-            departmentList=   selectMap.get(selectType);
-            departmentSize= departmentList.size();
-        }
-
-        List<SelectBean> resultDepartmentList=new ArrayList<SelectBean>();
-        for (int i=0;i<departmentSize;i++){
-            SelectBean itembean=new SelectBean();
-            IAddressItemBean selectItembean=departmentList.get(i);
-            itembean.setId(selectItembean.getId());
-            itembean.setTitle(selectItembean.getTitle());
-            resultDepartmentList.add(itembean);
-        }
-        return resultDepartmentList;
-    }
-
-    public boolean getItemCanSelectEdit(String id){
-        return   mSelectUtils.getItemCanSelectEdit(id);
-    }
+//    public boolean getItemCanSelectEdit(String id){
+//        return   mSelectUtils.getItemCanSelectEdit(id);
+//    }
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -440,9 +404,9 @@ public class SectionAdapterHelper {
         int count=mDataArrayList.size();
         return count;
     }
-    public void setIsMutiSelect(String type, boolean isMutiSelect) {
-        mSectionedExpandableGridAdapter.setIsMutiSelect(type,isMutiSelect);
-    }
+//    public void setIsMutiSelect(String type, boolean isMutiSelect) {
+//        mSectionedExpandableGridAdapter.setIsMutiSelect(type,isMutiSelect);
+//    }
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -580,9 +544,7 @@ public class SectionAdapterHelper {
         mRecyclerView.addItemDecoration(decoration);
     }
 
-    public void setIloadImage(IloadImage iloadImage) {
-        this.iloadImage = iloadImage;
-    }
+
 
     private static class SectinComparator implements Comparator<Section> {
         @SuppressLint("DefaultLocale")
@@ -663,7 +625,7 @@ public class SectionAdapterHelper {
         /**数据源 */
         private ArrayList<IAddressItemBean> mDataArrayList;
         IItemView.onItemClick mOnItemListener;
-        IMutiTypeSelectUtils mSelectUtils;
+//        IMutiTypeSelectUtils mSelectUtils;
 
 //        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
 //            super(layoutManager);
@@ -675,9 +637,9 @@ public class SectionAdapterHelper {
             mContext = context;
             mDataArrayList = dataArrayList;
         }
-        public void initSelectUtils(IMutiTypeSelectUtils selectUtils){
-            mSelectUtils=selectUtils;
-        }
+//        public void initSelectUtils(IMutiTypeSelectUtils selectUtils){
+//            mSelectUtils=selectUtils;
+//        }
         @Override
         public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView=null;
@@ -688,18 +650,17 @@ public class SectionAdapterHelper {
         }
         @Override
         public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
-            final IAddressItemBean map=mDataArrayList.get(position);
-            map.setPosition(position);
-            map.setIloadImage(iloadImage);
+            final IAddressItemBean item=mDataArrayList.get(position);
+            item.setPosition(position);
             IItemView itemView= holder.getItemView();
-            itemView.initSelectUtils(mSelectUtils);
-            itemView.initData(map);
+//            itemView.initSelectUtils(mSelectUtils);
+            itemView.initData(item);
         }
-        public void setIsMutiSelect(String type, boolean isMutiSelect) {
-            if (mSelectUtils!=null){
-                mSelectUtils.setIsMutiSelect(type,isMutiSelect);
-            }
-        }
+//        public void setIsMutiSelect(String type, boolean isMutiSelect) {
+//            if (mSelectUtils!=null){
+//                mSelectUtils.setIsMutiSelect(type,isMutiSelect);
+//            }
+//        }
         @Override
         public int getItemCount() {
             return mDataArrayList.size();

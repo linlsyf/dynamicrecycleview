@@ -1,4 +1,4 @@
-package com.easy.recycleview.inter;
+package com.easysoft.baseview.inter;
 
 import java.io.Serializable;
 
@@ -43,6 +43,8 @@ public interface IItemView {
         }
     }
 
+     void initSelectUtils(IMutiTypeSelectUtils selectUtils);
+//     abstract  void initData(IAddressItemBean map);
     interface onItemClick extends Serializable{
 
         void onItemClick(ClickTypeEnum typeEnum, IAddressItemBean bean);

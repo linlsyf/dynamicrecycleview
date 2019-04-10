@@ -2,6 +2,8 @@ package com.easysoft.baseview.base.select;
 
 import android.content.Context;
 
+import com.easy.recycleview.bean.SelectBean;
+import com.easy.recycleview.inter.IAddressItemBean;
 import com.easysoft.baseview.utils.StringUtils;
 import com.easysoft.baseview.utils.ToastUtils;
 import com.easysoft.bean.AddressItemBean;
@@ -120,8 +122,6 @@ public void setHasSelectNoticeText(String text){
   mHasSelectNoticeText=text;
 }
 
-
-
     public void setIsMutiSelect(String type, boolean isMutiSelect) {
         mTypeMutiMap.put(type,isMutiSelect);
     }
@@ -169,4 +169,59 @@ public void setHasSelectNoticeText(String text){
           }
          return isContain;
      }
+
+    public List<SelectBean> getSelect(String selectType){
+        Map<String, List<AddressItemBean>>  selectMap=getSelectedMap();
+
+        List<AddressItemBean> departmentList=new ArrayList<AddressItemBean>();
+        int departmentSize=0;
+        if (selectMap.containsKey(selectType)){
+            departmentList=   selectMap.get(selectType);
+            departmentSize= departmentList.size();
+        }
+
+        List<SelectBean> resultDepartmentList=new ArrayList<SelectBean>();
+        for (int i=0;i<departmentSize;i++){
+            SelectBean itembean=new SelectBean();
+            IAddressItemBean selectItembean=departmentList.get(i);
+            itembean.setId(selectItembean.getId());
+            itembean.setTitle(selectItembean.getTitle());
+            resultDepartmentList.add(itembean);
+        }
+        return resultDepartmentList;
+    }
+
+
+//    public void changeSelectSelectItem(List<Section> mSectionList,String sectionId,AddressItemBean newDataMap){
+//        int updateSectionIndex=-1;
+//        String id=newDataMap.getId();
+//        for (int i=0;i<mSectionList.size();i++){
+//            Section itemSection=mSectionList.get(i);
+//            if (itemSection.getId().equals(sectionId)){
+//                updateSectionIndex=i;
+//            }
+//        }
+//        if (updateSectionIndex>-1){
+//            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+//            int updateItemIndex=-1;
+//            for(int i=0;i<removeSectionMap.size();i++){
+//                IAddressItemBean itemMap=removeSectionMap.get(i);
+//                if (id.equals(itemMap.getId())){
+//                    if (itemMap.isShowLeftCheckBox()){
+//                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
+//                       select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
+//                    }
+//                    break;
+//                }
+//            }
+//            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
+//                select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//            }
+//        }else{
+//          select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//        }
+////        notifyDataSetChanged();
+//    }
+
+
 }

@@ -32,20 +32,20 @@ public class RightSecondImgeViewConfig {
             itemView.mRightSecondImgeView.setLayoutParams(mHeadParams);
             if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())) {
                 itemView.mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage() != null) {
-                    dataItemBean.getIloadImage().load(secondImgSetting.getRightSecondImgURL(), itemView.mRightSecondImgeView);
+                if ( ImgloadConfig.getInstance().getIloadImage() != null) {
+                     ImgloadConfig.getInstance().getIloadImage().load(secondImgSetting.getRightSecondImgURL(), itemView.mRightSecondImgeView);
                 }
             }
             else if (StringUtils.isNotEmpty(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath())) {
                 itemView.mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage()!=null){
-                    dataItemBean.getIloadImage().loadPath(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath(), itemView.mRightSecondImgeView);
+                if ( ImgloadConfig.getInstance().getIloadImage()!=null){
+                     ImgloadConfig.getInstance().getIloadImage().loadPath(dataItemBean.getRightSecondImgSettings().getRightSecondImgStorePath(), itemView.mRightSecondImgeView);
                 }
             }
             else if (dataItemBean.getRightSecondImgSettings().getRightSecondImgResId() != 0) {
                 itemView.mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage() != null) {
-                    dataItemBean.getIloadImage().loadResourceId(dataItemBean.getRightSecondImgSettings().getRightSecondImgResId(), itemView.mRightSecondImgeView);
+                if ( ImgloadConfig.getInstance().getIloadImage() != null) {
+                     ImgloadConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getRightSecondImgSettings().getRightSecondImgResId(), itemView.mRightSecondImgeView);
                 }
             }
 
@@ -53,8 +53,8 @@ public class RightSecondImgeViewConfig {
             boolean isShowEmptyImge = dataItemBean.getRightSecondImgSettings().isShowEmptyImg();
             if (isShowEmptyImge) {
                 itemView.mRightSecondImgeView.setVisibility(View.VISIBLE);
-                if (dataItemBean.getIloadImage()!=null){
-                    dataItemBean.getIloadImage().loadResourceId(R.drawable.empty_photo,itemView.mRightSecondImgeView);
+                if ( ImgloadConfig.getInstance().getIloadImage()!=null){
+                     ImgloadConfig.getInstance().getIloadImage().loadResourceId(R.drawable.empty_photo,itemView.mRightSecondImgeView);
                 }
             } else {
                 itemView.mRightSecondImgeView.setVisibility(View.GONE);

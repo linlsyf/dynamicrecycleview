@@ -1,4 +1,4 @@
-package com.easy.recycleview.inter;
+package com.easysoft.baseview.inter;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
