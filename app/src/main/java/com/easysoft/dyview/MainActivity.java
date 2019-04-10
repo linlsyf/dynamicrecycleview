@@ -5,12 +5,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.easy.recycleview.recycleview.AddressRecycleView;
-import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.inter.IItemView;
-import com.easy.recycleview.recycleview.item.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.recycleview.sectionview.Section;
-import com.easy.recycleview.utils.ToastUtils;
+import com.easy.recycleview.AddressRecycleView;
+import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IItemView;
+import com.easysoft.baseview.item.ContentItemView;
+import com.easysoft.baseview.utils.ToastUtils;
+import com.easysoft.bean.AddressHeadImgeSettings;
+import com.easysoft.bean.AddressItemBean;
 import com.easysoft.dyview.view.InfoCardView;
 import com.easysoft.dyview.view.dyCardView;
 
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
 
 
 
-        List<AddressItemBean> newSectionList=new ArrayList<AddressItemBean>();
+        List<IAddressItemBean> newSectionList=new ArrayList<IAddressItemBean>();
 
         AddressItemBean newItemBean=new AddressItemBean();
 //          newItemBean.setViewType(4);
@@ -59,7 +61,7 @@ public class MainActivity extends Activity {
         newItemBean.setOnItemClickAble(false);
         newItemBean.setOnItemListener(new IItemView.onItemClick() {
             @Override
-            public void onItemClick(IItemView.ClickTypeEnum typeEnum, AddressItemBean bean) {
+            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IAddressItemBean bean) {
                 ToastUtils.show(getApplication(),"点击事件触发了");
 
 
@@ -82,8 +84,6 @@ public class MainActivity extends Activity {
         newSectionList.add(newItemBean);
 
 
-
-
         Section  newSection=new Section(SECTION_NEW);
         newSection.setPosition(0);
 
@@ -92,95 +92,29 @@ public class MainActivity extends Activity {
         recycleView.updateSection(newSection);
 
 
-
-
-
-
         Section  gridViewSection=new Section(SECTION_GRID);
         gridViewSection.setPosition(1);
 
         gridViewSection.setName("网格布局");
 
-
-//        List<AddressItemBean> gridectionList=new ArrayList<AddressItemBean>();
-//
-//        for (int i=0;i<2;i++){
-//            AddressItemBean gridItemBean=new AddressItemBean();
-//            gridItemBean.setViewType(3);
-//            gridItemBean.setSpanSize(3);
-//            gridItemBean.setTitle("name"+i);
-//            gridectionList.add(gridItemBean);
-//        }
-//
-//        gridViewSection.setDataMaps(gridectionList);
-//        recycleView.addSection(gridViewSection);
-
-
-
-//        Section  dyViewSection=new Section(SECTION_DY);
-//        dyViewSection.setPosition(1);
-//
-//        dyViewSection.setName("动态布局");
-//
-//
-//        List<AddressItemBean> dysectionList=new ArrayList<AddressItemBean>();
-//
-//        for (int i=0;i<10;i++){
-//            AddressItemBean gridItemBean=new AddressItemBean();
-//            int type=3;
-//             if (i==1){
-//                 type=4;
-//             }
-//             if (i%3==0){
-//                type=4;
-//             }
-//            gridItemBean.setViewType(type);
-//
-//            gridItemBean.setSpanSize(3);
-//            gridItemBean.setTitle("name"+i);
-//            dysectionList.add(gridItemBean);
-//        }
-//
-//        dyViewSection.setDataMaps(dysectionList);
-//        recycleView.updateSection(dyViewSection);
-
-
-//        final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
-//        final List<LayoutHelper> helpers = new LinkedList<>();
-//        helpers.add(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
-//        helpers.add(gridLayoutHelper);
-//        recycleView.setLayoutHelpers(helpers);
-
-//          final GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-//        gridLayoutHelper.setItemCount(gridectionList.size()-1);
-//        recycleView.addLayoutHelper(DefaultLayoutHelper.newHelper(newSectionList.size()+1));
-//        recycleView.addLayoutHelper(gridLayoutHelper,true);
-
-
-//        int num1 =5;
-//
-//        int num2 = 7728;
-//
-//        // 创建一个数值格式化对象
-//
-//        NumberFormat numberFormat = NumberFormat.getInstance();
-//
-//        // 设置精确到小数点后2位
-//
-//        numberFormat.setMaximumFractionDigits(2);
-//
-//        float result =Float.parseFloat() ;
-//
-//        System.out.println("num1和num2的百分比为:" + result + "%");
-
-//        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-//                outRect.set(1, 1, 1, 1);
-//            }
-//        });
-////        Intent  testIntent=new Intent(MainActivity.this,VlayoutActivity.class);
-//        startActivity(testIntent);
+//        recycleView.getSectionAdapterHelper().setc
+//        recycleView.initIMutiTypeSelectUtils(new MutiTypeSelectUtils);
+        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
+            @Override
+            public View getCustomView(Context context, int viewType) {
+                View itemView=null;
+//              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
+             itemView=new ContentItemView(MainActivity.this)  ;
+//               }
+//              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
+//            itemView=new SectionView(MainActivity.this);
+//                 }
+//                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
+//            itemView=new SpliteView(MainActivity.this);
+//                   }
+                return itemView;
+            }
+        });
 
     }
 }

@@ -6,10 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.inter.IItemView;
-import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
-import com.easysoft.dyview.R;
+import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.inter.IMutiTypeSelectUtils;
 
 /**
  * Created by ldh on 2017/5/11.
@@ -40,7 +39,7 @@ public class InfoCardView extends  TextView implements IItemView {
 //
 //       }else{
 //         if (index){
-             setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//             setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 //         }else{
 //             setBackgroundColor(0x66cc0000 );
 //         }
@@ -52,12 +51,12 @@ public class InfoCardView extends  TextView implements IItemView {
     }
 
     @Override
-    public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
+    public void initSelectUtils(IMutiTypeSelectUtils selectUtils) {
 
     }
 
     @Override
-    public void initData(final AddressItemBean map) {
+    public void initData( IAddressItemBean map) {
 
 
 

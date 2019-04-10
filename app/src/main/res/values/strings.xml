@@ -1,3 +1,118 @@
-<resources>
-    <string name="app_name">dynamicrecycleview</string>
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation" >
+    <string name="app_name">动态view</string>
+
+    <!--TabTitle-->
+
+    <!--NavigationBar-->
+
+    <!--RecentContactsItemView-->
+
+    <!--HeadLoadingView-->
+
+    <!--BaseChatItemView-->
+
+    <!--FileChatItemView-->
+
+    <!--ShakeChatItemView-->
+
+    <!--NewsChatItemView-->
+
+    <!--ChatInputBar-->
+
+    <!--FunctionBar-->
+
+    <!--VoiceChatHolder-->
+
+    <!--VoiceRecordButton-->
+
+    <!--登录界面-->
+
+    <!-- 注册界面-->
+
+    <!--聊天界面-->
+
+    <!--转发主界面-->
+
+    <!--文件预览界面-->
+
+    <!--群共享文件界面-->
+
+    <!--通讯录界面 -->
+    <!--通讯录界面 -->
+    <!--服务器设置界面-->
+
+    <!--应用中心界面-->
+
+    <!--我的界面-->
+
+    <!-- 通讯录界面 -->
+    <string name="delete">"删除"</string>
+
+
+    <!-- 通讯录相关 -->
+
+    <string name="no_data_show">没有数据显示</string>
+    <string name="data_loading_error">点击重新加载</string>
+
+
+    <!--企业界面-->
+
+    <!--个人信息页-->
+
+
+    <!--文件选择器-->
+
+    <!--最近消息断网提示-->
+
+    <!--圈子界面-->
+
+    <!--用户被踢下线提示...-->
+    <!--二维码界面-->
+
+    <!--设置界面-->
+
+    <!--输入个人信息界面-->
+
+    <!--关于政信界面-->
+
+    <!--联系我们界面-->
+
+
+    <!--截取头像界面-->
+
+
+    <!--账号管理界面-->
+
+
+    <!--手势密码设置界面-->
+
+    <!--账号与安全界面-->
+
+
+    <!--新消息提醒界面-->
+
+    <!--设置聊天界面-->
+
+    <!--通用界面-->
+
+    <!--权限不足提示部分-->
+    <!--traffic stats-->
+    <!--clear cache-->
+
+    <!--储存清理界面-->
+    <!--TakePhoto-->
+
+    <!--custom multipleimageselect -->
+
+    <!-- 注册界面 -->
+
+
+    <!--主窗口-->
+
+    <!--各种广告形式窗口展示按钮-->
+
 </resources>
+
+
+

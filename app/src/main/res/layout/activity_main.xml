@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.easy.recycleview.recycleview.AddressRecycleView
+    <com.easy.recycleview.AddressRecycleView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
          android:layout_marginLeft="10dp"

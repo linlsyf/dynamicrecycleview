@@ -5,9 +5,9 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easy.recycleview.recycleview.item.AddressItemBean;
-import com.easy.recycleview.recycleview.item.inter.IItemView;
-import com.easy.recycleview.recycleview.sectionview.MutiTypeSelectUtils;
+import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.inter.IMutiTypeSelectUtils;
 
 import java.util.Random;
 
@@ -41,15 +41,14 @@ public class dyCardView extends  TextView implements IItemView {
         index=!index;
     }
 
+
     @Override
-    public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
+    public void initData(IAddressItemBean map) {
 
     }
 
     @Override
-    public void initData(final AddressItemBean map) {
-
-
+    public void initSelectUtils(IMutiTypeSelectUtils selectUtils) {
 
     }
 }

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/rootlayout"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:minHeight="50dp"
+
+              android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/rootContentLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:minHeight="50dp"
+        android:orientation="horizontal"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            >
+
+            <CheckBox
+                android:id="@+id/chkItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_select"
+                android:button="@null"
+                android:clickable="false"
+                android:focusable="false"
+                    android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/headImgeView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textColor="@color/common_title_color"
+                    />
+
+                <TextView
+                    android:id="@+id/hintTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/common_hint_color"
+                    android:visibility="gone"
+
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/noticeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/common_hint_gray"
+                android:textSize="14dp"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/noticeImgView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                />
+            <com.easysoft.baseview.EdittextLayoutView
+                android:id="@+id/edtLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="left|center_vertical"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:orientation="horizontal"
+            >
+
+
+            <ImageView
+                android:id="@+id/rightSecondImgeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+
+                />
+
+            <!--<com.easy.recycleview.recycleview.MessageCountView-->
+                <!--android:id="@+id/messageCountView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical|right"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:visibility="gone"-->
+                <!--/>-->
+
+            <TextView
+                android:id="@+id/rightFirstTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="5dp"
+                android:clickable="false"
+                android:duplicateParentState="true"
+
+                android:focusable="false"
+                android:lines="1"
+                android:maxWidth="240dp"
+                android:visibility="gone"
+
+                />
+
+            <com.easysoft.baseview.button.IOSSwitchButton
+                android:id="@+id/switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:button="@null"
+                android:clickable="false"
+
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/rightFirstButton"
+
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical|right"
+                android:background="@drawable/bg_btn_address_manger"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/rightCenterScaleImgeLayout"
+                android:visibility="gone"
+                android:minWidth="80dp"
+                android:orientation="vertical"
+                >
+
+                <ImageView
+                    android:id="@+id/rightCenterScaleImgeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+
+
+                    />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/rightFirstImgeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="5dp"
+                android:visibility="gone"
+
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
