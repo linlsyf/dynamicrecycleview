@@ -10,7 +10,7 @@ import java.io.Serializable;
 public interface IItemView {
 
     void initData(IAddressItemBean map);
-
+//
     enum ViewTypeEnum {
         ITEM(0),
         SECTION(1),
@@ -43,7 +43,7 @@ public interface IItemView {
         }
     }
 
-    interface onItemClick extends Serializable{
+    interface onItemClick extends Serializable {
 
         void onItemClick(ClickTypeEnum typeEnum, IAddressItemBean bean);
 

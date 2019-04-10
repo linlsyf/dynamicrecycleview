@@ -408,13 +408,13 @@ public class SectionAdapterHelper {
 //        mSectionedExpandableGridAdapter.setIsMutiSelect(type,isMutiSelect);
 //    }
     /**
-     *创建者：林党宏
-     *时间：2017/1/20
-     *注释：添加点击事件
-     */
-    public void setOnItemClick(IItemView.onItemClick listener ){
-        mSectionedExpandableGridAdapter.setOnItemClick(listener);
-    }
+//     *创建者：林党宏
+//     *时间：2017/1/20
+//     *注释：添加点击事件
+//     */
+//    public void setOnItemClick(IItemView.onItemClick listener ){
+//        mSectionedExpandableGridAdapter.setOnItemClick(listener);
+//    }
 
     /**
      *创建者：林党宏
@@ -624,7 +624,7 @@ public class SectionAdapterHelper {
     class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
         private ArrayList<IAddressItemBean> mDataArrayList;
-        IItemView.onItemClick mOnItemListener;
+//        IItemView.onItemClick mOnItemListener;
 //        IMutiTypeSelectUtils mSelectUtils;
 
 //        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
@@ -670,9 +670,9 @@ public class SectionAdapterHelper {
             return mDataArrayList.get(position).getViewType();
         }
 
-        public void setOnItemClick(IItemView.onItemClick listener ){
-            this.mOnItemListener=listener;
-        }
+//        public void setOnItemClick(IItemView.onItemClick listener ){
+//            this.mOnItemListener=listener;
+//        }
 
         @Override
         public void onAttachedToRecyclerView(RecyclerView recyclerView) {

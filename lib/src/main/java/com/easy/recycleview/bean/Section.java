@@ -1,7 +1,6 @@
 package com.easy.recycleview.bean;
 
 import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IItemView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ public class Section {
     private int position=0;
     private List<IAddressItemBean> dataMaps=new ArrayList<IAddressItemBean>();
 
-    IItemView.onItemClick onItemListener;
 
     public Section(String id) {
         this.id = id;
@@ -95,11 +93,5 @@ public class Section {
         isSectionShowDelete = sectionShowDelete;
     }
 
-    public IItemView.onItemClick getOnItemListener() {
-        return onItemListener;
-    }
 
-    public void setOnItemListener(IItemView.onItemClick onItemListener) {
-        this.onItemListener = onItemListener;
-    }
 }

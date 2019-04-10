@@ -6,12 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IItemView;
 import com.easysoft.baseview.base.BaseLinearLayout;
 import com.easysoft.dyview.R;
 
-public class SpliteView extends BaseLinearLayout implements IItemView {
+public class SpliteView extends BaseLinearLayout {
     public SpliteView(Context context) {
         super(context);
         initUI(context);
@@ -31,8 +29,8 @@ public class SpliteView extends BaseLinearLayout implements IItemView {
 
 
 
-    @Override
-    public void initData(IAddressItemBean map) {
-
-    }
+//    @Override
+//    public void initData(IAddressItemBean map) {
+//
+//    }
 }

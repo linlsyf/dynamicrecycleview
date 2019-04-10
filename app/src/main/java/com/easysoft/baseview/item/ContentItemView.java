@@ -47,7 +47,7 @@ import java.util.List;
  * 由数据控制是否显示界面
  */
 
-public class ContentItemView extends BaseLinearLayout implements IItemView {
+public class ContentItemView extends BaseLinearLayout implements IItemView{
     public LinearLayout mRootlayout;
     /** 右侧chcekbox */
     public IOSSwitchButton mSwitchButton;

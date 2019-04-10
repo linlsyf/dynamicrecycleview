@@ -21,7 +21,7 @@ import com.easysoft.dyview.R;
  *注释：分组界面
  */
 
-public class SectionView extends BaseLinearLayout implements IItemView {
+public class SectionView extends BaseLinearLayout implements  IItemView{
     /** 分组名字*/
     TextView mTitleView;
     Context mContext;
@@ -57,7 +57,7 @@ public class SectionView extends BaseLinearLayout implements IItemView {
             mRightDeletLayout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    map .getOnItemListener().onItemClick(ClickTypeEnum.SECTION_DELETE,map);
+                    map .getOnItemListener().onItemClick(IItemView.ClickTypeEnum.SECTION_DELETE,map);
                 }
             });
         }

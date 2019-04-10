@@ -5,16 +5,13 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IItemView;
-
 import java.util.Random;
 
 /**
  * Created by ldh on 2017/5/11.
  */
 
-public class dyCardView extends  TextView implements IItemView {
+public class dyCardView extends  TextView {
 
     static boolean index=false;
     public dyCardView(Context context) {
@@ -41,10 +38,10 @@ public class dyCardView extends  TextView implements IItemView {
     }
 
 
-    @Override
-    public void initData(IAddressItemBean map) {
-
-    }
+//    @Override
+//    public void initData(IAddressItemBean map) {
+//
+//    }
 
 }
 

@@ -6,14 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IItemView;
-
 /**
  * Created by ldh on 2017/5/11.
  */
 
-public class InfoCardView extends  TextView implements IItemView {
+public class InfoCardView extends  TextView {
 
     static boolean index=false;
     public InfoCardView(Context context) {
@@ -51,11 +48,11 @@ public class InfoCardView extends  TextView implements IItemView {
 
 
 
-    @Override
-    public void initData( IAddressItemBean map) {
-
-
-
-    }
+//    @Override
+//    public void initData( IAddressItemBean map) {
+//
+//
+//
+//    }
 }
 
