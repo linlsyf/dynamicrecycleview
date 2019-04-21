@@ -8,15 +8,15 @@ import android.view.View;
 import com.easy.recycleview.AddressRecycleView;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.bean.SelectBean;
+import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
+import com.easy.recycleview.custom.baseview.item.ContentItemView;
+import com.easy.recycleview.custom.baseview.item.SectionView;
+import com.easy.recycleview.custom.baseview.item.SpliteView;
+import com.easy.recycleview.custom.baseview.utils.ToastUtils;
+import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.baseview.base.select.MutiTypeSelectUtils;
-import com.easysoft.baseview.item.ContentItemView;
-import com.easysoft.baseview.item.SectionView;
-import com.easysoft.baseview.item.SpliteView;
-import com.easysoft.baseview.utils.ToastUtils;
-import com.easysoft.bean.AddressHeadImgeSettings;
-import com.easysoft.bean.AddressItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     private static final java.lang.String SECTION_GRID = "grid";
     private static final java.lang.String SECTION_DY = "dy";
     AddressRecycleView recycleView;
-    MutiTypeSelectUtils  mutiTypeSelectUtils=new MutiTypeSelectUtils(this);
+    MutiTypeSelectUtils mutiTypeSelectUtils=new MutiTypeSelectUtils(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
             public View getCustomView(Context context, int viewType) {
                 View itemView=null;
               if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
-                  ContentItemView  contentItemView=new ContentItemView(MainActivity.this)  ;
+                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
                    contentItemView.initSelectUtils(mutiTypeSelectUtils);
                   itemView=contentItemView;
 

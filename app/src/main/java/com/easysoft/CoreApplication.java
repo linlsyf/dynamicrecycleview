@@ -2,8 +2,8 @@ package com.easysoft;
 
 import android.app.Application;
 
+import com.easy.recycleview.custom.baseview.config.ImgloadConfig;
 import com.easysoft.DebugUtlis.CrashHandler;
-import com.easysoft.baseview.config.ImgloadConfig;
 import com.easysoft.dyview.ImageUtils;
 
 /**
