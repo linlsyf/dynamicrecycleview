@@ -31,13 +31,11 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
         super(context);
         initUI(context);
     }
-
     public SectionView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initUI(context);
 
     }
-
     protected void initUI(Context context) {
         mContext=context;
      View rootView=   LayoutInflater.from(mContext).inflate( R.layout.view_section, this, true);

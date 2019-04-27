@@ -111,28 +111,22 @@ public void  setSpanCount(int  spanCount){
         if(customViewCallBack!=null){
              itemView  =customViewCallBack.getCustomView(getContext(),viewType);
         }
+        Class  classView= RecycleConfig.getInstance().getDefaultViewNameMap().get(viewType);
 
-        if (itemView==null){
-       Class  classView= RecycleConfig.getInstance().getDefaultViewNameMap().get(viewType);
+        if (itemView==null&&classView!=null){
            try {
                Class[] params = {Context.class};//类类型
                Object[] values = {getContext()};//类型值
-
                Constructor con =classView.getConstructor(params);
                //调用构造方法并创建实例
                Object obj = con.newInstance(values);
-
                itemView=(View) obj;
-
            }catch (Exception e){
                System.out.print("class for view"+e.getMessage());
            }
-
           }
 
         if (itemView==null){
-
-
              if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
                  itemView=new ContentItemView(getContext());
              }
@@ -142,9 +136,7 @@ public void  setSpanCount(int  spanCount){
              else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
                  itemView=new SpliteView(getContext());
              }
-
         }
-
         return itemView;
     }
 
@@ -178,10 +170,6 @@ public void  setSpanCount(int  spanCount){
         mRefreshRecyclerView.scrollToPosition(mSectionAdapterHelper.getCount());
     }
 
-
-//    public void show(){
-//        mSectionAdapterHelper.show();
-//    }
    public void addSection(Section section) {
        mSectionAdapterHelper.addSection(section);
    }

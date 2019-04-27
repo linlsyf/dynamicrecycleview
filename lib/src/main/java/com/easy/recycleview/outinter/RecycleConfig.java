@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class RecycleConfig {
     static RecycleConfig factory;
-//    static  Context context;
 
     Map<Integer,Class>   defaultViewNameMap=new HashMap();
    static  MutiTypeSelectUtils mSelectUtils;

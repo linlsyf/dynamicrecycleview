@@ -17,7 +17,6 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- *创建者：林党宏
  *时间：2017/4/17
  *注释：分组数据界面
  */
@@ -42,13 +41,9 @@ public class SectionAdapterHelper {
     /** 控件可实现 从写item*/
     private IAddItemView mIAddItemView;
 
-//    private List<LayoutHelper> layoutHelpers=new ArrayList<>();
-
     public void init(Context context,RecyclerView recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
-
-//        mRecycleViewManger = new LinearLayoutManager(context);
         mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mRecycleViewManger);
         mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context, mDataArrayList);
@@ -86,10 +81,6 @@ public class SectionAdapterHelper {
         }
 
     }
-
-
-
-
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -277,16 +268,16 @@ public class SectionAdapterHelper {
 //                if (id.equals(itemMap.getId())){
 //                    if (itemMap.isShowLeftCheckBox()){
 //                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
-//                        mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
+//                        RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
 //                    }
 //                    break;
 //                }
 //            }
 //            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
-//                mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//                RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
 //            }
 //        }else{
-//            mSelectUtils.select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
+//            RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
 //        }
 //        notifyDataSetChanged();
 //    }
@@ -376,10 +367,10 @@ public class SectionAdapterHelper {
 //     *注释：所有分组已选数据
 //     */
 //    public Map<String, List<IAddressItemBean>> getSelectMap(){
-//      return   mSelectUtils.getSelectedMap();
+//      return RecycleConfig.getInstance().getSelectUtils().getSelectedMap();
 //    }
-
-
+//
+//
 //    public boolean getItemCanSelectEdit(String id){
 //        return   mSelectUtils.getItemCanSelectEdit(id);
 //    }
@@ -392,17 +383,6 @@ public class SectionAdapterHelper {
         int count=mDataArrayList.size();
         return count;
     }
-//    public void setIsMutiSelect(String type, boolean isMutiSelect) {
-//        mSectionedExpandableGridAdapter.setIsMutiSelect(type,isMutiSelect);
-//    }
-    /**
-//     *创建者：林党宏
-//     *时间：2017/1/20
-//     *注释：添加点击事件
-//     */
-//    public void setOnItemClick(IItemView.onItemClick listener ){
-//        mSectionedExpandableGridAdapter.setOnItemClick(listener);
-//    }
 
     /**
      *创建者：林党宏

@@ -38,7 +38,7 @@ publish {
     userOrg = 'linlsyf'      // bintray注册的用户名
     groupId = 'com.easysoft.dynamicrecycleview'  // 包名
     artifactId = 'dynamicrecycleview'// bintray创建的package
-    publishVersion = '1.0.4'
+    publishVersion = '1.0.5'
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

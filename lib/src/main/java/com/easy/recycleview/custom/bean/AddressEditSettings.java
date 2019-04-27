@@ -24,7 +24,6 @@ public class AddressEditSettings implements Serializable{
     /**编辑内容类型 */
     private  int inputType= InputType.TYPE_CLASS_TEXT;
 
-
     public boolean isShowEdittext() {
         return showEdittext;
     }

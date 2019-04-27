@@ -28,10 +28,4 @@ public class SpliteView extends BaseLinearLayout {
 
     }
 
-
-
-//    @Override
-//    public void initData(IAddressItemBean map) {
-//
-//    }
 }
