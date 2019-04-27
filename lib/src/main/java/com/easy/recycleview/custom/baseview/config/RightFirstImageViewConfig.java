@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.outinter.RecycleConfig;
 
 
 /**
@@ -27,8 +28,8 @@ public class RightFirstImageViewConfig {
                 itemView.mRightFirstImageView.setVisibility(View.VISIBLE);
             }
             itemView.mRightFirstImageView.setLayoutParams(mRightFirstParams);
-            if ( ImgloadConfig.getInstance().getIloadImage()!=null){
-                 ImgloadConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),itemView.mRightFirstImageView);
+            if ( RecycleConfig.getInstance().getIloadImage()!=null){
+                RecycleConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),itemView.mRightFirstImageView);
             }
         } else {
             itemView.mRightFirstImageView.setVisibility(View.GONE);

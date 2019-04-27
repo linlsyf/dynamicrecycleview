@@ -2,7 +2,7 @@ package com.easysoft;
 
 import android.app.Application;
 
-import com.easy.recycleview.custom.baseview.config.ImgloadConfig;
+import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.DebugUtlis.CrashHandler;
 import com.easysoft.dyview.ImageUtils;
 
@@ -16,7 +16,7 @@ public class CoreApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        ImgloadConfig.getInstance().setIloadImage(ImageUtils.getInStance());
+        RecycleConfig.getInstance().setIloadImage(ImageUtils.getInStance());
 
 //        Map<Integer,Class> defaultViewNameMap=new HashMap<>();
 //        defaultViewNameMap.put(IItemView.ViewTypeEnum.ITEM.value(), ContentItemView.class);

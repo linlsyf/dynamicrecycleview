@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.outinter.RecycleConfig;
 
 
 /**
@@ -32,23 +33,23 @@ public class HeadImageViewConfig {
             mImageView.setVisibility(View.GONE);
         }
         if (dataItemBean.getHeadImgeSettings().getHeadImgDrawableId() != 0) {
-            if ( ImgloadConfig.getInstance().getIloadImage()!=null){
-                 ImgloadConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
+            if ( RecycleConfig.getInstance().getIloadImage()!=null){
+                RecycleConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getHeadImgeSettings().getHeadImgDrawableId(),mImageView);
             }
         }
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgPath())) {
-            if ( ImgloadConfig.getInstance().getIloadImage()!=null) {
-                 ImgloadConfig.getInstance().getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
+            if ( RecycleConfig.getInstance().getIloadImage()!=null) {
+                 RecycleConfig.getInstance().getIloadImage().loadPath(dataItemBean.getHeadImgeSettings().getHeadImgPath(), mImageView);
             }
         }
         else if (StringUtils.isNotEmpty(dataItemBean.getHeadImgeSettings().getHeadImgUrl())) {
-            if ( ImgloadConfig.getInstance().getIloadImage()!=null) {
-                 ImgloadConfig.getInstance().getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
+            if ( RecycleConfig.getInstance().getIloadImage()!=null) {
+                 RecycleConfig.getInstance().getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), mImageView);
             }
         }
         else if (null!=dataItemBean.getHeadImgeSettings().getBitmap()) {
-            if ( ImgloadConfig.getInstance().getIloadImage()!=null) {
-                 ImgloadConfig.getInstance().getIloadImage().load(dataItemBean.getHeadImgeSettings().getBitmap(), mImageView);
+            if ( RecycleConfig.getInstance().getIloadImage()!=null) {
+                 RecycleConfig.getInstance().getIloadImage().load(dataItemBean.getHeadImgeSettings().getBitmap(), mImageView);
             }
         }
     }
