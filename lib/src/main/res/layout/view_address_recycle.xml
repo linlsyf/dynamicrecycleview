@@ -4,17 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
- <android.support.v7.widget.RecyclerView
+ <com.easy.recycleview.RecyclerViewSupport
              android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/refreshRecycleView"
         />
 
+ <include layout="@layout/view_adress_list_emty"
+     android:visibility="gone"
 
-<!--<com.easy.recycleview.view.EmptyView    android:id="@+id/emptyNoticeView"   android:layout_width="match_parent"-->
 
-    <!--android:visibility="gone"-->
-    <!--android:layout_height="match_parent" />-->
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"  android:id="@+id/emptyNoticeView"
+     />
 
 
 

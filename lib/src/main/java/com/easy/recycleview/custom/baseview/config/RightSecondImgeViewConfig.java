@@ -9,7 +9,7 @@ import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.custom.bean.RightSecondImgSettings;
-import com.easysoft.dyview.R;
+import com.easysoft.dynamicrecycleview.R;
 
 
 /**

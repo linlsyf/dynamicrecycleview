@@ -35,12 +35,12 @@ public class EmptyView extends LinearLayout implements IEmptyView {
 
     }
 
-    public   void setVisibility(int visibility){
-
-        emptyImg.setVisibility(visibility);
-        emptyIv.setVisibility(visibility);
-
-    }
+//    public   void setVisibility(int visibility){
+//
+//        emptyImg.setVisibility(visibility);
+//        emptyIv.setVisibility(visibility);
+//
+//    }
 
     public void clearAnimation(){
 

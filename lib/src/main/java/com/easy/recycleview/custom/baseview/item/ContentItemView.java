@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.easy.recycleview.custom.baseview.EdittextLayoutView;
 import com.easy.recycleview.custom.baseview.ListenerConfig;
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
 import com.easy.recycleview.custom.baseview.config.ContentLayoutConfig;
 import com.easy.recycleview.custom.baseview.config.EditLayoutConfig;
@@ -34,7 +33,8 @@ import com.easy.recycleview.custom.baseview.config.TitleTextViewConfig;
 import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.dyview.R;
+import com.easy.recycleview.outinter.RecycleConfig;
+import com.easysoft.dynamicrecycleview.R;
 
 import java.util.List;
 
@@ -77,13 +77,19 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
 //    MessageCountView mMessageCountView;
     /** 绑定数据 */
     public AddressItemBean mBindItemBean = new AddressItemBean();
-    /** 多选控制工具 */
-    public MutiTypeSelectUtils mSelectUtils;
+
+
+    private int viewType=0;
 
     public boolean mChangeSelectRefresh = false;
     public ContentItemView(Context context) {
         super(context);
         initUI(context);
+    }
+    public ContentItemView(Context context,int type) {
+        super(context);
+        initUI(context);
+        viewType=type;
     }
 
     public ContentItemView(Context context, AttributeSet attrs) {
@@ -146,19 +152,15 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     }
 
 
-    public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
-        this.mSelectUtils = selectUtils;
-    }
-
     public boolean checkContain(AddressItemBean mItemMap) {
         boolean isChecked = false;
-        boolean isContainType = mSelectUtils.getSelectedMap().containsKey(mItemMap.getSelectType());
+        boolean isContainType = RecycleConfig.getInstance().getSelectUtils().getSelectedMap().containsKey(mItemMap.getSelectType());
         List<AddressItemBean> typeListMap = null;
         if (isContainType) {//从多类型中获取数据源
-            typeListMap = mSelectUtils.getSelectedMap().get(mItemMap.getSelectType());
+            typeListMap =  RecycleConfig.getInstance().getSelectUtils().getSelectedMap().get(mItemMap.getSelectType());
             if (typeListMap != null) {
                 for (int i = 0; i < typeListMap.size(); i++) {
-                    IAddressItemBean selectItemMap = typeListMap.get(i);
+                    AddressItemBean selectItemMap = typeListMap.get(i);
                     if (selectItemMap.getId().equals(mItemMap.getId())) {
                         isChecked = true;
                         break;

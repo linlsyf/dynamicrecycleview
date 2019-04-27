@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <drawable name="transparent">#00000000</drawable>
+
+    <!-- 用户头像颜色值 -->
+    <color name="white">#FFF</color>
+    <color name="context_bg_grey">#F2F2F2</color>
+
+    <!--主色调-->
+    <color name="blue_theme">#1cccdd</color>
+
+
+    <color name="transparent">#00000000</color>
+
+    <!--应用中心-->
+
+    <color name="common_hint_color">#AEAEAE</color>
+
+    <color name="common_title_color">#4F5158</color>
+
+   <color name="common_hint_gray">#ff777777</color>
+    <!-- 注册界面颜色 -->
+
+</resources>

@@ -15,7 +15,7 @@ public class LeftCheckBoxConfig {
         if (dataItemBean.isShowLeftCheckBox()) {
             contentItemView.mLeftCheckBox.setVisibility(View.VISIBLE);
             boolean isChecked = dataItemBean.isLeftCheckBoxIsChecked();
-            if (contentItemView.mSelectUtils != null && !contentItemView.mChangeSelectRefresh) {
+            if ( !contentItemView.mChangeSelectRefresh) {
                 isChecked =contentItemView. checkContain(dataItemBean);
                 dataItemBean.setLeftCheckBoxIsChecked(isChecked);
             }

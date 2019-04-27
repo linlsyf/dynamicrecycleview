@@ -1,12 +1,9 @@
 package com.easy.recycleview.custom.baseview.base.select;
 
-import android.content.Context;
-
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
-import com.easy.recycleview.inter.IAddressItemBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,13 +23,11 @@ public class MutiTypeSelectUtils  {
 
     /**已选提示 */
     private String mHasSelectNoticeText="";
-       Context mContext;
   /**传入已选的数据是否可以去除 */
     private boolean intentSelectedCanEdit=true;
   /**传入的已选数据 */
     private   Map<String ,AddressItemBean> intentSelectedMap=new HashMap<String,AddressItemBean>();
-    public MutiTypeSelectUtils(Context context) {
-        mContext=context;
+    public MutiTypeSelectUtils() {
   }
 
 
@@ -187,7 +182,7 @@ public void setHasSelectNoticeText(String text){
         List<SelectBean> resultDepartmentList=new ArrayList<SelectBean>();
         for (int i=0;i<departmentSize;i++){
             SelectBean itembean=new SelectBean();
-            IAddressItemBean selectItembean=departmentList.get(i);
+            AddressItemBean selectItembean=departmentList.get(i);
             itembean.setId(selectItembean.getId());
             itembean.setTitle(selectItembean.getTitle());
             resultDepartmentList.add(itembean);

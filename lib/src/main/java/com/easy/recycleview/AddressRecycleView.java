@@ -8,13 +8,18 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.item.ContentItemView;
+import com.easy.recycleview.custom.baseview.item.SectionView;
+import com.easy.recycleview.custom.baseview.item.SpliteView;
+import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IEmptyView;
-import com.easy.recycleview.outinter.DefaultViewFactory;
+import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.outinter.RecycleConfig;
 import com.easy.recycleview.view.EmptyView;
 import com.easysoft.dynamicrecycleview.R;
 
 import java.lang.reflect.Constructor;
+import java.util.List;
 
 /**
  *创建者：林党宏
@@ -25,13 +30,13 @@ import java.lang.reflect.Constructor;
  */
 
 public class AddressRecycleView extends RelativeLayout implements SectionAdapterHelper.IAddItemView {
-    IEmptyView mIEmptyView;
-    RecyclerView mRefreshRecyclerView;
+    EmptyView mIEmptyView;
+    RecyclerViewSupport mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
-    //DefaultViewFactory defaultViewFactory;
+    //RecycleConfig defaultViewFactory;
     public AddressRecycleView(Context context) {
         super(context);
         initUI(context);
@@ -45,25 +50,23 @@ public class AddressRecycleView extends RelativeLayout implements SectionAdapter
 
     protected void initUI(Context context) {
         rootView= (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
-         mRefreshRecyclerView=(RecyclerView) rootView.findViewById(R.id.refreshRecycleView);
+         mRefreshRecyclerView=(RecyclerViewSupport) rootView.findViewById(R.id.refreshRecycleView);
 
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
 
-
-        mIEmptyView =new EmptyView(getContext());
-//        mIEmptyView =(EmptyView) rootView.findViewById(R.id.emptyNoticeView);
-        mSectionAdapterHelper.setEmptyView(mIEmptyView);
+       View mIEmptyView =rootView.findViewById(R.id.emptyNoticeView);
+        mRefreshRecyclerView.setEmptyView(mIEmptyView);
 
         mSectionAdapterHelper.setIAddItemView(this);
     }
-    public void  setEmptyView(View iEmptyView){
-//        mIEmptyView.setVisibility(View.GONE);
-        mIEmptyView=(IEmptyView)iEmptyView;
-        RelativeLayout.LayoutParams  layoutParams=new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-        rootView.addView(iEmptyView,layoutParams);
-        mSectionAdapterHelper.setEmptyView(mIEmptyView);
-    }
+//    public void  setEmptyView(View iEmptyView){
+////        mIEmptyView.setVisibility(View.GONE);
+//        mIEmptyView=(EmptyView)iEmptyView;
+//        RelativeLayout.LayoutParams  layoutParams=new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+//        rootView.addView(iEmptyView,layoutParams);
+//        mSectionAdapterHelper.setEmptyView(mIEmptyView);
+//    }
 
 
 //    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
@@ -110,7 +113,7 @@ public void  setSpanCount(int  spanCount){
         }
 
         if (itemView==null){
-       Class  classView= DefaultViewFactory.getInstance().getDefaultViewNameMap().get(viewType);
+       Class  classView= RecycleConfig.getInstance().getDefaultViewNameMap().get(viewType);
            try {
                Class[] params = {Context.class};//类类型
                Object[] values = {getContext()};//类型值
@@ -127,11 +130,31 @@ public void  setSpanCount(int  spanCount){
 
           }
 
+        if (itemView==null){
+
+
+             if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
+                 itemView=new ContentItemView(getContext());
+             }
+             else if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
+                 itemView=new SectionView(getContext());
+             }
+             else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
+                 itemView=new SpliteView(getContext());
+             }
+
+        }
+
         return itemView;
     }
 
+    public List<SelectBean> getSelect(String section) {
 
-      public  interface  CustomViewCallBack{
+        return RecycleConfig.getInstance().getSelectUtils().getSelect(section);
+    }
+
+
+    public  interface  CustomViewCallBack{
           View getCustomView(Context context,int type);
       }
       public  void  initCustomViewCallBack(CustomViewCallBack  callback){

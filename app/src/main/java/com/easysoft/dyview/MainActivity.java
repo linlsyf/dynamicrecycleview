@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.easy.recycleview.AddressRecycleView;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.AddressItemBean;
@@ -21,7 +20,7 @@ public class MainActivity extends Activity {
     private static final java.lang.String SECTION_GRID = "grid";
     private static final java.lang.String SECTION_DY = "dy";
     AddressRecycleView recycleView;
-    MutiTypeSelectUtils mutiTypeSelectUtils=new MutiTypeSelectUtils(this);
+//    MutiTypeSelectUtils mutiTypeSelectUtils=new MutiTypeSelectUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,7 @@ public class MainActivity extends Activity {
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IAddressItemBean bean) {
 //                ToastUtils.show(getApplication(),"点击事件触发了");
 
-                List<SelectBean>  selectBeans=  mutiTypeSelectUtils.getSelect(SECTION_NEW);
+                List<SelectBean>  selectBeans=  recycleView.getSelect(SECTION_NEW);
 
                 int size=selectBeans.size();
                 ToastUtils.show(getApplication(),"选中数："+size);
@@ -97,6 +96,7 @@ public class MainActivity extends Activity {
 
         newSection.setName("其他");
         newSection.setDataMaps(newSectionList);
+//        Section   section=new Section("");
         recycleView.updateSection(newSection);
 
 

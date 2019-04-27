@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easysoft.dyview.R;
+import com.easysoft.dynamicrecycleview.R;
 
 
 public class SpliteView extends BaseLinearLayout {

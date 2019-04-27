@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easysoft.dyview.R;
+import com.easysoft.dynamicrecycleview.R;
 
 
 /**

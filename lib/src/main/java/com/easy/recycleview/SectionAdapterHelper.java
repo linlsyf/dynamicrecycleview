@@ -9,16 +9,12 @@ import android.view.ViewGroup;
 
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IAddressItemBean;
-import com.easy.recycleview.inter.IEmptyView;
 import com.easy.recycleview.inter.IItemView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 /**
  *创建者：林党宏
@@ -40,7 +36,7 @@ public class SectionAdapterHelper {
     RecyclerView mRecyclerView;
     private updateListener mUpdateListener;
     /**空数据显示界面 */
-    private IEmptyView mEmptyView;
+//    private View mEmptyView;
     /**上下文环境 */
      Context mContext;
     /** 控件可实现 从写item*/
@@ -60,20 +56,12 @@ public class SectionAdapterHelper {
 
     }
 
-//    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
-//        mSectionedExpandableGridAdapter.initSelectUtils(mSelectUtils);
-//    }
-
-//    public void initManger( VirtualLayoutManager recycleViewManger){
-//        this.mRecycleViewManger=recycleViewManger;
-//
-//    }
      public void  setSpanCount(int  spanCount){
         mRecycleViewManger= new GridLayoutManager(mRecyclerView.getContext(), spanCount, GridLayoutManager.VERTICAL, false);
          mRecyclerView.setLayoutManager(mRecycleViewManger);
     }
-    public void setEmptyView(IEmptyView emptyView) {
-        this.mEmptyView = emptyView;
+    public void setEmptyView(View emptyView) {
+//        this.mEmptyView = emptyView;
     }
 //    public LinearLayoutManager getRecycleViewManger() {
 //        return mRecycleViewManger;
@@ -471,11 +459,11 @@ public class SectionAdapterHelper {
     }
 
     private void checkIsShowEmpty() {
-        if (mEmptyView != null && getAdapter() != null) {
-            final boolean emptyViewVisible = mDataArrayList.size() == 0;
-            setEmptyViewVisibility(emptyViewVisible, true);
-
-         }
+//        if (mEmptyView != null && getAdapter() != null) {
+//            final boolean emptyViewVisible = mDataArrayList.size() == 0;
+//            setEmptyViewVisibility(emptyViewVisible, true);
+//
+//         }
     }
 
     private void notifyData() {
@@ -528,12 +516,12 @@ public class SectionAdapterHelper {
         if (!visibility || cancelAnimation) {
             cancelEmptyViewAnimation();
         }
-        mEmptyView.setVisibility(visibility ? VISIBLE : GONE);
+//        mEmptyView.setVisibility(visibility ? VISIBLE : GONE);
     }
 
     private void cancelEmptyViewAnimation() {
 //        ImageView ivEmpty =(ImageView) mEmptyView.findViewById(R.id.iv_empty);
-        mEmptyView.clearAnimation();
+//        mEmptyView.clearAnimation();
     }
 
     public void initLayoutManager(RecyclerView.LayoutManager layout) {
@@ -624,22 +612,13 @@ public class SectionAdapterHelper {
     class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
         private ArrayList<IAddressItemBean> mDataArrayList;
-//        IItemView.onItemClick mOnItemListener;
-//        IMutiTypeSelectUtils mSelectUtils;
 
-//        public SectionedListViewAdapter(@NonNull VirtualLayoutManager layoutManager) {
-//            super(layoutManager);
-//        }
-//
-//
         public SectionedListViewAdapter(Context context, ArrayList<IAddressItemBean> dataArrayList) {
 
             mContext = context;
             mDataArrayList = dataArrayList;
         }
-//        public void initSelectUtils(IMutiTypeSelectUtils selectUtils){
-//            mSelectUtils=selectUtils;
-//        }
+
         @Override
         public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView=null;
@@ -651,15 +630,11 @@ public class SectionAdapterHelper {
         @Override
         public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
             final IAddressItemBean item=mDataArrayList.get(position);
-            item.setPosition(position);
+//            item.setPosition(position);
             IItemView itemView= holder.getItemView();
             itemView.initData(item);
         }
-//        public void setIsMutiSelect(String type, boolean isMutiSelect) {
-//            if (mSelectUtils!=null){
-//                mSelectUtils.setIsMutiSelect(type,isMutiSelect);
-//            }
-//        }
+
         @Override
         public int getItemCount() {
             return mDataArrayList.size();
@@ -669,10 +644,6 @@ public class SectionAdapterHelper {
         public int getItemViewType(int position) {
             return mDataArrayList.get(position).getViewType();
         }
-
-//        public void setOnItemClick(IItemView.onItemClick listener ){
-//            this.mOnItemListener=listener;
-//        }
 
         @Override
         public void onAttachedToRecyclerView(RecyclerView recyclerView) {

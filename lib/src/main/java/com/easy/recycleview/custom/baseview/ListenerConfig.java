@@ -5,6 +5,7 @@ import android.view.View;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.outinter.RecycleConfig;
 
 
 /**
@@ -95,8 +96,8 @@ public class ListenerConfig {
         if (itemView.mBindItemBean.isShowLeftCheckBox()) {
             itemView.mLeftCheckBox.setVisibility(View.VISIBLE);
             boolean isChecked = itemView.mBindItemBean.isLeftCheckBoxIsChecked();
-            if (itemView.mSelectUtils != null) {
-                boolean selectReuslt = itemView.mSelectUtils.select(!isChecked, itemView.mBindItemBean);
+            if ( RecycleConfig.getInstance().getSelectUtils()!= null) {
+                boolean selectReuslt = RecycleConfig.getInstance().getSelectUtils().select(!isChecked, itemView.mBindItemBean);
                 itemView.mBindItemBean.setLeftCheckBoxIsChecked(selectReuslt);
                 itemView.mChangeSelectRefresh = true;
                  itemView. initData(itemView.mBindItemBean);

@@ -1,5 +1,7 @@
 package com.easy.recycleview.custom.baseview.inter;
 
+import com.easy.recycleview.inter.IAddressItemBean;
+
 import java.util.List;
 import java.util.Map;
 
