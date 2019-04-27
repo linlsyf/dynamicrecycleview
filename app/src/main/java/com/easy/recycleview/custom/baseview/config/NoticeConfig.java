@@ -5,7 +5,7 @@ import android.view.View;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.bean.AddressItemBean;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 
 /**

@@ -2,10 +2,10 @@ package com.easy.recycleview.custom.baseview.base.select;
 
 import android.content.Context;
 
-import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 
 import java.util.ArrayList;

@@ -10,8 +10,11 @@ import android.widget.RelativeLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IEmptyView;
+import com.easy.recycleview.outinter.DefaultViewFactory;
 import com.easy.recycleview.view.EmptyView;
 import com.easysoft.dynamicrecycleview.R;
+
+import java.lang.reflect.Constructor;
 
 /**
  *创建者：林党宏
@@ -28,7 +31,7 @@ public class AddressRecycleView extends RelativeLayout implements SectionAdapter
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
-
+    //DefaultViewFactory defaultViewFactory;
     public AddressRecycleView(Context context) {
         super(context);
         initUI(context);
@@ -101,10 +104,33 @@ public void  setSpanCount(int  spanCount){
      */
     @Override
     public View addItemView(int viewType){
-        View itemView=customViewCallBack.getCustomView(getContext(),viewType);
+        View itemView=null;
+        if(customViewCallBack!=null){
+             itemView  =customViewCallBack.getCustomView(getContext(),viewType);
+        }
+
+        if (itemView==null){
+       Class  classView= DefaultViewFactory.getInstance().getDefaultViewNameMap().get(viewType);
+           try {
+               Class[] params = {Context.class};//类类型
+               Object[] values = {getContext()};//类型值
+
+               Constructor con =classView.getConstructor(params);
+               //调用构造方法并创建实例
+               Object obj = con.newInstance(values);
+
+               itemView=(View) obj;
+
+           }catch (Exception e){
+               System.out.print("class for view"+e.getMessage());
+           }
+
+          }
 
         return itemView;
     }
+
+
       public  interface  CustomViewCallBack{
           View getCustomView(Context context,int type);
       }

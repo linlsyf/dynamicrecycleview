@@ -1,20 +1,15 @@
 package com.easysoft.dyview;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import com.easy.recycleview.AddressRecycleView;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
-import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.baseview.item.SectionView;
-import com.easy.recycleview.custom.baseview.item.SpliteView;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
 
@@ -43,7 +38,7 @@ public class MainActivity extends Activity {
         newItemBean.setHint("this is hint");
         newItemBean.setHintShow(true);
         newItemBean.setShowLeftCheckBox(true);
-        newItemBean.setContentBgResid(R.drawable.corners_bg);
+//        newItemBean.setContentBgResid(R.drawable.corners_bg);
 //        newItemBean.setOnItemAllClickAble(false);
 //        newItemBean.setOnItemClickAble(false);
         newItemBean.setOnItemListener(new IItemView.onItemClick() {
@@ -68,7 +63,7 @@ public class MainActivity extends Activity {
         newItemBean2.setHint("this is hint2");
         newItemBean2.setHintShow(true);
         newItemBean2.setShowLeftCheckBox(true);
-        newItemBean2.setContentBgResid(R.drawable.corners_bg);
+//        newItemBean2.setContentBgResid(R.drawable.corners_bg);
 //        newItemBean2.setOnItemAllClickAble(false);
         newItemBean2.setOnItemListener(new IItemView.onItemClick() {
             @Override
@@ -109,25 +104,25 @@ public class MainActivity extends Activity {
 //          gridViewSection.setPosition(1);
         gridViewSection.setName("网格布局");
 
-        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
-            @Override
-            public View getCustomView(Context context, int viewType) {
-                View itemView=null;
-              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
-                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
-                   contentItemView.initSelectUtils(mutiTypeSelectUtils);
-                  itemView=contentItemView;
-
-              }
-              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
-            itemView=new SectionView(MainActivity.this);
-                 }
-                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
-            itemView=new SpliteView(MainActivity.this);
-                   }
-                return itemView;
-            }
-        });
+//        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
+//            @Override
+//            public View getCustomView(Context context, int viewType) {
+//                View itemView=null;
+//              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
+//                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
+//                   contentItemView.initSelectUtils(mutiTypeSelectUtils);
+//                  itemView=contentItemView;
+//
+//              }
+//              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
+//            itemView=new SectionView(MainActivity.this);
+//                 }
+//                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
+//            itemView=new SpliteView(MainActivity.this);
+//                   }
+//                return itemView;
+//            }
+//        });
 
     }
 }

@@ -15,7 +15,6 @@ public interface IItemView {
         ITEM(0),
         SECTION(1),
         SPLITE(2);
-
         private int value=0;
         ViewTypeEnum(int value) {    //    必须是private的，否则编译错误
             this.value = value;

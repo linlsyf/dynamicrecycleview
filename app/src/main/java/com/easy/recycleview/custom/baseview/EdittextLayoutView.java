@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 
 /**
@@ -72,7 +72,7 @@ public class EdittextLayoutView extends BaseLinearLayout {
             }
         });
 
-        mCleanLayout.setOnClickListener(new View.OnClickListener() {
+        mCleanLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 mContentEditText.setText("");

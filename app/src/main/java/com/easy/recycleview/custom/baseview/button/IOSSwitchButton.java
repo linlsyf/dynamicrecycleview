@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 
 /**

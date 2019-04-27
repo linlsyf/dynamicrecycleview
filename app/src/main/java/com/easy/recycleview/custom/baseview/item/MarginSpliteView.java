@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 
 public class MarginSpliteView extends BaseLinearLayout implements IItemView {

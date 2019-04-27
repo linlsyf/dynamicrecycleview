@@ -3,7 +3,7 @@ package com.easy.recycleview.custom.bean;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 import java.io.Serializable;
 

@@ -34,7 +34,7 @@ import com.easy.recycleview.custom.baseview.config.TitleTextViewConfig;
 import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 import java.util.List;
 

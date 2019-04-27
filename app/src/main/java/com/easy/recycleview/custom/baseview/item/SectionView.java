@@ -13,7 +13,7 @@ import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
 import com.easy.recycleview.custom.bean.AddressItemBean;
 import com.easy.recycleview.inter.IAddressItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.dynamicrecycleview.R;
+import com.easysoft.dyview.R;
 
 
 /**
@@ -55,7 +55,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
             mRightDeletLayout.setVisibility(View.GONE);
         }
         if (map.getOnItemListener()!=null){
-            mRightDeletLayout.setOnClickListener(new View.OnClickListener() {
+            mRightDeletLayout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     map .getOnItemListener().onItemClick(ClickTypeEnum.SECTION_DELETE,map);
