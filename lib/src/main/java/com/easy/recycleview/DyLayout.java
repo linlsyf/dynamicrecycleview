@@ -130,11 +130,13 @@ public void  setSpanCount(int  spanCount){
              if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
                  itemView=new ContentItemView(getContext());
              }
-             else if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
+             else if (IItemView.ViewTypeEnum.SECTION.value()==viewType){
                  itemView=new SectionView(getContext());
              }
              else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
                  itemView=new SpliteView(getContext());
+             }else{
+                 itemView=new ContentItemView(getContext());
              }
         }
         return itemView;
