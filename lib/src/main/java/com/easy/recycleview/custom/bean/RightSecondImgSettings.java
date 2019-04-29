@@ -1,8 +1,6 @@
 package com.easy.recycleview.custom.bean;
 
 
-import com.easy.recycleview.custom.baseview.AddressItemImgEnum;
-
 import java.io.Serializable;
 
 /**
@@ -13,7 +11,7 @@ import java.io.Serializable;
 
 public class RightSecondImgSettings implements Serializable {
     /**用于区分不同业务如群还是人 实现不同头像加载*/
-    private  String headLoadType = AddressItemImgEnum.USER.toString();
+    private  String headLoadType ="";
     /**右侧第二个图片*/
     private  int rightSecondImgResId =0;
     /**右侧侧第二个图片宽高 */

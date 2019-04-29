@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.easy.recycleview.AddressRecycleView;
+import com.easy.recycleview.DyLayout;
 
 
 /**
  * 个人设置内容布局
  */
 
-public class MySettingContentView extends AddressRecycleView {
+public class MySettingContentView extends DyLayout {
 
     public MySettingContentView(Context context) {
         super(context);

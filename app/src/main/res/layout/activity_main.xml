@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <com.easy.recycleview.AddressRecycleView
+    <com.easy.recycleview.DyLayout
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
          android:layout_marginLeft="10dp"

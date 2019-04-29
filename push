@@ -1,5 +1,0 @@
-
-
-gradlew aR bintrayUpload -PbintrayUser=linlsyf -PbintrayKey=linlsyf -PdryRun=false -x releaseAndroidJavadocs
-
-

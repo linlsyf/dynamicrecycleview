@@ -29,7 +29,7 @@ import java.util.List;
  *
  */
 
-public class AddressRecycleView extends RelativeLayout implements SectionAdapterHelper.IAddItemView {
+public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAddItemView {
     EmptyView mIEmptyView;
     RecyclerViewSupport mRefreshRecyclerView;
     /** 分组工具类*/
@@ -37,19 +37,19 @@ public class AddressRecycleView extends RelativeLayout implements SectionAdapter
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
     //RecycleConfig defaultViewFactory;
-    public AddressRecycleView(Context context) {
+    public DyLayout(Context context) {
         super(context);
         initUI(context);
     }
 
-    public AddressRecycleView(Context context, AttributeSet attrs) {
+    public DyLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         initUI(context);
 
     }
 
     protected void initUI(Context context) {
-        rootView= (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.view_address_recycle, this, true);
+        rootView= (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.view_recycle, this, true);
          mRefreshRecyclerView=(RecyclerViewSupport) rootView.findViewById(R.id.refreshRecycleView);
 
         mSectionAdapterHelper=new SectionAdapterHelper();

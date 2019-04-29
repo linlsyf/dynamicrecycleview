@@ -3,7 +3,7 @@ package com.easysoft.dyview;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.easy.recycleview.AddressRecycleView;
+import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
@@ -19,14 +19,14 @@ public class MainActivity extends Activity {
     private static final java.lang.String SECTION_NEW = "new";
     private static final java.lang.String SECTION_GRID = "grid";
     private static final java.lang.String SECTION_DY = "dy";
-    AddressRecycleView recycleView;
+    DyLayout recycleView;
 //    MutiTypeSelectUtils mutiTypeSelectUtils=new MutiTypeSelectUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recycleView= (AddressRecycleView) findViewById(R.id.recycleView);
+        recycleView= (DyLayout) findViewById(R.id.recycleView);
 
         List<IAddressItemBean> newSectionList=new ArrayList<IAddressItemBean>();
 
