@@ -1,6 +1,6 @@
 package com.easy.recycleview.bean;
 
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +23,14 @@ public class Section {
     private  boolean isSectionShowDelete=false;
     /** 插入位置 当大于0时指定位置*/
     private int position=0;
-    private List<IAddressItemBean> dataMaps=new ArrayList<IAddressItemBean>();
+    private List<IDyItemBean> dataMaps=new ArrayList<IDyItemBean>();
 
 
     public Section(String id) {
         this.id = id;
     }
 
-    public Section(String id, String name, List<IAddressItemBean> dataMaps) {
+    public Section(String id, String name, List<IDyItemBean> dataMaps) {
         this.id=id;
         this.name = name;
         this.dataMaps=dataMaps;
@@ -40,11 +40,11 @@ public class Section {
         return name;
     }
 
-    public List<IAddressItemBean> getDataMaps() {
+    public List<IDyItemBean> getDataMaps() {
         return dataMaps;
     }
 
-    public void setDataMaps(List<IAddressItemBean> dataMaps) {
+    public void setDataMaps(List<IDyItemBean> dataMaps) {
         this.dataMaps = dataMaps;
     }
 

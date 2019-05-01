@@ -30,8 +30,8 @@ import com.easy.recycleview.custom.baseview.config.RightUnreadCountConfig;
 import com.easy.recycleview.custom.baseview.config.RootlayoutConfig;
 import com.easy.recycleview.custom.baseview.config.SwitchButtonConfig;
 import com.easy.recycleview.custom.baseview.config.TitleTextViewConfig;
-import com.easy.recycleview.custom.bean.AddressItemBean;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dynamicrecycleview.R;
@@ -76,7 +76,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
 //    /** 内容布局可设置magin布局 */
 //    MessageCountView mMessageCountView;
     /** 绑定数据 */
-    public AddressItemBean mBindItemBean = new AddressItemBean();
+    public DyItemBean mBindItemBean = new DyItemBean();
 
 
     private int viewType=0;
@@ -129,8 +129,8 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
 
     }
 
-    public void initData(final IAddressItemBean itemBean) {
-        mBindItemBean = (AddressItemBean)itemBean;//添加头部 //添加左侧侧布局
+    public void initData(final IDyItemBean itemBean) {
+        mBindItemBean = (DyItemBean)itemBean;//添加头部 //添加左侧侧布局
 
         ContentLayoutConfig.load(this,mBindItemBean);
         RootlayoutConfig.load(this,mBindItemBean);
@@ -152,15 +152,15 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     }
 
 
-    public boolean checkContain(AddressItemBean mItemMap) {
+    public boolean checkContain(DyItemBean mItemMap) {
         boolean isChecked = false;
         boolean isContainType = RecycleConfig.getInstance().getSelectUtils().getSelectedMap().containsKey(mItemMap.getSelectType());
-        List<AddressItemBean> typeListMap = null;
+        List<DyItemBean> typeListMap = null;
         if (isContainType) {//从多类型中获取数据源
             typeListMap =  RecycleConfig.getInstance().getSelectUtils().getSelectedMap().get(mItemMap.getSelectType());
             if (typeListMap != null) {
                 for (int i = 0; i < typeListMap.size(); i++) {
-                    AddressItemBean selectItemMap = typeListMap.get(i);
+                    DyItemBean selectItemMap = typeListMap.get(i);
                     if (selectItemMap.getId().equals(mItemMap.getId())) {
                         isChecked = true;
                         break;
@@ -181,7 +181,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         return content;
     }
 
-    public AddressItemBean getBindItemBean() {
+    public DyItemBean getBindItemBean() {
         return mBindItemBean;
     }
 

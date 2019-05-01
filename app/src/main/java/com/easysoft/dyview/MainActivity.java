@@ -7,9 +7,9 @@ import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         recycleView= (DyLayout) findViewById(R.id.recycleView);
 
-        List<IAddressItemBean> newSectionList=new ArrayList<IAddressItemBean>();
+        List<IDyItemBean> newSectionList=new ArrayList<IDyItemBean>();
 
-        AddressItemBean newItemBean=new AddressItemBean();
+        DyItemBean newItemBean=new DyItemBean();
         newItemBean.setSelectType(SECTION_NEW);//选择类型
 //          newItemBean.setViewType(4);
         newItemBean.setTitle("助手小Q");
@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 //        newItemBean.setOnItemClickAble(false);
         newItemBean.setOnItemListener(new IItemView.onItemClick() {
             @Override
-            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IAddressItemBean bean) {
+            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 //                ToastUtils.show(getApplication(),"点击事件触发了");
 
             }
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
 
         newSectionList.add(newItemBean);
 
-        AddressItemBean newItemBean2=new AddressItemBean();
+        DyItemBean newItemBean2=new DyItemBean();
         newItemBean2.setSelectType(SECTION_NEW);//选择统计类型
 //          newItemBean.setViewType(4);
         newItemBean2.setTitle("22222");
@@ -66,20 +66,20 @@ public class MainActivity extends Activity {
 //        newItemBean2.setOnItemAllClickAble(false);
         newItemBean2.setOnItemListener(new IItemView.onItemClick() {
             @Override
-            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IAddressItemBean bean) {
+            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 //                ToastUtils.show(getApplication(),"点击事件触发了");
 
             }
         });        newSectionList.add(newItemBean2);
 
-        AddressItemBean newItemBean3=new AddressItemBean();
+        DyItemBean newItemBean3=new DyItemBean();
 
 //          newItemBean.setViewType(4);
         newItemBean3.setTitle("查看选择数据");
         newItemBean3.setShowLeftCheckBox(false);
         newItemBean3.setOnItemListener(new IItemView.onItemClick() {
             @Override
-            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IAddressItemBean bean) {
+            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 //                ToastUtils.show(getApplication(),"点击事件触发了");
 
                 List<SelectBean>  selectBeans=  recycleView.getSelect(SECTION_NEW);

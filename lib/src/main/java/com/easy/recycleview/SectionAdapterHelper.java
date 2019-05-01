@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class SectionAdapterHelper {
     /**adapter 数据源集合 */
-    private ArrayList<IAddressItemBean> mDataArrayList = new ArrayList<IAddressItemBean>();
+    private ArrayList<IDyItemBean> mDataArrayList = new ArrayList<IDyItemBean>();
     /** section  集合*/
     private List<Section> mSectionList=new ArrayList<Section>();
     /**adapter */
@@ -126,10 +126,10 @@ public class SectionAdapterHelper {
             }
         }
         if (indexSectionRemove>-1) {
-            List<IAddressItemBean> removeSectionMap = mSectionList.get(indexSectionRemove).getDataMaps();
+            List<IDyItemBean> removeSectionMap = mSectionList.get(indexSectionRemove).getDataMaps();
             int itemRemove = -1;
             for (int i = 0; i < removeSectionMap.size(); i++) {
-                IAddressItemBean itemMap = removeSectionMap.get(i);
+                IDyItemBean itemMap = removeSectionMap.get(i);
                 if (id.equals(itemMap.getId())) {
                     itemRemove = i;
                 }
@@ -171,7 +171,7 @@ public class SectionAdapterHelper {
     }
     public void removeItem(int postion){
         if (postion<=mDataArrayList.size()-1){
-            IAddressItemBean addressItemBean =   mDataArrayList.get(postion);
+            IDyItemBean addressItemBean =   mDataArrayList.get(postion);
             removeItem(addressItemBean.getSection(), addressItemBean.getId());
         }
     }
@@ -181,7 +181,7 @@ public class SectionAdapterHelper {
      *时间：2017/2/8
      *注释：只更新部分字段
      */
-    public void updateItem(String sectionId,IAddressItemBean newDataMap){
+    public void updateItem(String sectionId,IDyItemBean newDataMap){
         int updateSectionIndex=-1;
         String id=newDataMap.getId();
         for (int i=0;i<mSectionList.size();i++){
@@ -191,9 +191,9 @@ public class SectionAdapterHelper {
             }
         }
         if (updateSectionIndex>-1){
-            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
             for(int i=0;i<removeSectionMap.size();i++){
-                IAddressItemBean itemMap=removeSectionMap.get(i);
+                IDyItemBean itemMap=removeSectionMap.get(i);
                 if (id.equals(itemMap.getId())){
                     removeSectionMap.set(i,newDataMap);
                     break;
@@ -212,11 +212,11 @@ public class SectionAdapterHelper {
             }
         }
         if (updateSectionIndex>-1){
-            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
 
-            List<IAddressItemBean>  newSectionMap=new ArrayList<IAddressItemBean>();
+            List<IDyItemBean>  newSectionMap=new ArrayList<IDyItemBean>();
             for(int i=0;i<removeSectionMap.size();i++){
-                IAddressItemBean itemMap=removeSectionMap.get(i);
+                IDyItemBean itemMap=removeSectionMap.get(i);
                 if (!deleteId.equals(itemMap.getId())){
                     newSectionMap.add(itemMap);
                 }
@@ -225,13 +225,13 @@ public class SectionAdapterHelper {
             notifyDataSetChanged();
         }
     }
-    public IAddressItemBean getItem(String sectionId, String id){
-        IAddressItemBean resultBean=null;
+    public IDyItemBean getItem(String sectionId, String id){
+        IDyItemBean resultBean=null;
         for (int i=0;i<mSectionList.size();i++){
             Section itemSection=mSectionList.get(i);
             if (itemSection.getId().equals(sectionId)){
                 for (int j=0;j<itemSection.getDataMaps().size();j++){
-                    IAddressItemBean item=itemSection.getDataMaps().get(j);
+                    IDyItemBean item=itemSection.getDataMaps().get(j);
                     if (item.getId().equals(id)){
                         return item;
                     }
@@ -242,7 +242,7 @@ public class SectionAdapterHelper {
     }
     public void refreshCanSelect(String sectionId,boolean isCanSelect){
         for (int i=0;i<mDataArrayList.size();i++){
-            IAddressItemBean itemBean=mDataArrayList.get(i);
+            IDyItemBean itemBean=mDataArrayList.get(i);
             if (itemBean.getSelectType().equals(sectionId)){
                 itemBean.setShowLeftCheckBox(isCanSelect);
             }
@@ -251,7 +251,7 @@ public class SectionAdapterHelper {
     }
 
 
-//    public void changeSelectSelectItem(String sectionId,IAddressItemBean newDataMap){
+//    public void changeSelectSelectItem(String sectionId,IDyItemBean newDataMap){
 //        int updateSectionIndex=-1;
 //        String id=newDataMap.getId();
 //        for (int i=0;i<mSectionList.size();i++){
@@ -261,10 +261,10 @@ public class SectionAdapterHelper {
 //            }
 //        }
 //        if (updateSectionIndex>-1){
-//            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+//            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
 //            int updateItemIndex=-1;
 //            for(int i=0;i<removeSectionMap.size();i++){
-//                IAddressItemBean itemMap=removeSectionMap.get(i);
+//                IDyItemBean itemMap=removeSectionMap.get(i);
 //                if (id.equals(itemMap.getId())){
 //                    if (itemMap.isShowLeftCheckBox()){
 //                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
@@ -366,7 +366,7 @@ public class SectionAdapterHelper {
 //     *时间：2017/2/8
 //     *注释：所有分组已选数据
 //     */
-//    public Map<String, List<IAddressItemBean>> getSelectMap(){
+//    public Map<String, List<IDyItemBean>> getSelectMap(){
 //      return RecycleConfig.getInstance().getSelectUtils().getSelectedMap();
 //    }
 //
@@ -417,7 +417,7 @@ public class SectionAdapterHelper {
 //        SimpleArrayMap<Integer, String> map=new SimpleArrayMap<Integer, String>();
 //
 //        for (int i=0;i<mDataArrayList.size();i++){
-//            AddressItemBean itemSimpleMap=mDataArrayList.get(i);
+//            DyItemBean itemSimpleMap=mDataArrayList.get(i);
 //            if (itemSimpleMap.getViewType()==IItemView.ViewTypeEnum.SECTION.value()){
 //
 //                if (itemSimpleMap.isAddSideBar()){
@@ -530,7 +530,7 @@ public class SectionAdapterHelper {
         }
     }
 
-        public List<IAddressItemBean> getDataArrayList() {
+        public List<IDyItemBean> getDataArrayList() {
         return mDataArrayList;
     }
     public interface updateListener{
@@ -591,9 +591,9 @@ public class SectionAdapterHelper {
 
     class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
-        private ArrayList<IAddressItemBean> mDataArrayList;
+        private ArrayList<IDyItemBean> mDataArrayList;
 
-        public SectionedListViewAdapter(Context context, ArrayList<IAddressItemBean> dataArrayList) {
+        public SectionedListViewAdapter(Context context, ArrayList<IDyItemBean> dataArrayList) {
 
             mContext = context;
             mDataArrayList = dataArrayList;
@@ -609,7 +609,7 @@ public class SectionAdapterHelper {
         }
         @Override
         public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
-            final IAddressItemBean item=mDataArrayList.get(position);
+            final IDyItemBean item=mDataArrayList.get(position);
 //            item.setPosition(position);
             IItemView itemView= holder.getItemView();
             itemView.initData(item);

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
 
@@ -31,7 +31,7 @@ public class SpliteView extends BaseLinearLayout implements IItemView {
     }
 
     @Override
-    public void initData(IAddressItemBean map) {
+    public void initData(IDyItemBean map) {
 
     }
 }

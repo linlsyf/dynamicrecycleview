@@ -3,7 +3,7 @@ package com.easy.recycleview.custom.baseview.config;
 import android.view.View;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -11,7 +11,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class LeftCheckBoxConfig {
-    public static void load(ContentItemView contentItemView, AddressItemBean dataItemBean) {
+    public static void load(ContentItemView contentItemView, DyItemBean dataItemBean) {
         if (dataItemBean.isShowLeftCheckBox()) {
             contentItemView.mLeftCheckBox.setVisibility(View.VISIBLE);
             boolean isChecked = dataItemBean.isLeftCheckBoxIsChecked();

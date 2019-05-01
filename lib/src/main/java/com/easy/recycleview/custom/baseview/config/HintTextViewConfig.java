@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -12,7 +12,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class HintTextViewConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         if (dataItemBean.isHintShow()) {
             itemView.mHintTextView.setVisibility(View.VISIBLE);
             itemView. mHintTextView.setText(dataItemBean.getHint());

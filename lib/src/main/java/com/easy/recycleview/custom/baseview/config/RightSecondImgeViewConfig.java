@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.RightSecondImgSettings;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dynamicrecycleview.R;
@@ -19,7 +19,7 @@ import com.easysoft.dynamicrecycleview.R;
 
 public class RightSecondImgeViewConfig {
 
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         //添加右侧图片显示如头像
         RightSecondImgSettings secondImgSetting=dataItemBean.getRightSecondImgSettings();
         if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())||StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgStorePath()) ||secondImgSetting.getRightSecondImgResId() != 0) {

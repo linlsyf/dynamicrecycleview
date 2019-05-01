@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
-import com.easy.recycleview.custom.bean.AddressItemBean;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
 
@@ -45,7 +45,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
-    public void initData(final AddressItemBean map){
+    public void initData(final DyItemBean map){
         mTitleView.setText(map.getTitle());
         if (map.isSectionShowDelete()){
             mRightDeletLayout.setVisibility(View.VISIBLE);
@@ -71,7 +71,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
 
 
     @Override
-    public void initData(IAddressItemBean map) {
+    public void initData(IDyItemBean map) {
 
     }
 }

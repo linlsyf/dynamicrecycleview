@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easysoft.dynamicrecycleview.R;
 
 
@@ -13,7 +13,7 @@ import com.easysoft.dynamicrecycleview.R;
  */
 
 public class RightFirstTextViewConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         //设置右侧是否显示
         if (dataItemBean.getRightFirstTvColor() == 0) {
             itemView.mRightFirstTextView.setTextColor(itemView.getResources().getColor(R.color.transparent));

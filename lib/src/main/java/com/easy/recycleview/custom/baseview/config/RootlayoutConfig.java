@@ -4,7 +4,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -12,7 +12,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class RootlayoutConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         LinearLayout.LayoutParams rootParams = (LinearLayout.LayoutParams) itemView.mRootlayout.getLayoutParams();
         if (itemView.mBindItemBean.getItemHight() != 0) {
             rootParams.height = itemView.mBindItemBean.getItemHight();

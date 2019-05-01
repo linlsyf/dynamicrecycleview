@@ -1,7 +1,7 @@
 package com.easy.recycleview.custom.bean;
 
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
  *时间：2017/2/13
  *注释：通用通讯录界面item数据源
  */
-public class AddressItemBean implements IAddressItemBean, Serializable,Cloneable{
+public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     /** 执行回调*/
     /** 状态切换监听*/
@@ -95,6 +95,10 @@ public class AddressItemBean implements IAddressItemBean, Serializable,Cloneable
     IItemView.onItemClick onItemListener;
      /**右侧切换按钮监听 */
 
+    /**title设置 */
+    TitleSettings titleSettings =new TitleSettings();
+    /**hint设置 */
+    HintSettings hintSettings =new HintSettings();
     /**右侧第二个图片设置 */
     RightSecondImgSettings rightSecondImgSettings =new RightSecondImgSettings();
     /**输入框内容配置*/
@@ -473,5 +477,29 @@ public class AddressItemBean implements IAddressItemBean, Serializable,Cloneable
 
     public void setBindObject(Object bindObject) {
         this.bindObject = bindObject;
+    }
+
+    public TitleSettings getTitleSettings() {
+        return titleSettings;
+    }
+
+    public void setTitleSettings(TitleSettings titleSettings) {
+        this.titleSettings = titleSettings;
+    }
+
+    public OnStateChangeListener getmListener() {
+        return mListener;
+    }
+
+    public void setmListener(OnStateChangeListener mListener) {
+        this.mListener = mListener;
+    }
+
+    public HintSettings getHintSettings() {
+        return hintSettings;
+    }
+
+    public void setHintSettings(HintSettings hintSettings) {
+        this.hintSettings = hintSettings;
     }
 }

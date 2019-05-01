@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public interface IItemView {
 
-    void initData(IAddressItemBean map);
+    void initData(IDyItemBean map);
 //
     enum ViewTypeEnum {
         ITEM(0),
@@ -44,7 +44,7 @@ public interface IItemView {
 
     interface onItemClick extends Serializable {
 
-        void onItemClick(ClickTypeEnum typeEnum, IAddressItemBean bean);
+        void onItemClick(ClickTypeEnum typeEnum, IDyItemBean bean);
 
     }
 

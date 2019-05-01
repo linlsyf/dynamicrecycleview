@@ -3,7 +3,7 @@ package com.easy.recycleview.custom.baseview.config;
 import android.view.View;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -11,7 +11,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class SwitchButtonConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
 
 
 //     

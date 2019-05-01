@@ -12,7 +12,7 @@ import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.item.SectionView;
 import com.easy.recycleview.custom.baseview.item.SpliteView;
 import com.easy.recycleview.custom.bean.SelectBean;
-import com.easy.recycleview.inter.IAddressItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easy.recycleview.view.EmptyView;
@@ -75,10 +75,10 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
     public RecyclerView getRefreshRecyclerView() {
         return mRefreshRecyclerView;
     }
-//    public List<IAddressItemBean> getSelectList(String sectionId){
-//        List<IAddressItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
+//    public List<IDyItemBean> getSelectList(String sectionId){
+//        List<IDyItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
 //       if (selectList==null){
-//           selectList=new ArrayList<IAddressItemBean>();
+//           selectList=new ArrayList<IDyItemBean>();
 //       }
 //        return selectList;
 //    }
@@ -160,7 +160,7 @@ public void  setSpanCount(int  spanCount){
     public SectionAdapterHelper getSectionAdapterHelper() {
         return mSectionAdapterHelper;
     }
-    public void updateItem(IAddressItemBean addressItemBean) {
+    public void updateItem(IDyItemBean addressItemBean) {
         mSectionAdapterHelper.updateItem(addressItemBean.getSection(),addressItemBean);
     }
 

@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 
 
@@ -13,7 +13,7 @@ import com.easy.recycleview.outinter.RecycleConfig;
  */
 
 public class RightFirstImageViewConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         //添加右侧第一个图片如指向图片
         if (dataItemBean.getRightFistImgeSettings().getRightFirstImgResId() != 0) {
             LinearLayout.LayoutParams mRightFirstParams = (LinearLayout.LayoutParams) itemView.mRightFirstImageView.getLayoutParams();

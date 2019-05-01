@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -12,7 +12,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class RightFirstButtonConfig{
-        public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+        public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
             if (StringUtils.isNotEmpty(dataItemBean.getRightFirstButtonText())) {
                 itemView.mRightFirstButton.setVisibility(View.VISIBLE);
                 itemView.mRightFirstButton.setText(dataItemBean.getRightFirstButtonText());

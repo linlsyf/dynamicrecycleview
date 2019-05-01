@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.easy.recycleview.custom.baseview.EdittextLayoutView;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 /**
@@ -12,7 +12,7 @@ import com.easy.recycleview.custom.bean.AddressItemBean;
  */
 
 public class EditLayoutConfig {
-    public static  void load(ContentItemView itemView, final AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, final DyItemBean dataItemBean) {
             itemView.mTitleTextView.setText(dataItemBean.getTitle());  if (dataItemBean.getEidtSettings().isShowEdittext()) {//输入框
             itemView.mContentEditLayout.setCallback(new EdittextLayoutView.CallbackListener() {
                 @Override

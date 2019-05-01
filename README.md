@@ -14,7 +14,10 @@
 
 
 4 数据控制多少列，实现list和GridView
- 
+
+
 ##相关连接
 缩略图获取
 https://github.com/dengyuhan/MediaMetadataRetrieverCompat/blob/master/example/src/main/java/com/dyhdyh/compat/mmrc/example/MainActivity.java
+
+重现编译  gradlew assembleRelease

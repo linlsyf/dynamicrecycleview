@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easysoft.dynamicrecycleview.R;
 
 
@@ -13,7 +13,7 @@ import com.easysoft.dynamicrecycleview.R;
  */
 
 public class NoticeConfig {
-    public static  void load(ContentItemView itemView, AddressItemBean dataItemBean) {
+    public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         if (StringUtils.isNotEmpty(dataItemBean.getLeftSecondText())) {
             itemView.mNoticeTextView.setText(dataItemBean.getLeftSecondText());
             itemView.mNoticeTextView.setVisibility(View.VISIBLE);

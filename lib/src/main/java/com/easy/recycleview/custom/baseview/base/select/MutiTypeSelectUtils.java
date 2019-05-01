@@ -2,7 +2,7 @@ package com.easy.recycleview.custom.baseview.base.select;
 
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
-import com.easy.recycleview.custom.bean.AddressItemBean;
+import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.Map;
    */
 public class MutiTypeSelectUtils  {
     /**分类选中集合 */
-  protected Map<String,List<AddressItemBean>> mSelectedMap =new HashMap<String,List<AddressItemBean>>();
+  protected Map<String,List<DyItemBean>> mSelectedMap =new HashMap<String,List<DyItemBean>>();
     /** type 类型对应是否可以多选*/
   protected Map<String,Boolean> mTypeMutiMap =new HashMap<String,Boolean>();
 
@@ -26,18 +26,18 @@ public class MutiTypeSelectUtils  {
   /**传入已选的数据是否可以去除 */
     private boolean intentSelectedCanEdit=true;
   /**传入的已选数据 */
-    private   Map<String ,AddressItemBean> intentSelectedMap=new HashMap<String,AddressItemBean>();
+    private   Map<String ,DyItemBean> intentSelectedMap=new HashMap<String,DyItemBean>();
     public MutiTypeSelectUtils() {
   }
 
 
-  public Map<String, List<AddressItemBean>> getSelectedMap() {
+  public Map<String, List<DyItemBean>> getSelectedMap() {
       return mSelectedMap;
   }
 
 
 
-  public boolean select(boolean setIsSelect, AddressItemBean mItemMap){
+  public boolean select(boolean setIsSelect, DyItemBean mItemMap){
       String selectType="";
 
       if (!intentSelectedCanEdit){
@@ -50,7 +50,7 @@ public class MutiTypeSelectUtils  {
           selectType=mItemMap.getSection();
           mItemMap.setSelectType(selectType);
       }
-      List<AddressItemBean> typeListMap=null;
+      List<DyItemBean> typeListMap=null;
       boolean mIsMutiUserSelect=true;
      //从多类型中获取数据源
        typeListMap=mSelectedMap.get(selectType);
@@ -72,7 +72,7 @@ public class MutiTypeSelectUtils  {
                   return false;//确认点击为单选选中无效
               }else{
                   if (typeListMap==null){
-                      typeListMap=new ArrayList<AddressItemBean>();
+                      typeListMap=new ArrayList<DyItemBean>();
                   }
                   typeListMap.add(mItemMap);
                   mSelectedMap.put(mItemMap.getSelectType(),typeListMap);
@@ -86,7 +86,7 @@ public class MutiTypeSelectUtils  {
               return false;//确认点击为多选取消选中
           }else  {
               if (typeListMap==null){
-                  typeListMap=new ArrayList<AddressItemBean>();
+                  typeListMap=new ArrayList<DyItemBean>();
               }
               typeListMap.add(mItemMap);
               mSelectedMap.put(mItemMap.getSelectType(),typeListMap);
@@ -99,10 +99,10 @@ public class MutiTypeSelectUtils  {
      *时间：2017/1/23
      *注释：移除已选
      */
-    public void reomveSelect(List<AddressItemBean> typeListMap, AddressItemBean removeMap){
+    public void reomveSelect(List<DyItemBean> typeListMap, DyItemBean removeMap){
         int index=-1;
         for (int i=0; i<typeListMap.size();i++){
-            AddressItemBean itemMap=typeListMap.get(i);
+            DyItemBean itemMap=typeListMap.get(i);
             if (itemMap.getId().equals(removeMap.getId())){
                 index=i;
                 break;
@@ -124,12 +124,12 @@ public void setHasSelectNoticeText(String text){
     public void setIsMutiSelect(String type, boolean isMutiSelect) {
         mTypeMutiMap.put(type,isMutiSelect);
     }
-    public void  initSelectDatas(String type,List<AddressItemBean> datas)  {
-        List<AddressItemBean> newSelectList=new ArrayList<AddressItemBean>();
+    public void  initSelectDatas(String type,List<DyItemBean> datas)  {
+        List<DyItemBean> newSelectList=new ArrayList<DyItemBean>();
 
         intentSelectedMap.clear();
         for (int i=0;i<datas.size();i++){
-            AddressItemBean  itembean=datas.get(i);
+            DyItemBean itembean=datas.get(i);
             intentSelectedMap.put(itembean.getId(),itembean);
             newSelectList.add(itembean);
         }
@@ -153,14 +153,14 @@ public void setHasSelectNoticeText(String text){
 
      public boolean  isCheckSelectedById(String sectionId,String id){
          boolean isContain=false;
-         List<AddressItemBean> dataList=   mSelectedMap.get(sectionId);
+         List<DyItemBean> dataList=   mSelectedMap.get(sectionId);
           if (dataList==null){
               return false;
           }
           if (dataList.size()==0){
               return false;
           }
-          for (AddressItemBean itemBean:dataList){
+          for (DyItemBean itemBean:dataList){
               if (itemBean.getId().equals(id)){
                   isContain=true;
                   break;
@@ -170,9 +170,9 @@ public void setHasSelectNoticeText(String text){
      }
 
     public List<SelectBean> getSelect(String selectType){
-        Map<String, List<AddressItemBean>>  selectMap=getSelectedMap();
+        Map<String, List<DyItemBean>>  selectMap=getSelectedMap();
 
-        List<AddressItemBean> departmentList=new ArrayList<AddressItemBean>();
+        List<DyItemBean> departmentList=new ArrayList<DyItemBean>();
         int departmentSize=0;
         if (selectMap.containsKey(selectType)){
             departmentList=   selectMap.get(selectType);
@@ -182,7 +182,7 @@ public void setHasSelectNoticeText(String text){
         List<SelectBean> resultDepartmentList=new ArrayList<SelectBean>();
         for (int i=0;i<departmentSize;i++){
             SelectBean itembean=new SelectBean();
-            AddressItemBean selectItembean=departmentList.get(i);
+            DyItemBean selectItembean=departmentList.get(i);
             itembean.setId(selectItembean.getId());
             itembean.setTitle(selectItembean.getTitle());
             resultDepartmentList.add(itembean);
@@ -191,7 +191,7 @@ public void setHasSelectNoticeText(String text){
     }
 
 
-//    public void changeSelectSelectItem(List<Section> mSectionList,String sectionId,AddressItemBean newDataMap){
+//    public void changeSelectSelectItem(List<Section> mSectionList,String sectionId,DyItemBean newDataMap){
 //        int updateSectionIndex=-1;
 //        String id=newDataMap.getId();
 //        for (int i=0;i<mSectionList.size();i++){
@@ -201,10 +201,10 @@ public void setHasSelectNoticeText(String text){
 //            }
 //        }
 //        if (updateSectionIndex>-1){
-//            List<IAddressItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
+//            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
 //            int updateItemIndex=-1;
 //            for(int i=0;i<removeSectionMap.size();i++){
-//                IAddressItemBean itemMap=removeSectionMap.get(i);
+//                IDyItemBean itemMap=removeSectionMap.get(i);
 //                if (id.equals(itemMap.getId())){
 //                    if (itemMap.isShowLeftCheckBox()){
 //                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
