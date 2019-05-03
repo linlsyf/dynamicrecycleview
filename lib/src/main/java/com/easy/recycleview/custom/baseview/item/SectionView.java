@@ -45,22 +45,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
-    public void initData(final DyItemBean map){
-        mTitleView.setText(map.getTitle());
-        if (map.isSectionShowDelete()){
-            mRightDeletLayout.setVisibility(View.VISIBLE);
-        }else{
-            mRightDeletLayout.setVisibility(View.GONE);
-        }
-        if (map.getOnItemListener()!=null){
-            mRightDeletLayout.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    map .getOnItemListener().onItemClick(ClickTypeEnum.SECTION_DELETE,map);
-                }
-            });
-        }
-    }
+
 
     public void initData(Section section) {
         mTitleView.setText(section.getName());
@@ -73,7 +58,25 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
     @Override
     public void initData(IDyItemBean map) {
 
-    }
+        final DyItemBean itemBean=(DyItemBean)map;
+          if (itemBean.getTitleSettings().getColor()!=0){
+              mTitleView.setTextColor(itemBean.getTitleSettings().getColor());
+          }
+            mTitleView.setText(map.getTitle());
+            if (itemBean.isSectionShowDelete()){
+                mRightDeletLayout.setVisibility(View.VISIBLE);
+            }else{
+                mRightDeletLayout.setVisibility(View.GONE);
+            }
+            if (itemBean.getOnItemListener()!=null){
+                mRightDeletLayout.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        itemBean .getOnItemListener().onItemClick(ClickTypeEnum.SECTION_DELETE,itemBean);
+                    }
+                });
+            }
+        }
 }
 
 

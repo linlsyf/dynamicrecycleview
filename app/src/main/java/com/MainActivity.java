@@ -1,4 +1,4 @@
-package com.easysoft.dyview;
+package com;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.dyview.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,14 @@ public class MainActivity extends Activity {
         recycleView= (DyLayout) findViewById(R.id.recycleView);
 
         List<IDyItemBean> newSectionList=new ArrayList<IDyItemBean>();
+
+        DyItemBean sectionBean=new DyItemBean();
+        sectionBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
+        sectionBean.setTitle("点击查看例句，长按编辑");
+//		sectionBean.setTitle("随机待学"+dictList.size()+"个新词");
+
+        newSectionList.add(sectionBean);
+
 
         DyItemBean newItemBean=new DyItemBean();
         newItemBean.setSelectType(SECTION_NEW);//选择类型
@@ -95,34 +104,35 @@ public class MainActivity extends Activity {
         newSection.setPosition(0);
 
         newSection.setName("其他");
+        newSection.setShowSection(true);
         newSection.setDataMaps(newSectionList);
 //        Section   section=new Section("");
         recycleView.updateSection(newSection);
 
 
-        Section  gridViewSection=new Section(SECTION_GRID);
-//          gridViewSection.setPosition(1);
-        gridViewSection.setName("网格布局");
-
-//        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
-//            @Override
-//            public View getCustomView(Context context, int viewType) {
-//                View itemView=null;
-//              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
-//                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
-//                   contentItemView.initSelectUtils(mutiTypeSelectUtils);
-//                  itemView=contentItemView;
+//        Section  gridViewSection=new Section(SECTION_GRID);
+////          gridViewSection.setPosition(1);
+//        gridViewSection.setName("网格布局");
 //
-//              }
-//              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
-//            itemView=new SectionView(MainActivity.this);
-//                 }
-//                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
-//            itemView=new SpliteView(MainActivity.this);
-//                   }
-//                return itemView;
-//            }
-//        });
+////        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
+////            @Override
+////            public View getCustomView(Context context, int viewType) {
+////                View itemView=null;
+////              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
+////                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
+////                   contentItemView.initSelectUtils(mutiTypeSelectUtils);
+////                  itemView=contentItemView;
+////
+////              }
+////              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
+////            itemView=new SectionView(MainActivity.this);
+////                 }
+////                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
+////            itemView=new SpliteView(MainActivity.this);
+////                   }
+////                return itemView;
+////            }
+////        });
 
     }
 }

@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:name="com.easysoft.CoreApplication"
 >
-        <activity android:name=".MainActivity">
+        <activity android:name="com.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
