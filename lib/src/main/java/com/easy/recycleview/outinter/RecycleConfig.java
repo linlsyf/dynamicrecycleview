@@ -14,6 +14,8 @@ public class RecycleConfig {
     static RecycleConfig factory;
 
     Map<Integer,Class>   defaultViewNameMap=new HashMap();
+
+    static ThemeConfig  themeConfig;
    static  MutiTypeSelectUtils mSelectUtils;
 
     private IloadImage iloadImage;
@@ -21,9 +23,9 @@ public class RecycleConfig {
     public static RecycleConfig getInstance( ){
         if (factory==null){
             factory=new RecycleConfig();
-        }
-        if (mSelectUtils==null){
+
             mSelectUtils=new MutiTypeSelectUtils();
+            themeConfig=new ThemeConfig();
         }
 
         return  factory;
@@ -51,5 +53,13 @@ public class RecycleConfig {
 
     public IloadImage getIloadImage() {
         return iloadImage;
+    }
+
+    public ThemeConfig getThemeConfig() {
+        return themeConfig;
+    }
+
+    public void setThemeConfig(ThemeConfig themeConfig) {
+        this.themeConfig = themeConfig;
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
+import com.easy.recycleview.custom.bean.AddressEditSettings;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
@@ -43,8 +44,13 @@ public class MainActivity extends Activity {
         newItemBean.setSelectType(SECTION_NEW);//选择类型
 //          newItemBean.setViewType(4);
         newItemBean.setTitle("助手小Q");
-        newItemBean.setHint("this is hint");
-        newItemBean.setHintShow(true);
+//        newItemBean.setHint("this is hint");
+//        newItemBean.setHintShow(true);
+        AddressEditSettings eidtSettings=new AddressEditSettings();
+        eidtSettings.setEditContent("test");
+        eidtSettings.setShowEdittext(true);
+        eidtSettings.setEdittextCanEdit(false);
+        newItemBean.setEidtSettings(eidtSettings);
         newItemBean.setShowLeftCheckBox(true);
 //        newItemBean.setContentBgResid(R.drawable.corners_bg);
 //        newItemBean.setOnItemAllClickAble(false);
@@ -110,29 +116,6 @@ public class MainActivity extends Activity {
         recycleView.updateSection(newSection);
 
 
-//        Section  gridViewSection=new Section(SECTION_GRID);
-////          gridViewSection.setPosition(1);
-//        gridViewSection.setName("网格布局");
-//
-////        recycleView.initCustomViewCallBack(new AddressRecycleView.CustomViewCallBack() {
-////            @Override
-////            public View getCustomView(Context context, int viewType) {
-////                View itemView=null;
-////              if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
-////                  ContentItemView contentItemView=new ContentItemView(MainActivity.this)  ;
-////                   contentItemView.initSelectUtils(mutiTypeSelectUtils);
-////                  itemView=contentItemView;
-////
-////              }
-////              else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
-////            itemView=new SectionView(MainActivity.this);
-////                 }
-////                else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
-////            itemView=new SpliteView(MainActivity.this);
-////                   }
-////                return itemView;
-////            }
-////        });
 
     }
 }

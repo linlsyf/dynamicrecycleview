@@ -9,6 +9,8 @@ public interface IDyItemBean {
 
     String getTitle();
 
+
+
     int getViewType();
 
     String getSection();

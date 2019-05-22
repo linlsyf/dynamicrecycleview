@@ -20,9 +20,9 @@ public class RootlayoutConfig {
             rootParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         }
         itemView.mRootlayout.setLayoutParams(rootParams);
-        if (dataItemBean.getContentBgResid()!=0){
-            itemView.mRootlayout.setBackgroundResource(dataItemBean.getContentBgResid());
 
-        }
+        ItemBgConfg.load(itemView,dataItemBean);
+
+
     }
 }

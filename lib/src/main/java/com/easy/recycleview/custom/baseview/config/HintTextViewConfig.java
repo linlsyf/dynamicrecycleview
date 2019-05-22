@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.outinter.RecycleConfig;
 
 
 /**
@@ -21,6 +22,14 @@ public class HintTextViewConfig {
                         new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 mHintParams.leftMargin = dataItemBean.getHintLeftMagin();
                 itemView.mHintTextView.setLayoutParams(mHintParams);
+            }
+
+            int colorResId=dataItemBean.getHintSettings().getColor();
+            int titleColorResId= RecycleConfig.getInstance().getThemeConfig().getHintColorResId();
+            if (colorResId!=0){
+                itemView.mHintTextView.setTextColor(colorResId);
+            }else  if(titleColorResId!=0){
+                itemView.mHintTextView.setTextColor(titleColorResId);
             }
         } else {
             itemView.mHintTextView.setVisibility(View.GONE);

@@ -16,6 +16,7 @@
         android:icon="@drawable/ic_dy"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme_Light_APP"
         android:name="com.easysoft.CoreApplication"
 >
         <activity android:name="com.MainActivity">

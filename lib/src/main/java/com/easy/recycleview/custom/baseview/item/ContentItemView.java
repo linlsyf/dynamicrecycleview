@@ -100,6 +100,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     protected void initUI(Context context) {
         mContext = context;
         View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, this,true);
+
          mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
          mSwitchButton=(IOSSwitchButton) rootView.findViewById(R.id.switchButton);
         /** 左侧选中图标 */

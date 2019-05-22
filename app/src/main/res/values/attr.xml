@@ -1,0 +1,5 @@
+<resources>
+        <attr name="textColor" format="reference|color"/>
+        <attr name="background" format="reference|color"/>
+
+</resources>

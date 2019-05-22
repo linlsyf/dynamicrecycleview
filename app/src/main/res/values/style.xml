@@ -1,0 +1,11 @@
+<resources>
+    <style name="AppTheme_Light_APP" >
+        <item name="textColor">#ff0000</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme_Night_APP">
+        <item name="textColor">#1cccdd</item>
+        <item name="android:background">@android:color/black</item>
+    </style>
+</resources>

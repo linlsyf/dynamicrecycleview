@@ -30,8 +30,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     private  String selectType ="";
     /**界面类型*/
     private  int viewType = IItemView.ViewTypeEnum.ITEM.value();
-    /**根目录背景图片*/
-    private  int contentBgResid=0;
+
     /**标题*/
     private  String title="";
     /**副标题*/
@@ -110,12 +109,18 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     /**
      * 默认为6 一行显示
      */
+    private BgSetting bgSetting=new BgSetting();
+
+
+
     int spanSize = 6;
     private IOSSwitchButton.OnStateChangeListener onRightCheckBoxListener;
 
     public int getSpanSize() {
         return spanSize;
     }
+
+
 
     public void setSpanSize(int spanSize) {
         this.spanSize = spanSize;
@@ -164,6 +169,8 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     public String getTitle() {
         return title;
     }
+
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -455,13 +462,6 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
         return super.clone();
     }
 
-    public int getContentBgResid() {
-        return contentBgResid;
-    }
-
-    public void setContentBgResid(int contentBgResid) {
-        this.contentBgResid = contentBgResid;
-    }
 
     public boolean isOnItemAllClickAble() {
         return isOnItemAllClickAble;
@@ -501,5 +501,13 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     public void setHintSettings(HintSettings hintSettings) {
         this.hintSettings = hintSettings;
+    }
+
+    public BgSetting getBgSetting() {
+        return bgSetting;
+    }
+
+    public void setBgSetting(BgSetting bgSetting) {
+        this.bgSetting = bgSetting;
     }
 }

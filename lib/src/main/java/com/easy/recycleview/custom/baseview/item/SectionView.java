@@ -27,6 +27,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
     TextView mTitleView;
     Context mContext;
     RelativeLayout mRightDeletLayout;
+    View rootView;
     public SectionView(Context context) {
         super(context);
         initUI(context);
@@ -38,7 +39,7 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
     }
     protected void initUI(Context context) {
         mContext=context;
-     View rootView=   LayoutInflater.from(mContext).inflate( R.layout.view_section, this, true);
+      rootView=   LayoutInflater.from(mContext).inflate( R.layout.view_section, this, true);
         mTitleView= (TextView)rootView.findViewById(R.id.tvSection);
         mRightDeletLayout= (RelativeLayout) rootView.findViewById(R.id.rightDeletLayout);
 
@@ -73,6 +74,13 @@ public class SectionView extends BaseLinearLayout implements  IItemView{
                     @Override
                     public void onClick(View v) {
                         itemBean .getOnItemListener().onItemClick(ClickTypeEnum.SECTION_DELETE,itemBean);
+                    }
+                });
+
+                rootView .setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        itemBean .getOnItemListener().onItemClick(ClickTypeEnum.ITEM,itemBean);
                     }
                 });
             }
