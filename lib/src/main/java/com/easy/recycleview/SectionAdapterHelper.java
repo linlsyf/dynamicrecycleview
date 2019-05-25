@@ -570,15 +570,7 @@ public class SectionAdapterHelper {
           itemView=mIAddItemView.addItemView(viewType);
             return  itemView;
         }
-//        if (viewType==IItemView.ViewTypeEnum.ITEM.value()){
-//            itemView=new ContentItemView(mContext)  ;
-//        }
-//        else if(viewType==IItemView.ViewTypeEnum.SECTION.value()){
-//            itemView=new SectionView(mContext);
-//        }
-//        else if(viewType==IItemView.ViewTypeEnum.SPLITE.value()){
-//            itemView=new SpliteView(mContext);
-//        }
+
         return itemView;
     }
 

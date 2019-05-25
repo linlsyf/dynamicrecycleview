@@ -36,7 +36,6 @@ public class MainActivity extends Activity {
         sectionBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
         sectionBean.setTitle("点击查看例句，长按编辑");
 //		sectionBean.setTitle("随机待学"+dictList.size()+"个新词");
-
         newSectionList.add(sectionBean);
 
 
@@ -44,8 +43,7 @@ public class MainActivity extends Activity {
         newItemBean.setSelectType(SECTION_NEW);//选择类型
 //          newItemBean.setViewType(4);
         newItemBean.setTitle("助手小Q");
-//        newItemBean.setHint("this is hint");
-//        newItemBean.setHintShow(true);
+
         AddressEditSettings eidtSettings=new AddressEditSettings();
         eidtSettings.setEditContent("test");
         eidtSettings.setShowEdittext(true);
@@ -86,6 +84,12 @@ public class MainActivity extends Activity {
 
             }
         });        newSectionList.add(newItemBean2);
+
+
+        DyItemBean splitBean=new DyItemBean();
+        splitBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+        newSectionList.add(splitBean);
+
 
         DyItemBean newItemBean3=new DyItemBean();
 

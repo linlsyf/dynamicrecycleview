@@ -9,11 +9,8 @@ import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.baseview.item.SectionView;
-import com.easy.recycleview.custom.baseview.item.SpliteView;
 import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
-import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easy.recycleview.view.EmptyView;
 import com.easysoft.dynamicrecycleview.R;
@@ -127,17 +124,17 @@ public void  setSpanCount(int  spanCount){
           }
 
         if (itemView==null){
-             if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
+//             if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
+//                 itemView=new ContentItemView(getContext());
+//             }
+//             else if (IItemView.ViewTypeEnum.SECTION.value()==viewType){
+//                 itemView=new ContentItemView(getContext());
+//             }
+//             else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
+//                 itemView=new SpliteView(getContext());
+//             }else{
                  itemView=new ContentItemView(getContext());
-             }
-             else if (IItemView.ViewTypeEnum.SECTION.value()==viewType){
-                 itemView=new SectionView(getContext());
-             }
-             else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
-                 itemView=new SpliteView(getContext());
-             }else{
-                 itemView=new ContentItemView(getContext());
-             }
+//             }
         }
         return itemView;
     }

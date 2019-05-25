@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -126,7 +125,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
 //        /** 内容布局可设置magin布局 */
 //         mMessageCountView=(MessageCountView) rootView.findViewById(R.id.messageCountView);
-        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
 
