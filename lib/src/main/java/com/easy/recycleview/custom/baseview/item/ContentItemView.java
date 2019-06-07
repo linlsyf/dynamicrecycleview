@@ -132,8 +132,11 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     public void initData(final IDyItemBean itemBean) {
         mBindItemBean = (DyItemBean)itemBean;//添加头部 //添加左侧侧布局
 
-        ContentLayoutConfig.load(this,mBindItemBean);
+
         RootlayoutConfig.load(this,mBindItemBean);
+
+        ContentLayoutConfig.load(this,mBindItemBean);
+
         LeftCheckBoxConfig.load(this,mBindItemBean);
         HeadImageViewConfig.load(mBindItemBean,mImageView);
         TitleTextViewConfig.load(this,mBindItemBean);

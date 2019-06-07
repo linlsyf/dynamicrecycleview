@@ -3,11 +3,16 @@
               android:id="@+id/rootlayout"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:background="@color/white"
+    android:background="@drawable/item_select_status"
+
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
               android:orientation="vertical">
 
 
     <LinearLayout
+
         android:id="@+id/rootContentLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

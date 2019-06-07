@@ -13,12 +13,22 @@ public class ItemBgConfg {
     public static  void load(final ContentItemView itemView, DyItemBean dataItemBean) {
         BgSetting bgSetting =dataItemBean.getBgSetting();
         int colorResId= bgSetting.getContentBgResid();
-        int titleColorResId= RecycleConfig.getInstance().getThemeConfig().getBgColorResId();
-        if (colorResId!=0){
+        int commonColorResId= RecycleConfig.getInstance().getThemeConfig().getBgColorResId();
+        int bgResourcResId= RecycleConfig.getInstance().getThemeConfig().getBgResourcResId();
+
+         if (bgSetting.getContentBgResid()!=0){
+             itemView.mRootlayout.setBackgroundResource(bgSetting.getContentBgResid());
+
+         }
+
+       else  if (bgResourcResId!=0){
+            itemView.mRootlayout.setBackgroundResource(bgResourcResId);
+        }
+       else  if (colorResId!=0){
             itemView.mRootlayout.setBackgroundColor(colorResId);
-        }else  if(titleColorResId!=0){
-            itemView.mRootlayout.setBackgroundColor(titleColorResId);
-//            itemView.mRootlayout.setBackgroundResource(titleColorResId);
+        }
+        else  if(commonColorResId!=0){
+            itemView.mRootlayout.setBackgroundColor(commonColorResId);
         }
 
 

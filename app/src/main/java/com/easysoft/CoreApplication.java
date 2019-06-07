@@ -3,8 +3,10 @@ package com.easysoft;
 import android.app.Application;
 
 import com.easy.recycleview.outinter.RecycleConfig;
+import com.easy.recycleview.outinter.ThemeConfig;
 import com.easysoft.DebugUtlis.CrashHandler;
 import com.easysoft.dyview.ImageUtils;
+import com.easysoft.dyview.R;
 
 /**
  * Created by lindanghong on 2018/4/20.
@@ -17,11 +19,13 @@ public class CoreApplication extends Application {
         super.onCreate();
         instance = this;
         RecycleConfig.getInstance().setIloadImage(ImageUtils.getInStance());
-//        ThemeConfig themeConfig=new ThemeConfig();
+
+        ThemeConfig themeConfig=new ThemeConfig();
+         themeConfig.setBgResourcResId(R.drawable.item_select_blue);
 //        themeConfig.setTitleColorResId(this.getResources().getColor(R.color.textcolor_main_normal));
 //        themeConfig.setHintColorResId(this.getResources().getColor(R.color.bg_second_normal));
 //        themeConfig.setBgColorResId(this.getResources().getColor(R.color.bg_main_dark));
-//        RecycleConfig.getInstance().setThemeConfig(themeConfig);
+        RecycleConfig.getInstance().setThemeConfig(themeConfig);
 
 //        Map<Integer,Class> defaultViewNameMap=new HashMap<>();
 //        defaultViewNameMap.put(IItemView.ViewTypeEnum.ITEM.value(), ContentItemView.class);

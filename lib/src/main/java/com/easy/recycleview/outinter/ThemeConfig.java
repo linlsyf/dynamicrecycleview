@@ -8,6 +8,7 @@ public class ThemeConfig {
     int  titleColorResId=0;
     int  hintColorResId=0;
     int  bgColorResId=0;
+    int  bgResourcResId=0;
 
     public int getTitleColorResId() {
         return titleColorResId;
@@ -31,5 +32,13 @@ public class ThemeConfig {
 
     public void setBgColorResId(int bgColorResId) {
         this.bgColorResId = bgColorResId;
+    }
+
+    public int getBgResourcResId() {
+        return bgResourcResId;
+    }
+
+    public void setBgResourcResId(int bgResourcResId) {
+        this.bgResourcResId = bgResourcResId;
     }
 }

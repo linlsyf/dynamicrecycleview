@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <drawable name="transparent">#00000000</drawable>
+    <drawable name="half_transparent">#1A000000</drawable>
+    <color name="half_transparent">#1A000000</color>
+    <drawable name="white">#FFF</drawable>
 
     <!-- 用户头像颜色值 -->
     <color name="white">#FFF</color>

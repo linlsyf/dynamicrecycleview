@@ -7,6 +7,7 @@ package com.easy.recycleview.custom.bean;
 public class BgSetting {
     /**根目录背景图片*/
     private  int contentBgResid=0;
+    private  int contentBgColorid=0;
 
     public int getContentBgResid() {
         return contentBgResid;
@@ -16,5 +17,11 @@ public class BgSetting {
         this.contentBgResid = contentBgResid;
     }
 
+    public int getContentBgColorid() {
+        return contentBgColorid;
+    }
 
+    public void setContentBgColorid(int contentBgColorid) {
+        this.contentBgColorid = contentBgColorid;
+    }
 }

@@ -23,6 +23,5 @@ public class RootlayoutConfig {
 
         ItemBgConfg.load(itemView,dataItemBean);
 
-
     }
 }
