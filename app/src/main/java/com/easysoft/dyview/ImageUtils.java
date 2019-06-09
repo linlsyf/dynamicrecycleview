@@ -76,6 +76,9 @@ public class ImageUtils  implements IloadImage {
 //						.into(myImageView);
 	}
 	public void loadResourceId(int id,ImageView myImageView){
+
+
+		myImageView.setImageResource(id);
 //		Glide.with(CoreApplication.getAppContext())
 //		.load(id)
 //				.dontAnimate()

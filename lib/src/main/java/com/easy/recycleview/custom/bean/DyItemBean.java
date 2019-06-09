@@ -73,8 +73,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     private  int  rightUnreadCount=0;
     /**右侧选择框是否显示 */
     private  boolean showRightCheckbox=false;
-    /**右侧可点击图片资源id */
-    private  int rightCenterScaleImgResId=0;
+
     /**内容布局magin */
     private  int contentLayoutMagin=0;
     /**在列表中的位置 */
@@ -106,6 +105,8 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     AddressHeadImgeSettings headImgeSettings =new AddressHeadImgeSettings();
     /**右侧第一个图片配置*/
     AddressRightFistImgeSettings rightFistImgeSettings =new AddressRightFistImgeSettings();
+    /**右侧第一个图片配置*/
+    RightCenterScaleImgSettings rightCenterScaleImgSettings=new RightCenterScaleImgSettings();
     /**
      * 默认为6 一行显示
      */
@@ -310,13 +311,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
         this.showRightCheckbox = showRightCheckbox;
     }
 
-    public int getRightCenterScaleImgResId() {
-        return rightCenterScaleImgResId;
-    }
 
-    public void setRightCenterScaleImgResId(int rightCenterScaleImgResId) {
-        this.rightCenterScaleImgResId = rightCenterScaleImgResId;
-    }
 
     public int getContentLayoutMagin() {
         return contentLayoutMagin;
@@ -509,5 +504,13 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     public void setBgSetting(BgSetting bgSetting) {
         this.bgSetting = bgSetting;
+    }
+
+    public RightCenterScaleImgSettings getRightCenterScaleImgSettings() {
+        return rightCenterScaleImgSettings;
+    }
+
+    public void setRightCenterScaleImgSettings(RightCenterScaleImgSettings rightCenterScaleImgSettings) {
+        this.rightCenterScaleImgSettings = rightCenterScaleImgSettings;
     }
 }

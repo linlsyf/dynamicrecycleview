@@ -123,20 +123,13 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mContentEditLayout=(EdittextLayoutView) rootView.findViewById(R.id.edtLayout);
         /** 内容布局可设置magin布局 */
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
-//        /** 内容布局可设置magin布局 */
-//         mMessageCountView=(MessageCountView) rootView.findViewById(R.id.messageCountView);
-//        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
     }
 
     public void initData(final IDyItemBean itemBean) {
         mBindItemBean = (DyItemBean)itemBean;//添加头部 //添加左侧侧布局
-
-
         RootlayoutConfig.load(this,mBindItemBean);
-
         ContentLayoutConfig.load(this,mBindItemBean);
-
         LeftCheckBoxConfig.load(this,mBindItemBean);
         HeadImageViewConfig.load(mBindItemBean,mImageView);
         TitleTextViewConfig.load(this,mBindItemBean);
@@ -151,7 +144,6 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         RightUnreadCountConfig.load(this,mBindItemBean);
         RightFirstImageViewConfig.load(this,mBindItemBean);
         ListenerConfig.load(this);
-
     }
 
 

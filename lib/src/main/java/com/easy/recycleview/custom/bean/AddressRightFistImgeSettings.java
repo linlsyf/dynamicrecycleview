@@ -12,7 +12,7 @@ public class AddressRightFistImgeSettings implements Serializable {
     /**右侧图片如箭头指向，加载图片*/
     private  int rightFirstImgResId =0;
     /**是否隐藏 只隐藏不gone */
-    private  boolean  isInvisiable=false;
+    private  boolean  isVisiable=true;
 
     public int getRightFirstImgResId() {
         return rightFirstImgResId;
@@ -30,11 +30,11 @@ public class AddressRightFistImgeSettings implements Serializable {
         this.rightFirstImgRadius = rightFirstImgRadius;
     }
 
-    public boolean isInvisiable() {
-        return isInvisiable;
+    public boolean isVisiable() {
+        return isVisiable;
     }
 
-    public void setInvisiable(boolean invisiable) {
-        isInvisiable = invisiable;
+    public void setVisiable(boolean visiable) {
+        isVisiable = visiable;
     }
 }

@@ -15,21 +15,24 @@ import com.easy.recycleview.outinter.RecycleConfig;
 public class RightFirstImageViewConfig {
     public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
         //添加右侧第一个图片如指向图片
-        if (dataItemBean.getRightFistImgeSettings().getRightFirstImgResId() != 0) {
+        int  imgResId=dataItemBean.getRightFistImgeSettings().getRightFirstImgResId();
+        if (imgResId!= 0) {
             LinearLayout.LayoutParams mRightFirstParams = (LinearLayout.LayoutParams) itemView.mRightFirstImageView.getLayoutParams();
             if (dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius() != 0) {
                 mRightFirstParams.width = dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius();
                 mRightFirstParams.height = dataItemBean.getRightFistImgeSettings().getRightFirstImgRadius();
             }
-            boolean isInvisiable = dataItemBean.getRightFistImgeSettings().isInvisiable();
-            if (isInvisiable) {
-                itemView.mRightFirstImageView.setVisibility(View.INVISIBLE);
-            } else {
+            boolean isVisiable = dataItemBean.getRightFistImgeSettings().isVisiable();
+            if (isVisiable) {
                 itemView.mRightFirstImageView.setVisibility(View.VISIBLE);
+
+            } else {
+                itemView.mRightFirstImageView.setVisibility(View.INVISIBLE);
+
             }
             itemView.mRightFirstImageView.setLayoutParams(mRightFirstParams);
             if ( RecycleConfig.getInstance().getIloadImage()!=null){
-                RecycleConfig.getInstance().getIloadImage().loadResourceId(dataItemBean.getRightFistImgeSettings().getRightFirstImgResId(),itemView.mRightFirstImageView);
+                RecycleConfig.getInstance().getIloadImage().loadResourceId(imgResId,itemView.mRightFirstImageView);
             }
         } else {
             itemView.mRightFirstImageView.setVisibility(View.GONE);

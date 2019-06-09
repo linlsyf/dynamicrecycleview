@@ -49,7 +49,14 @@ public class ContentLayoutConfig {
             if (paramsItemView==null){
                 paramsItemView= new GridLayoutManager.LayoutParams(GridLayoutManager.LayoutParams.MATCH_PARENT, height);
             }
-            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.context_bg_grey));
+
+             if (dataItemBean.getBgSetting().getContentBgColorid()!=0){
+                 itemView.mRootlayout.setBackgroundColor(dataItemBean.getBgSetting().getContentBgColorid());
+
+             }else{
+                 itemView.mRootlayout.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.context_bg_grey));
+
+             }
             itemView.setLayoutParams(paramsItemView);
         }
 

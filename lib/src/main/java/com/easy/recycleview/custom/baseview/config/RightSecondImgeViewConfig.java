@@ -29,8 +29,8 @@ public class RightSecondImgeViewConfig {
                 mHeadParams.width = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
                 mHeadParams.height = dataItemBean.getRightSecondImgSettings().getRightSecondImgRadius();
             }
-            int contentMargin = DensityUtil.dip2px(itemView.getContext(),5);
-            mHeadParams.rightMargin = contentMargin;
+//            int contentMargin = DensityUtil.dip2px(itemView.getContext(),5);
+//            mHeadParams.rightMargin = contentMargin;
             itemView.mRightSecondImgeView.setLayoutParams(mHeadParams);
             if (StringUtils.isNotEmpty(secondImgSetting.getRightSecondImgURL())) {
                 itemView.mRightSecondImgeView.setVisibility(View.VISIBLE);

@@ -9,6 +9,7 @@ import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressEditSettings;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.custom.bean.RightCenterScaleImgSettings;
 import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
@@ -80,15 +81,11 @@ public class MainActivity extends Activity {
         newItemBean2.setOnItemListener(new IItemView.onItemClick() {
             @Override
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-//                ToastUtils.show(getApplication(),"点击事件触发了");
+                ToastUtils.show(getApplication(),"点击事件触发了");
 
             }
         });        newSectionList.add(newItemBean2);
 
-
-        DyItemBean splitBean=new DyItemBean();
-        splitBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-        newSectionList.add(splitBean);
 
 
         DyItemBean newItemBean3=new DyItemBean();
@@ -96,6 +93,23 @@ public class MainActivity extends Activity {
 //          newItemBean.setViewType(4);
         newItemBean3.setTitle("查看选择数据");
         newItemBean3.setShowLeftCheckBox(false);
+        newItemBean3.setRightFirstButtonText("标记已学");
+//        AddressRightFistImgeSettings rightFistImgeSettings=new AddressRightFistImgeSettings();
+//        rightFistImgeSettings.setRightFirstImgResId(R.drawable.ic_filled_star);
+//         rightFistImgeSettings.setRightFirstImgRadius(45);
+//        newItemBean3.setRightFistImgeSettings(rightFistImgeSettings);
+
+
+        RightCenterScaleImgSettings rightSecondImgSettings=new RightCenterScaleImgSettings();
+
+//        int radius= DensityUtil.dip2px(this,30);
+//        int radiusWidth= DensityUtil.dip2px(this,50);
+//        rightSecondImgSettings.setImgRadius(radius);
+        rightSecondImgSettings.setRightCenterScaleImgResId(R.drawable.ic_filled_star);
+//        rightSecondImgSettings.setLayoutWidth(radiusWidth);
+        newItemBean3.setRightCenterScaleImgSettings(rightSecondImgSettings);
+
+
         newItemBean3.setOnItemListener(new IItemView.onItemClick() {
             @Override
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -115,11 +129,9 @@ public class MainActivity extends Activity {
 
         newSection.setName("其他");
         newSection.setShowSection(true);
-        newSection.setDataMaps(newSectionList);
+        newSection.setDataMaps(RecycleHelper.wrappingList(newSectionList));
 //        Section   section=new Section("");
         recycleView.updateSection(newSection);
-
-
 
     }
 }
