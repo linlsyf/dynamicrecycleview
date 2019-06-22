@@ -2,15 +2,16 @@ package com;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.custom.bean.AddressEditSettings;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.RightCenterScaleImgSettings;
-import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dyview.R;
@@ -24,7 +25,7 @@ public class MainActivity extends Activity {
     private static final java.lang.String SECTION_DY = "dy";
     DyLayout recycleView;
 //    MutiTypeSelectUtils mutiTypeSelectUtils=new MutiTypeSelectUtils();
-
+       int  i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
         newSectionList.add(sectionBean);
 
 
-        DyItemBean newItemBean=new DyItemBean();
+        final DyItemBean newItemBean=new DyItemBean();
         newItemBean.setSelectType(SECTION_NEW);//选择类型
 //          newItemBean.setViewType(4);
         newItemBean.setTitle("助手小Q");
@@ -88,8 +89,8 @@ public class MainActivity extends Activity {
 
 
 
-        DyItemBean newItemBean3=new DyItemBean();
-
+        final DyItemBean newItemBean3=new DyItemBean();
+        newItemBean3.setId("new3");
 //          newItemBean.setViewType(4);
         newItemBean3.setTitle("查看选择数据");
         newItemBean3.setShowLeftCheckBox(false);
@@ -113,12 +114,32 @@ public class MainActivity extends Activity {
         newItemBean3.setOnItemListener(new IItemView.onItemClick() {
             @Override
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+//                newItemBean3.setTitle("测试改变"+i);
+//
+//                i=i+1;
+//
+//                recycleView.updateItem(newItemBean3);
+
+             View itemView=recycleView.getItemView(newItemBean3);
+               if (itemView!=null){
+
+                   ContentItemView  contentItemView=(ContentItemView)itemView;
+                   contentItemView.mTitleTextView.setText("定点改变");
+                   contentItemView.mImageView.setImageResource(R.drawable.empty_photo);
+                   contentItemView.mImageView.setVisibility(View.VISIBLE);
+
+//                         contentItemVie.setti
+
+               }
+
+
+
 //                ToastUtils.show(getApplication(),"点击事件触发了");
 
-                List<SelectBean>  selectBeans=  recycleView.getSelect(SECTION_NEW);
-
-                int size=selectBeans.size();
-                ToastUtils.show(getApplication(),"选中数："+size);
+//                List<SelectBean>  selectBeans=  recycleView.getSelect(SECTION_NEW);
+//
+//                int size=selectBeans.size();
+//                ToastUtils.show(getApplication(),"选中数："+size);
 
             }
         });
@@ -129,7 +150,7 @@ public class MainActivity extends Activity {
 
         newSection.setName("其他");
         newSection.setShowSection(true);
-        newSection.setDataMaps(RecycleHelper.wrappingList(newSectionList));
+        newSection.setDataMaps(newSectionList);
 //        Section   section=new Section("");
         recycleView.updateSection(newSection);
 

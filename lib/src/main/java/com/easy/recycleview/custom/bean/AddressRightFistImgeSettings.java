@@ -18,23 +18,29 @@ public class AddressRightFistImgeSettings implements Serializable {
         return rightFirstImgResId;
     }
 
-    public void setRightFirstImgResId(int rightFirstImgResId) {
+    public AddressRightFistImgeSettings setRightFirstImgResId(int rightFirstImgResId) {
         this.rightFirstImgResId = rightFirstImgResId;
+        return  this ;
+
     }
 
     public int getRightFirstImgRadius() {
         return rightFirstImgRadius;
     }
 
-    public void setRightFirstImgRadius(int rightFirstImgRadius) {
+    public AddressRightFistImgeSettings setRightFirstImgRadius(int rightFirstImgRadius) {
         this.rightFirstImgRadius = rightFirstImgRadius;
+        return  this ;
+
     }
 
     public boolean isVisiable() {
         return isVisiable;
     }
 
-    public void setVisiable(boolean visiable) {
+    public AddressRightFistImgeSettings setVisiable(boolean visiable) {
         isVisiable = visiable;
+        return  this ;
+
     }
 }

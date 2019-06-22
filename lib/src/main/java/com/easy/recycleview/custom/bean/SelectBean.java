@@ -27,31 +27,31 @@ public class SelectBean implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public SelectBean setId(String id) {
+        this.id = id;return  this ;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public SelectBean setTitle(String title) {
+        this.title = title;return  this ;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public SelectBean setType(String type) {
+        this.type = type;return  this ;
     }
 
     public Object getLinkObject() {
         return linkObject;
     }
 
-    public void setLinkObject(Object linkObject) {
-        this.linkObject = linkObject;
+    public SelectBean setLinkObject(Object linkObject) {
+        this.linkObject = linkObject;return  this ;
     }
 }

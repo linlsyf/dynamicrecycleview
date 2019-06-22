@@ -19,6 +19,10 @@ public class Section {
     private  boolean isShowSection=true;
     /**是否显示右侧英文导航*/
     private  boolean isAddSideBar=true;
+    /**是否自动添加分割线*/
+    private  boolean isAutoAddSpliteLine=true;
+    /**是否设置分组id*/
+    private  boolean isAutoAddSection=true;
     /** 是否显示删除布局*/
     private  boolean isSectionShowDelete=false;
     /** 插入位置 当大于0时指定位置*/
@@ -93,5 +97,19 @@ public class Section {
         isSectionShowDelete = sectionShowDelete;
     }
 
+    public boolean isAutoAddSpliteLine() {
+        return isAutoAddSpliteLine;
+    }
 
+    public void setAutoAddSpliteLine(boolean autoAddSpliteLine) {
+        isAutoAddSpliteLine = autoAddSpliteLine;
+    }
+
+    public boolean isAutoAddSection() {
+        return isAutoAddSection;
+    }
+
+    public void setAutoAddSection(boolean autoAddSection) {
+        isAutoAddSection = autoAddSection;
+    }
 }

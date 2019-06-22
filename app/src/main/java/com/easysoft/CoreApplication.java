@@ -2,8 +2,9 @@ package com.easysoft;
 
 import android.app.Application;
 
+import com.ThemeConfig;
+import com.easy.recycleview.outinter.IDyviewThemeConfig;
 import com.easy.recycleview.outinter.RecycleConfig;
-import com.easy.recycleview.outinter.ThemeConfig;
 import com.easysoft.DebugUtlis.CrashHandler;
 import com.easysoft.dyview.ImageUtils;
 
@@ -19,7 +20,7 @@ public class CoreApplication extends Application {
         instance = this;
         RecycleConfig.getInstance().setIloadImage(ImageUtils.getInStance());
 
-        ThemeConfig themeConfig=new ThemeConfig();
+        IDyviewThemeConfig themeConfig=new ThemeConfig();
 //         themeConfig.setBgResourcResId(R.drawable.item_select_blue);
 //        themeConfig.setTitleColorResId(this.getResources().getColor(R.color.textcolor_main_normal));
 //        themeConfig.setHintColorResId(this.getResources().getColor(R.color.bg_second_normal));

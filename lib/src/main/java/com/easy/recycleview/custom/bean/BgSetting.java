@@ -21,7 +21,7 @@ public class BgSetting {
         return contentBgColorid;
     }
 
-    public void setContentBgColorid(int contentBgColorid) {
-        this.contentBgColorid = contentBgColorid;
+    public BgSetting setContentBgColorid(int contentBgColorid) {
+        this.contentBgColorid = contentBgColorid;   return this;
     }
 }

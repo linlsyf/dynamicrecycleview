@@ -2,7 +2,7 @@ package com.easy.recycleview.custom.baseview.base.select;
 
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.SelectBean;
 
 import java.util.ArrayList;
@@ -219,7 +219,7 @@ public void setHasSelectNoticeText(String text){
 //        }else{
 //          select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
 //        }
-////        notifyDataSetChanged();
+////        refreshDataSetChanged();
 //    }
 
 

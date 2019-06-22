@@ -1,11 +1,20 @@
-package com.easy.recycleview.custom.bean;
+package com.easy.recycleview.bean;
 
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
+import com.easy.recycleview.custom.bean.AddressEditSettings;
+import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.custom.bean.AddressRightFistImgeSettings;
+import com.easy.recycleview.custom.bean.BgSetting;
+import com.easy.recycleview.custom.bean.HintSettings;
+import com.easy.recycleview.custom.bean.RightCenterScaleImgSettings;
+import com.easy.recycleview.custom.bean.RightSecondImgSettings;
+import com.easy.recycleview.custom.bean.TitleSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *创建者：林党宏
@@ -18,7 +27,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     /** 状态切换监听*/
     private OnStateChangeListener mListener;
     /**id*/
-    private  String id="";
+    private  String id= UUID.randomUUID()+"";
     /**绑定数据*/
     private  Object bindObject;
     private  String parentId="";

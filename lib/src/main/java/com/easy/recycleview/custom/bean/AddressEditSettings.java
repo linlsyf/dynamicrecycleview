@@ -28,23 +28,25 @@ public class AddressEditSettings implements Serializable{
         return showEdittext;
     }
 
-    public void setShowEdittext(boolean showEdittext) {
+    public AddressEditSettings setShowEdittext(boolean showEdittext) {
         this.showEdittext = showEdittext;
+
+        return this;
     }
 
     public boolean isEdittextCanEdit() {
         return edittextCanEdit;
     }
 
-    public void setEdittextCanEdit(boolean edittextCanEdit) {
-        this.edittextCanEdit = edittextCanEdit;
+    public AddressEditSettings setEdittextCanEdit(boolean edittextCanEdit) {
+        this.edittextCanEdit = edittextCanEdit;   return this;
     }
     public boolean isOpenKeybord() {
         return openKeybord;
     }
 
-    public void setOpenKeybord(boolean openKeybord) {
-        this.openKeybord = openKeybord;
+    public AddressEditSettings setOpenKeybord(boolean openKeybord) {
+        this.openKeybord = openKeybord;   return this;
     }
 
 
@@ -52,24 +54,24 @@ public class AddressEditSettings implements Serializable{
         return editContent;
     }
 
-    public void setEditContent(String editContent) {
-        this.editContent = editContent;
+    public AddressEditSettings setEditContent(String editContent) {
+        this.editContent = editContent;   return this;
     }
 
     public String getEditHint() {
         return editHint;
     }
 
-    public void setEditHint(String editHint) {
-        this.editHint = editHint;
+    public AddressEditSettings setEditHint(String editHint) {
+        this.editHint = editHint;   return this;
     }
 
     public int getInputType() {
         return inputType;
     }
 
-    public void setInputType(int inputType) {
-        this.inputType = inputType;
+    public AddressEditSettings setInputType(int inputType) {
+        this.inputType = inputType;   return this;
     }
 
 }

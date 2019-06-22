@@ -13,15 +13,19 @@ public class TitleSettings {
         return textSize;
     }
 
-    public void setTextSize(float textSize) {
+    public TitleSettings setTextSize(float textSize) {
         this.textSize = textSize;
+        return  this ;
+
     }
 
     public int getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public TitleSettings setColor(int color) {
         this.color = color;
+        return  this ;
+
     }
 }

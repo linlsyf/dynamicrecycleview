@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.easy.recycleview.custom.baseview.EdittextLayoutView;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 
 
 /**

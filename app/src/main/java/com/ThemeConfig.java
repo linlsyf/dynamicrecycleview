@@ -1,10 +1,12 @@
-package com.easy.recycleview.outinter;
+package com;
+
+import com.easy.recycleview.outinter.IDyviewThemeConfig;
 
 /**
  * Created by Administrator on 2019/5/22 0022.
  */
 
-public class ThemeConfig {
+public class ThemeConfig implements IDyviewThemeConfig {
     int  titleColorResId=0;
     int  hintColorResId=0;
     int  bgColorResId=0;

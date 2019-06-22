@@ -23,10 +23,6 @@ public class AddressHeadImgeSettings implements Serializable {
 
     private int headImgHeight = 0;
 
-    /**头像用户id*/
-    private  String headImgUserId ="";
-    /**头像用户name*/
-    private  String headImgUserName ="";
     private Bitmap bitmap;
 
 
@@ -34,71 +30,64 @@ public class AddressHeadImgeSettings implements Serializable {
         return headImgDrawableId;
     }
 
-    public void setHeadImgDrawableId(int headImgDrawableId) {
+    public AddressHeadImgeSettings setHeadImgDrawableId(int headImgDrawableId) {
         this.headImgDrawableId = headImgDrawableId;
+
+        return this;
     }
 
     public int getHeadImgRadius() {
         return headImgRadius;
     }
 
-    public void setHeadImgRadius(int headImgRadius) {
+    public AddressHeadImgeSettings setHeadImgRadius(int headImgRadius) {
         this.headImgRadius = headImgRadius;
+        return  this ;
     }
 
     public int getHeadImgWidth() {
         return headImgWidth;
     }
 
-    public void setHeadImgWidth(int headImgWidth) {
+    public AddressHeadImgeSettings setHeadImgWidth(int headImgWidth) {
         this.headImgWidth = headImgWidth;
+        return  this ;
     }
 
     public int getHeadImgHeight() {
         return headImgHeight;
     }
 
-    public void setHeadImgHeight(int headImgHeight) {
+    public AddressHeadImgeSettings setHeadImgHeight(int headImgHeight) {
         this.headImgHeight = headImgHeight;
+        return  this ;
     }
 
-    public String getHeadImgUserId() {
-        return headImgUserId;
-    }
-
-    public void setHeadImgUserId(String headImgUserId) {
-        this.headImgUserId = headImgUserId;
-    }
-
-    public String getHeadImgUserName() {
-        return headImgUserName;
-    }
-
-    public void setHeadImgUserName(String headImgUserName) {
-        this.headImgUserName = headImgUserName;
-    }
 
 	public String getHeadImgUrl() {
 		return headImgUrl;
 	}
 
-	public void setHeadImgUrl(String headImgUrl) {
+	public AddressHeadImgeSettings setHeadImgUrl(String headImgUrl) {
 		this.headImgUrl = headImgUrl;
+        return  this ;
 	}
 
     public String getHeadImgPath() {
         return headImgPath;
     }
 
-    public void setHeadImgPath(String headImgPath) {
+    public AddressHeadImgeSettings setHeadImgPath(String headImgPath) {
         this.headImgPath = headImgPath;
+        return  this ;
     }
 
     public Bitmap getBitmap() {
         return bitmap;
     }
 
-    public void setBitmap(Bitmap bitmap) {
+    public AddressHeadImgeSettings setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+        return  this ;
     }
 }

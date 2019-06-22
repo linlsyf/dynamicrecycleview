@@ -160,6 +160,9 @@ public void  setSpanCount(int  spanCount){
     public void updateItem(IDyItemBean addressItemBean) {
         mSectionAdapterHelper.updateItem(addressItemBean.getSection(),addressItemBean);
     }
+    public  View  getItemView(IDyItemBean iDyItemBean){
+          return mSectionAdapterHelper.getItemView(iDyItemBean);
+    }
 
     public void deleteItem(String sectionId,String deleteId){
         mSectionAdapterHelper.deleteItem( sectionId,deleteId);

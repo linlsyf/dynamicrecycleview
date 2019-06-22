@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.utils.StringUtils;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 
@@ -96,7 +98,7 @@ public class SectionAdapterHelper {
         }
         if (indexRemove>-1){
             mSectionList.remove(indexRemove);
-            notifyDataSetChanged();
+            refreshDataSetChanged();
         }
     }
     /**
@@ -113,7 +115,7 @@ public class SectionAdapterHelper {
             }
         }
         mSectionList=newSectionList;
-        notifyDataSetChanged();
+        refreshDataSetChanged();
     }
 
     public void removeItem(String sectionId,String id){
@@ -163,7 +165,7 @@ public class SectionAdapterHelper {
                     mSectionList.get(indexSectionRemove).setDataMaps(removeSectionMap);
                 }
             }
-            notifyDataSetChanged();
+            refreshDataSetChanged();
             if (mUpdateListener != null && deleteSection) {
                 mUpdateListener.deleteSection(sectionId);
             }
@@ -176,6 +178,29 @@ public class SectionAdapterHelper {
         }
     }
 
+    public  View  getItemView( IDyItemBean iDyItemBean  ){
+        int  i=1;
+        int  position=-1;
+
+        String id=iDyItemBean.getId();
+        String title=iDyItemBean.getTitle();
+        for (IDyItemBean itemBean:mDataArrayList) {
+             if (itemBean.getId()==id||itemBean.getTitle()==title){
+                 position=i;
+                 break;
+             }
+             i=i+1;
+
+        }
+
+        if (position==-1){
+            return null;
+        }
+        position=position-1;
+        return mRecycleViewManger.findViewByPosition(position);
+
+    }
+
     /**
      *创建者：林党宏
      *时间：2017/2/8
@@ -184,12 +209,27 @@ public class SectionAdapterHelper {
     public void updateItem(String sectionId,IDyItemBean newDataMap){
         int updateSectionIndex=-1;
         String id=newDataMap.getId();
+              if (StringUtils.isEmpty(sectionId)){
+                  for ( IDyItemBean  itemBean  :  mDataArrayList ) {
+                        if (itemBean.getId()==newDataMap.getId()){
+                            sectionId=itemBean.getSection();
+                            break;
+
+                        }
+
+                  }
+
+              }
+
         for (int i=0;i<mSectionList.size();i++){
             Section itemSection=mSectionList.get(i);
             if (sectionId .equals(itemSection.getId())){
                 updateSectionIndex=i;
             }
         }
+
+
+
         if (updateSectionIndex>-1){
             List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
             for(int i=0;i<removeSectionMap.size();i++){
@@ -200,7 +240,7 @@ public class SectionAdapterHelper {
                 }
             }
         }
-        notifyDataSetChanged();
+        refreshDataSetChanged();
     }
     /** 删除意向*/
     public void deleteItem(String sectionId,String deleteId){
@@ -222,7 +262,7 @@ public class SectionAdapterHelper {
                 }
             }
             mSectionList.get(updateSectionIndex).setDataMaps(newSectionMap);
-            notifyDataSetChanged();
+            refreshDataSetChanged();
         }
     }
     public IDyItemBean getItem(String sectionId, String id){
@@ -251,37 +291,6 @@ public class SectionAdapterHelper {
     }
 
 
-//    public void changeSelectSelectItem(String sectionId,IDyItemBean newDataMap){
-//        int updateSectionIndex=-1;
-//        String id=newDataMap.getId();
-//        for (int i=0;i<mSectionList.size();i++){
-//            Section itemSection=mSectionList.get(i);
-//            if (itemSection.getId().equals(sectionId)){
-//                updateSectionIndex=i;
-//            }
-//        }
-//        if (updateSectionIndex>-1){
-//            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
-//            int updateItemIndex=-1;
-//            for(int i=0;i<removeSectionMap.size();i++){
-//                IDyItemBean itemMap=removeSectionMap.get(i);
-//                if (id.equals(itemMap.getId())){
-//                    if (itemMap.isShowLeftCheckBox()){
-//                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
-//                        RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
-//                    }
-//                    break;
-//                }
-//            }
-//            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
-//                RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-//            }
-//        }else{
-//            RecycleConfig.getInstance().getSelectUtils().select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-//        }
-//        notifyDataSetChanged();
-//    }
-
 
     /**
      *创建者：林党宏
@@ -298,13 +307,13 @@ public class SectionAdapterHelper {
             }
         }
         mSectionList=mNewSectionList;
-        notifyDataSetChanged();
+        refreshDataSetChanged();
 
 
     }
     public void clean(){
         mSectionList=new ArrayList<Section>();
-        notifyDataSetChanged();
+        refreshDataSetChanged();
     }
     public void updateSection(Section section){
         updateSection(section,false);
@@ -317,16 +326,38 @@ public class SectionAdapterHelper {
          * @param isRefresh  默认只刷新数据不刷新界面
          */
     public void updateSection(Section section,boolean isRefresh){
+        wrappingList(section);
         boolean index = checkIsExitSection(section);
         if (!index){
             addNewSection(section);
         }
-//        if (isRefresh){
-            notifyDataSetChanged();
-//        }else{
-//            notifyData();
-//
-//        }
+            refreshDataSetChanged();
+
+    }
+
+
+    public static  void  wrappingList(Section section){
+        int i=0;
+        String   sectionId=section.getId();
+        List<IDyItemBean>  newSectionList=new ArrayList<>();
+        List<IDyItemBean>  sectionList=section.getDataMaps();
+        for (IDyItemBean itemBean:sectionList ) {
+            if (i!=0&&section.isAutoAddSpliteLine()){
+                DyItemBean itemSpliteBean=new DyItemBean();
+                itemSpliteBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+                    itemSpliteBean.setSection(sectionId);
+
+                newSectionList.add(itemSpliteBean);
+            }
+
+            if (StringUtils.isEmpty(itemBean.getSection())){
+                itemBean.setSection(sectionId);
+            }
+            newSectionList.add(itemBean);
+            i=i+1;
+        }
+
+        section.setDataMaps(newSectionList);
     }
 
     private boolean checkIsExitSection(Section section) {
@@ -432,7 +463,7 @@ public class SectionAdapterHelper {
      *时间：2017/1/20
      *注释：更新adapter数据源并刷新界面
      */
-    public void notifyDataSetChanged() {
+    public void refreshDataSetChanged() {
             notifyData();
         mSectionedExpandableGridAdapter.notifyDataSetChanged();
         checkIsShowEmpty();
@@ -556,7 +587,7 @@ public class SectionAdapterHelper {
 //            mSectionedExpandableGridAdapter.setLayoutHelpers(layoutHelpers);
 //
 //        }
-//        notifyDataSetChanged();
+//        refreshDataSetChanged();
 //    }
    /**
     *创建者：林党宏

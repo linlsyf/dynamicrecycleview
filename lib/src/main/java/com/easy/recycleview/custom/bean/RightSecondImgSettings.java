@@ -28,56 +28,56 @@ public class RightSecondImgSettings implements Serializable {
         return headLoadType;
     }
 
-    public void setHeadLoadType(String headLoadType) {
-        this.headLoadType = headLoadType;
+    public RightSecondImgSettings setHeadLoadType(String headLoadType) {
+        this.headLoadType = headLoadType; return  this ;
     }
 
     public int getRightSecondImgResId() {
         return rightSecondImgResId;
     }
 
-    public void setRightSecondImgResId(int rightSecondImgResId) {
-        this.rightSecondImgResId = rightSecondImgResId;
+    public RightSecondImgSettings setRightSecondImgResId(int rightSecondImgResId) {
+        this.rightSecondImgResId = rightSecondImgResId; return  this ;
     }
     
     public String getRightSecondImgURL() {
 		return rightSecondImgURL;
 	}
 
-	public void setRightSecondImgURL(String rightSecondImgURL) {
-		this.rightSecondImgURL = rightSecondImgURL;
+	public RightSecondImgSettings setRightSecondImgURL(String rightSecondImgURL) {
+		this.rightSecondImgURL = rightSecondImgURL; return  this ;
 	}
 
 	public String getRightSecondImgUserName() {
         return rightSecondImgUserName;
     }
 
-    public void setRightSecondImgUserName(String rightSecondImgUserName) {
-        this.rightSecondImgUserName = rightSecondImgUserName;
+    public RightSecondImgSettings setRightSecondImgUserName(String rightSecondImgUserName) {
+        this.rightSecondImgUserName = rightSecondImgUserName; return  this ;
     }
 
     public int getRightSecondImgRadius() {
         return rightSecondImgRadius;
     }
 
-    public void setRightSecondImgRadius(int rightSecondImgRadius) {
-        this.rightSecondImgRadius = rightSecondImgRadius;
+    public RightSecondImgSettings setRightSecondImgRadius(int rightSecondImgRadius) {
+        this.rightSecondImgRadius = rightSecondImgRadius; return  this ;
     }
 
     public boolean isShowEmptyImg() {
         return showEmptyImg;
     }
 
-    public void setShowEmptyImg(boolean showEmptyImg) {
-        this.showEmptyImg = showEmptyImg;
+    public RightSecondImgSettings setShowEmptyImg(boolean showEmptyImg) {
+        this.showEmptyImg = showEmptyImg; return  this ;
     }
 
 	public String getRightSecondImgStorePath() {
 		return rightSecondImgStorePath;
 	}
 
-	public void setRightSecondImgStorePath(String rightSecondImgStorePath) {
-		this.rightSecondImgStorePath = rightSecondImgStorePath;
+	public RightSecondImgSettings setRightSecondImgStorePath(String rightSecondImgStorePath) {
+		this.rightSecondImgStorePath = rightSecondImgStorePath;  return  this ;
 	}
     
     

@@ -27,4 +27,7 @@ public interface IDyItemBean {
 
     void setPosition(int position);
 
+
+    public void setSection(String section);
+
 }

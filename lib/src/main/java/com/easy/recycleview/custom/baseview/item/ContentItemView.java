@@ -29,7 +29,7 @@ import com.easy.recycleview.custom.baseview.config.RightUnreadCountConfig;
 import com.easy.recycleview.custom.baseview.config.RootlayoutConfig;
 import com.easy.recycleview.custom.baseview.config.SwitchButtonConfig;
 import com.easy.recycleview.custom.baseview.config.TitleTextViewConfig;
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
@@ -58,13 +58,13 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     public TextView mNoticeTextView;
     public  ImageView mNoticeImageView;
     public TextView mRightFirstTextView;
-    ImageView mImageView;
+    public ImageView mImageView;
     public ImageView mRightSecondImgeView;
     public ImageView mRightFirstImageView;
     /** 右侧按钮 */
     public Button mRightFirstButton;
     /** 右侧布局 */
-    LinearLayout mRightLayout;
+    public LinearLayout mRightLayout;
     /** 右侧点击图片 */
     public ImageView mRightCenterScaleImgeView;
     public LinearLayout mRightCenterScaleImgeLayout;

@@ -15,23 +15,23 @@ public class RightCenterScaleImgSettings {
         return rightCenterScaleImgResId;
     }
 
-    public void setRightCenterScaleImgResId(int rightCenterScaleImgResId) {
-        this.rightCenterScaleImgResId = rightCenterScaleImgResId;
+    public RightCenterScaleImgSettings setRightCenterScaleImgResId(int rightCenterScaleImgResId) {
+        this.rightCenterScaleImgResId = rightCenterScaleImgResId; return  this ;
     }
 
     public int getImgRadius() {
         return imgRadius;
     }
 
-    public void setImgRadius(int imgRadius) {
-        this.imgRadius = imgRadius;
+    public RightCenterScaleImgSettings setImgRadius(int imgRadius) {
+        this.imgRadius = imgRadius; return  this ;
     }
 
     public int getLayoutWidth() {
         return layoutWidth;
     }
 
-    public void setLayoutWidth(int layoutWidth) {
-        this.layoutWidth = layoutWidth;
+    public RightCenterScaleImgSettings setLayoutWidth(int layoutWidth) {
+        this.layoutWidth = layoutWidth; return  this ;
     }
 }
