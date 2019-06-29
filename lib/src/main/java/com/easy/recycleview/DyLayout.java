@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.baseview.item.ContentItemView;
+import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easy.recycleview.custom.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/rootlayout"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
@@ -20,9 +20,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="2dp"
         android:layout_weight="1"
-        android:minHeight="50dp"
-        android:orientation="horizontal"
-        >
+        android:minHeight="@dimen/common_item_hight">
 
 
         <LinearLayout
@@ -174,7 +172,7 @@
                 android:visibility="gone"
                 />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -191,11 +189,12 @@
                     android:layout_height="30dp"
                     android:scaleType="center"
                     android:layout_alignParentRight="true"
+
                     android:layout_gravity="right"
 
 
                     />
-            </LinearLayout>
+            </RelativeLayout>
 
 
             <ImageView
@@ -212,6 +211,33 @@
         </LinearLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/centLayout"
+        android:layout_centerInParent="true"
+        android:minHeight="@dimen/common_item_hight">
+        <ImageView
+            android:id="@+id/centImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/centTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textSize="16sp"
+            android:layout_below="@id/centImg"
+            android:textColor="@color/common_title_color"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
 
 
-</LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.easy.recycleview.custom.baseview.item;
+package com.easy.recycleview.custom.baseview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.easy.recycleview.custom.baseview.EdittextLayoutView;
-import com.easy.recycleview.custom.baseview.ListenerConfig;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
+import com.easy.recycleview.custom.baseview.config.CentLayouConfig;
 import com.easy.recycleview.custom.baseview.config.ContentLayoutConfig;
 import com.easy.recycleview.custom.baseview.config.EditLayoutConfig;
 import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
@@ -29,7 +29,6 @@ import com.easy.recycleview.custom.baseview.config.RightUnreadCountConfig;
 import com.easy.recycleview.custom.baseview.config.RootlayoutConfig;
 import com.easy.recycleview.custom.baseview.config.SwitchButtonConfig;
 import com.easy.recycleview.custom.baseview.config.TitleTextViewConfig;
-import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
@@ -47,7 +46,7 @@ import java.util.List;
  */
 
 public class ContentItemView extends BaseLinearLayout implements IItemView{
-    public LinearLayout mRootlayout;
+    public View mRootlayout;
     /** 右侧chcekbox */
     public IOSSwitchButton mSwitchButton;
     /** 左侧选中图标 */
@@ -67,7 +66,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     public LinearLayout mRightLayout;
     /** 右侧点击图片 */
     public ImageView mRightCenterScaleImgeView;
-    public LinearLayout mRightCenterScaleImgeLayout;
+    public View mRightCenterScaleImgeLayout;
     /** 输入框 */
     public EdittextLayoutView mContentEditLayout;
     /** 内容布局可设置magin布局 */
@@ -81,6 +80,10 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     private int viewType=0;
 
     public boolean mChangeSelectRefresh = false;
+    public View mCentLayout;
+    public ImageView mCentImg;
+    public TextView mCentTv;
+
     public ContentItemView(Context context) {
         super(context);
         initUI(context);
@@ -100,7 +103,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         mContext = context;
         View rootView  = LayoutInflater.from(context).inflate(R.layout.view_item, this,true);
 
-         mRootlayout=(LinearLayout) rootView.findViewById(R.id.rootlayout);
+         mRootlayout=rootView.findViewById(R.id.rootlayout);
          mSwitchButton=(IOSSwitchButton) rootView.findViewById(R.id.switchButton);
         /** 左侧选中图标 */
          mLeftCheckBox=(CheckBox) rootView.findViewById(R.id.chkItem);
@@ -118,11 +121,18 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mRightLayout=(LinearLayout) rootView.findViewById(R.id.rightLayout);
         /** 右侧点击图片 */
          mRightCenterScaleImgeView=(ImageView) rootView.findViewById(R.id.rightCenterScaleImgeView);
-         mRightCenterScaleImgeLayout=(LinearLayout) rootView.findViewById(R.id.rightCenterScaleImgeLayout);
+         mRightCenterScaleImgeLayout=rootView.findViewById(R.id.rightCenterScaleImgeLayout);
         /** 输入框 */
          mContentEditLayout=(EdittextLayoutView) rootView.findViewById(R.id.edtLayout);
         /** 内容布局可设置magin布局 */
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
+
+
+
+        mCentLayout=rootView.findViewById(R.id.centLayout);
+        mCentImg=(ImageView) rootView.findViewById(R.id.centImg);
+        mCentTv=(TextView) rootView.findViewById(R.id.centTv);
+
 
     }
 
@@ -143,6 +153,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         RightCenterScaleImgConfig.load(this,mBindItemBean);
         RightUnreadCountConfig.load(this,mBindItemBean);
         RightFirstImageViewConfig.load(this,mBindItemBean);
+        CentLayouConfig.load(this,mBindItemBean);
         ListenerConfig.load(this);
     }
 

@@ -5,6 +5,7 @@ import com.easy.recycleview.custom.bean.AddressEditSettings;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.AddressRightFistImgeSettings;
 import com.easy.recycleview.custom.bean.BgSetting;
+import com.easy.recycleview.custom.bean.CentLayoutConfig;
 import com.easy.recycleview.custom.bean.HintSettings;
 import com.easy.recycleview.custom.bean.RightCenterScaleImgSettings;
 import com.easy.recycleview.custom.bean.RightSecondImgSettings;
@@ -116,6 +117,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     AddressRightFistImgeSettings rightFistImgeSettings =new AddressRightFistImgeSettings();
     /**右侧第一个图片配置*/
     RightCenterScaleImgSettings rightCenterScaleImgSettings=new RightCenterScaleImgSettings();
+    CentLayoutConfig centLayoutConfig;
     /**
      * 默认为6 一行显示
      */
@@ -521,5 +523,13 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     public void setRightCenterScaleImgSettings(RightCenterScaleImgSettings rightCenterScaleImgSettings) {
         this.rightCenterScaleImgSettings = rightCenterScaleImgSettings;
+    }
+
+    public CentLayoutConfig getCentLayoutConfig() {
+        return centLayoutConfig;
+    }
+
+    public void setCentLayoutConfig(CentLayoutConfig centLayoutConfig) {
+        this.centLayoutConfig = centLayoutConfig;
     }
 }

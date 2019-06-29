@@ -657,6 +657,8 @@ public class SectionAdapterHelper {
                 gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                     @Override
                     public int getSpanSize(int position) {
+//                      IDyItemBean  itemBean=    mDataArrayList.get(position);
+//                        int size= itemBean.getSpanSize();
                         return   mDataArrayList.get(position).getSpanSize();
                     }
 

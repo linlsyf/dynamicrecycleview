@@ -3,7 +3,6 @@ package com.easy.recycleview.custom.baseview;
 import android.view.View;
 
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
-import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
 

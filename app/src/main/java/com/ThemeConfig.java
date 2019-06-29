@@ -16,31 +16,35 @@ public class ThemeConfig implements IDyviewThemeConfig {
         return titleColorResId;
     }
 
-    public void setTitleColorResId(int titleColorResId) {
+    public ThemeConfig setTitleColorResId(int titleColorResId) {
         this.titleColorResId = titleColorResId;
+        return this;
     }
 
     public int getHintColorResId() {
         return hintColorResId;
     }
 
-    public void setHintColorResId(int hintColorResId) {
-        this.hintColorResId = hintColorResId;
+    public ThemeConfig setHintColorResId(int hintColorResId) {
+        this.hintColorResId = hintColorResId;        return this;
+
     }
 
     public int getBgColorResId() {
         return bgColorResId;
     }
 
-    public void setBgColorResId(int bgColorResId) {
-        this.bgColorResId = bgColorResId;
+    public ThemeConfig setBgColorResId(int bgColorResId) {
+        this.bgColorResId = bgColorResId;        return this;
+
     }
 
     public int getBgResourcResId() {
         return bgResourcResId;
     }
 
-    public void setBgResourcResId(int bgResourcResId) {
-        this.bgResourcResId = bgResourcResId;
+    public ThemeConfig setBgResourcResId(int bgResourcResId) {
+        this.bgResourcResId = bgResourcResId;        return this;
+
     }
 }

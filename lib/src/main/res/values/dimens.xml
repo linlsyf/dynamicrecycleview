@@ -1,0 +1,4 @@
+<resources>
+
+    <dimen name="common_item_hight">45dp</dimen>
+</resources>

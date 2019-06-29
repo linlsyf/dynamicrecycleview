@@ -1,11 +1,11 @@
 package com.easy.recycleview.custom.baseview.config;
 
 import android.support.v7.widget.GridLayoutManager;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.easy.recycleview.custom.baseview.item.ContentItemView;
-import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.bean.DyItemBean;
+import com.easy.recycleview.custom.baseview.ContentItemView;
+import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
 
@@ -16,7 +16,7 @@ import com.easysoft.dynamicrecycleview.R;
 
 public class ContentLayoutConfig {
     public static void load(ContentItemView itemView, DyItemBean dataItemBean) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) itemView.mContenLayout.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) itemView.mContenLayout.getLayoutParams();
         GridLayoutManager.LayoutParams paramsItemView = ( GridLayoutManager.LayoutParams) itemView.getLayoutParams();
 
         int mContentMagin=0;

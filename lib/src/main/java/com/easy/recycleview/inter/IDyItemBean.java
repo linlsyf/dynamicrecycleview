@@ -1,5 +1,7 @@
 package com.easy.recycleview.inter;
 
+import com.easy.recycleview.custom.bean.CentLayoutConfig;
+
 /**
  * Created by Administrator on 2019/4/10 0010.
  */
@@ -27,7 +29,7 @@ public interface IDyItemBean {
 
     void setPosition(int position);
 
-
     public void setSection(String section);
 
+    public CentLayoutConfig getCentLayoutConfig();
 }
