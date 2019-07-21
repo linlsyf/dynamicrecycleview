@@ -215,7 +215,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/centLayout"
+        android:orientation="vertical"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
         android:minHeight="@dimen/common_item_hight">
         <ImageView
             android:id="@+id/centImg"
@@ -234,7 +236,8 @@
             android:textColor="@color/common_title_color"
             android:ellipsize="end"
             android:gravity="center"
-            android:layout_centerInParent="true"/>
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"/>
 
 
 

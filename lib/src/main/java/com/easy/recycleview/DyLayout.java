@@ -1,6 +1,8 @@
 package com.easy.recycleview;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -33,6 +35,9 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
+    private SwipeRefreshLayout mSwipeLayout;
+    private int lastVisibleItemPosition;
+
     //RecycleConfig defaultViewFactory;
     public DyLayout(Context context) {
         super(context);
@@ -49,6 +54,9 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
         rootView= (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.view_recycle, this, true);
          mRefreshRecyclerView=(RecyclerViewSupport) rootView.findViewById(R.id.refreshRecycleView);
 
+        //设置SwipeRefreshLayout
+        mSwipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
+
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
 
@@ -56,38 +64,25 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
         mRefreshRecyclerView.setEmptyView(mIEmptyView);
 
         mSectionAdapterHelper.setIAddItemView(this);
+        mSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeLayout.setRefreshing(false);
+            }
+        });
     }
-//    public void  setEmptyView(View iEmptyView){
-////        mIEmptyView.setVisibility(View.GONE);
-//        mIEmptyView=(EmptyView)iEmptyView;
-//        RelativeLayout.LayoutParams  layoutParams=new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-//        rootView.addView(iEmptyView,layoutParams);
-//        mSectionAdapterHelper.setEmptyView(mIEmptyView);
-//    }
 
-
-//    public void  initIMutiTypeSelectUtils(IMutiTypeSelectUtils mSelectUtils){
-//        mSectionAdapterHelper.initIMutiTypeSelectUtils(mSelectUtils);
-//    }
     public RecyclerView getRefreshRecyclerView() {
         return mRefreshRecyclerView;
     }
-//    public List<IDyItemBean> getSelectList(String sectionId){
-//        List<IDyItemBean>  selectList= mSectionAdapterHelper.getSelectMap().get(sectionId);
-//       if (selectList==null){
-//           selectList=new ArrayList<IDyItemBean>();
-//       }
-//        return selectList;
-//    }
+
     public void initLayoutManager(RecyclerView.LayoutManager layout) {
         mSectionAdapterHelper.initLayoutManager(layout);
     }
     public void updateSection(Section nextSection) {
         mSectionAdapterHelper.updateSection(nextSection);
     }
-    public void updateSection(Section nextSection,boolean isRefresh) {
-        mSectionAdapterHelper.updateSection(nextSection,isRefresh);
-    }
+
 
 public void  setSpanCount(int  spanCount){
     mSectionAdapterHelper.setSpanCount(spanCount);
@@ -95,6 +90,69 @@ public void  setSpanCount(int  spanCount){
     public void clean() {
         mSectionAdapterHelper.clean();
     }
+
+
+
+       public  void setRefreshingEnd(){
+         mSwipeLayout.setRefreshing(false);
+       }
+     public void  initSwipeLayout(SwipeRefreshLayout.OnRefreshListener listener){
+
+         mSwipeLayout.setColorSchemeColors(Color.BLUE,
+                 Color.GREEN,
+                 Color.YELLOW,
+                 Color.RED);
+
+
+         // 设置手指在屏幕下拉多少距离会触发下拉刷新
+         mSwipeLayout.setDistanceToTriggerSync(300);
+         // 设定下拉圆圈的背景
+         mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+         // 设置圆圈的大小
+         mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
+
+         //设置下拉刷新的监听
+         mSwipeLayout.setOnRefreshListener(listener);
+     }
+
+
+     public void  initSwipePullLayout(final OnloadMoreCallBack callBack){
+         mRefreshRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+             @Override
+             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                 super.onScrollStateChanged(recyclerView, newState);
+                 //判断是否到底部了
+                 if (newState ==RecyclerView.SCROLL_STATE_IDLE &&
+                         lastVisibleItemPosition + 1 == mSectionAdapterHelper.getAdapter().getItemCount()) {
+
+                     callBack.call();
+//                     new Handler().postDelayed(new Runnable() {
+//                         @Override
+//                         public void run() {
+//                             //如果还有数据则加载更多
+//                             if(!getIsFinish()){
+//                                 iLoadMoreData.loadMoreData();
+//                             }
+//                         }
+//                     },1000);
+                 }
+             }
+             @Override
+             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                 super.onScrolled(recyclerView,dx, dy);
+                 //获取最后一个项目位置
+                 lastVisibleItemPosition =mSectionAdapterHelper.getRecycleViewManger().findLastVisibleItemPosition();
+             }
+         });
+
+
+     }
+
+
+    public interface OnloadMoreCallBack{
+        void call();
+    }
+
 
 
     /**

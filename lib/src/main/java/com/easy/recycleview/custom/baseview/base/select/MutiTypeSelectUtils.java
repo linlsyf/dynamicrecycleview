@@ -191,36 +191,6 @@ public void setHasSelectNoticeText(String text){
     }
 
 
-//    public void changeSelectSelectItem(List<Section> mSectionList,String sectionId,DyItemBean newDataMap){
-//        int updateSectionIndex=-1;
-//        String id=newDataMap.getId();
-//        for (int i=0;i<mSectionList.size();i++){
-//            Section itemSection=mSectionList.get(i);
-//            if (itemSection.getId().equals(sectionId)){
-//                updateSectionIndex=i;
-//            }
-//        }
-//        if (updateSectionIndex>-1){
-//            List<IDyItemBean>  removeSectionMap=  mSectionList.get(updateSectionIndex).getDataMaps();
-//            int updateItemIndex=-1;
-//            for(int i=0;i<removeSectionMap.size();i++){
-//                IDyItemBean itemMap=removeSectionMap.get(i);
-//                if (id.equals(itemMap.getId())){
-//                    if (itemMap.isShowLeftCheckBox()){
-//                        itemMap.setLeftCheckBoxIsChecked(newDataMap.isLeftCheckBoxIsChecked());
-//                       select(newDataMap.isLeftCheckBoxIsChecked(),itemMap);
-//                    }
-//                    break;
-//                }
-//            }
-//            if (updateItemIndex==-1){//如果当前列表没有那么 找选中记录中消除
-//                select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-//            }
-//        }else{
-//          select(newDataMap.isLeftCheckBoxIsChecked(),newDataMap);
-//        }
-////        refreshDataSetChanged();
-//    }
 
 
 }

@@ -30,7 +30,7 @@ public class SectionAdapterHelper {
     /**adapter */
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
-    RecyclerView.LayoutManager  mRecycleViewManger;
+    GridLayoutManager  mRecycleViewManger;
 //    /**多选辅助工具 */
 //    IMutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
@@ -48,12 +48,20 @@ public class SectionAdapterHelper {
         mRecyclerView=recyclerView;
         mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mRecycleViewManger);
-        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context, mDataArrayList);
+        mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
+
+
 
     }
 
-     public void  setSpanCount(int  spanCount){
+    public GridLayoutManager getRecycleViewManger() {
+        return mRecycleViewManger;
+    }
+
+
+
+    public void  setSpanCount(int  spanCount){
         mRecycleViewManger= new GridLayoutManager(mRecyclerView.getContext(), spanCount, GridLayoutManager.VERTICAL, false);
          mRecyclerView.setLayoutManager(mRecycleViewManger);
     }
@@ -77,7 +85,7 @@ public class SectionAdapterHelper {
         mSectionList.add(section);
     }
     public void addSection(Section section) {
-        boolean index = checkIsExitSection(section);
+        boolean index = checkIsExitSection(section)>0?true:false;
         if (!index){
             mSectionList.add(section);
         }
@@ -315,25 +323,50 @@ public class SectionAdapterHelper {
         mSectionList=new ArrayList<Section>();
         refreshDataSetChanged();
     }
-    public void updateSection(Section section){
-        updateSection(section,false);
-    }
 
         /**
          *创建者：林党宏
          *时间：2017/1/20
          *注释：更新或者添加
-         * @param isRefresh  默认只刷新数据不刷新界面
          */
-    public void updateSection(Section section,boolean isRefresh){
-        wrappingList(section);
-        boolean index = checkIsExitSection(section);
-        if (!index){
+    public void updateSection(Section section){
+       int oldCount=checkIsExitSection(section);
+        boolean index = oldCount>0?true:false;
+//        boolean index = checkIsExitSection(section).size()>0?true:false;
+        if (!index||(index&&!section.isLoadMore())){
+            wrappingList(section);
             addNewSection(section);
-        }
             refreshDataSetChanged();
+        }
+        else{
+            notifyData();
 
+            List<IDyItemBean> subjects=section.getDataMaps();
+            int size=mSectionedExpandableGridAdapter.getItemCount();
+            int startPosition = oldCount;
+            int endPosition = startPosition + subjects.size();
+//
+            refresh(false,startPosition,endPosition);
+        }
     }
+
+        private void   refresh(boolean all, int startPosition,int endPosition){
+        if (all){
+            notifyData();
+            mSectionedExpandableGridAdapter.notifyDataSetChanged();
+        }else{
+            notifyData();//此处为刷新数据
+
+            mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
+
+
+//            for (int i = startPosition; i < endPosition; i++) {
+//                mSectionedExpandableGridAdapter.notifyItemChanged(i);
+//            }
+
+        }
+
+        }
 
 
     public static  void  wrappingList(Section section){
@@ -360,20 +393,31 @@ public class SectionAdapterHelper {
         section.setDataMaps(newSectionList);
     }
 
-    private boolean checkIsExitSection(Section section) {
+    private int  checkIsExitSection(Section section) {
         List<Section> mNewSectionList=new ArrayList<Section>();
-        boolean index=false;
+         List<IDyItemBean>  oldDataList=new ArrayList<>();
+         int oldDataCount=0;
         for (int i=0;i<mSectionList.size();i++){
             Section itemSection=mSectionList.get(i);
+
+
             if (itemSection.getId().equals(section.getId())){
-                index=true;
-                mNewSectionList.add(section);
+                oldDataCount=itemSection.getDataMaps().size();
+
+                  if (section.isLoadMore()){
+                      itemSection.getDataMaps().addAll(section.getDataMaps());
+                      mNewSectionList.add(itemSection);
+                  }else{
+                      mNewSectionList.add(section);
+
+                  }
+                break;
             }else{
                 mNewSectionList.add(itemSection);
             }
         }
         this.mSectionList=mNewSectionList;
-        return index;
+        return oldDataCount;
     }
 
     /**
@@ -464,18 +508,11 @@ public class SectionAdapterHelper {
      *注释：更新adapter数据源并刷新界面
      */
     public void refreshDataSetChanged() {
-            notifyData();
-        mSectionedExpandableGridAdapter.notifyDataSetChanged();
-        checkIsShowEmpty();
+        refresh(true,0,0);
+
+
     }
 
-    private void checkIsShowEmpty() {
-//        if (mEmptyView != null && getAdapter() != null) {
-//            final boolean emptyViewVisible = mDataArrayList.size() == 0;
-//            setEmptyViewVisibility(emptyViewVisible, true);
-//
-//         }
-    }
 
     private void notifyData() {
         mDataArrayList.clear();
@@ -483,7 +520,6 @@ public class SectionAdapterHelper {
         for (int i=0;i<mSectionList.size();i++){
             mDataArrayList.addAll(mSectionList.get(i).getDataMaps());
         }
-        checkIsShowEmpty();
     }
 
     public boolean isSectionEmpty() {
@@ -614,12 +650,14 @@ public class SectionAdapterHelper {
 
     class SectionedListViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>  {
         /**数据源 */
-        private ArrayList<IDyItemBean> mDataArrayList;
+        private static final int VIEW_ITEM = 0;  //普通Item View
+        private static final int TYPE_FOOTER = 1;  //底部FootView
+        private static final int TYPE_FINISH = -1;  //完成FootView
 
-        public SectionedListViewAdapter(Context context, ArrayList<IDyItemBean> dataArrayList) {
+
+        public SectionedListViewAdapter(Context context) {
 
             mContext = context;
-            mDataArrayList = dataArrayList;
         }
 
         @Override
@@ -645,6 +683,18 @@ public class SectionAdapterHelper {
         }
         @Override
         public int getItemViewType(int position) {
+
+//            if(position + 1 != getItemCount()){
+//                return mDataArrayList.get(position).getViewType();
+//            }else{
+//                if(getItemCount()-1 ==totalNum){
+//                    return TYPE_FINISH;
+//                }else{
+//                    return TYPE_FOOTER;
+//                }
+//            }
+
+
             return mDataArrayList.get(position).getViewType();
         }
 

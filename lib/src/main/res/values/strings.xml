@@ -4,6 +4,7 @@
     <string name="delete">"删除"</string>
 
     <string name="no_data_show">没有数据显示</string>
+    <string name="load_more">加载更多...</string>
 
 
 </resources>

@@ -27,6 +27,8 @@ public class Section {
     private  boolean isSectionShowDelete=false;
     /** 插入位置 当大于0时指定位置*/
     private int position=0;
+    /** 插入位置 当大于0时指定位置*/
+    private  boolean loadMore=false ;
     private List<IDyItemBean> dataMaps=new ArrayList<IDyItemBean>();
 
 
@@ -111,5 +113,13 @@ public class Section {
 
     public void setAutoAddSection(boolean autoAddSection) {
         isAutoAddSection = autoAddSection;
+    }
+
+    public boolean isLoadMore() {
+        return loadMore;
+    }
+
+    public void setLoadMore(boolean loadMore) {
+        this.loadMore = loadMore;
     }
 }
