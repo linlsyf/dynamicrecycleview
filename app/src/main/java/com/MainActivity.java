@@ -106,7 +106,7 @@ public class MainActivity extends Activity {
                             int newPostion=recycleView.getRefreshRecyclerView().getChildCount();
 //                            recycleView.getRefreshRecyclerView().scrollToPosition(newPostion-4);
 
-//                            smoothMoveToPosition(recycleView.getRefreshRecyclerView(),11);
+//                            smoothMoveToPosition(recycleView.getRfreshRecyclerView(),11);
 
 
                             ToastUtils.show(MainActivity.this,"this  add");

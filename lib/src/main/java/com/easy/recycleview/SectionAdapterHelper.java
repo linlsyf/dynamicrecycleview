@@ -332,7 +332,6 @@ public class SectionAdapterHelper {
     public void updateSection(Section section){
        int oldCount=checkIsExitSection(section);
         boolean index = oldCount>0?true:false;
-//        boolean index = checkIsExitSection(section).size()>0?true:false;
         if (!index||(index&&!section.isLoadMore())){
             wrappingList(section);
             addNewSection(section);
@@ -340,12 +339,10 @@ public class SectionAdapterHelper {
         }
         else{
             notifyData();
-
             List<IDyItemBean> subjects=section.getDataMaps();
             int size=mSectionedExpandableGridAdapter.getItemCount();
             int startPosition = oldCount;
             int endPosition = startPosition + subjects.size();
-//
             refresh(false,startPosition,endPosition);
         }
     }
