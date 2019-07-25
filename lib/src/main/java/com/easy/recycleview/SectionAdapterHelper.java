@@ -338,12 +338,13 @@ public class SectionAdapterHelper {
             refreshDataSetChanged();
         }
         else{
-            notifyData();
+            wrappingList(section);
+
             List<IDyItemBean> subjects=section.getDataMaps();
-            int size=mSectionedExpandableGridAdapter.getItemCount();
-            int startPosition = oldCount;
-            int endPosition = startPosition + subjects.size();
-            refresh(false,startPosition,endPosition);
+
+            notifyData();
+
+            refresh(false,oldCount,subjects.size());
         }
     }
 
@@ -354,17 +355,14 @@ public class SectionAdapterHelper {
         }else{
             notifyData();//此处为刷新数据
 
-            mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
-
-
-//            for (int i = startPosition; i < endPosition; i++) {
-//                mSectionedExpandableGridAdapter.notifyItemChanged(i);
-//            }
+           // mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
 
         }
 
         }
-
+       public  void  notifyItemRangeInserted( int startPosition,int endPosition){
+        mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
+      }
 
     public static  void  wrappingList(Section section){
         int i=0;
