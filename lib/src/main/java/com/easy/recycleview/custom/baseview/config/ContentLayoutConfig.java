@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.DyItemBean;
-import com.easy.recycleview.custom.baseview.ContentItemView;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;

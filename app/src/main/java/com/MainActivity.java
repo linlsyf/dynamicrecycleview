@@ -9,7 +9,7 @@ import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
-import com.easy.recycleview.custom.bean.CentLayoutConfig;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dyview.R;
@@ -46,30 +46,26 @@ public class MainActivity extends Activity {
 
 
 
-
-//        newItemBean.setCentLayoutConfig(new CentLayoutConfig().setName("中间标题"));
-//
-//        newSectionList.add(newItemBean);
-
-
          DyItemBean  secondItemBean=new DyItemBean();
-        String url="https://avatar.csdn.net/C/3/4/3_liufatao.jpg";
+        String url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564203445905&di=4756acf7cbbf0eab10a18b1dffc05ef3&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20141219%2Fzhongguofengdaodeliyizhanbanzhijing_3744115.jpg";
 
         secondItemBean.setCentLayoutConfig(
 
                 new CentLayoutConfig()
-//                        .setImgRadius(100).setImgResId(R.drawable.empty_photo)
-          .setName("test")
+                        .setImgRadius(100)
+//                .setImgResId(R.drawable.empty_photo)
+                        .setImgUrl(url)
+//          .setName("test")
         );
 
 
         newSectionList.add(secondItemBean);
 
-            for (int i=0;i<10;i++){
-                DyItemBean itemBean=new DyItemBean();
-                  itemBean.setTitle("index"+i);
-                  newSectionList.add(itemBean);
-            }
+//            for (int i=0;i<10;i++){
+//                DyItemBean itemBean=new DyItemBean();
+//                  itemBean.setTitle("index"+i);
+//                  newSectionList.add(itemBean);
+//            }
 
 
             newSection=new Section(SECTION_NEW);

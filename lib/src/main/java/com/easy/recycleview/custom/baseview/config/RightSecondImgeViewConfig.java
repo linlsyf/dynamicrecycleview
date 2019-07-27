@@ -4,10 +4,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.easy.recycleview.custom.baseview.ContentItemView;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.bean.DyItemBean;
-import com.easy.recycleview.custom.bean.RightSecondImgSettings;
+import com.easy.recycleview.bean.RightSecondImgSettings;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dynamicrecycleview.R;
 

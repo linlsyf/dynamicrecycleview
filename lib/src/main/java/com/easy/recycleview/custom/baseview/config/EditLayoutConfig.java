@@ -3,7 +3,7 @@ package com.easy.recycleview.custom.baseview.config;
 import android.view.View;
 
 import com.easy.recycleview.custom.baseview.EdittextLayoutView;
-import com.easy.recycleview.custom.baseview.ContentItemView;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.bean.DyItemBean;
 
 

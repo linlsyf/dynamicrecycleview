@@ -1,4 +1,4 @@
-package com.easy.recycleview.custom.baseview;
+package com.easy.recycleview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easy.recycleview.bean.DyItemBean;
+import com.easy.recycleview.custom.baseview.EdittextLayoutView;
+import com.easy.recycleview.custom.baseview.ListenerConfig;
 import com.easy.recycleview.custom.baseview.base.BaseLinearLayout;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
 import com.easy.recycleview.custom.baseview.config.CentLayouConfig;
@@ -126,9 +128,6 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mContentEditLayout=(EdittextLayoutView) rootView.findViewById(R.id.edtLayout);
         /** 内容布局可设置magin布局 */
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
-
-
-
         mCentLayout=rootView.findViewById(R.id.centLayout);
         mCentImg=(ImageView) rootView.findViewById(R.id.centImg);
         mCentTv=(TextView) rootView.findViewById(R.id.centTv);

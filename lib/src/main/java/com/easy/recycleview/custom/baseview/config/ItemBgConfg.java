@@ -1,7 +1,7 @@
 package com.easy.recycleview.custom.baseview.config;
 
-import com.easy.recycleview.custom.baseview.ContentItemView;
-import com.easy.recycleview.custom.bean.BgSetting;
+import com.easy.recycleview.ContentItemView;
+import com.easy.recycleview.bean.BgSetting;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 

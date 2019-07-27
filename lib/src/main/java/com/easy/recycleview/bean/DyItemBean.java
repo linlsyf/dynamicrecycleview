@@ -1,15 +1,6 @@
 package com.easy.recycleview.bean;
 
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
-import com.easy.recycleview.custom.bean.AddressEditSettings;
-import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.custom.bean.AddressRightFistImgeSettings;
-import com.easy.recycleview.custom.bean.BgSetting;
-import com.easy.recycleview.custom.bean.CentLayoutConfig;
-import com.easy.recycleview.custom.bean.HintSettings;
-import com.easy.recycleview.custom.bean.RightCenterScaleImgSettings;
-import com.easy.recycleview.custom.bean.RightSecondImgSettings;
-import com.easy.recycleview.custom.bean.TitleSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;

@@ -1,6 +1,6 @@
 package com.easy.recycleview.inter;
 
-import com.easy.recycleview.custom.bean.CentLayoutConfig;
+import com.easy.recycleview.bean.CentLayoutConfig;
 
 /**
  * Created by Administrator on 2019/4/10 0010.

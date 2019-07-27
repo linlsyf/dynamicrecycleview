@@ -2,6 +2,8 @@ package com.easy.recycleview.custom.baseview;
 
 import android.view.View;
 
+import com.easy.recycleview.ContentItemView;
+import com.easy.recycleview.FastClickUtils;
 import com.easy.recycleview.custom.baseview.button.IOSSwitchButton;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
@@ -14,6 +16,7 @@ import com.easy.recycleview.outinter.RecycleConfig;
 public class ListenerConfig {
 
     public static  void load(final ContentItemView itemView) {
+
         if (itemView.mBindItemBean != null && itemView.mBindItemBean.getOnRightCheckBoxListener() != null) {
             itemView.mSwitchButton.setOnStateChangeListener(new IOSSwitchButton.OnStateChangeListener() {
                 @Override
@@ -66,7 +69,10 @@ public class ListenerConfig {
             @Override
             public void onClick(View v) {
                 if (itemView.mBindItemBean.isOnItemAllClickAble()){
-                    onItemClick(itemView,onItemListener);
+
+                  if (!FastClickUtils.isFastClick()){
+                      onItemClick(itemView,onItemListener);
+                  }
 
                 }
             }

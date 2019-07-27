@@ -1,4 +1,4 @@
-package com.easy.recycleview.custom.bean;
+package com.easy.recycleview.bean;
 
 import android.text.InputType;
 

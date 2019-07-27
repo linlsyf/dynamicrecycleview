@@ -3,7 +3,7 @@ package com.easy.recycleview.custom.baseview.base.select;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.bean.DyItemBean;
-import com.easy.recycleview.custom.bean.SelectBean;
+import com.easy.recycleview.bean.SelectBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;

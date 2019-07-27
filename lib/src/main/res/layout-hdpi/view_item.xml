@@ -218,6 +218,7 @@
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_marginBottom="5dp"
+        android:visibility="gone"
         android:minHeight="@dimen/common_item_hight">
         <ImageView
             android:id="@+id/centImg"

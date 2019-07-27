@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.DyItemBean;
-import com.easy.recycleview.custom.baseview.ContentItemView;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.custom.bean.CentLayoutConfig;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.outinter.RecycleConfig;
 
 /**
@@ -32,8 +32,9 @@ public class CentLayouConfig {
           }
           if (StringUtils.isNotEmpty(config.getImgUrl())){
               isImagShow=true;
+              contentItemView.mCentImg.setVisibility(View.VISIBLE);
               if ( RecycleConfig.getInstance().getIloadImage()!=null) {
-                  RecycleConfig.getInstance().getIloadImage().load(dataItemBean.getHeadImgeSettings().getHeadImgUrl(), contentItemView.mCentImg);
+                  RecycleConfig.getInstance().getIloadImage().load(config.getImgUrl(), contentItemView.mCentImg);
               }
           }
 

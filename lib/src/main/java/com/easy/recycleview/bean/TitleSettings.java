@@ -1,4 +1,4 @@
-package com.easy.recycleview.custom.bean;
+package com.easy.recycleview.bean;
 
 /**
  * Created by Administrator on 2019/5/1 0001.
