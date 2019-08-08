@@ -1,6 +1,7 @@
 package com.easy.recycleview.custom.baseview.config;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.DyItemBean;
@@ -23,12 +24,19 @@ public class CentLayouConfig {
           }
         contentItemView.mCentLayout.setVisibility(View.VISIBLE);
 
+
            boolean isImagShow=false;
         CentLayoutConfig  config=dataItemBean.getCentLayoutConfig();
+            if (config.getImgResId()!=0|StringUtils.isNotEmpty(config.getImgUrl())){
+                 isImagShow=true;
+                 contentItemView.mCentMsgLayout.setVisibility(View.VISIBLE);
+             }
+
           if (config.getImgResId()!=0){
               contentItemView.mCentImg.setVisibility(View.VISIBLE);
+
+//              contentItemView.mCentImg.set
               contentItemView.mCentImg.setImageResource(config.getImgResId());
-              isImagShow=true;
           }
           if (StringUtils.isNotEmpty(config.getImgUrl())){
               isImagShow=true;
@@ -38,22 +46,43 @@ public class CentLayouConfig {
               }
           }
 
-            if (StringUtils.isNotEmpty(config.getName())){
 
-              if (!isImagShow){
-              RelativeLayout.LayoutParams  layoutParams=(RelativeLayout.LayoutParams) contentItemView.mCentTv.getLayoutParams();
-                      layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 
-              }
-                contentItemView.mCentTv.setVisibility(View.VISIBLE);
-                contentItemView.mCentTv.setText(config.getName());
-                int colorResId=dataItemBean.getTitleSettings().getColor();
-                int titleColorResId= RecycleConfig.getInstance().getThemeConfig().getTitleColorResId();
-                if (colorResId!=0){
-                    contentItemView.mCentTv.setTextColor(colorResId);
-                }else  if(titleColorResId!=0){
-                    contentItemView.mCentTv.setTextColor(titleColorResId);
+        if (isImagShow){
+
+            LinearLayout.LayoutParams  layoutParams=(LinearLayout.LayoutParams) contentItemView.mCentImg.getLayoutParams();
+               if (config.getImgRadius()!=0){
+                   layoutParams.width=config.getImgRadius();
+                   layoutParams.height=config.getImgRadius();
+               }
+
+        }
+
+            if (StringUtils.isNotEmpty(config.getName())) {
+
+                int colorResId = dataItemBean.getTitleSettings().getColor();
+                int titleColorResId = RecycleConfig.getInstance().getThemeConfig().getTitleColorResId();
+
+                if (isImagShow){
+                    contentItemView.mCentTv.setText(config.getName());
+                    if (colorResId != 0) {
+                        contentItemView.mCentTv.setTextColor(colorResId);
+                    } else if (titleColorResId != 0) {
+                        contentItemView.mCentTv.setTextColor(titleColorResId);
+                    }
+                }else{
+                    contentItemView.mCentSingleTv.setVisibility(View.VISIBLE);
+
+                    contentItemView.mCentSingleTv.setText(config.getName() );
+                    if (colorResId != 0) {
+                        contentItemView.mCentSingleTv.setTextColor(colorResId);
+                    } else if (titleColorResId != 0) {
+                        contentItemView.mCentSingleTv.setTextColor(titleColorResId);
+                    }
+
                 }
+
+
             }
 
     }

@@ -73,8 +73,17 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     public EdittextLayoutView mContentEditLayout;
     /** 内容布局可设置magin布局 */
       public  LinearLayout mContenLayout;
+    /** 中间显示图片说明布局 */
+      public    View  mCentMsgLayout ;
+    /** 中间显示图片说明布局 */
+      public    TextView  mCentSingleTv ;
+
+
 //    /** 内容布局可设置magin布局 */
 //    MessageCountView mMessageCountView;
+
+
+
     /** 绑定数据 */
     public DyItemBean mBindItemBean = new DyItemBean();
 
@@ -130,7 +139,12 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mContenLayout=(LinearLayout) rootView.findViewById(R.id.rootContentLayout);
         mCentLayout=rootView.findViewById(R.id.centLayout);
         mCentImg=(ImageView) rootView.findViewById(R.id.centImg);
-        mCentTv=(TextView) rootView.findViewById(R.id.centTv);
+        mCentTv=(TextView) rootView.findViewById(R.id.centTitleTv);
+
+        mCentMsgLayout= rootView.findViewById(R.id.centMsgLayout);
+        mCentSingleTv=(TextView) rootView.findViewById(R.id.centerSingleTv);
+
+
 
 
     }

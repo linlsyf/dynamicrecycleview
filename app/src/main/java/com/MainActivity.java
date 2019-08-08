@@ -13,6 +13,7 @@ import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dyview.R;
+import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ public class MainActivity extends Activity {
 
 
 
+
+
         final DyItemBean newItemBean=new DyItemBean();
 
 
@@ -52,10 +55,10 @@ public class MainActivity extends Activity {
         secondItemBean.setCentLayoutConfig(
 
                 new CentLayoutConfig()
-                        .setImgRadius(100)
-//                .setImgResId(R.drawable.empty_photo)
-                        .setImgUrl(url)
-//          .setName("test")
+//                        .setImgRadius(260)
+//                       .setImgResId(R.drawable.empty_photo)
+//                        .setImgUrl(url)
+          .setName("zh二十什么鬼")
         );
 
 
@@ -77,17 +80,17 @@ public class MainActivity extends Activity {
 
           newSection.setAutoAddSpliteLine(false);
 
-           recycleView.initSwipePullLayout(new DyLayout.OnloadMoreCallBack() {
-               @Override
-               public void call() {
+          recycleView.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+              @Override
+              public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
 
-//
-                     if (isRefresh){
-                         return;
-                     }
-                   isRefresh=true;
+              }
 
-                         new Handler().postDelayed(new Runnable() {
+              @Override
+              public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+
+
+                          new Handler().postDelayed(new Runnable() {
                         public void run() {
 
                             newSection=new Section(SECTION_NEW);
@@ -98,8 +101,9 @@ public class MainActivity extends Activity {
                             }
                             newSection.setLoadMore(true);
                             recycleView.updateSection( newSection);
-
                             int newPostion=recycleView.getRefreshRecyclerView().getChildCount();
+
+                            recycleView. refreshFinish();
 //                            recycleView.getRefreshRecyclerView().scrollToPosition(newPostion-4);
 
 //                            smoothMoveToPosition(recycleView.getRfreshRecyclerView(),11);
@@ -110,8 +114,44 @@ public class MainActivity extends Activity {
                         }
                     }, 1000);
 
-               }
-           });
+              }
+          });
+
+//           recycleView.initSwipePullLayout(new DyLayout.OnloadMoreCallBack() {
+//               @Override
+//               public void call() {
+//
+////
+//                     if (isRefresh){
+//                         return;
+//                     }
+//                   isRefresh=true;
+//
+//                         new Handler().postDelayed(new Runnable() {
+//                        public void run() {
+//
+//                            newSection=new Section(SECTION_NEW);
+//                            for (int i=0;i<5;i++){
+//                                DyItemBean itemBean=new DyItemBean();
+//                                itemBean.setTitle("indexNEW===="+i);
+//                                newSection.getDataMaps().add(itemBean);
+//                            }
+//                            newSection.setLoadMore(true);
+//                            recycleView.updateSection( newSection);
+//
+//                            int newPostion=recycleView.getRefreshRecyclerView().getChildCount();
+////                            recycleView.getRefreshRecyclerView().scrollToPosition(newPostion-4);
+//
+////                            smoothMoveToPosition(recycleView.getRfreshRecyclerView(),11);
+//
+//
+//                            ToastUtils.show(MainActivity.this,"this  add");
+//                            //  System.out.print("add ing ads");
+//                        }
+//                    }, 1000);
+//
+//               }
+//           });
 
 //        recycleView.initSwipeLayout(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
@@ -138,6 +178,24 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
+//          recycleView.initSwipePullLayout(new DySwipeRefreshLayout.OnLoadListener() {
+//              @Override
+//              public void onLoad() {
+//                  new Handler().postDelayed(new Runnable() {
+//                        public void run() {
+//
+//                            //显示或隐藏刷新进度条
+//                            recycleView.setPullLoadEnd();
+//
+//                            //修改adapter的数据
+//
+//                            ToastUtils.show(MainActivity.this,"this  add");
+//                            //  System.out.print("add ing ads");
+//                            isRefresh = false;
+//                        }
+//                    }, 5000);
+//              }
+//          });
          recycleView.updateSection(newSection);
 
 

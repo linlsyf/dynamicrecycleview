@@ -1,8 +1,6 @@
 package com.easy.recycleview;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,10 +12,15 @@ import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easy.recycleview.view.EmptyView;
+import com.easy.recycleview.view.RecyclerViewSupport;
 import com.easysoft.dynamicrecycleview.R;
+import com.jingchen.pulltorefresh.PullToRefreshLayout;
+import com.jingchen.pulltorefresh.pullableview.PullableRecycleView;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
+
+import static com.jingchen.pulltorefresh.PullToRefreshLayout.SUCCEED;
 
 /**
  *创建者：林党宏
@@ -29,13 +32,15 @@ import java.util.List;
 
 public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAddItemView {
     EmptyView mIEmptyView;
-    RecyclerViewSupport mRefreshRecyclerView;
+    PullableRecycleView mRefreshRecyclerView;
     /** 分组工具类*/
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
-    private SwipeRefreshLayout mSwipeLayout;
-    private int lastVisibleItemPosition;
+    private PullToRefreshLayout mSwipeLayout;
+
+//   OnLoadListener mOnLoadListener;
+
 
     //RecycleConfig defaultViewFactory;
     public DyLayout(Context context) {
@@ -51,10 +56,10 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
 
     protected void initUI(Context context) {
         rootView= (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.view_recycle, this, true);
-         mRefreshRecyclerView=(RecyclerViewSupport) rootView.findViewById(R.id.refreshRecycleView);
+         mRefreshRecyclerView=(PullableRecycleView) rootView.findViewById(R.id.refreshRecycleView);
 
         //设置SwipeRefreshLayout
-        mSwipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
+        mSwipeLayout = (PullToRefreshLayout) rootView.findViewById(R.id.swipeLayout);
 
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
@@ -63,12 +68,8 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
         mRefreshRecyclerView.setEmptyView(mIEmptyView);
 
         mSectionAdapterHelper.setIAddItemView(this);
-        mSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mSwipeLayout.setRefreshing(false);
-            }
-        });
+
+
     }
 
     public RecyclerView getRefreshRecyclerView() {
@@ -93,66 +94,43 @@ public void  setSpanCount(int  spanCount){
 
 
        public  void setRefreshingEnd(){
-         mSwipeLayout.setRefreshing(false);
+        // mSwipeLayout.setRefreshing(false);
        }
-     public void  initSwipeLayout(SwipeRefreshLayout.OnRefreshListener listener){
+//     public void  initSwipeLayout(SwipeRefreshLayout.OnRefreshListener listener){
+//         mSwipeLayout.setEnabled(true);
+//
+//         mSwipeLayout.setColorSchemeColors(Color.BLUE,
+//                 Color.GREEN,
+//                 Color.YELLOW,
+//                 Color.RED);
+//
+//
+//         // 设置手指在屏幕下拉多少距离会触发下拉刷新
+//         mSwipeLayout.setDistanceToTriggerSync(300);
+//         // 设定下拉圆圈的背景
+//         mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+//         // 设置圆圈的大小
+//         mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
+//
+//         //设置下拉刷新的监听
+//         mSwipeLayout.setOnRefreshListener(listener);
+//     }
 
-         mSwipeLayout.setColorSchemeColors(Color.BLUE,
-                 Color.GREEN,
-                 Color.YELLOW,
-                 Color.RED);
-
-
-         // 设置手指在屏幕下拉多少距离会触发下拉刷新
-         mSwipeLayout.setDistanceToTriggerSync(300);
-         // 设定下拉圆圈的背景
-         mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
-         // 设置圆圈的大小
-         mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
-
-         //设置下拉刷新的监听
-         mSwipeLayout.setOnRefreshListener(listener);
-     }
-
-
-     public void  initSwipePullLayout(final OnloadMoreCallBack callBack){
-         mRefreshRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-             @Override
-             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                 super.onScrollStateChanged(recyclerView, newState);
-                 //判断是否到底部了
-                 if (newState ==RecyclerView.SCROLL_STATE_IDLE &&
-                         lastVisibleItemPosition + 1 == mSectionAdapterHelper.getAdapter().getItemCount()) {
-
-                     callBack.call();
-//                     new Handler().postDelayed(new Runnable() {
-//                         @Override
-//                         public void run() {
-//                             //如果还有数据则加载更多
-//                             if(!getIsFinish()){
-//                                 iLoadMoreData.loadMoreData();
-//                             }
-//                         }
-//                     },1000);
-                 }
-             }
-             @Override
-             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                 super.onScrolled(recyclerView,dx, dy);
-                 //获取最后一个项目位置
-                 lastVisibleItemPosition =mSectionAdapterHelper.getRecycleViewManger().findLastVisibleItemPosition();
-             }
-         });
+//       public void setPullLoadEnd(){
+//           mSwipeLayout.setLoading(false);
+//       }
 
 
-     }
+    public void setOnRefreshListener(PullToRefreshLayout.OnRefreshListener listener)
+    {
 
-
-    public interface OnloadMoreCallBack{
-        void call();
+        mRefreshRecyclerView.init();
+      mSwipeLayout.setOnRefreshListener(listener);
     }
 
-
+    public void refreshFinish(){
+        mSwipeLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+    }
 
     /**
      *创建者：林党宏
@@ -179,19 +157,8 @@ public void  setSpanCount(int  spanCount){
                System.out.print("class for view"+e.getMessage());
            }
           }
-
         if (itemView==null){
-//             if (IItemView.ViewTypeEnum.ITEM.value()==viewType){
-//                 itemView=new ContentItemView(getContext());
-//             }
-//             else if (IItemView.ViewTypeEnum.SECTION.value()==viewType){
-//                 itemView=new ContentItemView(getContext());
-//             }
-//             else if (IItemView.ViewTypeEnum.SPLITE.value()==viewType){
-//                 itemView=new SpliteView(getContext());
-//             }else{
                  itemView=new ContentItemView(getContext());
-//             }
         }
         return itemView;
     }

@@ -12,11 +12,13 @@ import com.easy.recycleview.custom.baseview.utils.StringUtils;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.view.RecyclerViewSupport;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *时间：2017/4/17
@@ -34,7 +36,7 @@ public class SectionAdapterHelper {
 //    /**多选辅助工具 */
 //    IMutiTypeSelectUtils mSelectUtils;
    /**显示recycleview */
-    RecyclerView mRecyclerView;
+   RecyclerViewSupport mRecyclerView;
     private updateListener mUpdateListener;
     /**空数据显示界面 */
 //    private View mEmptyView;
@@ -42,8 +44,9 @@ public class SectionAdapterHelper {
      Context mContext;
     /** 控件可实现 从写item*/
     private IAddItemView mIAddItemView;
+    private boolean mIsSortSection =false;
 
-    public void init(Context context,RecyclerView recyclerView){
+    public void init(Context context,RecyclerViewSupport recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
         mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
@@ -74,6 +77,15 @@ public class SectionAdapterHelper {
 
     public SectionedListViewAdapter getAdapter() {
         return mSectionedExpandableGridAdapter;
+    }
+
+
+    public boolean isIsSortSection() {
+        return mIsSortSection;
+    }
+
+    public void setIsSortSection(boolean mIsSortSection) {
+        this.mIsSortSection = mIsSortSection;
     }
 
     /**
@@ -288,6 +300,8 @@ public class SectionAdapterHelper {
         }
         return resultBean;
     }
+
+    @Deprecated
     public void refreshCanSelect(String sectionId,boolean isCanSelect){
         for (int i=0;i<mDataArrayList.size();i++){
             IDyItemBean itemBean=mDataArrayList.get(i);
@@ -367,7 +381,7 @@ public class SectionAdapterHelper {
     public static  void  wrappingList(Section section){
         int i=0;
         String   sectionId=section.getId();
-        List<IDyItemBean>  newSectionList=new ArrayList<>();
+        List<IDyItemBean>  newSectionList=new CopyOnWriteArrayList<>();//线程安全的ArrayList
         List<IDyItemBean>  sectionList=section.getDataMaps();
         for (IDyItemBean itemBean:sectionList ) {
             if (i!=0&&section.isAutoAddSpliteLine()){
@@ -431,19 +445,7 @@ public class SectionAdapterHelper {
         }
         return getSection;
     }
-//    /**
-//     *创建者：林党宏
-//     *时间：2017/2/8
-//     *注释：所有分组已选数据
-//     */
-//    public Map<String, List<IDyItemBean>> getSelectMap(){
-//      return RecycleConfig.getInstance().getSelectUtils().getSelectedMap();
-//    }
-//
-//
-//    public boolean getItemCanSelectEdit(String id){
-//        return   mSelectUtils.getItemCanSelectEdit(id);
-//    }
+
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -511,7 +513,11 @@ public class SectionAdapterHelper {
 
     private void notifyData() {
         mDataArrayList.clear();
-        Collections.sort(mSectionList, new SectinComparator());
+
+
+        if(mIsSortSection){
+            Collections.sort(mSectionList, new SectinComparator());
+        }
         for (int i=0;i<mSectionList.size();i++){
             mDataArrayList.addAll(mSectionList.get(i).getDataMaps());
         }

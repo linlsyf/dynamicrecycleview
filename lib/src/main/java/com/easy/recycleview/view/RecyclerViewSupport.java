@@ -1,4 +1,4 @@
-package com.easy.recycleview;
+package com.easy.recycleview.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +14,9 @@ import android.view.View;
 
 public class RecyclerViewSupport  extends RecyclerView {
     private static final String TAG = "RecyclerViewEmptySupport";
+
+//    private RecyclerView.Adapter mAdapter;
+
     /**
      * 当数据为空时展示的View
      */
@@ -57,6 +60,8 @@ public class RecyclerViewSupport  extends RecyclerView {
     @SuppressLint("LongLogTag")
     @Override
     public void setAdapter(Adapter adapter) {
+//        this.mAdapter = adapter;
+
         super.setAdapter(adapter);
         Log.i(TAG, "setAdapter: adapter::" + adapter);
         if (adapter != null) {
@@ -67,4 +72,8 @@ public class RecyclerViewSupport  extends RecyclerView {
         //当setAdapter的时候也调一次（实际上，经我粗略验证，不添加貌似也可以。不行就给添上呗，多大事嘛）
         emptyObserver.onChanged();
     }
+
+
+
+
 }
