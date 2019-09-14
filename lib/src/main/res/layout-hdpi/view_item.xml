@@ -3,7 +3,6 @@
               android:id="@+id/rootlayout"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants"
     android:background="@drawable/common_select"
     android:focusable="false"
               android:orientation="vertical">
@@ -27,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:descendantFocusability="afterDescendants"
+
             android:layout_weight="1"
             >
 

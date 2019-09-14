@@ -1,6 +1,7 @@
 package com.easy.recycleview;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,15 +13,11 @@ import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easy.recycleview.view.EmptyView;
-import com.easy.recycleview.view.RecyclerViewSupport;
 import com.easysoft.dynamicrecycleview.R;
-import com.jingchen.pulltorefresh.PullToRefreshLayout;
-import com.jingchen.pulltorefresh.pullableview.PullableRecycleView;
+import com.easy.recycleview.view.PullableRecycleView;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
-
-import static com.jingchen.pulltorefresh.PullToRefreshLayout.SUCCEED;
 
 /**
  *创建者：林党宏
@@ -37,12 +34,8 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
     SectionAdapterHelper mSectionAdapterHelper;
     private CustomViewCallBack customViewCallBack;
     private RelativeLayout rootView;
-    private PullToRefreshLayout mSwipeLayout;
+    private SwipeRefreshLayout mSwipeLayout;
 
-//   OnLoadListener mOnLoadListener;
-
-
-    //RecycleConfig defaultViewFactory;
     public DyLayout(Context context) {
         super(context);
         initUI(context);
@@ -59,7 +52,7 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
          mRefreshRecyclerView=(PullableRecycleView) rootView.findViewById(R.id.refreshRecycleView);
 
         //设置SwipeRefreshLayout
-        mSwipeLayout = (PullToRefreshLayout) rootView.findViewById(R.id.swipeLayout);
+        mSwipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeLayout);
 
         mSectionAdapterHelper=new SectionAdapterHelper();
         mSectionAdapterHelper.init(context,mRefreshRecyclerView);
@@ -68,7 +61,7 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
         mRefreshRecyclerView.setEmptyView(mIEmptyView);
 
         mSectionAdapterHelper.setIAddItemView(this);
-
+        mSwipeLayout.setEnabled(false);
 
     }
 
@@ -82,6 +75,11 @@ public class DyLayout extends RelativeLayout implements SectionAdapterHelper.IAd
     public void updateSection(Section nextSection) {
         mSectionAdapterHelper.updateSection(nextSection);
     }
+
+     public  void loadMoreRefreshComplete(){
+         mSectionAdapterHelper.loadMoreRefreshing();
+         refreshFinish();
+     }
 
 
 public void  setSpanCount(int  spanCount){
@@ -121,16 +119,18 @@ public void  setSpanCount(int  spanCount){
 //       }
 
 
-    public void setOnRefreshListener(PullToRefreshLayout.OnRefreshListener listener)
+    public void setOnRefreshListener(SwipOnRefreshListener listener)
     {
-
-        mRefreshRecyclerView.init();
+        mRefreshRecyclerView.init(listener);
       mSwipeLayout.setOnRefreshListener(listener);
     }
 
     public void refreshFinish(){
-        mSwipeLayout.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        mSwipeLayout.setRefreshing(false);
+        mRefreshRecyclerView.setRefreshing(false);
     }
+
+
 
     /**
      *创建者：林党宏
@@ -170,7 +170,7 @@ public void  setSpanCount(int  spanCount){
 
 
     public  interface  CustomViewCallBack{
-          View getCustomView(Context context,int type);
+          View getCustomView(Context context, int type);
       }
       public  void  initCustomViewCallBack(CustomViewCallBack  callback){
            this.customViewCallBack=callback;

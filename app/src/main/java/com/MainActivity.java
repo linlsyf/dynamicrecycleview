@@ -2,18 +2,17 @@ package com;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 
 import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.SwipOnRefreshListener;
+import com.easy.recycleview.bean.AddressEditSettings;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.baseview.utils.ToastUtils;
-import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dyview.R;
-import com.jingchen.pulltorefresh.PullToRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +47,14 @@ public class MainActivity extends Activity {
         final DyItemBean newItemBean=new DyItemBean();
 
 
+        DyItemBean  secondEditItemBean=new DyItemBean();
+        secondEditItemBean.setTitle("输入框");
+        secondEditItemBean.setHint("test input");
+        secondEditItemBean.setEidtSettings(new AddressEditSettings().setShowEdittext(true)
+                .setEdittextCanEdit(true)
+                .setEditContent("shurnr")
+                .setOpenKeybord(true));
+        newSectionList.add(secondEditItemBean);
 
          DyItemBean  secondItemBean=new DyItemBean();
         String url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564203445905&di=4756acf7cbbf0eab10a18b1dffc05ef3&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20141219%2Fzhongguofengdaodeliyizhanbanzhijing_3744115.jpg";
@@ -62,7 +69,7 @@ public class MainActivity extends Activity {
         );
 
 
-        newSectionList.add(secondItemBean);
+        //newSectionList.add(secondItemBean);
 
 //            for (int i=0;i<10;i++){
 //                DyItemBean itemBean=new DyItemBean();
@@ -80,122 +87,29 @@ public class MainActivity extends Activity {
 
           newSection.setAutoAddSpliteLine(false);
 
-          recycleView.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+          recycleView.setOnRefreshListener(new SwipOnRefreshListener() {
               @Override
-              public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+              public void onPullRefresh() {
+                  newSection=new Section(SECTION_NEW);
+                  for (int i=0;i<30;i++){
+                      DyItemBean itemBean=new DyItemBean();
+                      itemBean.setTitle("indexNEW===="+i);
+                      newSection.getDataMaps().add(itemBean);
+                  }
+                  newSection.setLoadMore(true);
+                  newSection.setAutoAddSpliteLine(false);
+                  recycleView.updateSection( newSection);
+                   recycleView.loadMoreRefreshComplete();
 
+                   //recycleView.getRefreshRecyclerView().getAdapter().notifyDataSetChanged();
               }
 
               @Override
-              public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-
-
-                          new Handler().postDelayed(new Runnable() {
-                        public void run() {
-
-                            newSection=new Section(SECTION_NEW);
-                            for (int i=0;i<5;i++){
-                                DyItemBean itemBean=new DyItemBean();
-                                itemBean.setTitle("indexNEW===="+i);
-                                newSection.getDataMaps().add(itemBean);
-                            }
-                            newSection.setLoadMore(true);
-                            recycleView.updateSection( newSection);
-                            int newPostion=recycleView.getRefreshRecyclerView().getChildCount();
-
-                            recycleView. refreshFinish();
-//                            recycleView.getRefreshRecyclerView().scrollToPosition(newPostion-4);
-
-//                            smoothMoveToPosition(recycleView.getRfreshRecyclerView(),11);
-
-
-                            ToastUtils.show(MainActivity.this,"this  add");
-                            //  System.out.print("add ing ads");
-                        }
-                    }, 1000);
+              public void onRefresh() {
 
               }
           });
 
-//           recycleView.initSwipePullLayout(new DyLayout.OnloadMoreCallBack() {
-//               @Override
-//               public void call() {
-//
-////
-//                     if (isRefresh){
-//                         return;
-//                     }
-//                   isRefresh=true;
-//
-//                         new Handler().postDelayed(new Runnable() {
-//                        public void run() {
-//
-//                            newSection=new Section(SECTION_NEW);
-//                            for (int i=0;i<5;i++){
-//                                DyItemBean itemBean=new DyItemBean();
-//                                itemBean.setTitle("indexNEW===="+i);
-//                                newSection.getDataMaps().add(itemBean);
-//                            }
-//                            newSection.setLoadMore(true);
-//                            recycleView.updateSection( newSection);
-//
-//                            int newPostion=recycleView.getRefreshRecyclerView().getChildCount();
-////                            recycleView.getRefreshRecyclerView().scrollToPosition(newPostion-4);
-//
-////                            smoothMoveToPosition(recycleView.getRfreshRecyclerView(),11);
-//
-//
-//                            ToastUtils.show(MainActivity.this,"this  add");
-//                            //  System.out.print("add ing ads");
-//                        }
-//                    }, 1000);
-//
-//               }
-//           });
-
-//        recycleView.initSwipeLayout(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-//                //检查是否处于刷新状态
-//                if (!isRefresh) {
-//                    isRefresh = true;
-//                    //模拟加载网络数据，这里设置4秒，正好能看到4色进度条
-//                    new Handler().postDelayed(new Runnable() {
-//                        public void run() {
-//
-//                            //显示或隐藏刷新进度条
-//                            recycleView.setRefreshingEnd();
-//                            //修改adapter的数据
-//
-//                            ToastUtils.show(MainActivity.this,"this  add");
-//                            //  System.out.print("add ing ads");
-//                            isRefresh = false;
-//                        }
-//                    }, 4000);
-//                }
-//
-//            }
-//        });
-
-//          recycleView.initSwipePullLayout(new DySwipeRefreshLayout.OnLoadListener() {
-//              @Override
-//              public void onLoad() {
-//                  new Handler().postDelayed(new Runnable() {
-//                        public void run() {
-//
-//                            //显示或隐藏刷新进度条
-//                            recycleView.setPullLoadEnd();
-//
-//                            //修改adapter的数据
-//
-//                            ToastUtils.show(MainActivity.this,"this  add");
-//                            //  System.out.print("add ing ads");
-//                            isRefresh = false;
-//                        }
-//                    }, 5000);
-//              }
-//          });
          recycleView.updateSection(newSection);
 
 

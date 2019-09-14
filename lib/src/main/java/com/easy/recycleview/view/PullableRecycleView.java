@@ -1,21 +1,22 @@
-package com.jingchen.pulltorefresh.pullableview;
+package com.easy.recycleview.view;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.easy.recycleview.view.RecyclerViewSupport;
+import com.easy.recycleview.SwipOnRefreshListener;
 
 /**
  * Created by Administrator on 2019/8/8 0008.
  */
 
-public class PullableRecycleView  extends RecyclerViewSupport implements  Pullable{
+public class PullableRecycleView  extends RecyclerViewSupport  {
 
     private int lastVisibleItemPosition;
 
     boolean canPullUp=false;
+    boolean mRefreshing;
 
     public PullableRecycleView(Context context)
     {
@@ -31,7 +32,7 @@ public class PullableRecycleView  extends RecyclerViewSupport implements  Pullab
 
     }
 
-    public  void init() {
+    public  void init(final SwipOnRefreshListener listener) {
 
         addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -41,7 +42,11 @@ public class PullableRecycleView  extends RecyclerViewSupport implements  Pullab
                 if (newState ==RecyclerView.SCROLL_STATE_IDLE &&
                         lastVisibleItemPosition + 1 == recyclerView.getAdapter().getItemCount()) {
                     canPullUp=true;
-                }else{
+
+                      if(!mRefreshing){
+                          listener.onPullRefresh();
+                      }
+              //  }else{
                     canPullUp=false;
                 }
             }
@@ -56,14 +61,8 @@ public class PullableRecycleView  extends RecyclerViewSupport implements  Pullab
             }
         });
     }
-
-    @Override
-    public boolean canPullDown() {
-        return false;
+    public void setRefreshing(boolean refreshing) {
+        mRefreshing=refreshing;
     }
 
-    @Override
-    public boolean canPullUp() {
-        return canPullUp;
-    }
 }

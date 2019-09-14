@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.DebugUtlis.CrashHandler;
-import com.easysoft.dyview.ImageUtils;
+import com.easysoft.utils.lib.imge.ImageUtils;
 
 /**
  * Created by lindanghong on 2018/4/20.
@@ -16,7 +16,7 @@ public class CoreApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        RecycleConfig.getInstance().setIloadImage(ImageUtils.getInStance());
+//        RecycleConfig.getInstance().setIloadImage(ImageUtils.getInStance());
 
 
         CrashHandler.getInstance().init(this);

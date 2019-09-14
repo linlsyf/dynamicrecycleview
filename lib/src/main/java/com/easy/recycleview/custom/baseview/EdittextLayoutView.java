@@ -109,6 +109,9 @@ public class EdittextLayoutView extends BaseLinearLayout {
             postDelayed(new Runnable() {
                 @Override
                 public void run() {
+
+                    mContentEditText.setFocusable(true);
+                    mContentEditText.setFocusableInTouchMode(true);
                     mContentEditText.requestFocus();
 
                     InputMethodManager imm = (InputMethodManager) mContext
@@ -116,6 +119,8 @@ public class EdittextLayoutView extends BaseLinearLayout {
                     imm.showSoftInput(mContentEditText, InputMethodManager.RESULT_SHOWN);
                     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
                             InputMethodManager.HIDE_IMPLICIT_ONLY);
+
+
                 }
             },500);
 

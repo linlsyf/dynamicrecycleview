@@ -17,7 +17,7 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     /** 执行回调*/
     /** 状态切换监听*/
-    private OnStateChangeListener mListener;
+//    private OnStateChangeListener mListener;
     /**id*/
     private  String id= UUID.randomUUID()+"";
     /**绑定数据*/
@@ -119,408 +119,389 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     int spanSize = 6;
     private IOSSwitchButton.OnStateChangeListener onRightCheckBoxListener;
 
-    public int getSpanSize() {
-        return spanSize;
-    }
+//    public OnStateChangeListener getmListener() {
+//        return mListener;
+//    }
 
-
-
-    public void setSpanSize(int spanSize) {
-        this.spanSize = spanSize;
-    }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getSection() {
-        return section;
-    }
-
-    public void setSection(String section) {
-        this.section = section;
-    }
-
-    public String getSelectType() {
-        return selectType;
-    }
-
-    public void setSelectType(String selectType) {
-        this.selectType = selectType;
-    }
-
-    public int getViewType() {
-        return viewType;
-    }
-
-    public void setViewType(int viewType) {
-        this.viewType = viewType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public boolean isTalk() {
-        return isTalk;
-    }
-
-    public void setTalk(boolean talk) {
-        isTalk = talk;
-    }
-
-    public String getHint() {
-        return hint;
-    }
-
-    public void setHint(String hint) {
-        this.hint = hint;
-    }
-
-    public boolean isHintShow() {
-        return hintShow;
-    }
-
-    public void setHintShow(boolean hintShow) {
-        this.hintShow = hintShow;
-    }
-
-    public int getHintLeftMagin() {
-        return hintLeftMagin;
-    }
-
-    public void setHintLeftMagin(int hintLeftMagin) {
-        this.hintLeftMagin = hintLeftMagin;
-    }
-
-    public boolean isShowLeftCheckBox() {
-        return isShowLeftCheckBox;
-    }
-
-    public void setShowLeftCheckBox(boolean showLeftCheckBox) {
-        isShowLeftCheckBox = showLeftCheckBox;
-    }
-
-    public boolean isLeftCheckBoxIsChecked() {
-        return leftCheckBoxIsChecked;
-    }
-
-    public void setLeftCheckBoxIsChecked(boolean leftCheckBoxIsChecked) {
-        this.leftCheckBoxIsChecked = leftCheckBoxIsChecked;
-    }
-
-
-
-    public String getLeftSecondText() {
-        return leftSecondText;
-    }
-
-    public void setLeftSecondText(String leftSecondText) {
-        this.leftSecondText = leftSecondText;
-    }
-
-    public int getLeftSecondImgResId() {
-        return leftSecondImgResId;
-    }
-
-    public void setLeftSecondImgResId(int leftSecondImgResId) {
-        this.leftSecondImgResId = leftSecondImgResId;
-    }
-
-    public int getLeftSecondTextColor() {
-        return leftSecondTextColor;
-    }
-
-    public void setLeftSecondTextColor(int leftSecondTextColor) {
-        this.leftSecondTextColor = leftSecondTextColor;
-    }
-
-    public int getLeftSecondTextbg() {
-        return leftSecondTextbg;
-    }
-
-    public void setLeftSecondTextbg(int leftSecondTextbg) {
-        this.leftSecondTextbg = leftSecondTextbg;
-    }
-
-
-
-
-
-    public String getRightFirstText() {
-        return rightFirstText;
-    }
-
-    public void setRightFirstText(String rightFirstText) {
-        this.rightFirstText = rightFirstText;
-    }
-
-    public int getRightFirstTvColor() {
-        return rightFirstTvColor;
-    }
-
-    public void setRightFirstTvColor(int rightFirstTvColor) {
-        this.rightFirstTvColor = rightFirstTvColor;
-    }
-
-    public String getRightFirstButtonText() {
-        return rightFirstButtonText;
-    }
-
-    public void setRightFirstButtonText(String rightFirstButtonText) {
-        this.rightFirstButtonText = rightFirstButtonText;
-    }
-
-    public int getRightFirstButtonBgResId() {
-        return rightFirstButtonBgResId;
-    }
-
-    public void setRightFirstButtonBgResId(int rightFirstButtonBgResId) {
-        this.rightFirstButtonBgResId = rightFirstButtonBgResId;
-    }
-
-    public int getRightUnreadCount() {
-        return rightUnreadCount;
-    }
-
-    public void setRightUnreadCount(int rightUnreadCount) {
-        this.rightUnreadCount = rightUnreadCount;
-    }
-
-    public boolean isShowRightCheckbox() {
-        return showRightCheckbox;
-    }
-
-    public void setShowRightCheckbox(boolean showRightCheckbox) {
-        this.showRightCheckbox = showRightCheckbox;
-    }
-
-
-
-    public int getContentLayoutMagin() {
-        return contentLayoutMagin;
-    }
-
-    public void setContentLayoutMagin(int contentLayoutMagin) {
-        this.contentLayoutMagin = contentLayoutMagin;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public AddressHeadImgeSettings getHeadImgeSettings() {
-        return headImgeSettings;
-    }
-
-    public void setHeadImgeSettings(AddressHeadImgeSettings headImgeSettings) {
-        this.headImgeSettings = headImgeSettings;
-    }
-
-    public boolean isRightCheckBoxSelect() {
-        return isRightCheckBoxSelect;
-    }
-
-    public void setRightCheckBoxSelect(boolean rightCheckBoxSelect) {
-        this.isRightCheckBoxSelect = rightCheckBoxSelect;
-    }
-
-    public boolean isAddSideBar() {
-        return isAddSideBar;
-    }
-
-    public void setAddSideBar(boolean addSideBar) {
-        isAddSideBar = addSideBar;
-    }
-
-    public IItemView.onItemClick getOnItemListener() {
-        return onItemListener;
-    }
-
-    public void setOnItemListener(IItemView.onItemClick onItemListener) {
-        this.onItemListener = onItemListener;
-    }
-
-    /**
-     * 设置状态切换监听
-     * @param listener
-     */
-    public void setOnStateChangeListener(OnStateChangeListener listener) {
-        this.mListener = listener;
-    }
-    public interface OnStateChangeListener {
-        void onStateChanged(boolean isOn);
-    }
-    public IOSSwitchButton.OnStateChangeListener getOnRightCheckBoxListener() {
-        return onRightCheckBoxListener;
-    }
-
-    public void setOnRightCheckBoxListener(IOSSwitchButton.OnStateChangeListener onRightCheckBoxListener) {
-        this.onRightCheckBoxListener = onRightCheckBoxListener;
-    }
-
-    public boolean isShowCleanImg() {
-        return showCleanImg;
-    }
-
-    public void setShowCleanImg(boolean showCleanImg) {
-        this.showCleanImg = showCleanImg;
-    }
-
-    public int getItemHight() {
-        return itemHight;
-    }
-
-    public void setItemHight(int itemHight) {
-        this.itemHight = itemHight;
-    }
-
-
-    public boolean isSectionShowDelete() {
-        return isSectionShowDelete;
-    }
-
-    public void setSectionShowDelete(boolean sectionShowDelete) {
-        isSectionShowDelete = sectionShowDelete;
-    }
-    public boolean isItemCanEdit() {
-        return itemCanEdit;
-    }
-
-    public void setItemCanEdit(boolean itemCanEdit) {
-        this.itemCanEdit = itemCanEdit;
-    }
-
-    public RightSecondImgSettings getRightSecondImgSettings() {
-        return rightSecondImgSettings;
-    }
-
-    public void setRightSecondImgSettings(RightSecondImgSettings rightSecondImgSettings) {
-        this.rightSecondImgSettings = rightSecondImgSettings;
-    }
-
-    public AddressEditSettings getEidtSettings() {
-        return eidtSettings;
-    }
-
-    public void setEidtSettings(AddressEditSettings eidtSettings) {
-        this.eidtSettings = eidtSettings;
-    }
-
-    public AddressRightFistImgeSettings getRightFistImgeSettings() {
-        return rightFistImgeSettings;
-    }
-
-    public void setRightFistImgeSettings(AddressRightFistImgeSettings rightFistImgeSettings) {
-        this.rightFistImgeSettings = rightFistImgeSettings;
-    }
-
-    public String getRightSecondText() {
-        return rightSecondText;
-    }
-
-    public void setRightSecondText(String rightSecondText) {
-        this.rightSecondText = rightSecondText;
-    }
-
-    public boolean isOnItemClickAble() {
-        return isOnItemClickAble;
-    }
-
-    public void setOnItemClickAble(boolean onItemClickAble) {
-        isOnItemClickAble = onItemClickAble;
-    }
-
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-
-    public boolean isOnItemAllClickAble() {
-        return isOnItemAllClickAble;
-    }
-
-    public void setOnItemAllClickAble(boolean onItemAllClickAble) {
-        isOnItemAllClickAble = onItemAllClickAble;
     }
 
     public Object getBindObject() {
         return bindObject;
     }
 
-    public void setBindObject(Object bindObject) {
-        this.bindObject = bindObject;
+    public String getParentId() {
+        return parentId;
+    }
+
+    @Override
+    public String getSection() {
+        return section;
+    }
+
+    public boolean isSectionShowDelete() {
+        return isSectionShowDelete;
+    }
+
+    @Override
+    public String getSelectType() {
+        return selectType;
+    }
+
+    @Override
+    public int getViewType() {
+        return viewType;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    public String getHint() {
+        return hint;
+    }
+
+    public boolean isTalk() {
+        return isTalk;
+    }
+
+    public boolean isHintShow() {
+        return hintShow;
+    }
+
+    public int getHintLeftMagin() {
+        return hintLeftMagin;
+    }
+
+    @Override
+    public boolean isShowLeftCheckBox() {
+        return isShowLeftCheckBox;
+    }
+
+    public boolean isOnItemClickAble() {
+        return isOnItemClickAble;
+    }
+
+    public boolean isOnItemAllClickAble() {
+        return isOnItemAllClickAble;
+    }
+
+    @Override
+    public boolean isLeftCheckBoxIsChecked() {
+        return leftCheckBoxIsChecked;
+    }
+
+    public String getLeftSecondText() {
+        return leftSecondText;
+    }
+
+    public int getLeftSecondImgResId() {
+        return leftSecondImgResId;
+    }
+
+    public int getLeftSecondTextColor() {
+        return leftSecondTextColor;
+    }
+
+    public int getLeftSecondTextbg() {
+        return leftSecondTextbg;
+    }
+
+    public String getRightFirstText() {
+        return rightFirstText;
+    }
+
+    public int getRightFirstTvColor() {
+        return rightFirstTvColor;
+    }
+
+    public String getRightFirstButtonText() {
+        return rightFirstButtonText;
+    }
+
+    public int getRightFirstButtonBgResId() {
+        return rightFirstButtonBgResId;
+    }
+
+    public int getRightUnreadCount() {
+        return rightUnreadCount;
+    }
+
+    public boolean isShowRightCheckbox() {
+        return showRightCheckbox;
+    }
+
+    public int getContentLayoutMagin() {
+        return contentLayoutMagin;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public boolean isRightCheckBoxSelect() {
+        return isRightCheckBoxSelect;
+    }
+
+    public boolean isAddSideBar() {
+        return isAddSideBar;
+    }
+
+    public boolean isShowCleanImg() {
+        return showCleanImg;
+    }
+
+    public int getItemHight() {
+        return itemHight;
+    }
+
+    public boolean isItemCanEdit() {
+        return itemCanEdit;
+    }
+
+    public String getRightSecondText() {
+        return rightSecondText;
+    }
+
+    public IItemView.onItemClick getOnItemListener() {
+        return onItemListener;
     }
 
     public TitleSettings getTitleSettings() {
         return titleSettings;
     }
 
-    public void setTitleSettings(TitleSettings titleSettings) {
-        this.titleSettings = titleSettings;
-    }
-
-    public OnStateChangeListener getmListener() {
-        return mListener;
-    }
-
-    public void setmListener(OnStateChangeListener mListener) {
-        this.mListener = mListener;
-    }
-
     public HintSettings getHintSettings() {
         return hintSettings;
     }
 
-    public void setHintSettings(HintSettings hintSettings) {
-        this.hintSettings = hintSettings;
+    public RightSecondImgSettings getRightSecondImgSettings() {
+        return rightSecondImgSettings;
     }
 
-    public BgSetting getBgSetting() {
-        return bgSetting;
+    public AddressEditSettings getEidtSettings() {
+        return eidtSettings;
     }
 
-    public void setBgSetting(BgSetting bgSetting) {
-        this.bgSetting = bgSetting;
+    public AddressHeadImgeSettings getHeadImgeSettings() {
+        return headImgeSettings;
+    }
+
+    public AddressRightFistImgeSettings getRightFistImgeSettings() {
+        return rightFistImgeSettings;
     }
 
     public RightCenterScaleImgSettings getRightCenterScaleImgSettings() {
         return rightCenterScaleImgSettings;
     }
 
-    public void setRightCenterScaleImgSettings(RightCenterScaleImgSettings rightCenterScaleImgSettings) {
-        this.rightCenterScaleImgSettings = rightCenterScaleImgSettings;
-    }
-
+    @Override
     public CentLayoutConfig getCentLayoutConfig() {
         return centLayoutConfig;
     }
 
+    public BgSetting getBgSetting() {
+        return bgSetting;
+    }
+
+    @Override
+    public int getSpanSize() {
+        return spanSize;
+    }
+
+    public IOSSwitchButton.OnStateChangeListener getOnRightCheckBoxListener() {
+        return onRightCheckBoxListener;
+    }
+
+//==============以下为set
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setBindObject(Object bindObject) {
+        this.bindObject = bindObject;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    @Override
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public void setSectionShowDelete(boolean sectionShowDelete) {
+        isSectionShowDelete = sectionShowDelete;
+    }
+
+    public void setSelectType(String selectType) {
+        this.selectType = selectType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
+    public void setTalk(boolean talk) {
+        isTalk = talk;
+    }
+
+    public void setHintShow(boolean hintShow) {
+        this.hintShow = hintShow;
+    }
+
+    public void setHintLeftMagin(int hintLeftMagin) {
+        this.hintLeftMagin = hintLeftMagin;
+    }
+
+    @Override
+    public void setShowLeftCheckBox(boolean showLeftCheckBox) {
+        isShowLeftCheckBox = showLeftCheckBox;
+    }
+
+    public void setOnItemClickAble(boolean onItemClickAble) {
+        isOnItemClickAble = onItemClickAble;
+    }
+
+    public void setOnItemAllClickAble(boolean onItemAllClickAble) {
+        isOnItemAllClickAble = onItemAllClickAble;
+    }
+
+    @Override
+    public void setLeftCheckBoxIsChecked(boolean leftCheckBoxIsChecked) {
+        this.leftCheckBoxIsChecked = leftCheckBoxIsChecked;
+    }
+
+    public void setLeftSecondText(String leftSecondText) {
+        this.leftSecondText = leftSecondText;
+    }
+
+    public void setLeftSecondImgResId(int leftSecondImgResId) {
+        this.leftSecondImgResId = leftSecondImgResId;
+    }
+
+    public void setLeftSecondTextColor(int leftSecondTextColor) {
+        this.leftSecondTextColor = leftSecondTextColor;
+    }
+
+    public void setLeftSecondTextbg(int leftSecondTextbg) {
+        this.leftSecondTextbg = leftSecondTextbg;
+    }
+
+    public void setRightFirstText(String rightFirstText) {
+        this.rightFirstText = rightFirstText;
+    }
+
+    public void setRightFirstTvColor(int rightFirstTvColor) {
+        this.rightFirstTvColor = rightFirstTvColor;
+    }
+
+    public void setRightFirstButtonText(String rightFirstButtonText) {
+        this.rightFirstButtonText = rightFirstButtonText;
+    }
+
+    public void setRightFirstButtonBgResId(int rightFirstButtonBgResId) {
+        this.rightFirstButtonBgResId = rightFirstButtonBgResId;
+    }
+
+    public void setRightUnreadCount(int rightUnreadCount) {
+        this.rightUnreadCount = rightUnreadCount;
+    }
+
+    public void setShowRightCheckbox(boolean showRightCheckbox) {
+        this.showRightCheckbox = showRightCheckbox;
+    }
+
+    public void setContentLayoutMagin(int contentLayoutMagin) {
+        this.contentLayoutMagin = contentLayoutMagin;
+    }
+
+    @Override
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void setRightCheckBoxSelect(boolean rightCheckBoxSelect) {
+        isRightCheckBoxSelect = rightCheckBoxSelect;
+    }
+
+    public void setAddSideBar(boolean addSideBar) {
+        isAddSideBar = addSideBar;
+    }
+
+    public void setShowCleanImg(boolean showCleanImg) {
+        this.showCleanImg = showCleanImg;
+    }
+
+    public void setItemHight(int itemHight) {
+        this.itemHight = itemHight;
+    }
+
+    public void setItemCanEdit(boolean itemCanEdit) {
+        this.itemCanEdit = itemCanEdit;
+    }
+
+    public void setRightSecondText(String rightSecondText) {
+        this.rightSecondText = rightSecondText;
+    }
+
+    public void setOnItemListener(IItemView.onItemClick onItemListener) {
+        this.onItemListener = onItemListener;
+    }
+
+    public void setTitleSettings(TitleSettings titleSettings) {
+        this.titleSettings = titleSettings;
+    }
+
+    public void setHintSettings(HintSettings hintSettings) {
+        this.hintSettings = hintSettings;
+    }
+
+    public void setRightSecondImgSettings(RightSecondImgSettings rightSecondImgSettings) {
+        this.rightSecondImgSettings = rightSecondImgSettings;
+    }
+
+    public void setEidtSettings(AddressEditSettings eidtSettings) {
+        this.eidtSettings = eidtSettings;
+    }
+
+    public void setHeadImgeSettings(AddressHeadImgeSettings headImgeSettings) {
+        this.headImgeSettings = headImgeSettings;
+    }
+
+    public void setRightFistImgeSettings(AddressRightFistImgeSettings rightFistImgeSettings) {
+        this.rightFistImgeSettings = rightFistImgeSettings;
+    }
+
+    public void setRightCenterScaleImgSettings(RightCenterScaleImgSettings rightCenterScaleImgSettings) {
+        this.rightCenterScaleImgSettings = rightCenterScaleImgSettings;
+    }
+
     public void setCentLayoutConfig(CentLayoutConfig centLayoutConfig) {
         this.centLayoutConfig = centLayoutConfig;
+    }
+
+    public void setBgSetting(BgSetting bgSetting) {
+        this.bgSetting = bgSetting;
+    }
+
+    public void setSpanSize(int spanSize) {
+        this.spanSize = spanSize;
+    }
+
+    public void setOnRightCheckBoxListener(IOSSwitchButton.OnStateChangeListener onRightCheckBoxListener) {
+        this.onRightCheckBoxListener = onRightCheckBoxListener;
     }
 }

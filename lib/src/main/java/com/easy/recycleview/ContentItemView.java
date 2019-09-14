@@ -140,13 +140,8 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         mCentLayout=rootView.findViewById(R.id.centLayout);
         mCentImg=(ImageView) rootView.findViewById(R.id.centImg);
         mCentTv=(TextView) rootView.findViewById(R.id.centTitleTv);
-
         mCentMsgLayout= rootView.findViewById(R.id.centMsgLayout);
         mCentSingleTv=(TextView) rootView.findViewById(R.id.centerSingleTv);
-
-
-
-
     }
 
     public void initData(final IDyItemBean itemBean) {

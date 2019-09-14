@@ -4,28 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+<android.support.v4.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+     android:id="@+id/swipeLayout"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
+    android:layout_height="wrap_content">
 
-    <com.jingchen.pulltorefresh.PullToRefreshLayout
-        android:id="@+id/swipeLayout"
+
+    <com.easy.recycleview.view.PullableRecycleView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include layout="@layout/refresh_head" />
-    <com.jingchen.pulltorefresh.pullableview.PullableRecycleView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/refreshRecycleView"
-        />
-        <include layout="@layout/load_more" />
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
 
-    </com.jingchen.pulltorefresh.PullToRefreshLayout>
-    <include layout="@layout/view_adress_list_emty"
-        android:visibility="gone"
-
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"  android:id="@+id/emptyNoticeView"
-        />
-
+        android:layout_height="match_parent"/>
+    <include layout="@layout/view_adress_list_emty"  android:id="@+id/emptyNoticeView"/>
+</android.support.v4.widget.SwipeRefreshLayout>
 
 
 

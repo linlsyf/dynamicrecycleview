@@ -1,6 +1,7 @@
 package com.easy.recycleview.custom.baseview.config;
 
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.widget.RelativeLayout;
 
 import com.easy.recycleview.bean.DyItemBean;

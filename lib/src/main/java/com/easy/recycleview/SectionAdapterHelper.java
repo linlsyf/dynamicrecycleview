@@ -2,16 +2,20 @@ package com.easy.recycleview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.StringUtils;
-import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easy.recycleview.utils.RecyDiffCallback;
+import com.easy.recycleview.utils.TopSmoothScroller;
 import com.easy.recycleview.view.RecyclerViewSupport;
 
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class SectionAdapterHelper {
     /**adapter */
     SectionedListViewAdapter mSectionedExpandableGridAdapter;
     /** 线性管理 recycleview */
+//    LinearLayoutManager mRecycleViewManger;
     GridLayoutManager  mRecycleViewManger;
 //    /**多选辅助工具 */
 //    IMutiTypeSelectUtils mSelectUtils;
@@ -45,10 +50,12 @@ public class SectionAdapterHelper {
     /** 控件可实现 从写item*/
     private IAddItemView mIAddItemView;
     private boolean mIsSortSection =false;
+    private ArrayList<IDyItemBean> mOldDataList;
 
     public void init(Context context,RecyclerViewSupport recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
+//        mRecycleViewManger= new LinearLayoutManager(recyclerView.getContext());
         mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mRecycleViewManger);
         mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context);
@@ -58,9 +65,9 @@ public class SectionAdapterHelper {
 
     }
 
-    public GridLayoutManager getRecycleViewManger() {
-        return mRecycleViewManger;
-    }
+//    public GridLayoutManager getRecycleViewManger() {
+//        return mRecycleViewManger;
+//    }
 
 
 
@@ -75,9 +82,28 @@ public class SectionAdapterHelper {
 //        return mRecycleViewManger;
 //    }
 
-    public SectionedListViewAdapter getAdapter() {
+    public SectionedListViewAdapter getSectionAdapter() {
+
+
         return mSectionedExpandableGridAdapter;
     }
+
+    public void  loadMoreRefreshing(){
+       int postion= mRecycleViewManger.findLastCompletelyVisibleItemPosition()+1;
+        mSectionedExpandableGridAdapter.notifyDataSetChanged();
+       // mRecyclerView.smoothScrollToPosition(postion);
+
+    }
+
+    public void notifyDataSetChanged(){
+        mSectionedExpandableGridAdapter.notifyDataSetChanged();
+
+    }
+
+    public GridLayoutManager getRecycleViewManger() {
+        return mRecycleViewManger;
+    }
+
 
 
     public boolean isIsSortSection() {
@@ -87,6 +113,28 @@ public class SectionAdapterHelper {
     public void setIsSortSection(boolean mIsSortSection) {
         this.mIsSortSection = mIsSortSection;
     }
+
+
+
+    public  void refreshDiff(){
+     mSectionedExpandableGridAdapter.getItemCount();
+        DiffUtil.DiffResult diffResult = DiffUtil
+                .calculateDiff(new RecyDiffCallback(mOldDataList, mDataArrayList),true);
+
+        diffResult.dispatchUpdatesTo(mSectionedExpandableGridAdapter);
+
+    }
+
+    public ArrayList<IDyItemBean> getOldDataList() {
+        return mOldDataList;
+    }
+
+//    public  void smoothToPosition(int position){
+//      mRecyclerView.smoothScrollToPosition(position);
+//
+//    }
+
+
 
     /**
      *创建者：林党宏
@@ -348,16 +396,12 @@ public class SectionAdapterHelper {
         boolean index = oldCount>0?true:false;
         if (!index||(index&&!section.isLoadMore())){
             wrappingList(section);
-            addNewSection(section);
+            addNewSection(section);//20190831
             refreshDataSetChanged();
         }
         else{
             wrappingList(section);
-
             List<IDyItemBean> subjects=section.getDataMaps();
-
-            notifyData();
-
             refresh(false,oldCount,subjects.size());
         }
     }
@@ -368,7 +412,6 @@ public class SectionAdapterHelper {
             mSectionedExpandableGridAdapter.notifyDataSetChanged();
         }else{
             notifyData();//此处为刷新数据
-
            // mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
 
         }
@@ -468,6 +511,25 @@ public class SectionAdapterHelper {
 //        }
     }
 
+    public void smoothscrollToPositionWithOffset(int postion,int y){
+
+    }
+    public void smoothscrollToPosition(int postion){
+        LinearSmoothScroller s1 = new TopSmoothScroller(mContext);
+        s1.setTargetPosition(postion);
+        mRecycleViewManger.startSmoothScroll(s1);
+    }
+     public void smoothscrollToTopNew(){
+         int oldPostion=mOldDataList.size();
+
+       smoothscrollToPosition(oldPostion-1);
+
+
+     }
+
+
+
+
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -512,8 +574,13 @@ public class SectionAdapterHelper {
 
 
     private void notifyData() {
-        mDataArrayList.clear();
 
+
+        mOldDataList  =   new  ArrayList();
+        Collections.addAll(mOldDataList,  new  IDyItemBean[mDataArrayList.size()]);
+        Collections.copy(mOldDataList, mDataArrayList);
+
+        mDataArrayList.clear();
 
         if(mIsSortSection){
             Collections.sort(mSectionList, new SectinComparator());
@@ -661,6 +728,7 @@ public class SectionAdapterHelper {
             mContext = context;
         }
 
+
         @Override
         public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView=null;
@@ -682,6 +750,10 @@ public class SectionAdapterHelper {
             return mDataArrayList.size();
 
         }
+
+//        public void getDatas(){
+//
+//        }
         @Override
         public int getItemViewType(int position) {
 

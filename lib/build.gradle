@@ -32,6 +32,13 @@ android {
         }
     }
 
+
+    android.libraryVariants.all { variant ->
+        variant.outputs.all {
+            def fileName = "dynamicrecycleview.aar"
+            outputFileName = fileName
+        }
+    }
 }
 
 publish {
@@ -43,6 +50,6 @@ publish {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:recyclerview-v7:23.4.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
 
 }

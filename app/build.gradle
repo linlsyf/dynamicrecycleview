@@ -28,14 +28,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
-
+repositories {
+    flatDir {
+        dirs 'libs'   // aar目录
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation project(path: ':lib')
-    implementation 'com.android.support:recyclerview-v7:23.4.0'
-
+    //aar引用
+    implementation(name: 'utils', ext: 'aar')
+    //aar引用
+    implementation(name: 'easywidget', ext: 'aar')
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
 
 }

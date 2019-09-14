@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme_Light_APP"
         android:name="com.easysoft.CoreApplication"
 >
-        <activity android:name="com.MainActivity">
+        <activity android:name="com.MainActivity" android:windowSoftInputMode="stateHidden|adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

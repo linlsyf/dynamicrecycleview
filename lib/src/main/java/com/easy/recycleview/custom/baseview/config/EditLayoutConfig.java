@@ -13,7 +13,8 @@ import com.easy.recycleview.bean.DyItemBean;
 
 public class EditLayoutConfig {
     public static  void load(ContentItemView itemView, final DyItemBean dataItemBean) {
-            itemView.mTitleTextView.setText(dataItemBean.getTitle());  if (dataItemBean.getEidtSettings().isShowEdittext()) {//输入框
+            itemView.mTitleTextView.setText(dataItemBean.getTitle());
+            if (dataItemBean.getEidtSettings().isShowEdittext()) {//输入框
             itemView.mContentEditLayout.setCallback(new EdittextLayoutView.CallbackListener() {
                 @Override
                 public void onCallback(String text) {
