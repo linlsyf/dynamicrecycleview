@@ -88,6 +88,8 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     /**该项数据控制的view是否可以编辑 */
     private boolean itemCanEdit=true;
 
+
+
     /**右侧第二个文字*/
     private  String rightSecondText ="";
     /**点击监听事件 */
@@ -115,9 +117,9 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     private BgSetting bgSetting=new BgSetting();
 
 
-    private  final  String  TYPE_GridLayoutManager="GridLayoutManager";
-    private  final  String  TYPE_RelativeLayout="RelativeLayout";
-    private  final  String  TYPE_LinearLayout="LinearLayout";
+    public  final  static  String  TYPE_GridLayoutManager="GridLayoutManager";
+    public  final  static String  TYPE_RelativeLayout="RelativeLayout";
+    public  final  static String  TYPE_LinearLayout="LinearLayout";
     private  String  parentLayoutType=TYPE_GridLayoutManager;
 
     int spanSize = 6;

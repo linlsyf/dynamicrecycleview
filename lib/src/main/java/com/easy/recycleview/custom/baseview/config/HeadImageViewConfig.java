@@ -28,7 +28,10 @@ public class HeadImageViewConfig {
                 mHeadParams.width = dataItemBean.getHeadImgeSettings().getHeadImgRadius();
                 mHeadParams.height = dataItemBean.getHeadImgeSettings().getHeadImgRadius();
             }
-            mImageView.setLayoutParams(mHeadParams);
+            if(dataItemBean.getParentLayoutType().equals(DyItemBean.TYPE_GridLayoutManager)){
+                mImageView.setLayoutParams(mHeadParams);
+            }
+
         } else {
             mImageView.setVisibility(View.GONE);
         }
