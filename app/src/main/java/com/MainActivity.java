@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.SwipOnRefreshListener;
-import com.easy.recycleview.bean.AddressEditSettings;
-import com.easy.recycleview.bean.CentLayoutConfig;
+import com.easy.recycleview.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.utils.ToastUtils;
 import com.easy.recycleview.inter.IDyItemBean;
+import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.dyview.R;
 
@@ -32,7 +34,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recycleView= (DyLayout) findViewById(R.id.recycleView);
-
+        ContentItemView  itemView=findViewById(R.id.contentView);
+          DyItemBean itemBean=new DyItemBean();
+           itemBean.setTitle("title is new");
+            itemView.initData(itemBean);
 
 
         RecycleConfig.getInstance().setThemeConfig(new ThemeConfig().setTitleColorResId(getResources().getColor(R.color.common_title_color)));
@@ -46,31 +51,52 @@ public class MainActivity extends Activity {
 
         final DyItemBean newItemBean=new DyItemBean();
 
+         newItemBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgRadius(200).setHeadImgDrawableId(R.drawable.catalog_pro));
+         newItemBean.setOnItemListener(new IItemView.onItemClick() {
+             @Override
+             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+                 if (typeEnum== IItemView.ClickTypeEnum.HEAD_IMG){
+                     ToastUtils.show(MainActivity.this,"点击头部");
+                 }
+             }
+         });
+//        newSectionList.add(newItemBean);
 
-        DyItemBean  secondEditItemBean=new DyItemBean();
-        secondEditItemBean.setTitle("输入框");
-        secondEditItemBean.setHint("test input");
-        secondEditItemBean.setEidtSettings(new AddressEditSettings().setShowEdittext(true)
-                .setEdittextCanEdit(true)
-                .setEditContent("shurnr")
-                .setOpenKeybord(true));
-        newSectionList.add(secondEditItemBean);
+//
+//        DyItemBean  secondEditItemBean=new DyItemBean();
+//        secondEditItemBean.setTitle("输入框");
+//        secondEditItemBean.setHint("test input");
+//        secondEditItemBean.setEidtSettings(new AddressEditSettings().setShowEdittext(true)
+//                .setEdittextCanEdit(true)
+//                .setEditContent("shurnr")
+//                .setOpenKeybord(true));
+//        newSectionList.add(secondEditItemBean);
 
          DyItemBean  secondItemBean=new DyItemBean();
         String url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564203445905&di=4756acf7cbbf0eab10a18b1dffc05ef3&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20141219%2Fzhongguofengdaodeliyizhanbanzhijing_3744115.jpg";
 
-        secondItemBean.setCentLayoutConfig(
+//        secondItemBean.setCentLayoutConfig(
+//
+//                new CentLayoutConfig()
+////                        .setImgRadius(260)
+////                       .setImgResId(R.drawable.empty_photo)
+////                        .setImgUrl(url)
+//          .setName("zh二十什么鬼")
+//        );
 
-                new CentLayoutConfig()
-//                        .setImgRadius(260)
-//                       .setImgResId(R.drawable.empty_photo)
-//                        .setImgUrl(url)
-          .setName("zh二十什么鬼")
-        );
+        secondItemBean.setTitle("点击修改");
+        secondItemBean.setOnItemListener(new IItemView.onItemClick() {
+            @Override
+            public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+                    bean.setTitle("这是改变后的标题");
 
+                    recycleView.updateItem(bean);
+//                    recycleView.getSectionAdapterHelper().notifyDataSetChanged();
+            }
+        });
 
-        //newSectionList.add(secondItemBean);
-
+        newSectionList.add(secondItemBean);
+//
 //            for (int i=0;i<10;i++){
 //                DyItemBean itemBean=new DyItemBean();
 //                  itemBean.setTitle("index"+i);
@@ -91,15 +117,15 @@ public class MainActivity extends Activity {
               @Override
               public void onPullRefresh() {
                   newSection=new Section(SECTION_NEW);
-                  for (int i=0;i<30;i++){
-                      DyItemBean itemBean=new DyItemBean();
-                      itemBean.setTitle("indexNEW===="+i);
-                      newSection.getDataMaps().add(itemBean);
-                  }
-                  newSection.setLoadMore(true);
-                  newSection.setAutoAddSpliteLine(false);
-                  recycleView.updateSection( newSection);
-                   recycleView.loadMoreRefreshComplete();
+//                  for (int i=0;i<30;i++){
+//                      DyItemBean itemBean=new DyItemBean();
+//                      itemBean.setTitle("indexNEW===="+i);
+//                      newSection.getDataMaps().add(itemBean);
+//                  }
+//                  newSection.setLoadMore(false);
+//                  newSection.setAutoAddSpliteLine(false);
+//                  recycleView.updateSection( newSection);
+//                   recycleView.loadMoreRefreshComplete();
 
                    //recycleView.getRefreshRecyclerView().getAdapter().notifyDataSetChanged();
               }

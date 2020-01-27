@@ -115,14 +115,21 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     private BgSetting bgSetting=new BgSetting();
 
 
+    private  final  String  TYPE_GridLayoutManager="GridLayoutManager";
+    private  final  String  TYPE_RelativeLayout="RelativeLayout";
+    private  final  String  TYPE_LinearLayout="LinearLayout";
+    private  String  parentLayoutType=TYPE_GridLayoutManager;
 
     int spanSize = 6;
     private IOSSwitchButton.OnStateChangeListener onRightCheckBoxListener;
 
-//    public OnStateChangeListener getmListener() {
-//        return mListener;
-//    }
+    public String getParentLayoutType() {
+        return parentLayoutType;
+    }
 
+    public void setParentLayoutType(String parentLayoutType) {
+        this.parentLayoutType = parentLayoutType;
+    }
 
     public String getId() {
         return id;

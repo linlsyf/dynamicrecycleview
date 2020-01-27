@@ -1,5 +1,6 @@
 package com.easy.recycleview.inter;
 
+import com.easy.recycleview.bean.AddressEditSettings;
 import com.easy.recycleview.bean.CentLayoutConfig;
 
 /**
@@ -32,4 +33,7 @@ public interface IRecycleItemBean {
     public void setSection(String section);
 
     public CentLayoutConfig getCentLayoutConfig();
+
+    public void setTitle(String title);
+    public void setHint(String hint);
 }

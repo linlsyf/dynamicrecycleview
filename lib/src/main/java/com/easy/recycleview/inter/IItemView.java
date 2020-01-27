@@ -32,6 +32,7 @@ public interface IItemView {
         ITEM_LONG(4),
         SECTION_DELETE(5),
         RIGHT_SECOND_IMG(6),
+        HEAD_IMG(7),
         CUSTOM(100);
         private int value=0;
         ClickTypeEnum(int value) {    //    必须是private的，否则编译错误

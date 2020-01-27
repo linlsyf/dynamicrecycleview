@@ -1,11 +1,9 @@
 package com.easy.recycleview.custom.baseview.config;
 
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.widget.RelativeLayout;
 
-import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.ContentItemView;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.custom.baseview.utils.DensityUtil;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.dynamicrecycleview.R;
@@ -17,25 +15,26 @@ import com.easysoft.dynamicrecycleview.R;
 
 public class ContentLayoutConfig {
     public static void load(ContentItemView itemView, DyItemBean dataItemBean) {
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) itemView.mContenLayout.getLayoutParams();
-        GridLayoutManager.LayoutParams paramsItemView = ( GridLayoutManager.LayoutParams) itemView.getLayoutParams();
-
-        int mContentMagin=0;
-
-        if (dataItemBean.getViewType()== IItemView.ViewTypeEnum.ITEM.value()){
-            //params.height=DensityUtil.dip2px(itemView.getContext(), 50);
-
-            if (dataItemBean.getContentLayoutMagin() != 0) {
-                mContentMagin = dataItemBean.getContentLayoutMagin();
-            } else {
-                mContentMagin = DensityUtil.dip2px(itemView.getContext(), 10);
-            }
-            params.topMargin = mContentMagin;
-            params.bottomMargin = mContentMagin;
-            itemView.mContenLayout.setLayoutParams(params);
-
-        }
-        if (dataItemBean.getViewType()== IItemView.ViewTypeEnum.SECTION.value()){
+//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) itemView.mContenLayout.getLayoutParams();
+//
+//        int mContentMagin=0;
+//
+//        if (dataItemBean.getViewType()== IItemView.ViewTypeEnum.ITEM.value()){
+//            //params.height=DensityUtil.dip2px(itemView.getContext(), 50);
+//
+//            if (dataItemBean.getContentLayoutMagin() != 0) {
+//                mContentMagin = dataItemBean.getContentLayoutMagin();
+//            } else {
+//                mContentMagin = DensityUtil.dip2px(itemView.getContext(), 10);
+//            }
+//            params.topMargin = mContentMagin;
+//            params.bottomMargin = mContentMagin;
+//            itemView.mContenLayout.setLayoutParams(params);
+//
+//        }
+//        else
+            if (dataItemBean.getViewType()== IItemView.ViewTypeEnum.SECTION.value()){
+            GridLayoutManager.LayoutParams paramsItemView = ( GridLayoutManager.LayoutParams) itemView.getLayoutParams();
 
             int height=DensityUtil.dip2px(itemView.getContext(), 25);
             if (paramsItemView==null){
@@ -47,6 +46,8 @@ public class ContentLayoutConfig {
         }
         else if (dataItemBean.getViewType()== IItemView.ViewTypeEnum.SPLITE.value()){
             int height=DensityUtil.dip2px(itemView.getContext(), 1);
+            GridLayoutManager.LayoutParams paramsItemView = ( GridLayoutManager.LayoutParams) itemView.getLayoutParams();
+
             if (paramsItemView==null){
                 paramsItemView= new GridLayoutManager.LayoutParams(GridLayoutManager.LayoutParams.MATCH_PARENT, height);
             }

@@ -94,6 +94,14 @@ public class ListenerConfig {
                 onItemClick(itemView,onItemListener);
             }
         });
+        itemView.mHeadImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onItemListener != null&&itemView.mBindItemBean.isOnItemClickAble()) {
+                    onItemListener.onItemClick(IItemView.ClickTypeEnum.HEAD_IMG, itemView.mBindItemBean);
+                }
+            }
+        });
     }
 
 

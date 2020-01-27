@@ -59,7 +59,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
     public TextView mNoticeTextView;
     public  ImageView mNoticeImageView;
     public TextView mRightFirstTextView;
-    public ImageView mImageView;
+    public ImageView mHeadImageView;
     public ImageView mRightSecondImgeView;
     public ImageView mRightFirstImageView;
     /** 右侧按钮 */
@@ -77,17 +77,8 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
       public    View  mCentMsgLayout ;
     /** 中间显示图片说明布局 */
       public    TextView  mCentSingleTv ;
-
-
-//    /** 内容布局可设置magin布局 */
-//    MessageCountView mMessageCountView;
-
-
-
     /** 绑定数据 */
     public DyItemBean mBindItemBean = new DyItemBean();
-
-
     private int viewType=0;
 
     public boolean mChangeSelectRefresh = false;
@@ -123,7 +114,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
          mNoticeTextView=(TextView)rootView.findViewById(R.id.noticeTextView);
          mNoticeImageView=(ImageView) rootView.findViewById(R.id.noticeImgView);
          mRightFirstTextView=(TextView)rootView.findViewById(R.id.rightFirstTextView);
-         mImageView=(ImageView) rootView.findViewById(R.id.headImgeView);
+         mHeadImageView =(ImageView) rootView.findViewById(R.id.headImgeView);
          mRightSecondImgeView=(ImageView) rootView.findViewById(R.id.rightSecondImgeView);
          mRightFirstImageView=(ImageView) rootView.findViewById(R.id.rightFirstImgeView);
         /** 右侧按钮 */
@@ -149,7 +140,7 @@ public class ContentItemView extends BaseLinearLayout implements IItemView{
         RootlayoutConfig.load(this,mBindItemBean);
         ContentLayoutConfig.load(this,mBindItemBean);
         LeftCheckBoxConfig.load(this,mBindItemBean);
-        HeadImageViewConfig.load(mBindItemBean,mImageView);
+        HeadImageViewConfig.load(mBindItemBean, mHeadImageView);
         TitleTextViewConfig.load(this,mBindItemBean);
         HintTextViewConfig.load(this,mBindItemBean);
         NoticeConfig.load(this,mBindItemBean);

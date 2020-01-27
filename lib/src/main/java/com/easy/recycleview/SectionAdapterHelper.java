@@ -142,15 +142,30 @@ public class SectionAdapterHelper {
      *注释：添加一个分组
      */
     public void addNewSection(Section section) {
-        mSectionList.add(section);
-    }
-    public void addSection(Section section) {
-        boolean index = checkIsExitSection(section)>0?true:false;
-        if (!index){
-            mSectionList.add(section);
+
+//        for (Section sectionItem : mSectionList) {
+//              if (sectionItem.getId().equals(section.getId())){
+//                  sectionItem=section;
+//              }
+//        }
+
+            boolean isContain=false;
+        for (int i = 0; i < mSectionList.size(); i++) {
+            Section sectionItem=mSectionList.get(i);
+            if (sectionItem.getId().equals(section.getId())) {
+                mSectionList.set(i,section);
+                isContain=true;
+            }
+
         }
 
+        if (!isContain){
+        mSectionList.add(section);
+        }
     }
+
+
+
     /**
      *创建者：林党宏
      *时间：2017/1/20
@@ -386,6 +401,13 @@ public class SectionAdapterHelper {
         refreshDataSetChanged();
     }
 
+    public void addSection(Section section) {
+        boolean index = checkIsExitSection(section)>0?true:false;
+        if (!index){
+            mSectionList.add(section);
+        }
+
+    }
         /**
          *创建者：林党宏
          *时间：2017/1/20
@@ -394,16 +416,32 @@ public class SectionAdapterHelper {
     public void updateSection(Section section){
        int oldCount=checkIsExitSection(section);
         boolean index = oldCount>0?true:false;
-        if (!index||(index&&!section.isLoadMore())){
-            wrappingList(section);
-            addNewSection(section);//20190831
-            refreshDataSetChanged();
+        if (index){
+//            if (section.isLoadMore()){
+                wrappingList(section);
+                List<IDyItemBean> subjects=section.getDataMaps();
+                refresh(false,oldCount,subjects.size());
+
+
+        }else{
+            addNew(section);
+
         }
-        else{
-            wrappingList(section);
-            List<IDyItemBean> subjects=section.getDataMaps();
-            refresh(false,oldCount,subjects.size());
-        }
+//
+//        if (!index||(index&&!section.isLoadMore())){//新建
+//
+//        }
+//        else{
+//            wrappingList(section);
+//            List<IDyItemBean> subjects=section.getDataMaps();
+//            refresh(false,oldCount,subjects.size());
+//        }
+    }
+
+    public void addNew(Section section){
+        wrappingList(section);
+        addNewSection(section);//20190831
+        refreshDataSetChanged();
     }
 
         private void   refresh(boolean all, int startPosition,int endPosition){
@@ -412,7 +450,9 @@ public class SectionAdapterHelper {
             mSectionedExpandableGridAdapter.notifyDataSetChanged();
         }else{
             notifyData();//此处为刷新数据
-           // mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
+            mSectionedExpandableGridAdapter.notifyDataSetChanged();
+
+            // mSectionedExpandableGridAdapter.notifyItemRangeInserted(startPosition,endPosition);
 
         }
 
@@ -451,7 +491,6 @@ public class SectionAdapterHelper {
          int oldDataCount=0;
         for (int i=0;i<mSectionList.size();i++){
             Section itemSection=mSectionList.get(i);
-
 
             if (itemSection.getId().equals(section.getId())){
                 oldDataCount=itemSection.getDataMaps().size();

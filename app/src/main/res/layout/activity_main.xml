@@ -11,6 +11,14 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textColor="?attr/textColor"/>
+    <com.easy.recycleview.ContentItemView
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+
+        />
 
     <com.easy.recycleview.DyLayout
         android:id="@+id/recycleView"

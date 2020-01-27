@@ -13,8 +13,15 @@ public class ItemBgConfg {
     public static  void load(final ContentItemView itemView, DyItemBean dataItemBean) {
         BgSetting bgSetting =dataItemBean.getBgSetting();
         int colorResId= bgSetting.getContentBgResid();
-        int commonColorResId= RecycleConfig.getInstance().getThemeConfig().getBgColorResId();
-        int bgResourcResId= RecycleConfig.getInstance().getThemeConfig().getBgResourcResId();
+        int commonColorResId= 0;
+        int bgResourcResId= 0;
+
+
+         if (null!= RecycleConfig.getInstance().getThemeConfig()){
+             commonColorResId=  RecycleConfig.getInstance().getThemeConfig().getBgColorResId();
+             bgResourcResId= RecycleConfig.getInstance().getThemeConfig().getBgResourcResId();
+         }
+
 
          if (bgSetting.getContentBgResid()!=0){
              itemView.mRootlayout.setBackgroundResource(bgSetting.getContentBgResid());

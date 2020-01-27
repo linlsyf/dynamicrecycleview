@@ -8,7 +8,7 @@ public class TitleSettings {
 
     float textSize=16;
     int color=0;
-
+      int lines=0;
     public float getTextSize() {
         return textSize;
     }
@@ -27,5 +27,13 @@ public class TitleSettings {
         this.color = color;
         return  this ;
 
+    }
+
+    public int getLines() {
+        return lines;
+    }
+
+    public void setLines(int lines) {
+        this.lines = lines;
     }
 }
