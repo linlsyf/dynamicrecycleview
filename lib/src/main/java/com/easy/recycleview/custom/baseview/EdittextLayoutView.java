@@ -2,7 +2,6 @@ package com.easy.recycleview.custom.baseview;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -78,7 +77,8 @@ public class EdittextLayoutView extends BaseLinearLayout {
                 mContentEditText.setText("");
             }
         });
-        mContentEditText.setInputType( InputType.TYPE_CLASS_TEXT);
+//        mContentEditText.setInputType( InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+//        mContentEditText.setInputType( InputType.TYPE_CLASS_TEXT);
 
     }
 
@@ -97,13 +97,13 @@ public class EdittextLayoutView extends BaseLinearLayout {
 
     public void setText(String text){
         mContentEditText.setText(text);
-        if (text!=null){
-            mContentEditText.setSelection(text.trim().length());
-        }
+//        if (text!=null){
+//            mContentEditText.setSelection(getText().length()+1);
+//        }
     }
 
     public void setOpenKeybord(boolean openKeybord){
-        mContentEditText.setSelection(mContentEditText.getText().toString().trim().length());
+        mContentEditText.setSelection(mContentEditText.getText().toString().trim().length()+1);
         if (openKeybord){
 
             postDelayed(new Runnable() {

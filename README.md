@@ -21,3 +21,5 @@
 https://github.com/dengyuhan/MediaMetadataRetrieverCompat/blob/master/example/src/main/java/com/dyhdyh/compat/mmrc/example/MainActivity.java
 
 重现编译  gradlew assembleDebug
+
+gradlew build --debug

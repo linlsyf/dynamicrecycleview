@@ -12,7 +12,10 @@ import com.easy.recycleview.outinter.RecycleConfig;
 
 public class TitleTextViewConfig {
     public static  void load(ContentItemView itemView, DyItemBean dataItemBean) {
-            itemView.mTitleTextView.setText(dataItemBean.getTitle());
+
+          if(null!=dataItemBean.getTitle()){
+              itemView.mTitleTextView.setText(dataItemBean.getTitle());
+          }
         TitleSettings settings=dataItemBean.getTitleSettings();
              int colorResId=settings.getColor();
              int titleColorResId=0;

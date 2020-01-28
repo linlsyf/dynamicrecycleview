@@ -104,7 +104,8 @@
             <com.easy.recycleview.custom.baseview.EdittextLayoutView
                 android:id="@+id/edtLayout"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:minHeight="45dp"
                 android:layout_gravity="left|center_vertical"
                 android:visibility="gone"
                 />

@@ -32,7 +32,7 @@ public class EditLayoutConfig {
             itemView.mContentEditLayout.setText(dataItemBean.getEidtSettings().getEditContent());
             itemView.mContentEditLayout.setOpenKeybord(dataItemBean.getEidtSettings().isOpenKeybord());
             dataItemBean.getEidtSettings().setOpenKeybord(false);
-            itemView.mContentEditLayout.setInputType(dataItemBean.getEidtSettings().getInputType());
+//            itemView.mContentEditLayout.setInputType(dataItemBean.getEidtSettings().getInputType());
         } else {
             itemView.mContentEditLayout.setVisibility(View.GONE);
         }

@@ -3,10 +3,12 @@ package com;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 
 import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.SwipOnRefreshListener;
+import com.easy.recycleview.bean.AddressEditSettings;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
@@ -63,14 +65,16 @@ public class MainActivity extends Activity {
 //        newSectionList.add(newItemBean);
 
 //
-//        DyItemBean  secondEditItemBean=new DyItemBean();
-//        secondEditItemBean.setTitle("输入框");
-//        secondEditItemBean.setHint("test input");
-//        secondEditItemBean.setEidtSettings(new AddressEditSettings().setShowEdittext(true)
-//                .setEdittextCanEdit(true)
-//                .setEditContent("shurnr")
-//                .setOpenKeybord(true));
-//        newSectionList.add(secondEditItemBean);
+        DyItemBean  secondEditItemBean=new DyItemBean();
+        secondEditItemBean.setTitle("输入框");
+        secondEditItemBean.setHint("test input");
+        secondEditItemBean.setEidtSettings(new AddressEditSettings().setShowEdittext(true)
+                .setEdittextCanEdit(true)
+                .setEditContent(" 复合多传感器测量技术的领导者")
+//                .setEditContent(" 复合多传感器测量技术的领导者，集成接触探针、光学CCD影像、白光干涉、色谱共交、激光测量、光纤测量、轮廓探针、X射线等传感器实现复杂")
+                .setOpenKeybord(true).setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE ));
+//        secondEditItemBean.setItemHight(300);
+        newSectionList.add(secondEditItemBean);
 
          DyItemBean  secondItemBean=new DyItemBean();
         String url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564203445905&di=4756acf7cbbf0eab10a18b1dffc05ef3&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20141219%2Fzhongguofengdaodeliyizhanbanzhijing_3744115.jpg";
