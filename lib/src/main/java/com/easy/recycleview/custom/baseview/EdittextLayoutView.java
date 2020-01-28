@@ -103,7 +103,11 @@ public class EdittextLayoutView extends BaseLinearLayout {
     }
 
     public void setOpenKeybord(boolean openKeybord){
-        mContentEditText.setSelection(mContentEditText.getText().toString().trim().length()+1);
+        int  index=getText().length();
+//          if (index>-1){
+//              index=index+1;
+//          }
+        mContentEditText.setSelection(index);
         if (openKeybord){
 
             postDelayed(new Runnable() {
