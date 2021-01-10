@@ -427,18 +427,14 @@ public class SectionAdapterHelper {
             addNew(section);
 
         }
-//
-//        if (!index||(index&&!section.isLoadMore())){//新建
-//
-//        }
-//        else{
-//            wrappingList(section);
-//            List<IDyItemBean> subjects=section.getDataMaps();
-//            refresh(false,oldCount,subjects.size());
-//        }
+
     }
 
     public void addNew(Section section){
+        if(mRecyclerView.getScrollState() != 0){
+            //recycleView正在滑动
+            return;
+        }
         wrappingList(section);
         addNewSection(section);//20190831
         refreshDataSetChanged();
@@ -471,11 +467,9 @@ public class SectionAdapterHelper {
                 DyItemBean itemSpliteBean=new DyItemBean();
                 itemSpliteBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
                     itemSpliteBean.setSection(sectionId);
-
                 newSectionList.add(itemSpliteBean);
             }
-
-            if (StringUtils.isEmpty(itemBean.getSection())){
+            if (null!=itemBean&&StringUtils.isEmpty(itemBean.getSection())){
                 itemBean.setSection(sectionId);
             }
             newSectionList.add(itemBean);
@@ -778,6 +772,9 @@ public class SectionAdapterHelper {
         }
         @Override
         public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
+              if (position>=getItemCount()){
+                  return;
+              }
             final IDyItemBean item=mDataArrayList.get(position);
 //            item.setPosition(position);
             IItemView itemView= holder.getItemView();

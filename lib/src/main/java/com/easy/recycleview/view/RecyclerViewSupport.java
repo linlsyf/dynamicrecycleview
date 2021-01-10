@@ -8,15 +8,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-/**
- * Created by Administrator on 2019/4/27 0027.
- */
 
 public class RecyclerViewSupport  extends RecyclerView {
     private static final String TAG = "RecyclerViewEmptySupport";
-
 //    private RecyclerView.Adapter mAdapter;
-
     /**
      * 当数据为空时展示的View
      */
@@ -61,7 +56,6 @@ public class RecyclerViewSupport  extends RecyclerView {
     @Override
     public void setAdapter(Adapter adapter) {
 //        this.mAdapter = adapter;
-
         super.setAdapter(adapter);
         Log.i(TAG, "setAdapter: adapter::" + adapter);
         if (adapter != null) {
@@ -70,10 +64,11 @@ public class RecyclerViewSupport  extends RecyclerView {
             adapter.registerAdapterDataObserver(emptyObserver);
         }
         //当setAdapter的时候也调一次（实际上，经我粗略验证，不添加貌似也可以。不行就给添上呗，多大事嘛）
+        if(getScrollState() != 0){
+            //recycleView正在滑动
+            return;
+        }
         emptyObserver.onChanged();
     }
-
-
-
 
 }
