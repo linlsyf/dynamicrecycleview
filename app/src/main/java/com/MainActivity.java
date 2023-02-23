@@ -1,15 +1,18 @@
 package com;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.view.View;
 
 import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.SwipOnRefreshListener;
 import com.easy.recycleview.bean.AddressEditSettings;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.utils.ToastUtils;
@@ -47,7 +50,13 @@ public class MainActivity extends Activity {
 
         List<IDyItemBean> newSectionList=new ArrayList<IDyItemBean>();
 
-
+        recycleView.getSectionAdapterHelper().setOrientation(RecyclerView.HORIZONTAL);
+           recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
+               @Override
+               public View getCustomView(Context context, int type) {
+                   return  new  TestCustomView(context);
+               }
+           });
 
 
 
@@ -74,19 +83,19 @@ public class MainActivity extends Activity {
 //                .setEditContent(" 复合多传感器测量技术的领导者，集成接触探针、光学CCD影像、白光干涉、色谱共交、激光测量、光纤测量、轮廓探针、X射线等传感器实现复杂")
                 .setOpenKeybord(true).setInputType(InputType.TYPE_TEXT_FLAG_IME_MULTI_LINE ));
 //        secondEditItemBean.setItemHight(300);
-        newSectionList.add(secondEditItemBean);
+//        newSectionList.add(secondEditItemBean);
 
          DyItemBean  secondItemBean=new DyItemBean();
         String url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564203445905&di=4756acf7cbbf0eab10a18b1dffc05ef3&imgtype=0&src=http%3A%2F%2Fimg.redocn.com%2Fsheji%2F20141219%2Fzhongguofengdaodeliyizhanbanzhijing_3744115.jpg";
 
-//        secondItemBean.setCentLayoutConfig(
-//
-//                new CentLayoutConfig()
-////                        .setImgRadius(260)
-////                       .setImgResId(R.drawable.empty_photo)
-////                        .setImgUrl(url)
-//          .setName("zh二十什么鬼")
-//        );
+        secondItemBean.setCentLayoutConfig(
+
+                new CentLayoutConfig()
+                        .setImgRadius(260)
+                       .setImgResId(R.drawable.empty_photo)
+                        .setImgUrl(url)
+          .setName("zh二十什么鬼")
+        );
 
         secondItemBean.setTitle("点击修改");
         secondItemBean.setOnItemListener(new IItemView.onItemClick() {
@@ -99,13 +108,13 @@ public class MainActivity extends Activity {
             }
         });
 
-        newSectionList.add(secondItemBean);
+//        newSectionList.add(secondItemBean);
 //
-//            for (int i=0;i<10;i++){
-//                DyItemBean itemBean=new DyItemBean();
-//                  itemBean.setTitle("index"+i);
-//                  newSectionList.add(itemBean);
-//            }
+            for (int i=0;i<10;i++){
+                 itemBean=new DyItemBean();
+                  itemBean.setTitle("index"+i);
+                  newSectionList.add(itemBean);
+            }
 
 
             newSection=new Section(SECTION_NEW);

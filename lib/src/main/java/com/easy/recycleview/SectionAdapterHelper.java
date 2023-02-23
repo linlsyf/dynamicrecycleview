@@ -47,7 +47,7 @@ public class SectionAdapterHelper {
 //    private View mEmptyView;
     /**上下文环境 */
      Context mContext;
-    /** 控件可实现 从写item*/
+    /** 控件可实现 重写写item*/
     private IAddItemView mIAddItemView;
     private boolean mIsSortSection =false;
     private ArrayList<IDyItemBean> mOldDataList;
@@ -55,22 +55,18 @@ public class SectionAdapterHelper {
     public void init(Context context,RecyclerViewSupport recyclerView){
         mContext=context;
         mRecyclerView=recyclerView;
-//        mRecycleViewManger= new LinearLayoutManager(recyclerView.getContext());
         mRecycleViewManger= new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mRecycleViewManger);
         mSectionedExpandableGridAdapter = new SectionedListViewAdapter(context);
         mRecyclerView.setAdapter(mSectionedExpandableGridAdapter);
-
-
-
     }
 
-//    public GridLayoutManager getRecycleViewManger() {
-//        return mRecycleViewManger;
-//    }
 
-
-
+//    Params:
+//    orientation – Layout orientation. Should be HORIZONTAL or VERTICAL.RecyclerView.HORIZONTAL
+    public void  setOrientation(int orientation){
+        mRecycleViewManger.setOrientation(orientation);
+    }
     public void  setSpanCount(int  spanCount){
         mRecycleViewManger= new GridLayoutManager(mRecyclerView.getContext(), spanCount, GridLayoutManager.VERTICAL, false);
          mRecyclerView.setLayoutManager(mRecycleViewManger);
@@ -83,8 +79,6 @@ public class SectionAdapterHelper {
 //    }
 
     public SectionedListViewAdapter getSectionAdapter() {
-
-
         return mSectionedExpandableGridAdapter;
     }
 
@@ -792,17 +786,6 @@ public class SectionAdapterHelper {
 //        }
         @Override
         public int getItemViewType(int position) {
-
-//            if(position + 1 != getItemCount()){
-//                return mDataArrayList.get(position).getViewType();
-//            }else{
-//                if(getItemCount()-1 ==totalNum){
-//                    return TYPE_FINISH;
-//                }else{
-//                    return TYPE_FOOTER;
-//                }
-//            }
-
 
             return mDataArrayList.get(position).getViewType();
         }

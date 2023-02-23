@@ -193,7 +193,7 @@ public void  setSpanCount(int  spanCount){
     }
 
     public void scrollToBottom(){
-        mRefreshRecyclerView.scrollToPosition(mSectionAdapterHelper.getCount());
+        mRefreshRecyclerView.scrollToPosition(mSectionAdapterHelper.getCount()-1);
     }
 
    public void addSection(Section section) {
