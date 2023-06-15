@@ -110,6 +110,12 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
     AddressRightFistImgeSettings rightFistImgeSettings =new AddressRightFistImgeSettings();
     /**右侧第一个图片配置*/
     RightCenterScaleImgSettings rightCenterScaleImgSettings=new RightCenterScaleImgSettings();
+
+
+    /**右侧第一个图片配置*/
+    RootlayoutSetting rootlayoutSetting =new RootlayoutSetting();
+
+
     CentLayoutConfig centLayoutConfig;
     /**
      * 默认为6 一行显示
@@ -427,6 +433,14 @@ public class DyItemBean implements IDyItemBean, Serializable,Cloneable{
 
     public void setRightUnreadCount(int rightUnreadCount) {
         this.rightUnreadCount = rightUnreadCount;
+    }
+
+    public RootlayoutSetting getRootlayoutSetting() {
+        return rootlayoutSetting;
+    }
+
+    public void setRootlayoutSetting(RootlayoutSetting rootlayoutSetting) {
+        this.rootlayoutSetting = rootlayoutSetting;
     }
 
     public void setShowRightCheckbox(boolean showRightCheckbox) {

@@ -42,7 +42,9 @@ public class MainActivity extends Activity {
         ContentItemView  itemView=findViewById(R.id.contentView);
           DyItemBean itemBean=new DyItemBean();
            itemBean.setTitle("title is new");
-            itemView.initData(itemBean);
+        itemBean.getRootlayoutSetting().setBackground( getResources().getDrawable(R.drawable.selector) );
+
+        itemView.initData(itemBean);
 
 
         RecycleConfig.getInstance().setThemeConfig(new ThemeConfig().setTitleColorResId(getResources().getColor(R.color.common_title_color)));
@@ -98,6 +100,8 @@ public class MainActivity extends Activity {
         );
 
         secondItemBean.setTitle("点击修改");
+
+
         secondItemBean.setOnItemListener(new IItemView.onItemClick() {
             @Override
             public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -108,7 +112,7 @@ public class MainActivity extends Activity {
             }
         });
 
-//        newSectionList.add(secondItemBean);
+        newSectionList.add(secondItemBean);
 //
             for (int i=0;i<10;i++){
                  itemBean=new DyItemBean();
